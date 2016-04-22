@@ -57,16 +57,16 @@ namespace Chummer
 			System.Windows.Forms.TreeNode treeNode22 = new System.Windows.Forms.TreeNode("Selected Weapons");
 			System.Windows.Forms.TreeNode treeNode23 = new System.Windows.Forms.TreeNode("Selected Gear");
 			System.Windows.Forms.TreeNode treeNode24 = new System.Windows.Forms.TreeNode("Selected Vehicles");
-			System.Windows.Forms.TreeNode treeNode28 = new System.Windows.Forms.TreeNode("Vehicles");
-			System.Windows.Forms.TreeNode treeNode29 = new System.Windows.Forms.TreeNode("Drones");
-			System.Windows.Forms.TreeNode treeNode30 = new System.Windows.Forms.TreeNode("Selected Vehicles", new System.Windows.Forms.TreeNode[] {
-            treeNode28,
-            treeNode29});
 			System.Windows.Forms.TreeNode treeNode25 = new System.Windows.Forms.TreeNode("Mods");
 			System.Windows.Forms.TreeNode treeNode26 = new System.Windows.Forms.TreeNode("Gear");
 			System.Windows.Forms.TreeNode treeNode27 = new System.Windows.Forms.TreeNode("Addons", new System.Windows.Forms.TreeNode[] {
             treeNode25,
             treeNode26});
+			System.Windows.Forms.TreeNode treeNode28 = new System.Windows.Forms.TreeNode("Vehicles");
+			System.Windows.Forms.TreeNode treeNode29 = new System.Windows.Forms.TreeNode("Drones");
+			System.Windows.Forms.TreeNode treeNode30 = new System.Windows.Forms.TreeNode("Selected Vehicles", new System.Windows.Forms.TreeNode[] {
+            treeNode28,
+            treeNode29});
 			this.StatusStrip = new System.Windows.Forms.StatusStrip();
 			this.tssBPLabel = new System.Windows.Forms.ToolStripStatusLabel();
 			this.tssBP = new System.Windows.Forms.ToolStripStatusLabel();
@@ -855,7 +855,9 @@ namespace Chummer
 			this.tabImprovements = new System.Windows.Forms.TabPage();
 			this.panImprovements = new System.Windows.Forms.FlowLayoutPanel();
 			this.tabRigger = new System.Windows.Forms.TabPage();
-			this.treRiggerVehicle = new Chummer.helpers.TreeView();
+			this.lstRiggerSoftware = new System.Windows.Forms.ListBox();
+			this.treRiggerAddons = new Chummer.helpers.TreeView();
+			this.treRiggerVehicles = new Chummer.helpers.TreeView();
 			this.tabInfo = new System.Windows.Forms.TabControl();
 			this.tabBPSummary = new System.Windows.Forms.TabPage();
 			this.lblSpecialAttributesBP = new System.Windows.Forms.Label();
@@ -950,8 +952,7 @@ namespace Chummer
 			this.tsMetamagicNotes = new System.Windows.Forms.ToolStripMenuItem();
 			this.cmsTechnique = new System.Windows.Forms.ContextMenuStrip(this.components);
 			this.tsAddTechniqueNotes = new System.Windows.Forms.ToolStripMenuItem();
-			this.treRiggerAddons = new Chummer.helpers.TreeView();
-			this.grpRiggerSoftware = new System.Windows.Forms.GroupBox();
+			this.treeView1 = new System.Windows.Forms.TreeView();
 			this.StatusStrip.SuspendLayout();
 			this.cmsMartialArts.SuspendLayout();
 			this.cmsSpellButton.SuspendLayout();
@@ -9888,37 +9889,72 @@ namespace Chummer
 			// tabRigger
 			// 
 			this.tabRigger.BackColor = System.Drawing.SystemColors.ButtonFace;
-			this.tabRigger.Controls.Add(this.grpRiggerSoftware);
+			this.tabRigger.Controls.Add(this.treeView1);
+			this.tabRigger.Controls.Add(this.lstRiggerSoftware);
 			this.tabRigger.Controls.Add(this.treRiggerAddons);
-			this.tabRigger.Controls.Add(this.treRiggerVehicle);
+			this.tabRigger.Controls.Add(this.treRiggerVehicles);
 			this.tabRigger.Location = new System.Drawing.Point(4, 22);
 			this.tabRigger.Name = "tabRigger";
 			this.tabRigger.Size = new System.Drawing.Size(838, 611);
 			this.tabRigger.TabIndex = 14;
-			this.tabRigger.Tag = "Tab_Rigger";
+			this.tabRigger.Tag = "Rigger";
 			this.tabRigger.Text = "Rigger";
 			// 
-			// treRiggerVehicle
+			// lstRiggerSoftware
 			// 
-			this.treRiggerVehicle.AllowDrop = true;
-			this.treRiggerVehicle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+			this.lstRiggerSoftware.FormattingEnabled = true;
+			this.lstRiggerSoftware.Location = new System.Drawing.Point(8, 375);
+			this.lstRiggerSoftware.Name = "lstRiggerSoftware";
+			this.lstRiggerSoftware.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
+			this.lstRiggerSoftware.Size = new System.Drawing.Size(252, 225);
+			this.lstRiggerSoftware.Sorted = true;
+			this.lstRiggerSoftware.TabIndex = 34;
+			// 
+			// treRiggerAddons
+			// 
+			this.treRiggerAddons.AllowDrop = true;
+			this.treRiggerAddons.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-			this.treRiggerVehicle.HideSelection = false;
-			this.treRiggerVehicle.Location = new System.Drawing.Point(8, 8);
-			this.treRiggerVehicle.Name = "treRiggerVehicle";
+			this.treRiggerAddons.HideSelection = false;
+			this.treRiggerAddons.Location = new System.Drawing.Point(8, 191);
+			this.treRiggerAddons.Name = "treRiggerAddons";
+			treeNode25.Checked = true;
+			treeNode25.Name = "nodRiggerAddonsMods";
+			treeNode25.Text = "Mods";
+			treeNode26.Name = "nodRiggerAddonsGear";
+			treeNode26.Text = "Gear";
+			treeNode27.Name = "nodRiggerAddonsRoot";
+			treeNode27.Tag = "";
+			treeNode27.Text = "Addons";
+			this.treRiggerAddons.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
+            treeNode27});
+			this.treRiggerAddons.ShowNodeToolTips = true;
+			this.treRiggerAddons.ShowRootLines = false;
+			this.treRiggerAddons.Size = new System.Drawing.Size(252, 174);
+			this.treRiggerAddons.TabIndex = 32;
+			// 
+			// treRiggerVehicles
+			// 
+			this.treRiggerVehicles.AllowDrop = true;
+			this.treRiggerVehicles.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+			this.treRiggerVehicles.HideSelection = false;
+			this.treRiggerVehicles.Location = new System.Drawing.Point(8, 8);
+			this.treRiggerVehicles.Name = "treRiggerVehicles";
 			treeNode28.Name = "nodRiggerVehiclesVehicles";
 			treeNode28.Text = "Vehicles";
 			treeNode29.Name = "nodRiggerVehiclesDrones";
 			treeNode29.Text = "Drones";
 			treeNode30.Name = "nodRiggerVehiclesRoot";
-			treeNode30.Tag = "Node_RiggerSelectedVehicles";
+			treeNode30.Tag = "";
 			treeNode30.Text = "Selected Vehicles";
-			this.treRiggerVehicle.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
+			this.treRiggerVehicles.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode30});
-			this.treRiggerVehicle.ShowNodeToolTips = true;
-			this.treRiggerVehicle.ShowRootLines = false;
-			this.treRiggerVehicle.Size = new System.Drawing.Size(252, 174);
-			this.treRiggerVehicle.TabIndex = 31;
+			this.treRiggerVehicles.ShowNodeToolTips = true;
+			this.treRiggerVehicles.ShowRootLines = false;
+			this.treRiggerVehicles.Size = new System.Drawing.Size(252, 174);
+			this.treRiggerVehicles.TabIndex = 31;
+			this.treRiggerVehicles.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treRiggerVehicles_AfterSelect);
 			// 
 			// tabInfo
 			// 
@@ -10906,37 +10942,12 @@ namespace Chummer
 			this.tsAddTechniqueNotes.Text = "&Notes";
 			this.tsAddTechniqueNotes.Click += new System.EventHandler(this.tsAddTechniqueNotes_Click);
 			// 
-			// treRiggerAddons
+			// treeView1
 			// 
-			this.treRiggerAddons.AllowDrop = true;
-			this.treRiggerAddons.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-			this.treRiggerAddons.HideSelection = false;
-			this.treRiggerAddons.Location = new System.Drawing.Point(8, 191);
-			this.treRiggerAddons.Name = "treRiggerAddons";
-			treeNode25.Checked = true;
-			treeNode25.Name = "nodRiggerAddonsMods";
-			treeNode25.Text = "Mods";
-			treeNode26.Name = "nodRiggerAddonsGear";
-			treeNode26.Text = "Gear";
-			treeNode27.Name = "nodRiggerAddonsRoot";
-			treeNode27.Tag = "";
-			treeNode27.Text = "Addons";
-			this.treRiggerAddons.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode27});
-			this.treRiggerAddons.ShowNodeToolTips = true;
-			this.treRiggerAddons.ShowRootLines = false;
-			this.treRiggerAddons.Size = new System.Drawing.Size(252, 174);
-			this.treRiggerAddons.TabIndex = 32;
-			// 
-			// grpRiggerSoftware
-			// 
-			this.grpRiggerSoftware.Location = new System.Drawing.Point(8, 375);
-			this.grpRiggerSoftware.Name = "grpRiggerSoftware";
-			this.grpRiggerSoftware.Size = new System.Drawing.Size(252, 152);
-			this.grpRiggerSoftware.TabIndex = 33;
-			this.grpRiggerSoftware.TabStop = false;
-			this.grpRiggerSoftware.Text = "Software";
+			this.treeView1.Location = new System.Drawing.Point(344, 55);
+			this.treeView1.Name = "treeView1";
+			this.treeView1.Size = new System.Drawing.Size(121, 97);
+			this.treeView1.TabIndex = 35;
 			// 
 			// frmCreate
 			// 
@@ -11992,9 +12003,10 @@ namespace Chummer
 		private System.Windows.Forms.Label lblVehicleDroneModSlots;
 		private System.Windows.Forms.Label lblVehicleDroneModSlotsLabel;
 		private System.Windows.Forms.TabPage tabRigger;
-		private TreeView treRiggerVehicle;
-		private System.Windows.Forms.GroupBox grpRiggerSoftware;
+		private TreeView treRiggerVehicles;
 		private TreeView treRiggerAddons;
+		private System.Windows.Forms.ListBox lstRiggerSoftware;
+		private System.Windows.Forms.TreeView treeView1;
 	}
 }
 

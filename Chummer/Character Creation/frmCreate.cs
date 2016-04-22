@@ -14846,6 +14846,10 @@ namespace Chummer
         private void tabCharacterTabs_SelectedIndexChanged(object sender, EventArgs e)
         {
             RefreshPasteStatus();
+			if((sender as TabControl).SelectedTab.Name == "tabRigger")
+			{
+				RefreshRiggerTab();
+			}
         }
 
         private void tabStreetGearTabs_SelectedIndexChanged(object sender, EventArgs e)
@@ -24863,9 +24867,94 @@ namespace Chummer
                     objCommlink.IsActive = false;
             }
         }
-        #endregion
 
-        private void tabVehicles_Click(object sender, EventArgs e)
+		/// <summary>
+		///  Load the Rigger tab with info culled from the other tabs
+		///  We do this when the tab is clicked on to keep it centralized
+		///  instead of trying to update this tab when the information actually changes
+		/// </summary>
+		private void RefreshRiggerTab()
+		{
+			TreeNode[] arrVehicles = treRiggerVehicles.Nodes.Find("nodRiggerVehiclesVehicles", true);
+			TreeNode[] arrDrones = treRiggerVehicles.Nodes.Find("nodRiggerVehiclesDrones", true);
+			arrVehicles[0].Nodes.Clear();
+			arrDrones[0].Nodes.Clear();
+
+			// Populate Vehicles.
+			foreach (Vehicle objVehicle in _objCharacter.Vehicles)
+			{
+				TreeNode objNode = new TreeNode();
+				objNode.Text = objVehicle.DisplayName;
+				objNode.Tag = objVehicle.InternalId;
+				if (objVehicle.Notes != string.Empty)
+					objNode.ForeColor = Color.SaddleBrown;
+				objNode.ToolTipText = objVehicle.Notes;
+				objNode.ContextMenuStrip = cmsVehicle;
+				if (objVehicle.IsDrone)
+					arrDrones[0].Nodes.Add(objNode);
+				else
+					arrVehicles[0].Nodes.Add(objNode);
+				
+
+				//_objFunctions.CreateVehicleTreeNode(objVehicle, treRiggerVehicles, cmsVehicle, cmsVehicleLocation, cmsVehicleWeapon, cmsVehicleWeaponAccessory, cmsVehicleWeaponAccessoryGear, cmsVehicleGear);
+			}
+			treRiggerVehicles.Nodes[0].ExpandAll();
+		}
+
+		/// <summary>
+		/// Populate the child boxes when a vehicle is selected
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void treRiggerVehicles_AfterSelect(object sender, TreeViewEventArgs e)
+		{
+			TreeNode nodVehicle = e.Node;
+			Vehicle objVehicle = _objFunctions.FindVehicle(nodVehicle.Tag.ToString(), _objCharacter.Vehicles);
+
+			TreeNode[] arrMods = treRiggerAddons.Nodes.Find("nodRiggerAddonsMods", true);
+			TreeNode[] arrGear = treRiggerAddons.Nodes.Find("nodRiggerAddonsGear", true);
+			arrMods[0].Nodes.Clear();
+			arrGear[0].Nodes.Clear();
+			lstRiggerSoftware.Items.Clear();
+
+			foreach (VehicleMod objMod in objVehicle.Mods)
+				{
+				TreeNode objNode = new TreeNode();
+				objNode.Text = objMod.DisplayName;
+				objNode.Tag = objMod.InternalId;
+				if (objMod.Notes != string.Empty)
+					objNode.ForeColor = Color.SaddleBrown;
+				objNode.ToolTipText = objMod.Notes;
+				objNode.ContextMenuStrip = cmsVehicle;
+
+				arrMods[0].Nodes.Add(objNode);
+
+			}
+			foreach (Gear objGear in objVehicle.Gear)
+			{
+
+				if (objGear.Category == "Software")
+				{
+					lstRiggerSoftware.Items.Add(objGear.DisplayName);
+				}
+				else {
+					TreeNode objNode = new TreeNode();
+					objNode.Text = objGear.DisplayName;
+					objNode.Tag = objGear.InternalId;
+					if (objGear.Notes != string.Empty)
+						objNode.ForeColor = Color.SaddleBrown;
+					objNode.ToolTipText = objGear.Notes;
+					objNode.ContextMenuStrip = cmsVehicle;
+
+					arrGear[0].Nodes.Add(objNode);
+				}
+			}
+
+			treRiggerAddons.Nodes[0].ExpandAll();
+		}
+		#endregion
+
+		private void tabVehicles_Click(object sender, EventArgs e)
         {
 
         }
