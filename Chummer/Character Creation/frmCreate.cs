@@ -24880,11 +24880,14 @@ namespace Chummer
 			arrVehicles[0].Nodes.Clear();
 			arrDrones[0].Nodes.Clear();
 
+			pnlRiggerBaseStats.Visible = false;
+			tabRiggerWeapons.Visible = false;
+
 			// Populate Vehicles.
 			foreach (Vehicle objVehicle in _objCharacter.Vehicles)
 			{
 				TreeNode objNode = new TreeNode();
-				objNode.Text = objVehicle.DisplayName;
+				objNode.Text = objVehicle.DisplayNameShort;
 				objNode.Tag = objVehicle.InternalId;
 				if (objVehicle.Notes != string.Empty)
 					objNode.ForeColor = Color.SaddleBrown;
@@ -24908,17 +24911,35 @@ namespace Chummer
 		/// <param name="e"></param>
 		private void treRiggerVehicles_AfterSelect(object sender, TreeViewEventArgs e)
 		{
-			TreeNode nodVehicle = e.Node;
-			Vehicle objVehicle = _objFunctions.FindVehicle(nodVehicle.Tag.ToString(), _objCharacter.Vehicles);
-
 			TreeNode[] arrMods = treRiggerAddons.Nodes.Find("nodRiggerAddonsMods", true);
 			TreeNode[] arrGear = treRiggerAddons.Nodes.Find("nodRiggerAddonsGear", true);
 			arrMods[0].Nodes.Clear();
 			arrGear[0].Nodes.Clear();
 			lstRiggerSoftware.Items.Clear();
 
+			pnlRiggerBaseStats.Visible = false;
+			tabRiggerWeapons.Visible = false;
+
+			List<Weapon> lstWeapons = new List<Weapon>();
+
+			TreeNode nodVehicle = e.Node;
+			if (nodVehicle.Level != 2) return;
+
+			Vehicle objVehicle = _objFunctions.FindVehicle(nodVehicle.Tag.ToString(), _objCharacter.Vehicles);
+
+			lblRiggerHandling.Text = objVehicle.TotalHandling;
+			lblRiggerAccel.Text = objVehicle.TotalAccel.ToString();
+			lblRiggerSpeed.Text = objVehicle.TotalSpeed.ToString();
+			lblRiggerSensor.Text = objVehicle.CalculatedSensor.ToString();
+			lblRiggerPilot.Text = objVehicle.Pilot.ToString();
+			lblRiggerArmor.Text = objVehicle.TotalArmor.ToString();
+			lblRiggerBody.Text = objVehicle.TotalBody.ToString();
+			lblRiggerSeats.Text = objVehicle.Seats.ToString();
+
+			pnlRiggerBaseStats.Visible = true;
+
 			foreach (VehicleMod objMod in objVehicle.Mods)
-				{
+			{
 				TreeNode objNode = new TreeNode();
 				objNode.Text = objMod.DisplayName;
 				objNode.Tag = objMod.InternalId;
@@ -24928,6 +24949,15 @@ namespace Chummer
 				objNode.ContextMenuStrip = cmsVehicle;
 
 				arrMods[0].Nodes.Add(objNode);
+
+				if (objMod.Weapons.Count > 0)
+				{
+					foreach (Weapon objWeapon in objMod.Weapons)
+					{
+						lstWeapons.Add(objWeapon);
+					}
+				}
+
 
 			}
 			foreach (Gear objGear in objVehicle.Gear)
@@ -24949,7 +24979,39 @@ namespace Chummer
 					arrGear[0].Nodes.Add(objNode);
 				}
 			}
+			if (lstWeapons.Count > 0)
+			{
+				foreach (Weapon objWeapon in lstWeapons)
+				{
+					VehicleWeaponControl usrVehicleWeapon = new VehicleWeaponControl();
+					TabPage tabWeapon = new TabPage();
+					tabWeapon.Controls.Add(usrVehicleWeapon);
 
+					tabWeapon.Text = objWeapon.DisplayNameShort;
+					usrVehicleWeapon.RangeShort = objWeapon.RangeShort;
+
+					usrVehicleWeapon.RangeMedium = objWeapon.RangeMedium;
+					usrVehicleWeapon.RangeLong = objWeapon.RangeLong;
+					usrVehicleWeapon.RangeExtreme = objWeapon.RangeExtreme;
+
+					usrVehicleWeapon.Damage = objWeapon.CalculatedDamage();
+					usrVehicleWeapon.Accuracy = objWeapon.TotalAccuracy.ToString();
+					usrVehicleWeapon.RC = objWeapon.TotalRC;
+					usrVehicleWeapon.AP = objWeapon.TotalAP;
+
+					usrVehicleWeapon.Mode = objWeapon.CalculatedMode;
+					usrVehicleWeapon.Ammo = objWeapon.CalculatedAmmo();
+					usrVehicleWeapon.Rating = "2";
+
+					usrVehicleWeapon.DicePool = objWeapon.DicePool;
+
+
+					tabRiggerWeapons.TabPages.Add(tabWeapon);
+
+				}
+
+				tabRiggerWeapons.Visible = true;
+			}
 			treRiggerAddons.Nodes[0].ExpandAll();
 		}
 		#endregion

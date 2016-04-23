@@ -431,6 +431,10 @@
 			<text>Accel:</text>
 		</string>
 		<string>
+			<key>Label_Seats</key>
+			<text>Seats:</text>
+		</string>
+		<string>
 			<key>Label_Speed</key>
 			<text>Speed:</text>
 		</string>
