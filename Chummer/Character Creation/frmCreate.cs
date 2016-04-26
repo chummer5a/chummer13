@@ -24981,6 +24981,7 @@ namespace Chummer
 			}
 			if (lstWeapons.Count > 0)
 			{
+				tabRiggerWeapons.TabPages.Clear();
 				foreach (Weapon objWeapon in lstWeapons)
 				{
 					VehicleWeaponControl usrVehicleWeapon = new VehicleWeaponControl();
