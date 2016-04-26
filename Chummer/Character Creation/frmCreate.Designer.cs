@@ -33,40 +33,30 @@ namespace Chummer
         {
 			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCreate));
-			System.Windows.Forms.TreeNode treeNode97 = new System.Windows.Forms.TreeNode("Selected Positive Qualities");
-			System.Windows.Forms.TreeNode treeNode98 = new System.Windows.Forms.TreeNode("Selected Negative Qualities");
-			System.Windows.Forms.TreeNode treeNode99 = new System.Windows.Forms.TreeNode("Physical");
-			System.Windows.Forms.TreeNode treeNode100 = new System.Windows.Forms.TreeNode("Mental");
-			System.Windows.Forms.TreeNode treeNode101 = new System.Windows.Forms.TreeNode("Social");
-			System.Windows.Forms.TreeNode treeNode102 = new System.Windows.Forms.TreeNode("Selected Martial Arts");
-			System.Windows.Forms.TreeNode treeNode103 = new System.Windows.Forms.TreeNode("Selected Qualities");
-			System.Windows.Forms.TreeNode treeNode104 = new System.Windows.Forms.TreeNode("Selected Combat Spells");
-			System.Windows.Forms.TreeNode treeNode105 = new System.Windows.Forms.TreeNode("Selected Detection Spells");
-			System.Windows.Forms.TreeNode treeNode106 = new System.Windows.Forms.TreeNode("Selected Health Spells");
-			System.Windows.Forms.TreeNode treeNode107 = new System.Windows.Forms.TreeNode("Selected Illusion Spells");
-			System.Windows.Forms.TreeNode treeNode108 = new System.Windows.Forms.TreeNode("Selected Manipulation Spells");
-			System.Windows.Forms.TreeNode treeNode109 = new System.Windows.Forms.TreeNode("Selected Rituals");
-			System.Windows.Forms.TreeNode treeNode110 = new System.Windows.Forms.TreeNode("Selected Enchantments");
-			System.Windows.Forms.TreeNode treeNode111 = new System.Windows.Forms.TreeNode("Selected Complex Forms");
-			System.Windows.Forms.TreeNode treeNode112 = new System.Windows.Forms.TreeNode("Critter Powers");
-			System.Windows.Forms.TreeNode treeNode113 = new System.Windows.Forms.TreeNode("Weaknesses");
-			System.Windows.Forms.TreeNode treeNode114 = new System.Windows.Forms.TreeNode("Selected Cyberware");
-			System.Windows.Forms.TreeNode treeNode115 = new System.Windows.Forms.TreeNode("Selected Bioware");
-			System.Windows.Forms.TreeNode treeNode116 = new System.Windows.Forms.TreeNode("Selected Lifestyles");
-			System.Windows.Forms.TreeNode treeNode117 = new System.Windows.Forms.TreeNode("Selected Armor");
-			System.Windows.Forms.TreeNode treeNode118 = new System.Windows.Forms.TreeNode("Selected Weapons");
-			System.Windows.Forms.TreeNode treeNode119 = new System.Windows.Forms.TreeNode("Selected Gear");
-			System.Windows.Forms.TreeNode treeNode120 = new System.Windows.Forms.TreeNode("Selected Vehicles");
-			System.Windows.Forms.TreeNode treeNode91 = new System.Windows.Forms.TreeNode("Mods");
-			System.Windows.Forms.TreeNode treeNode92 = new System.Windows.Forms.TreeNode("Gear");
-			System.Windows.Forms.TreeNode treeNode93 = new System.Windows.Forms.TreeNode("Addons", new System.Windows.Forms.TreeNode[] {
-            treeNode91,
-            treeNode92});
-			System.Windows.Forms.TreeNode treeNode94 = new System.Windows.Forms.TreeNode("Vehicles");
-			System.Windows.Forms.TreeNode treeNode95 = new System.Windows.Forms.TreeNode("Drones");
-			System.Windows.Forms.TreeNode treeNode96 = new System.Windows.Forms.TreeNode("Selected Vehicles", new System.Windows.Forms.TreeNode[] {
-            treeNode94,
-            treeNode95});
+			System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Selected Positive Qualities");
+			System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Selected Negative Qualities");
+			System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Physical");
+			System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Mental");
+			System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Social");
+			System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Selected Martial Arts");
+			System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Selected Qualities");
+			System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Selected Combat Spells");
+			System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("Selected Detection Spells");
+			System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("Selected Health Spells");
+			System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("Selected Illusion Spells");
+			System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("Selected Manipulation Spells");
+			System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("Selected Rituals");
+			System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("Selected Enchantments");
+			System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("Selected Complex Forms");
+			System.Windows.Forms.TreeNode treeNode16 = new System.Windows.Forms.TreeNode("Critter Powers");
+			System.Windows.Forms.TreeNode treeNode17 = new System.Windows.Forms.TreeNode("Weaknesses");
+			System.Windows.Forms.TreeNode treeNode18 = new System.Windows.Forms.TreeNode("Selected Cyberware");
+			System.Windows.Forms.TreeNode treeNode19 = new System.Windows.Forms.TreeNode("Selected Bioware");
+			System.Windows.Forms.TreeNode treeNode20 = new System.Windows.Forms.TreeNode("Selected Lifestyles");
+			System.Windows.Forms.TreeNode treeNode21 = new System.Windows.Forms.TreeNode("Selected Armor");
+			System.Windows.Forms.TreeNode treeNode22 = new System.Windows.Forms.TreeNode("Selected Weapons");
+			System.Windows.Forms.TreeNode treeNode23 = new System.Windows.Forms.TreeNode("Selected Gear");
+			System.Windows.Forms.TreeNode treeNode24 = new System.Windows.Forms.TreeNode("Selected Vehicles");
 			this.StatusStrip = new System.Windows.Forms.StatusStrip();
 			this.tssBPLabel = new System.Windows.Forms.ToolStripStatusLabel();
 			this.tssBP = new System.Windows.Forms.ToolStripStatusLabel();
@@ -856,27 +846,7 @@ namespace Chummer
 			this.panImprovements = new System.Windows.Forms.FlowLayoutPanel();
 			this.tabRigger = new System.Windows.Forms.TabPage();
 			this.splRigger = new System.Windows.Forms.SplitContainer();
-			this.treRiggerAddons = new Chummer.helpers.TreeView();
-			this.lstRiggerSoftware = new System.Windows.Forms.ListBox();
-			this.treRiggerVehicles = new Chummer.helpers.TreeView();
-			this.pnlRiggerBaseStats = new System.Windows.Forms.Panel();
-			this.lblRiggerSeats = new System.Windows.Forms.Label();
-			this.lblRiggerSeatsLabel = new System.Windows.Forms.Label();
-			this.lblRiggerSensor = new System.Windows.Forms.Label();
-			this.lblRiggerSensorLabel = new System.Windows.Forms.Label();
-			this.lblRiggerPilot = new System.Windows.Forms.Label();
-			this.lblRiggerPilotLabel = new System.Windows.Forms.Label();
-			this.lblRiggerArmor = new System.Windows.Forms.Label();
-			this.lblRiggerArmorLabel = new System.Windows.Forms.Label();
-			this.lblRiggerBody = new System.Windows.Forms.Label();
-			this.lblRiggerBodyLabel = new System.Windows.Forms.Label();
-			this.lblRiggerSpeed = new System.Windows.Forms.Label();
-			this.lblRiggerSpeedLabel = new System.Windows.Forms.Label();
-			this.lblRiggerAccel = new System.Windows.Forms.Label();
-			this.lblRiggerAccelLabel = new System.Windows.Forms.Label();
-			this.lblRiggerHandling = new System.Windows.Forms.Label();
-			this.lblRiggerHandlingLabel = new System.Windows.Forms.Label();
-			this.tabRiggerWeapons = new System.Windows.Forms.TabControl();
+			this.tabRiggerTabs = new System.Windows.Forms.TabControl();
 			this.tabInfo = new System.Windows.Forms.TabControl();
 			this.tabBPSummary = new System.Windows.Forms.TabPage();
 			this.lblSpecialAttributesBP = new System.Windows.Forms.Label();
@@ -1078,9 +1048,7 @@ namespace Chummer
 			this.tabRigger.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.splRigger)).BeginInit();
 			this.splRigger.Panel1.SuspendLayout();
-			this.splRigger.Panel2.SuspendLayout();
 			this.splRigger.SuspendLayout();
-			this.pnlRiggerBaseStats.SuspendLayout();
 			this.tabInfo.SuspendLayout();
 			this.tabBPSummary.SuspendLayout();
 			this.tabBuildSummary.SuspendLayout();
@@ -3975,15 +3943,15 @@ namespace Chummer
 			this.treQualities.Indent = 15;
 			this.treQualities.Location = new System.Drawing.Point(6, 38);
 			this.treQualities.Name = "treQualities";
-			treeNode97.Name = "nodPositiveQualityRoot";
-			treeNode97.Tag = "Node_SelectedPositiveQualities";
-			treeNode97.Text = "Selected Positive Qualities";
-			treeNode98.Name = "nodNegativeQualityRoot";
-			treeNode98.Tag = "Node_SelectedNegativeQualities";
-			treeNode98.Text = "Selected Negative Qualities";
+			treeNode1.Name = "nodPositiveQualityRoot";
+			treeNode1.Tag = "Node_SelectedPositiveQualities";
+			treeNode1.Text = "Selected Positive Qualities";
+			treeNode2.Name = "nodNegativeQualityRoot";
+			treeNode2.Tag = "Node_SelectedNegativeQualities";
+			treeNode2.Text = "Selected Negative Qualities";
 			this.treQualities.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode97,
-            treeNode98});
+            treeNode1,
+            treeNode2});
 			this.treQualities.ShowNodeToolTips = true;
 			this.treQualities.ShowPlusMinus = false;
 			this.treQualities.ShowRootLines = false;
@@ -4917,19 +4885,19 @@ namespace Chummer
 			this.treLimit.HideSelection = false;
 			this.treLimit.Location = new System.Drawing.Point(8, 33);
 			this.treLimit.Name = "treLimit";
-			treeNode99.Name = "trePhysicalRoot";
-			treeNode99.Tag = "Node_Physical";
-			treeNode99.Text = "Physical";
-			treeNode100.Name = "treMentalRoot";
-			treeNode100.Tag = "Node_Mental";
-			treeNode100.Text = "Mental";
-			treeNode101.Name = "treSocialRoot";
-			treeNode101.Tag = "Node_Social";
-			treeNode101.Text = "Social";
+			treeNode3.Name = "trePhysicalRoot";
+			treeNode3.Tag = "Node_Physical";
+			treeNode3.Text = "Physical";
+			treeNode4.Name = "treMentalRoot";
+			treeNode4.Tag = "Node_Mental";
+			treeNode4.Text = "Mental";
+			treeNode5.Name = "treSocialRoot";
+			treeNode5.Tag = "Node_Social";
+			treeNode5.Text = "Social";
 			this.treLimit.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode99,
-            treeNode100,
-            treeNode101});
+            treeNode3,
+            treeNode4,
+            treeNode5});
 			this.treLimit.ShowNodeToolTips = true;
 			this.treLimit.ShowPlusMinus = false;
 			this.treLimit.ShowRootLines = false;
@@ -5005,14 +4973,14 @@ namespace Chummer
 			this.treMartialArts.HideSelection = false;
 			this.treMartialArts.Location = new System.Drawing.Point(8, 35);
 			this.treMartialArts.Name = "treMartialArts";
-			treeNode102.Name = "treMartialArtsRoot";
-			treeNode102.Tag = "Node_SelectedMartialArts";
-			treeNode102.Text = "Selected Martial Arts";
-			treeNode103.Name = "treQualitiesRoot";
-			treeNode103.Text = "Selected Qualities";
+			treeNode6.Name = "treMartialArtsRoot";
+			treeNode6.Tag = "Node_SelectedMartialArts";
+			treeNode6.Text = "Selected Martial Arts";
+			treeNode7.Name = "treQualitiesRoot";
+			treeNode7.Text = "Selected Qualities";
 			this.treMartialArts.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode102,
-            treeNode103});
+            treeNode6,
+            treeNode7});
 			this.treMartialArts.ShowNodeToolTips = true;
 			this.treMartialArts.ShowPlusMinus = false;
 			this.treMartialArts.ShowRootLines = false;
@@ -5487,35 +5455,35 @@ namespace Chummer
 			this.treSpells.HideSelection = false;
 			this.treSpells.Location = new System.Drawing.Point(8, 55);
 			this.treSpells.Name = "treSpells";
-			treeNode104.Name = "nodSpellCombatRoot";
-			treeNode104.Tag = "Node_SelectedCombatSpells";
-			treeNode104.Text = "Selected Combat Spells";
-			treeNode105.Name = "nodSpellDetectionRoot";
-			treeNode105.Tag = "Node_SelectedDetectionSpells";
-			treeNode105.Text = "Selected Detection Spells";
-			treeNode106.Name = "nodSpellHealthRoot";
-			treeNode106.Tag = "Node_SelectedHealthSpells";
-			treeNode106.Text = "Selected Health Spells";
-			treeNode107.Name = "nodSpellIllusionRoot";
-			treeNode107.Tag = "Node_SelectedIllusionSpells";
-			treeNode107.Text = "Selected Illusion Spells";
-			treeNode108.Name = "nodSpellManipulationRoot";
-			treeNode108.Tag = "Node_SelectedManipulationSpells";
-			treeNode108.Text = "Selected Manipulation Spells";
-			treeNode109.Name = "nodSpellGeomancyRoot";
-			treeNode109.Tag = "Node_SelectedGeomancyRituals";
-			treeNode109.Text = "Selected Rituals";
-			treeNode110.Name = "nodSpellEnchantmentRoot";
-			treeNode110.Tag = "Node_SelectedEnchantments";
-			treeNode110.Text = "Selected Enchantments";
+			treeNode8.Name = "nodSpellCombatRoot";
+			treeNode8.Tag = "Node_SelectedCombatSpells";
+			treeNode8.Text = "Selected Combat Spells";
+			treeNode9.Name = "nodSpellDetectionRoot";
+			treeNode9.Tag = "Node_SelectedDetectionSpells";
+			treeNode9.Text = "Selected Detection Spells";
+			treeNode10.Name = "nodSpellHealthRoot";
+			treeNode10.Tag = "Node_SelectedHealthSpells";
+			treeNode10.Text = "Selected Health Spells";
+			treeNode11.Name = "nodSpellIllusionRoot";
+			treeNode11.Tag = "Node_SelectedIllusionSpells";
+			treeNode11.Text = "Selected Illusion Spells";
+			treeNode12.Name = "nodSpellManipulationRoot";
+			treeNode12.Tag = "Node_SelectedManipulationSpells";
+			treeNode12.Text = "Selected Manipulation Spells";
+			treeNode13.Name = "nodSpellGeomancyRoot";
+			treeNode13.Tag = "Node_SelectedGeomancyRituals";
+			treeNode13.Text = "Selected Rituals";
+			treeNode14.Name = "nodSpellEnchantmentRoot";
+			treeNode14.Tag = "Node_SelectedEnchantments";
+			treeNode14.Text = "Selected Enchantments";
 			this.treSpells.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode104,
-            treeNode105,
-            treeNode106,
-            treeNode107,
-            treeNode108,
-            treeNode109,
-            treeNode110});
+            treeNode8,
+            treeNode9,
+            treeNode10,
+            treeNode11,
+            treeNode12,
+            treeNode13,
+            treeNode14});
 			this.treSpells.ShowNodeToolTips = true;
 			this.treSpells.ShowRootLines = false;
 			this.treSpells.Size = new System.Drawing.Size(295, 333);
@@ -5880,11 +5848,11 @@ namespace Chummer
 			this.treComplexForms.HideSelection = false;
 			this.treComplexForms.Location = new System.Drawing.Point(8, 54);
 			this.treComplexForms.Name = "treComplexForms";
-			treeNode111.Name = "nodProgramAdvancedRoot";
-			treeNode111.Tag = "Node_SelectedAdvancedComplexForms";
-			treeNode111.Text = "Selected Complex Forms";
+			treeNode15.Name = "nodProgramAdvancedRoot";
+			treeNode15.Tag = "Node_SelectedAdvancedComplexForms";
+			treeNode15.Text = "Selected Complex Forms";
 			this.treComplexForms.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode111});
+            treeNode15});
 			this.treComplexForms.ShowNodeToolTips = true;
 			this.treComplexForms.ShowRootLines = false;
 			this.treComplexForms.Size = new System.Drawing.Size(295, 333);
@@ -6191,15 +6159,15 @@ namespace Chummer
 			this.treCritterPowers.HideSelection = false;
 			this.treCritterPowers.Location = new System.Drawing.Point(8, 32);
 			this.treCritterPowers.Name = "treCritterPowers";
-			treeNode112.Name = "nodCritterPowerRoot";
-			treeNode112.Tag = "Node_CritterPowers";
-			treeNode112.Text = "Critter Powers";
-			treeNode113.Name = "nodCritterWeaknessRoot";
-			treeNode113.Tag = "Node_CritterWeaknesses";
-			treeNode113.Text = "Weaknesses";
+			treeNode16.Name = "nodCritterPowerRoot";
+			treeNode16.Tag = "Node_CritterPowers";
+			treeNode16.Text = "Critter Powers";
+			treeNode17.Name = "nodCritterWeaknessRoot";
+			treeNode17.Tag = "Node_CritterWeaknesses";
+			treeNode17.Text = "Weaknesses";
 			this.treCritterPowers.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode112,
-            treeNode113});
+            treeNode16,
+            treeNode17});
 			this.treCritterPowers.ShowNodeToolTips = true;
 			this.treCritterPowers.ShowPlusMinus = false;
 			this.treCritterPowers.ShowRootLines = false;
@@ -6743,15 +6711,15 @@ namespace Chummer
 			this.treCyberware.HideSelection = false;
 			this.treCyberware.Location = new System.Drawing.Point(8, 36);
 			this.treCyberware.Name = "treCyberware";
-			treeNode114.Name = "nodCyberwareRoot";
-			treeNode114.Tag = "Node_SelectedCyberware";
-			treeNode114.Text = "Selected Cyberware";
-			treeNode115.Name = "nodBioware";
-			treeNode115.Tag = "Node_SelectedBioware";
-			treeNode115.Text = "Selected Bioware";
+			treeNode18.Name = "nodCyberwareRoot";
+			treeNode18.Tag = "Node_SelectedCyberware";
+			treeNode18.Text = "Selected Cyberware";
+			treeNode19.Name = "nodBioware";
+			treeNode19.Tag = "Node_SelectedBioware";
+			treeNode19.Text = "Selected Bioware";
 			this.treCyberware.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode114,
-            treeNode115});
+            treeNode18,
+            treeNode19});
 			this.treCyberware.ShowNodeToolTips = true;
 			this.treCyberware.ShowRootLines = false;
 			this.treCyberware.Size = new System.Drawing.Size(295, 572);
@@ -6946,11 +6914,11 @@ namespace Chummer
 			this.treLifestyles.HideSelection = false;
 			this.treLifestyles.Location = new System.Drawing.Point(6, 36);
 			this.treLifestyles.Name = "treLifestyles";
-			treeNode116.Name = "nodLifestylesRoot";
-			treeNode116.Tag = "Node_SelectedLifestyles";
-			treeNode116.Text = "Selected Lifestyles";
+			treeNode20.Name = "nodLifestylesRoot";
+			treeNode20.Tag = "Node_SelectedLifestyles";
+			treeNode20.Text = "Selected Lifestyles";
 			this.treLifestyles.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode116});
+            treeNode20});
 			this.treLifestyles.ShowNodeToolTips = true;
 			this.treLifestyles.ShowRootLines = false;
 			this.treLifestyles.Size = new System.Drawing.Size(295, 537);
@@ -7360,11 +7328,11 @@ namespace Chummer
 			this.treArmor.HideSelection = false;
 			this.treArmor.Location = new System.Drawing.Point(6, 36);
 			this.treArmor.Name = "treArmor";
-			treeNode117.Name = "nodArmorRoot";
-			treeNode117.Tag = "Node_SelectedArmor";
-			treeNode117.Text = "Selected Armor";
+			treeNode21.Name = "nodArmorRoot";
+			treeNode21.Tag = "Node_SelectedArmor";
+			treeNode21.Text = "Selected Armor";
 			this.treArmor.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode117});
+            treeNode21});
 			this.treArmor.ShowNodeToolTips = true;
 			this.treArmor.Size = new System.Drawing.Size(295, 537);
 			this.treArmor.TabIndex = 69;
@@ -7816,11 +7784,11 @@ namespace Chummer
 			this.treWeapons.HideSelection = false;
 			this.treWeapons.Location = new System.Drawing.Point(6, 36);
 			this.treWeapons.Name = "treWeapons";
-			treeNode118.Name = "nodWeaponsRoot";
-			treeNode118.Tag = "Node_SelectedWeapons";
-			treeNode118.Text = "Selected Weapons";
+			treeNode22.Name = "nodWeaponsRoot";
+			treeNode22.Tag = "Node_SelectedWeapons";
+			treeNode22.Text = "Selected Weapons";
 			this.treWeapons.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode118});
+            treeNode22});
 			this.treWeapons.ShowNodeToolTips = true;
 			this.treWeapons.Size = new System.Drawing.Size(295, 540);
 			this.treWeapons.TabIndex = 29;
@@ -8517,11 +8485,11 @@ namespace Chummer
 			this.treGear.HideSelection = false;
 			this.treGear.Location = new System.Drawing.Point(6, 36);
 			this.treGear.Name = "treGear";
-			treeNode119.Name = "nodGearRoot";
-			treeNode119.Tag = "Node_SelectedGear";
-			treeNode119.Text = "Selected Gear";
+			treeNode23.Name = "nodGearRoot";
+			treeNode23.Tag = "Node_SelectedGear";
+			treeNode23.Text = "Selected Gear";
 			this.treGear.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode119});
+            treeNode23});
 			this.treGear.ShowNodeToolTips = true;
 			this.treGear.Size = new System.Drawing.Size(295, 540);
 			this.treGear.TabIndex = 49;
@@ -9483,11 +9451,11 @@ namespace Chummer
 			this.treVehicles.HideSelection = false;
 			this.treVehicles.Location = new System.Drawing.Point(8, 36);
 			this.treVehicles.Name = "treVehicles";
-			treeNode120.Name = "nodVehiclesRoot";
-			treeNode120.Tag = "Node_SelectedVehicles";
-			treeNode120.Text = "Selected Vehicles";
+			treeNode24.Name = "nodVehiclesRoot";
+			treeNode24.Tag = "Node_SelectedVehicles";
+			treeNode24.Text = "Selected Vehicles";
 			this.treVehicles.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode120});
+            treeNode24});
 			this.treVehicles.ShowNodeToolTips = true;
 			this.treVehicles.ShowRootLines = false;
 			this.treVehicles.Size = new System.Drawing.Size(403, 572);
@@ -9928,257 +9896,20 @@ namespace Chummer
 			// 
 			// splRigger.Panel1
 			// 
-			this.splRigger.Panel1.Controls.Add(this.treRiggerAddons);
-			this.splRigger.Panel1.Controls.Add(this.lstRiggerSoftware);
-			this.splRigger.Panel1.Controls.Add(this.treRiggerVehicles);
-			// 
-			// splRigger.Panel2
-			// 
-			this.splRigger.Panel2.Controls.Add(this.pnlRiggerBaseStats);
-			this.splRigger.Panel2.Controls.Add(this.tabRiggerWeapons);
+			this.splRigger.Panel1.Controls.Add(this.tabRiggerTabs);
 			this.splRigger.Size = new System.Drawing.Size(838, 611);
-			this.splRigger.SplitterDistance = 278;
+			this.splRigger.SplitterDistance = 652;
 			this.splRigger.TabIndex = 36;
 			// 
-			// treRiggerAddons
+			// tabRiggerTabs
 			// 
-			this.treRiggerAddons.AllowDrop = true;
-			this.treRiggerAddons.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.treRiggerAddons.HideSelection = false;
-			this.treRiggerAddons.Location = new System.Drawing.Point(0, 174);
-			this.treRiggerAddons.Name = "treRiggerAddons";
-			treeNode91.Checked = true;
-			treeNode91.Name = "nodRiggerAddonsMods";
-			treeNode91.Text = "Mods";
-			treeNode92.Name = "nodRiggerAddonsGear";
-			treeNode92.Text = "Gear";
-			treeNode93.Name = "nodRiggerAddonsRoot";
-			treeNode93.Tag = "";
-			treeNode93.Text = "Addons";
-			this.treRiggerAddons.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode93});
-			this.treRiggerAddons.ShowNodeToolTips = true;
-			this.treRiggerAddons.ShowRootLines = false;
-			this.treRiggerAddons.Size = new System.Drawing.Size(278, 212);
-			this.treRiggerAddons.TabIndex = 32;
-			// 
-			// lstRiggerSoftware
-			// 
-			this.lstRiggerSoftware.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.lstRiggerSoftware.FormattingEnabled = true;
-			this.lstRiggerSoftware.Location = new System.Drawing.Point(0, 386);
-			this.lstRiggerSoftware.Name = "lstRiggerSoftware";
-			this.lstRiggerSoftware.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
-			this.lstRiggerSoftware.Size = new System.Drawing.Size(278, 225);
-			this.lstRiggerSoftware.Sorted = true;
-			this.lstRiggerSoftware.TabIndex = 34;
-			// 
-			// treRiggerVehicles
-			// 
-			this.treRiggerVehicles.AllowDrop = true;
-			this.treRiggerVehicles.Dock = System.Windows.Forms.DockStyle.Top;
-			this.treRiggerVehicles.HideSelection = false;
-			this.treRiggerVehicles.Location = new System.Drawing.Point(0, 0);
-			this.treRiggerVehicles.Name = "treRiggerVehicles";
-			treeNode94.Name = "nodRiggerVehiclesVehicles";
-			treeNode94.Text = "Vehicles";
-			treeNode95.Name = "nodRiggerVehiclesDrones";
-			treeNode95.Text = "Drones";
-			treeNode96.Name = "nodRiggerVehiclesRoot";
-			treeNode96.Tag = "";
-			treeNode96.Text = "Selected Vehicles";
-			this.treRiggerVehicles.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode96});
-			this.treRiggerVehicles.ShowNodeToolTips = true;
-			this.treRiggerVehicles.ShowRootLines = false;
-			this.treRiggerVehicles.Size = new System.Drawing.Size(278, 174);
-			this.treRiggerVehicles.TabIndex = 31;
-			this.treRiggerVehicles.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treRiggerVehicles_AfterSelect);
-			// 
-			// pnlRiggerBaseStats
-			// 
-			this.pnlRiggerBaseStats.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.pnlRiggerBaseStats.Controls.Add(this.lblRiggerSeats);
-			this.pnlRiggerBaseStats.Controls.Add(this.lblRiggerSeatsLabel);
-			this.pnlRiggerBaseStats.Controls.Add(this.lblRiggerSensor);
-			this.pnlRiggerBaseStats.Controls.Add(this.lblRiggerSensorLabel);
-			this.pnlRiggerBaseStats.Controls.Add(this.lblRiggerPilot);
-			this.pnlRiggerBaseStats.Controls.Add(this.lblRiggerPilotLabel);
-			this.pnlRiggerBaseStats.Controls.Add(this.lblRiggerArmor);
-			this.pnlRiggerBaseStats.Controls.Add(this.lblRiggerArmorLabel);
-			this.pnlRiggerBaseStats.Controls.Add(this.lblRiggerBody);
-			this.pnlRiggerBaseStats.Controls.Add(this.lblRiggerBodyLabel);
-			this.pnlRiggerBaseStats.Controls.Add(this.lblRiggerSpeed);
-			this.pnlRiggerBaseStats.Controls.Add(this.lblRiggerSpeedLabel);
-			this.pnlRiggerBaseStats.Controls.Add(this.lblRiggerAccel);
-			this.pnlRiggerBaseStats.Controls.Add(this.lblRiggerAccelLabel);
-			this.pnlRiggerBaseStats.Controls.Add(this.lblRiggerHandling);
-			this.pnlRiggerBaseStats.Controls.Add(this.lblRiggerHandlingLabel);
-			this.pnlRiggerBaseStats.Location = new System.Drawing.Point(121, 6);
-			this.pnlRiggerBaseStats.Name = "pnlRiggerBaseStats";
-			this.pnlRiggerBaseStats.Size = new System.Drawing.Size(429, 46);
-			this.pnlRiggerBaseStats.TabIndex = 1;
-			// 
-			// lblRiggerSeats
-			// 
-			this.lblRiggerSeats.Location = new System.Drawing.Point(376, 19);
-			this.lblRiggerSeats.Name = "lblRiggerSeats";
-			this.lblRiggerSeats.Size = new System.Drawing.Size(40, 13);
-			this.lblRiggerSeats.TabIndex = 212;
-			this.lblRiggerSeats.Text = "[Seats]";
-			this.lblRiggerSeats.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			// 
-			// lblRiggerSeatsLabel
-			// 
-			this.lblRiggerSeatsLabel.AutoSize = true;
-			this.lblRiggerSeatsLabel.Location = new System.Drawing.Point(376, 6);
-			this.lblRiggerSeatsLabel.Name = "lblRiggerSeatsLabel";
-			this.lblRiggerSeatsLabel.Size = new System.Drawing.Size(34, 13);
-			this.lblRiggerSeatsLabel.TabIndex = 211;
-			this.lblRiggerSeatsLabel.Tag = "Label_Seats";
-			this.lblRiggerSeatsLabel.Text = "Seats";
-			// 
-			// lblRiggerSensor
-			// 
-			this.lblRiggerSensor.Location = new System.Drawing.Point(324, 19);
-			this.lblRiggerSensor.Name = "lblRiggerSensor";
-			this.lblRiggerSensor.Size = new System.Drawing.Size(46, 13);
-			this.lblRiggerSensor.TabIndex = 210;
-			this.lblRiggerSensor.Text = "[Sensor]";
-			this.lblRiggerSensor.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			// 
-			// lblRiggerSensorLabel
-			// 
-			this.lblRiggerSensorLabel.AutoSize = true;
-			this.lblRiggerSensorLabel.Location = new System.Drawing.Point(324, 6);
-			this.lblRiggerSensorLabel.Name = "lblRiggerSensorLabel";
-			this.lblRiggerSensorLabel.Size = new System.Drawing.Size(40, 13);
-			this.lblRiggerSensorLabel.TabIndex = 209;
-			this.lblRiggerSensorLabel.Tag = "Label_Sensor";
-			this.lblRiggerSensorLabel.Text = "Sensor";
-			// 
-			// lblRiggerPilot
-			// 
-			this.lblRiggerPilot.Location = new System.Drawing.Point(274, 19);
-			this.lblRiggerPilot.Name = "lblRiggerPilot";
-			this.lblRiggerPilot.Size = new System.Drawing.Size(33, 13);
-			this.lblRiggerPilot.TabIndex = 204;
-			this.lblRiggerPilot.Text = "[Pilot]";
-			this.lblRiggerPilot.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			// 
-			// lblRiggerPilotLabel
-			// 
-			this.lblRiggerPilotLabel.AutoSize = true;
-			this.lblRiggerPilotLabel.Location = new System.Drawing.Point(274, 6);
-			this.lblRiggerPilotLabel.Name = "lblRiggerPilotLabel";
-			this.lblRiggerPilotLabel.Size = new System.Drawing.Size(27, 13);
-			this.lblRiggerPilotLabel.TabIndex = 203;
-			this.lblRiggerPilotLabel.Tag = "Label_Pilot";
-			this.lblRiggerPilotLabel.Text = "Pilot";
-			// 
-			// lblRiggerArmor
-			// 
-			this.lblRiggerArmor.Location = new System.Drawing.Point(220, 19);
-			this.lblRiggerArmor.Name = "lblRiggerArmor";
-			this.lblRiggerArmor.Size = new System.Drawing.Size(40, 13);
-			this.lblRiggerArmor.TabIndex = 208;
-			this.lblRiggerArmor.Text = "[Armor]";
-			this.lblRiggerArmor.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			// 
-			// lblRiggerArmorLabel
-			// 
-			this.lblRiggerArmorLabel.AutoSize = true;
-			this.lblRiggerArmorLabel.Location = new System.Drawing.Point(220, 6);
-			this.lblRiggerArmorLabel.Name = "lblRiggerArmorLabel";
-			this.lblRiggerArmorLabel.Size = new System.Drawing.Size(34, 13);
-			this.lblRiggerArmorLabel.TabIndex = 207;
-			this.lblRiggerArmorLabel.Tag = "Label_Armor";
-			this.lblRiggerArmorLabel.Text = "Armor";
-			// 
-			// lblRiggerBody
-			// 
-			this.lblRiggerBody.Location = new System.Drawing.Point(177, 19);
-			this.lblRiggerBody.Name = "lblRiggerBody";
-			this.lblRiggerBody.Size = new System.Drawing.Size(37, 13);
-			this.lblRiggerBody.TabIndex = 206;
-			this.lblRiggerBody.Text = "[Body]";
-			this.lblRiggerBody.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			// 
-			// lblRiggerBodyLabel
-			// 
-			this.lblRiggerBodyLabel.AutoSize = true;
-			this.lblRiggerBodyLabel.Location = new System.Drawing.Point(177, 6);
-			this.lblRiggerBodyLabel.Name = "lblRiggerBodyLabel";
-			this.lblRiggerBodyLabel.Size = new System.Drawing.Size(31, 13);
-			this.lblRiggerBodyLabel.TabIndex = 205;
-			this.lblRiggerBodyLabel.Tag = "Label_Body";
-			this.lblRiggerBodyLabel.Text = "Body";
-			// 
-			// lblRiggerSpeed
-			// 
-			this.lblRiggerSpeed.Location = new System.Drawing.Point(80, 19);
-			this.lblRiggerSpeed.Name = "lblRiggerSpeed";
-			this.lblRiggerSpeed.Size = new System.Drawing.Size(44, 13);
-			this.lblRiggerSpeed.TabIndex = 202;
-			this.lblRiggerSpeed.Text = "[Speed]";
-			this.lblRiggerSpeed.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			// 
-			// lblRiggerSpeedLabel
-			// 
-			this.lblRiggerSpeedLabel.AutoSize = true;
-			this.lblRiggerSpeedLabel.Location = new System.Drawing.Point(80, 6);
-			this.lblRiggerSpeedLabel.Name = "lblRiggerSpeedLabel";
-			this.lblRiggerSpeedLabel.Size = new System.Drawing.Size(38, 13);
-			this.lblRiggerSpeedLabel.TabIndex = 201;
-			this.lblRiggerSpeedLabel.Tag = "Label_Speed";
-			this.lblRiggerSpeedLabel.Text = "Speed";
-			// 
-			// lblRiggerAccel
-			// 
-			this.lblRiggerAccel.Location = new System.Drawing.Point(134, 19);
-			this.lblRiggerAccel.Name = "lblRiggerAccel";
-			this.lblRiggerAccel.Size = new System.Drawing.Size(40, 13);
-			this.lblRiggerAccel.TabIndex = 200;
-			this.lblRiggerAccel.Text = "[Accel]";
-			this.lblRiggerAccel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			// 
-			// lblRiggerAccelLabel
-			// 
-			this.lblRiggerAccelLabel.AutoSize = true;
-			this.lblRiggerAccelLabel.Location = new System.Drawing.Point(134, 6);
-			this.lblRiggerAccelLabel.Name = "lblRiggerAccelLabel";
-			this.lblRiggerAccelLabel.Size = new System.Drawing.Size(34, 13);
-			this.lblRiggerAccelLabel.TabIndex = 199;
-			this.lblRiggerAccelLabel.Tag = "Label_Accel";
-			this.lblRiggerAccelLabel.Text = "Accel";
-			// 
-			// lblRiggerHandling
-			// 
-			this.lblRiggerHandling.Location = new System.Drawing.Point(6, 19);
-			this.lblRiggerHandling.Name = "lblRiggerHandling";
-			this.lblRiggerHandling.Size = new System.Drawing.Size(55, 13);
-			this.lblRiggerHandling.TabIndex = 198;
-			this.lblRiggerHandling.Text = "[Handling]";
-			this.lblRiggerHandling.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			// 
-			// lblRiggerHandlingLabel
-			// 
-			this.lblRiggerHandlingLabel.AutoSize = true;
-			this.lblRiggerHandlingLabel.Location = new System.Drawing.Point(6, 6);
-			this.lblRiggerHandlingLabel.Name = "lblRiggerHandlingLabel";
-			this.lblRiggerHandlingLabel.Size = new System.Drawing.Size(49, 13);
-			this.lblRiggerHandlingLabel.TabIndex = 197;
-			this.lblRiggerHandlingLabel.Tag = "Label_Handling";
-			this.lblRiggerHandlingLabel.Text = "Handling";
-			// 
-			// tabRiggerWeapons
-			// 
-			this.tabRiggerWeapons.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.tabRiggerWeapons.Location = new System.Drawing.Point(0, 468);
-			this.tabRiggerWeapons.Name = "tabRiggerWeapons";
-			this.tabRiggerWeapons.SelectedIndex = 0;
-			this.tabRiggerWeapons.Size = new System.Drawing.Size(556, 143);
-			this.tabRiggerWeapons.TabIndex = 0;
+			this.tabRiggerTabs.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.tabRiggerTabs.Location = new System.Drawing.Point(0, 0);
+			this.tabRiggerTabs.Multiline = true;
+			this.tabRiggerTabs.Name = "tabRiggerTabs";
+			this.tabRiggerTabs.SelectedIndex = 0;
+			this.tabRiggerTabs.Size = new System.Drawing.Size(652, 611);
+			this.tabRiggerTabs.TabIndex = 35;
 			// 
 			// tabInfo
 			// 
@@ -11315,11 +11046,8 @@ namespace Chummer
 			this.tabImprovements.ResumeLayout(false);
 			this.tabRigger.ResumeLayout(false);
 			this.splRigger.Panel1.ResumeLayout(false);
-			this.splRigger.Panel2.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.splRigger)).EndInit();
 			this.splRigger.ResumeLayout(false);
-			this.pnlRiggerBaseStats.ResumeLayout(false);
-			this.pnlRiggerBaseStats.PerformLayout();
 			this.tabInfo.ResumeLayout(false);
 			this.tabBPSummary.ResumeLayout(false);
 			this.tabBPSummary.PerformLayout();
@@ -12226,28 +11954,8 @@ namespace Chummer
 		private System.Windows.Forms.Label lblVehicleDroneModSlots;
 		private System.Windows.Forms.Label lblVehicleDroneModSlotsLabel;
 		private System.Windows.Forms.TabPage tabRigger;
-		private TreeView treRiggerVehicles;
-		private TreeView treRiggerAddons;
-		private System.Windows.Forms.ListBox lstRiggerSoftware;
 		private System.Windows.Forms.SplitContainer splRigger;
-		private System.Windows.Forms.Panel pnlRiggerBaseStats;
-		private System.Windows.Forms.Label lblRiggerSeats;
-		private System.Windows.Forms.Label lblRiggerSeatsLabel;
-		private System.Windows.Forms.Label lblRiggerSensor;
-		private System.Windows.Forms.Label lblRiggerSensorLabel;
-		private System.Windows.Forms.Label lblRiggerPilot;
-		private System.Windows.Forms.Label lblRiggerPilotLabel;
-		private System.Windows.Forms.Label lblRiggerArmor;
-		private System.Windows.Forms.Label lblRiggerArmorLabel;
-		private System.Windows.Forms.Label lblRiggerBody;
-		private System.Windows.Forms.Label lblRiggerBodyLabel;
-		private System.Windows.Forms.Label lblRiggerSpeed;
-		private System.Windows.Forms.Label lblRiggerSpeedLabel;
-		private System.Windows.Forms.Label lblRiggerAccel;
-		private System.Windows.Forms.Label lblRiggerAccelLabel;
-		private System.Windows.Forms.Label lblRiggerHandling;
-		private System.Windows.Forms.Label lblRiggerHandlingLabel;
-		private System.Windows.Forms.TabControl tabRiggerWeapons;
+		private System.Windows.Forms.TabControl tabRiggerTabs;
 	}
 }
 

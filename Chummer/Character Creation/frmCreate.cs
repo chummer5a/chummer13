@@ -24875,68 +24875,84 @@ namespace Chummer
 		/// </summary>
 		private void RefreshRiggerTab()
 		{
-			TreeNode[] arrVehicles = treRiggerVehicles.Nodes.Find("nodRiggerVehiclesVehicles", true);
-			TreeNode[] arrDrones = treRiggerVehicles.Nodes.Find("nodRiggerVehiclesDrones", true);
-			arrVehicles[0].Nodes.Clear();
-			arrDrones[0].Nodes.Clear();
+			string strInternalID = null;
+			int intIndex = 0;
+			int i = 0;
+			if (tabRiggerTabs.SelectedIndex >= 0)
+			{
+				VehicleControl usrVehicleControl = tabRiggerTabs.TabPages[tabRiggerTabs.SelectedIndex].Controls.Find("usrVehicleControl", true).First() as VehicleControl;
+				strInternalID = usrVehicleControl.InternalId;
+			}
 
-			pnlRiggerBaseStats.Visible = false;
-			tabRiggerWeapons.Visible = false;
-
+			tabRiggerTabs.TabPages.Clear();
 			// Populate Vehicles.
 			foreach (Vehicle objVehicle in _objCharacter.Vehicles)
 			{
-				TreeNode objNode = new TreeNode();
-				objNode.Text = objVehicle.DisplayNameShort;
-				objNode.Tag = objVehicle.InternalId;
-				if (objVehicle.Notes != string.Empty)
-					objNode.ForeColor = Color.SaddleBrown;
-				objNode.ToolTipText = objVehicle.Notes;
-				objNode.ContextMenuStrip = cmsVehicle;
-				if (objVehicle.IsDrone)
-					arrDrones[0].Nodes.Add(objNode);
-				else
-					arrVehicles[0].Nodes.Add(objNode);
+				VehicleControl usrVehicleControl = new VehicleControl();
+				TabPage tabVehicle = new TabPage();
 				
 
-				//_objFunctions.CreateVehicleTreeNode(objVehicle, treRiggerVehicles, cmsVehicle, cmsVehicleLocation, cmsVehicleWeapon, cmsVehicleWeaponAccessory, cmsVehicleWeaponAccessoryGear, cmsVehicleGear);
+				usrVehicleControl.EnableVehicleBaseStats = false;
+				usrVehicleControl.VehicleWeapons.Visible = false;
+				usrVehicleControl.InternalId = objVehicle.InternalId;
+				usrVehicleControl.Name = "usrVehicleControl";
+				usrVehicleControl.Dock = DockStyle.Fill;
+
+				// If this is the first time loading the tab, load the first vehicle
+				// Otherwise, load the vehicle we were on last time we used the tab
+				if (objVehicle.InternalId == strInternalID || (strInternalID == null && i==0))
+				{
+					intIndex = i;
+					RefreshVehicleControl(usrVehicleControl);
+				}
+				i++;
+				
+
+				tabVehicle.Text = objVehicle.DisplayNameShort;
+
+				tabVehicle.Controls.Add(usrVehicleControl);
+				tabRiggerTabs.TabPages.Add(tabVehicle);
+
+				//tabVehicle.Enter += new EventHandler(tabVehicle_Enter);
+				tabRiggerTabs.Selected += tabRiggerTabs_SelectedIndexChanged;
+
+				//if (objVehicle.Notes != string.Empty)
+				//objNode.ForeColor = Color.SaddleBrown;
+				//objNode.ToolTipText = objVehicle.Notes;
+				//objNode.ContextMenuStrip = cmsVehicle;
 			}
-			treRiggerVehicles.Nodes[0].ExpandAll();
+
+			tabRiggerTabs.SelectedIndex = intIndex;
 		}
 
 		/// <summary>
-		/// Populate the child boxes when a vehicle is selected
+		///  Populate the vehicle control with the stats from one vehicle
 		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		private void treRiggerVehicles_AfterSelect(object sender, TreeViewEventArgs e)
+		private void RefreshVehicleControl(VehicleControl usrVehicleControl)
 		{
-			TreeNode[] arrMods = treRiggerAddons.Nodes.Find("nodRiggerAddonsMods", true);
-			TreeNode[] arrGear = treRiggerAddons.Nodes.Find("nodRiggerAddonsGear", true);
+			TreeNode[] arrMods = usrVehicleControl.AddonsTree.Nodes.Find("nodRiggerAddonsMods", true);
+			TreeNode[] arrGear = usrVehicleControl.AddonsTree.Nodes.Find("nodRiggerAddonsGear", true);
 			arrMods[0].Nodes.Clear();
 			arrGear[0].Nodes.Clear();
-			lstRiggerSoftware.Items.Clear();
+			usrVehicleControl.Software.Items.Clear();
 
-			pnlRiggerBaseStats.Visible = false;
-			tabRiggerWeapons.Visible = false;
+			usrVehicleControl.EnableVehicleBaseStats = false;
+			usrVehicleControl.VehicleWeapons.Visible = false;
 
 			List<Weapon> lstWeapons = new List<Weapon>();
 
-			TreeNode nodVehicle = e.Node;
-			if (nodVehicle.Level != 2) return;
+			Vehicle objVehicle = _objFunctions.FindVehicle(usrVehicleControl.InternalId, _objCharacter.Vehicles);
 
-			Vehicle objVehicle = _objFunctions.FindVehicle(nodVehicle.Tag.ToString(), _objCharacter.Vehicles);
+			usrVehicleControl.Handling = objVehicle.TotalHandling;
+			usrVehicleControl.Accel = objVehicle.TotalAccel.ToString();
+			usrVehicleControl.Speed = objVehicle.TotalSpeed.ToString();
+			usrVehicleControl.Sensor = objVehicle.CalculatedSensor.ToString();
+			usrVehicleControl.Pilot = objVehicle.Pilot.ToString();
+			usrVehicleControl.Armor = objVehicle.TotalArmor.ToString();
+			usrVehicleControl.Body = objVehicle.TotalBody.ToString();
+			usrVehicleControl.Seats = objVehicle.Seats.ToString();
 
-			lblRiggerHandling.Text = objVehicle.TotalHandling;
-			lblRiggerAccel.Text = objVehicle.TotalAccel.ToString();
-			lblRiggerSpeed.Text = objVehicle.TotalSpeed.ToString();
-			lblRiggerSensor.Text = objVehicle.CalculatedSensor.ToString();
-			lblRiggerPilot.Text = objVehicle.Pilot.ToString();
-			lblRiggerArmor.Text = objVehicle.TotalArmor.ToString();
-			lblRiggerBody.Text = objVehicle.TotalBody.ToString();
-			lblRiggerSeats.Text = objVehicle.Seats.ToString();
-
-			pnlRiggerBaseStats.Visible = true;
+			usrVehicleControl.EnableVehicleBaseStats = true;
 
 			foreach (VehicleMod objMod in objVehicle.Mods)
 			{
@@ -24965,7 +24981,7 @@ namespace Chummer
 
 				if (objGear.Category == "Software")
 				{
-					lstRiggerSoftware.Items.Add(objGear.DisplayName);
+					usrVehicleControl.Software.Items.Add(objGear.DisplayName);
 				}
 				else {
 					TreeNode objNode = new TreeNode();
@@ -24981,7 +24997,8 @@ namespace Chummer
 			}
 			if (lstWeapons.Count > 0)
 			{
-				tabRiggerWeapons.TabPages.Clear();
+				usrVehicleControl.VehicleWeapons.TabPages.Clear();
+				usrVehicleControl.VehicleWeapons.Dock = DockStyle.Bottom;
 				foreach (Weapon objWeapon in lstWeapons)
 				{
 					VehicleWeaponControl usrVehicleWeapon = new VehicleWeaponControl();
@@ -25007,13 +25024,30 @@ namespace Chummer
 					usrVehicleWeapon.DicePool = objWeapon.DicePool;
 
 
-					tabRiggerWeapons.TabPages.Add(tabWeapon);
+					usrVehicleControl.VehicleWeapons.TabPages.Add(tabWeapon);
 
 				}
 
-				tabRiggerWeapons.Visible = true;
+				usrVehicleControl.VehicleWeapons.Visible = true;
+
 			}
-			treRiggerAddons.Nodes[0].ExpandAll();
+			usrVehicleControl.AddonsTree.Nodes[0].ExpandAll();
+
+		}
+
+
+		/// <summary>
+		/// Populate the child boxes when a vehicle is selected
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void tabRiggerTabs_SelectedIndexChanged(object sender, TabControlEventArgs e)
+		{
+			if (e.TabPage != null)
+			{
+				VehicleControl usrVehicleControl = e.TabPage.Controls.Find("usrVehicleControl", true).First() as VehicleControl;
+				RefreshVehicleControl(usrVehicleControl);
+			}
 		}
 		#endregion
 
