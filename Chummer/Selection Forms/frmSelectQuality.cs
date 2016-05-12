@@ -320,11 +320,12 @@ namespace Chummer
 			{
 				// Treat everything as being uppercase so the search is case-insensitive.
 				string strSearch = "/chummer/qualities/quality[(" + _objCharacter.Options.BookXPath() + ") and ((contains(translate(name,'abcdefghijklmnopqrstuvwxyzàáâãäåçèéêëìíîïñòóôõöùúûüýß','ABCDEFGHIJKLMNOPQRSTUVWXYZÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÑÒÓÔÕÖÙÚÛÜÝß'), \"" + txtSearch.Text.ToUpper() + "\") and not(translate)) or contains(translate(translate,'abcdefghijklmnopqrstuvwxyzàáâãäåçèéêëìíîïñòóôõöùúûüýß','ABCDEFGHIJKLMNOPQRSTUVWXYZÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÑÒÓÔÕÖÙÚÛÜÝß'), \"" + txtSearch.Text.ToUpper() + "\"))";
-				if (chkMetagenetic.Checked)
-				{
-					strSearch += " and (required/oneof[contains(., 'Changeling (Class I SURGE)')] or metagenetic = 'yes')";
-				}
-				strSearch += "]";
+                strSearch += " and not (category = 'positive' and metagenetic = 'yes')";
+			    if (chkMetagenetic.Checked)
+			    {
+			        strSearch += " and (metagenetic = 'yes')";
+			    }
+                strSearch += "]";
 
 				XmlNodeList objXmlQualityList = _objXmlDocument.SelectNodes(strSearch);
 				foreach (XmlNode objXmlQuality in objXmlQualityList)
@@ -333,6 +334,10 @@ namespace Chummer
                     {
                         if (!chkLimitList.Checked || (chkLimitList.Checked && RequirementMet(objXmlQuality, false)))
                         {
+                            if (objXmlQuality["metagenetic"] != null && objXmlQuality["metagenetic"].InnerText == "yes" && objXmlQuality["category"].InnerText == "Positive")
+                            {
+                                continue;
+                            }
                             ListItem objItem = new ListItem();
                             objItem.Value = objXmlQuality["name"].InnerText;
                             if (objXmlQuality["translate"] != null)
@@ -361,20 +366,13 @@ namespace Chummer
 					objXmlMetatypeDocument = XmlManager.Instance.Load("metatypes.xml");
 
 				string strXPath = "category = \"" + cboCategory.SelectedValue + "\" and (" + _objCharacter.Options.BookXPath() + ")";
-				if (chkMetagenetic.Checked)
-				{
-					strXPath += " and (required/oneof[contains(., 'Changeling (Class I SURGE)')] or metagenetic = 'yes')";
-				}
-				else if (cboCategory.SelectedValue.ToString() == "Negative" || _objCharacter.MetageneticLimit > 0)
-				{
-					//Load everything, including metagenetic qualities.
-				}
-				else
-				{
-					strXPath += " and not (required/oneof[contains(., 'Changeling (Class I SURGE)')] or metagenetic = 'yes')";
-				}
+                strXPath += " and not (category = 'positive' and metagenetic = 'yes')";
+                if (chkMetagenetic.Checked)
+                {
+                    strXPath += " and (metagenetic = 'yes')";
+                }
 
-				foreach (XmlNode objXmlQuality in _objXmlDocument.SelectNodes("/chummer/qualities/quality[" + strXPath + "]"))
+                foreach (XmlNode objXmlQuality in _objXmlDocument.SelectNodes("/chummer/qualities/quality[" + strXPath + "]"))
 				{
 					if (objXmlQuality["name"].InnerText.StartsWith("Infected"))
 					{
