@@ -245,6 +245,12 @@
       <DependentUpon>language.xsd</DependentUpon>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
+    <Compile Include="Selection Forms\frmSelectSurgeQuality.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Selection Forms\frmSelectSurgeQuality.Designer.cs">
+      <DependentUpon>frmSelectSurgeQuality.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\Shared\CharacterShared.cs" />
     <Compile Include="Utilities\frmDiceHits.cs">
       <SubType>Form</SubType>
@@ -776,6 +782,9 @@
     <EmbeddedResource Include="frmUpdate.resx">
       <DependentUpon>frmUpdate.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Selection Forms\frmSelectSurgeQuality.resx">
+      <DependentUpon>frmSelectSurgeQuality.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Utilities\frmDiceHits.resx">
       <DependentUpon>frmDiceHits.cs</DependentUpon>
     </EmbeddedResource>
@@ -1023,6 +1032,7 @@
     </EmbeddedResource>
     <None Include="app.config" />
     <None Include="Chummer_TemporaryKey.pfx" />
+    <None Include="ClassDiagram1.cd" />
     <None Include="data\armor.xsd">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

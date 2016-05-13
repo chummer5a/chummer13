@@ -833,6 +833,10 @@
       <key>Tab_ConditionMonitor</key>
       <text>Zustandsmonitor</text>
     </string>
+	<string>
+			<key>Tab_SurgeQualities</key>
+			<text>Surge Gaben</text>
+	</string>
     <string>
       <key>Message_UnsavedChanges</key>
       <text>Ungespeicherte Änderungen bei {0}. Änderung vor dem Schließen des Fensters speichern?</text>

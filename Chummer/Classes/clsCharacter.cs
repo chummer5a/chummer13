@@ -44,6 +44,8 @@ public delegate void TechnomancerTabEnabledChangedHandler(Object sender);
 public delegate void InitiationTabEnabledChangedHandler(Object sender);
 // CritterTabEnabledChanged Event Handler
 public delegate void CritterTabEnabledChangedHandler(Object sender);
+// SurgequalityTabEnabledChangedHandler
+public delegate void SurgeTabEnabledChangedHandler(Object sender);
 // UneducatedChanged Event Handler
 public delegate void UneducatedChangedHandler(Object sender);
 // JackOfAllTradesChanged Event Handler
@@ -178,6 +180,7 @@ namespace Chummer
         private bool _blnTechnomancerEnabled = false;
         private bool _blnInitiationEnabled = false;
         private bool _blnCritterEnabled = false;
+        private bool _blnSurgeEnabled = false;
         private bool _blnUneducated = false;
         private bool _blnUncouth = false;
         private bool _blnSchoolOfHardKnocks = false;
@@ -280,6 +283,7 @@ namespace Chummer
         private List<Weapon> _lstWeapons = new List<Weapon>();
         private List<Quality> _lstQualities = new List<Quality>();
         private List<LifestyleQuality> _lstLifestyleQualities = new List<LifestyleQuality>();
+        private List<Quality> _lstSurgeQualities = new List<Quality>();
         private List<Lifestyle> _lstLifestyles = new List<Lifestyle>();
         private List<Gear> _lstGear = new List<Gear>();
         private List<Vehicle> _lstVehicles = new List<Vehicle>();
@@ -305,6 +309,7 @@ namespace Chummer
 		public event AdeptTabEnabledChangedHandler AdeptTabEnabledChanged;
 		public event CollegeEducationChangedHandler CollegeEducationChanged;
 		public event CritterTabEnabledChangedHandler CritterTabEnabledChanged;
+        public event SurgeTabEnabledChangedHandler SurgeTabEnabledChanged;
 		public event MAGEnabledChangedHandler MAGEnabledChanged;
 		public event BlackMarketDiscountEnabledChangedHandler BlackMarketEnabledChanged;
 		public event BornRichChangedHandler BornRichChanged;
@@ -6081,13 +6086,23 @@ namespace Chummer
             }
         }
         /// <summary>
-        /// Qualities (Positive and Negative).
+        /// Lifestyle Qualities (Positive and Negative).
         /// </summary>
         public List<LifestyleQuality> LifestyleQualities
         {
             get
             {
                 return _lstLifestyleQualities;
+            }
+        }
+        /// <summary>
+        /// Surge Qualities (Positive and Negative), select via SurgeQualitiesTab
+        /// </summary>
+        public List<Quality> SurgeQualities
+        {
+            get
+            {
+                return _lstSurgeQualities;
             }
         }
 
@@ -8262,6 +8277,28 @@ namespace Chummer
 				_blnHasHomeNode = value;
 			}
 		}
-		#endregion
-	}
+
+        public bool SurgeEnabled
+        {
+            get
+            {
+                return _blnSurgeEnabled;
+            }
+            set
+            {
+                bool blnOldValue = _blnSurgeEnabled;
+                _blnSurgeEnabled = value;
+                try
+                {
+                    if (blnOldValue != value)
+                        SurgeTabEnabledChanged(this);
+                }
+                catch
+                {
+                }
+            }
+        }
+
+        #endregion
+    }
 }

@@ -1373,6 +1373,10 @@
 			<text>Condition Monitor</text>
 		</string>
 		<string>
+			<key>Tab_SurgeQualities</key>
+			<text>Surge Qualities</text>
+		</string>
+		<string>
 			<key>MessageTitle_DeleteGrade</key>
 			<text>Cannot Delete</text>
 		</string>

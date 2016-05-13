@@ -1,82 +1,57 @@
 ﻿namespace Chummer
 {
-	partial class frmSelectQuality
-	{
-		/// <summary>
-		/// Required designer variable.
-		/// </summary>
-		private System.ComponentModel.IContainer components = null;
+    partial class frmSelectSurgeQuality
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
 
-		/// <summary>
-		/// Clean up any resources being used.
-		/// </summary>
-		/// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-		protected override void Dispose(bool disposing)
-		{
-			if (disposing && (components != null))
-			{
-				components.Dispose();
-			}
-			base.Dispose(disposing);
-		}
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
 
-		#region Windows Form Designer generated code
+        #region Windows Form Designer generated code
 
-		/// <summary>
-		/// Required method for Designer support - do not modify
-		/// the contents of this method with the code editor.
-		/// </summary>
-		private void InitializeComponent()
-		{
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
             this.components = new System.ComponentModel.Container();
             this.lstQualities = new System.Windows.Forms.ListBox();
-            this.lblCategory = new System.Windows.Forms.Label();
-            this.cboCategory = new System.Windows.Forms.ComboBox();
             this.lblSource = new System.Windows.Forms.Label();
             this.lblSourceLabel = new System.Windows.Forms.Label();
             this.cmdOKAdd = new System.Windows.Forms.Button();
             this.cmdCancel = new System.Windows.Forms.Button();
             this.cmdOK = new System.Windows.Forms.Button();
-            this.chkLimitList = new System.Windows.Forms.CheckBox();
             this.lblBP = new System.Windows.Forms.Label();
             this.lblBPLabel = new System.Windows.Forms.Label();
-            this.chkFree = new System.Windows.Forms.CheckBox();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.lblSearchLabel = new System.Windows.Forms.Label();
             this.tipTooltip = new System.Windows.Forms.ToolTip(this.components);
-            this.label1 = new System.Windows.Forms.Label();
-            this.cboMetagenetic = new System.Windows.Forms.ComboBox();
+            this.chkLimitList = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // lstQualities
             // 
             this.lstQualities.FormattingEnabled = true;
-            this.lstQualities.Location = new System.Drawing.Point(12, 38);
+            this.lstQualities.Location = new System.Drawing.Point(12, 6);
             this.lstQualities.Name = "lstQualities";
-            this.lstQualities.Size = new System.Drawing.Size(275, 407);
+            this.lstQualities.Size = new System.Drawing.Size(275, 433);
             this.lstQualities.TabIndex = 9;
             this.lstQualities.SelectedIndexChanged += new System.EventHandler(this.lstQualities_SelectedIndexChanged);
             this.lstQualities.DoubleClick += new System.EventHandler(this.lstQualities_DoubleClick);
-            // 
-            // lblCategory
-            // 
-            this.lblCategory.AutoSize = true;
-            this.lblCategory.Location = new System.Drawing.Point(12, 9);
-            this.lblCategory.Name = "lblCategory";
-            this.lblCategory.Size = new System.Drawing.Size(52, 13);
-            this.lblCategory.TabIndex = 10;
-            this.lblCategory.Tag = "Label_Category";
-            this.lblCategory.Text = "Category:";
-            // 
-            // cboCategory
-            // 
-            this.cboCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboCategory.FormattingEnabled = true;
-            this.cboCategory.Location = new System.Drawing.Point(70, 6);
-            this.cboCategory.Name = "cboCategory";
-            this.cboCategory.Size = new System.Drawing.Size(182, 21);
-            this.cboCategory.TabIndex = 11;
-            this.cboCategory.SelectedIndexChanged += new System.EventHandler(this.cboCategory_SelectedIndexChanged);
             // 
             // lblSource
             // 
@@ -132,20 +107,6 @@
             this.cmdOK.UseVisualStyleBackColor = true;
             this.cmdOK.Click += new System.EventHandler(this.cmdOK_Click);
             // 
-            // chkLimitList
-            // 
-            this.chkLimitList.AutoSize = true;
-            this.chkLimitList.Checked = true;
-            this.chkLimitList.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkLimitList.Location = new System.Drawing.Point(296, 111);
-            this.chkLimitList.Name = "chkLimitList";
-            this.chkLimitList.Size = new System.Drawing.Size(169, 17);
-            this.chkLimitList.TabIndex = 6;
-            this.chkLimitList.Tag = "Checkbox_SelectQuality_LimitList";
-            this.chkLimitList.Text = "Show only Qualities I can take";
-            this.chkLimitList.UseVisualStyleBackColor = true;
-            this.chkLimitList.CheckedChanged += new System.EventHandler(this.chkLimitList_CheckedChanged);
-            // 
             // lblBP
             // 
             this.lblBP.AutoSize = true;
@@ -165,23 +126,11 @@
             this.lblBPLabel.Tag = "Label_Karma";
             this.lblBPLabel.Text = "Karma:";
             // 
-            // chkFree
-            // 
-            this.chkFree.AutoSize = true;
-            this.chkFree.Location = new System.Drawing.Point(296, 134);
-            this.chkFree.Name = "chkFree";
-            this.chkFree.Size = new System.Drawing.Size(50, 17);
-            this.chkFree.TabIndex = 8;
-            this.chkFree.Tag = "Checkbox_Free";
-            this.chkFree.Text = "Free!";
-            this.chkFree.UseVisualStyleBackColor = true;
-            this.chkFree.CheckedChanged += new System.EventHandler(this.chkFree_CheckedChanged);
-            // 
             // txtSearch
             // 
-            this.txtSearch.Location = new System.Drawing.Point(331, 6);
+            this.txtSearch.Location = new System.Drawing.Point(343, 6);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(174, 20);
+            this.txtSearch.Size = new System.Drawing.Size(162, 20);
             this.txtSearch.TabIndex = 1;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             this.txtSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSearch_KeyDown);
@@ -190,7 +139,7 @@
             // lblSearchLabel
             // 
             this.lblSearchLabel.AutoSize = true;
-            this.lblSearchLabel.Location = new System.Drawing.Point(281, 9);
+            this.lblSearchLabel.Location = new System.Drawing.Point(293, 9);
             this.lblSearchLabel.Name = "lblSearchLabel";
             this.lblSearchLabel.Size = new System.Drawing.Size(44, 13);
             this.lblSearchLabel.TabIndex = 0;
@@ -206,38 +155,29 @@
             this.tipTooltip.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             this.tipTooltip.ToolTipTitle = "Chummer Help";
             // 
-            // label1
+            // chkLimitList
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(293, 184);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(164, 13);
-            this.label1.TabIndex = 15;
-            this.label1.Tag = "Checkbox_SelectQuality_Metagenetic";
-            this.label1.Text = "Show only Metagenetic Qualities:";
+            this.chkLimitList.AutoSize = true;
+            this.chkLimitList.Checked = true;
+            this.chkLimitList.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkLimitList.Location = new System.Drawing.Point(296, 111);
+            this.chkLimitList.Name = "chkLimitList";
+            this.chkLimitList.Size = new System.Drawing.Size(169, 17);
+            this.chkLimitList.TabIndex = 6;
+            this.chkLimitList.Tag = "Checkbox_SelectQuality_LimitList";
+            this.chkLimitList.Text = "Show only Qualities I can take";
+            this.chkLimitList.UseVisualStyleBackColor = true;
+            this.chkLimitList.CheckedChanged += new System.EventHandler(this.chkLimitList_CheckedChanged);
             // 
-            // cboMetagenetic
-            // 
-            this.cboMetagenetic.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboMetagenetic.FormattingEnabled = true;
-            this.cboMetagenetic.Location = new System.Drawing.Point(296, 200);
-            this.cboMetagenetic.Name = "cboMetagenetic";
-            this.cboMetagenetic.Size = new System.Drawing.Size(139, 21);
-            this.cboMetagenetic.TabIndex = 16;
-            this.cboMetagenetic.SelectedIndexChanged += new System.EventHandler(this.cboMetagenetic_SelectedIndexChanged);
-            // 
-            // frmSelectQuality
+            // frmSelectSurgeQuality
             // 
             this.AcceptButton = this.cmdOK;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cmdCancel;
             this.ClientSize = new System.Drawing.Size(517, 454);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.cboMetagenetic);
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.lblSearchLabel);
-            this.Controls.Add(this.chkFree);
             this.Controls.Add(this.lblBP);
             this.Controls.Add(this.lblBPLabel);
             this.Controls.Add(this.chkLimitList);
@@ -246,13 +186,11 @@
             this.Controls.Add(this.cmdOK);
             this.Controls.Add(this.lblSource);
             this.Controls.Add(this.lblSourceLabel);
-            this.Controls.Add(this.lblCategory);
-            this.Controls.Add(this.cboCategory);
             this.Controls.Add(this.lstQualities);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "frmSelectQuality";
+            this.Name = "frmSelectSurgeQuality";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Tag = "Title_SelectQuality";
@@ -261,26 +199,21 @@
             this.ResumeLayout(false);
             this.PerformLayout();
 
-		}
+        }
 
-		#endregion
+        #endregion
 
-		private System.Windows.Forms.ListBox lstQualities;
-		private System.Windows.Forms.Label lblCategory;
-		private System.Windows.Forms.ComboBox cboCategory;
-		private System.Windows.Forms.Label lblSource;
-		private System.Windows.Forms.Label lblSourceLabel;
-		private System.Windows.Forms.Button cmdOKAdd;
-		private System.Windows.Forms.Button cmdCancel;
-		private System.Windows.Forms.Button cmdOK;
-		private System.Windows.Forms.CheckBox chkLimitList;
-		private System.Windows.Forms.Label lblBP;
-		private System.Windows.Forms.Label lblBPLabel;
-		private System.Windows.Forms.CheckBox chkFree;
-		private System.Windows.Forms.TextBox txtSearch;
-		private System.Windows.Forms.Label lblSearchLabel;
-		private System.Windows.Forms.ToolTip tipTooltip;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox cboMetagenetic;
+        private System.Windows.Forms.ListBox lstQualities;
+        private System.Windows.Forms.Label lblSource;
+        private System.Windows.Forms.Label lblSourceLabel;
+        private System.Windows.Forms.Button cmdOKAdd;
+        private System.Windows.Forms.Button cmdCancel;
+        private System.Windows.Forms.Button cmdOK;
+        private System.Windows.Forms.Label lblBP;
+        private System.Windows.Forms.Label lblBPLabel;
+        private System.Windows.Forms.TextBox txtSearch;
+        private System.Windows.Forms.Label lblSearchLabel;
+        private System.Windows.Forms.ToolTip tipTooltip;
+        private System.Windows.Forms.CheckBox chkLimitList;
     }
 }

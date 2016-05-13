@@ -977,6 +977,10 @@
       <key>Tab_ConditionMonitor</key>
       <text>コンディション・モニター</text>
     </string>
+	<string>
+		<key>Tab_SurgeQualities</key>
+		<text>Surge 資質</text>
+	</string>
     <string>
       <key>Message_UnsavedChanges</key>
       <text>{0} には保存されていない変更点があります. このウィンドウを閉じる前に保存しますか?</text>

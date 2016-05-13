@@ -971,6 +971,10 @@
       <key>Tab_ConditionMonitor</key>
       <text>Moniteur de condition</text>
     </string>
+	<string>
+		<key>Tab_SurgeQualities</key>
+		<text>Surge Traits</text>
+	</string>
     <string>
       <key>Message_UnsavedChanges</key>
       <text>Des changements non sauvegardés existent sur le personnage "{0}". Voulez-vous les sauvegarder avant de fermer cette fenêtre ?</text>
