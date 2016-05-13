@@ -4865,7 +4865,6 @@ namespace Chummer
             this.lblPositiveSurgeKarma.Size = new System.Drawing.Size(27, 13);
             this.lblPositiveSurgeKarma.TabIndex = 23;
             this.lblPositiveSurgeKarma.Text = "[BP]";
-            this.lblPositiveSurgeKarma.Visible = false;
             // 
             // lblPositiveSurgeKarmaLabel
             // 

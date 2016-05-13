@@ -1985,10 +1985,6 @@ namespace Chummer
 
         private void objCharacter_SurgeTabEnabledChanged(object sender)
         {
-            if (_blnReapplyImprovements)
-                return;
-
-            // Change to the status of Magician being enabled.
             if (_objCharacter.SurgeEnabled)
             {
                 if (!tabCharacterTabs.TabPages.Contains(tabSurgeQualities))
@@ -8087,7 +8083,7 @@ namespace Chummer
 
         private void cmdDeleteQuality_Click(object sender, EventArgs e)
         {
-            // Locate the selected Quality.
+             // Locate the selected Quality.
             try
             {
                 if (treQualities.SelectedNode.Level == 0)
@@ -8192,14 +8188,12 @@ namespace Chummer
                     _objCharacter.TechnomancerEnabled = false;
                     break;
 				case "Changeling (Class I SURGE)":
-					_objCharacter.MetageneticLimit = 0;
-					break;
 				case "Changeling (Class II SURGE)":
-					_objCharacter.MetageneticLimit = 0;
-					break;
 				case "Changeling (Class III SURGE)":
 					_objCharacter.MetageneticLimit = 0;
-					break;
+                    _objCharacter.SurgeEnabled = false;
+                    CalculateSurgeKarma();
+                    break;
 				default:
                     break;
             }
@@ -14950,7 +14944,72 @@ namespace Chummer
         /// </summary>
         private void ClearSurgeTab()
         {
-            // TODO
+            foreach (Quality objQuality in _objCharacter.SurgeQualities)
+            {
+                XmlDocument objXmlDocument = XmlManager.Instance.Load(objQuality.Type == QualityType.LifeModule ? "lifemodules.xml" : "qualities.xml");
+
+                // Remove the Improvements that were created by the Quality.
+                _objImprovementManager.RemoveImprovements(Improvement.ImprovementSource.Quality, objQuality.InternalId);
+                XmlNode objXmlQuality = objXmlDocument.SelectSingleNode("/chummer/qualities/quality[name = \"" + objQuality.Name + "\"]");
+                XmlNodeList objRemoveQualitiesNodeList = objXmlQuality.SelectNodes("addqualities/addquality");
+                if (objRemoveQualitiesNodeList.Count > 0)
+                {
+                    foreach (XmlNode objNode in objRemoveQualitiesNodeList)
+                    {
+                        XmlNode objXmlSelectedQuality = objXmlDocument.SelectSingleNode("/chummer/qualities/quality[name = \"" + objNode.InnerText + "\"]");
+                        foreach (Quality objChildQuality in _objCharacter.Qualities)
+                        {
+                            if (objChildQuality.Name == objNode.InnerText)
+                            {
+                                foreach (TreeNode nodQuality in treQualities.Nodes[0].Nodes)
+                                {
+                                    if (nodQuality.Text.ToString() == objChildQuality.DisplayName)
+                                    {
+                                        nodQuality.Remove();
+                                    }
+                                }
+                                foreach (TreeNode nodQuality in treQualities.Nodes[1].Nodes)
+                                {
+                                    if (nodQuality.Text.ToString() == objChildQuality.DisplayName)
+                                    {
+                                        nodQuality.Remove();
+                                    }
+                                }
+                                _objCharacter.Qualities.Remove(objChildQuality);
+                                break;
+                            }
+                        }
+                    }
+                }
+
+                // Remove any Weapons created by the Quality if applicable.
+                if (objQuality.WeaponID != Guid.Empty.ToString())
+                {
+                    // Remove the Weapon from the TreeView.
+                    TreeNode objRemoveNode = new TreeNode();
+                    foreach (TreeNode objWeaponNode in treWeapons.Nodes[0].Nodes)
+                    {
+                        if (objWeaponNode.Tag.ToString() == objQuality.WeaponID)
+                            objRemoveNode = objWeaponNode;
+                    }
+                    treWeapons.Nodes.Remove(objRemoveNode);
+
+                    // Remove the Weapon from the Character.
+                    Weapon objRemoveWeapon = new Weapon(_objCharacter);
+                    foreach (Weapon objWeapon in _objCharacter.Weapons)
+                    {
+                        if (objWeapon.InternalId == objQuality.WeaponID)
+                            objRemoveWeapon = objWeapon;
+                    }
+                    _objCharacter.Weapons.Remove(objRemoveWeapon);
+                }                
+            }
+            treNegativeSurge.Nodes.Clear();
+            trePositiveSurge.Nodes.Clear();
+            while (_objCharacter.SurgeQualities.Count > 0)
+            {
+                _objCharacter.SurgeQualities.Remove(_objCharacter.SurgeQualities[0]);
+            }
         }
         #endregion
 
@@ -15639,6 +15698,24 @@ namespace Chummer
             // Deduct the amounts for free Qualities.
             int intPositiveFree = _objImprovementManager.ValueOf(Improvement.ImprovementType.FreePositiveQualities) * _objOptions.KarmaQuality;
             int intNegativeFree = _objImprovementManager.ValueOf(Improvement.ImprovementType.FreeNegativeQualities) * _objOptions.KarmaQuality;
+
+            //Add difference from SURGE Qualities
+            int intPositiveSum = 0, intNegativeSum = 0;
+            foreach (Quality objQuality in _objCharacter.SurgeQualities)
+            {
+                if (objQuality.Type == QualityType.Negative)
+                {
+                    intNegativeSum -= objQuality.BP;
+                }
+                else
+                {
+                    intPositiveSum += objQuality.BP;
+                }
+            }
+		    if (intPositiveSum > intNegativeSum)
+		    {
+		        intPositiveQualities += intPositiveSum - intNegativeSum;
+		    }
 
             intNegativeQualities -= intNegativeFree;
             intPositiveQualities -= intPositiveFree;
@@ -25929,13 +26006,16 @@ namespace Chummer
                 return;
 
             AddSurgeQuality(frmPickSurgeQuality.SelectedQuality);
+            CalculateSurgeKarma();
 
             if (frmPickSurgeQuality.AddAgain)
-                cmdAddQuality_Click(sender, e);
+                btnAddPositiveSurge_Click(sender, e);
         }
 
         private void btnDeletePositiveSurge_Click(object sender, EventArgs e)
         {
+            if (trePositiveSurge.SelectedNode == null)
+                return;
             Quality objQuality = _objFunctions.FindQuality(trePositiveSurge.SelectedNode.Tag.ToString(), _objCharacter.SurgeQualities);
             XmlDocument objXmlDocument = XmlManager.Instance.Load(objQuality.Type == QualityType.LifeModule ? "lifemodules.xml" : "qualities.xml");
 
@@ -25973,19 +26053,6 @@ namespace Chummer
                 }
             }
 
-            XmlNode objXmlDeleteQuality;
-            if (objQuality.Type == QualityType.LifeModule)
-            {
-                objXmlDeleteQuality =
-                    Quality.GetNodeOverrideable(objQuality.QualityId);
-            }
-            else
-            {
-                objXmlDeleteQuality =
-                    objXmlDocument.SelectSingleNode("/chummer/qualities/quality[name = \"" + objQuality.Name + "\"]");
-            }
-
-
             // Remove any Weapons created by the Quality if applicable.
             if (objQuality.WeaponID != Guid.Empty.ToString())
             {
@@ -26008,12 +26075,13 @@ namespace Chummer
                 _objCharacter.Weapons.Remove(objRemoveWeapon);
             }
 
-            _objCharacter.Qualities.Remove(objQuality);
+            _objCharacter.SurgeQualities.Remove(objQuality);
             trePositiveSurge.SelectedNode.Remove();
 
             UpdateCharacterInfo();
             _blnIsDirty = true;
             UpdateWindowTitle();
+            CalculateSurgeKarma();
         }
 
         private void trePositiveSurge_AfterSelect(object sender, TreeViewEventArgs e)
@@ -26044,13 +26112,16 @@ namespace Chummer
                 return;
 
             AddSurgeQuality(frmPickSurgeQuality.SelectedQuality);
+            CalculateSurgeKarma();
 
             if (frmPickSurgeQuality.AddAgain)
-                cmdAddQuality_Click(sender, e);
+                btnAddNegativeSurge_Click(sender, e);
         }
 
         private void btnDeleteNegativeSurge_Click(object sender, EventArgs e)
         {
+            if (treNegativeSurge.SelectedNode == null)
+                return;
             Quality objQuality = _objFunctions.FindQuality(treNegativeSurge.SelectedNode.Tag.ToString(), _objCharacter.SurgeQualities);
             XmlDocument objXmlDocument = XmlManager.Instance.Load(objQuality.Type == QualityType.LifeModule ? "lifemodules.xml" : "qualities.xml");
 
@@ -26088,19 +26159,6 @@ namespace Chummer
                 }
             }
 
-            XmlNode objXmlDeleteQuality;
-            if (objQuality.Type == QualityType.LifeModule)
-            {
-                objXmlDeleteQuality =
-                    Quality.GetNodeOverrideable(objQuality.QualityId);
-            }
-            else
-            {
-                objXmlDeleteQuality =
-                    objXmlDocument.SelectSingleNode("/chummer/qualities/quality[name = \"" + objQuality.Name + "\"]");
-            }
-
-
             // Remove any Weapons created by the Quality if applicable.
             if (objQuality.WeaponID != Guid.Empty.ToString())
             {
@@ -26123,12 +26181,13 @@ namespace Chummer
                 _objCharacter.Weapons.Remove(objRemoveWeapon);
             }
 
-            _objCharacter.Qualities.Remove(objQuality);
+            _objCharacter.SurgeQualities.Remove(objQuality);
             treNegativeSurge.SelectedNode.Remove();
 
             UpdateCharacterInfo();
             _blnIsDirty = true;
             UpdateWindowTitle();
+            CalculateSurgeKarma();
         }        
 
         private void treNegativeSurge_AfterSelect(object sender, TreeViewEventArgs e)
@@ -26140,7 +26199,7 @@ namespace Chummer
             string strPage = objQuality.Page;
             lblNegativeQualitySource.Text = strBook + " " + strPage;
             tipTooltip.SetToolTip(lblNegativeQualitySource, _objOptions.LanguageBookLong(objQuality.Source) + " " + LanguageManager.Instance.GetString("String_Page") + " " + objQuality.Page);
-            lblNegativeQualityKarma.Text = (objQuality.BP * _objOptions.KarmaQuality) + " " + LanguageManager.Instance.GetString("String_Karma");
+            lblNegativeQualityKarma.Text = (objQuality.BP * _objOptions.KarmaQuality) + " " + LanguageManager.Instance.GetString("String_Karma");            
         }
 
         private void lblNegativeQualitySource_Click(object sender, EventArgs e)
@@ -26164,72 +26223,109 @@ namespace Chummer
                 return;
 
             // If the item being checked would cause the limit of 25 BP spent on Positive Qualities to be exceed, do not let it be checked and display a message.
-            string strAmount = _objCharacter.GameplayOptionQualityLimit.ToString() + " " + LanguageManager.Instance.GetString("String_Karma");
+            string strAmount = "30 " + LanguageManager.Instance.GetString("String_Karma");
             int intMaxQualityAmount = _objCharacter.MetageneticLimit;
 
             // Make sure that adding the Quality would not cause the character to exceed their BP limits.
-            int intBP = 0;
+            int intBP = objQuality.BP;
             foreach (Quality objCharacterQuality in _objCharacter.SurgeQualities)
             {
-                if (objCharacterQuality.Type == objQuality.Type && objCharacterQuality.ContributeToLimit)
+                if (objCharacterQuality.Type == objQuality.Type)
                     intBP += objCharacterQuality.BP;
             }
+	        if (objQuality.Type == QualityType.Negative)
+	        {
+	            intBP *= -1;
+	        }
 
-            if (intBP <= intMaxQualityAmount)
-            {
-                // Add the Quality to the appropriate parent node.
-                if (objQuality.Type == QualityType.Positive)
-                {
-                    trePositiveSurge.Nodes.Add(objNode);
+	        if (intBP <= intMaxQualityAmount)
+	        {
+	            // Add the Quality to the appropriate parent node.
+	            if (objQuality.Type == QualityType.Positive)
+	            {
+	                trePositiveSurge.Nodes.Add(objNode);
+	            }
+	            else
+	            {
+	                treNegativeSurge.Nodes.Add(objNode);
+	            }
+	            _objCharacter.SurgeQualities.Add(objQuality);
+
+	            // Add any created Weapons to the character.
+	            foreach (Weapon objWeapon in objWeapons)
+	                _objCharacter.Weapons.Add(objWeapon);
+
+	            // Create the Weapon Node if one exists.
+	            foreach (TreeNode objWeaponNode in objWeaponNodes)
+	            {
+	                objWeaponNode.ContextMenuStrip = cmsWeapon;
+	                treWeapons.Nodes[0].Nodes.Add(objWeaponNode);
+	                treWeapons.Nodes[0].Expand();
+	            }
+
+	            // Add any additional Qualities that are forced on the character.
+	            if (objXmlQuality.SelectNodes("addqualities/addquality").Count > 0)
+	            {
+	                foreach (XmlNode objXmlAddQuality in objXmlQuality.SelectNodes("addqualities/addquality"))
+	                {
+	                    XmlNode objXmlSelectedQuality =
+	                        objXmlDocument.SelectSingleNode("/chummer/qualities/quality[name = \"" +
+	                                                        objXmlAddQuality.InnerText + "\"]");
+	                    Quality objSubQuality = AddQuality(objXmlAddQuality, objXmlSelectedQuality, objWeapons,
+	                        objWeaponNodes);
+	                    if (objSubQuality != null)
+	                    {
+	                        if (objXmlAddQuality.Attributes["contributetobp"] != null &&
+	                            objXmlAddQuality.Attributes["contributetobp"].InnerText.ToLower() == "false")
+	                        {
+	                            objSubQuality.BP = 0;
+	                            objSubQuality.ContributeToLimit = false;
+	                        }
+	                        _objCharacter.Qualities.Add(objSubQuality);
+	                    }
+	                }
+	            }
+	        }
+	        else
+	        {
+	            // If the Quality could not be added, remove the Improvements that were added during the Quality Creation process.
+	            _objImprovementManager.RemoveImprovements(Improvement.ImprovementSource.Quality, objQuality.InternalId);
+	            if (objQuality.Type == QualityType.Negative)
+	            {
+                    MessageBox.Show(
+                        LanguageManager.Instance.GetString("Message_NegativeQualityLimit").Replace("{0}", strAmount),
+                        LanguageManager.Instance.GetString("MessageTitle_NegativeQualityLimit"), MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
                 }
-                else
-                {
-                    treNegativeSurge.Nodes.Add(objNode);
-                }
-                _objCharacter.SurgeQualities.Add(objQuality);
-
-                // Add any created Weapons to the character.
-                foreach (Weapon objWeapon in objWeapons)
-                    _objCharacter.Weapons.Add(objWeapon);
-
-                // Create the Weapon Node if one exists.
-                foreach (TreeNode objWeaponNode in objWeaponNodes)
-                {
-                    objWeaponNode.ContextMenuStrip = cmsWeapon;
-                    treWeapons.Nodes[0].Nodes.Add(objWeaponNode);
-                    treWeapons.Nodes[0].Expand();
-                }
-
-                // Add any additional Qualities that are forced on the character.
-                if (objXmlQuality.SelectNodes("addqualities/addquality").Count > 0)
-                {
-                    foreach (XmlNode objXmlAddQuality in objXmlQuality.SelectNodes("addqualities/addquality"))
-                    {
-                        XmlNode objXmlSelectedQuality = objXmlDocument.SelectSingleNode("/chummer/qualities/quality[name = \"" + objXmlAddQuality.InnerText + "\"]");
-                        Quality objSubQuality = AddQuality(objXmlAddQuality, objXmlSelectedQuality, objWeapons, objWeaponNodes);
-                        if (objSubQuality != null)
-                        {
-                            if (objXmlAddQuality.Attributes["contributetobp"] != null &&
-                                objXmlAddQuality.Attributes["contributetobp"].InnerText.ToLower() == "false")
-                            {
-                                objSubQuality.BP = 0;
-                                objSubQuality.ContributeToLimit = false;
-                            }
-                            _objCharacter.Qualities.Add(objSubQuality);
-                        }
-                    }
-                }
-            }
-            else
-            {
-                // If the Quality could not be added, remove the Improvements that were added during the Quality Creation process.
-                _objImprovementManager.RemoveImprovements(Improvement.ImprovementSource.Quality, objQuality.InternalId);
-            }
-
-            UpdateCharacterInfo();
+	            else
+	            {
+	                MessageBox.Show(
+	                    LanguageManager.Instance.GetString("Message_PositiveQualityLimit").Replace("{0}", strAmount),
+	                    LanguageManager.Instance.GetString("MessageTitle_PositiveQualityLimit"), MessageBoxButtons.OK,
+	                    MessageBoxIcon.Information);
+	            }
+	        }
+	        UpdateCharacterInfo();
             _blnIsDirty = true;
             UpdateWindowTitle();
         }
 
+	    private void CalculateSurgeKarma()
+	    {
+	        int intPositiveSum = 0, intNegativeSum = 0;
+            foreach (Quality objQuality in _objCharacter.SurgeQualities)
+	        {
+	            if (objQuality.Type == QualityType.Negative)
+	            {
+	                intNegativeSum -= objQuality.BP;
+	            }
+	            else
+	            {
+	                intPositiveSum += objQuality.BP;
+	            }
+	        }
+	        lblPositiveSurgeKarma.Text = String.Format("{0}/30",intPositiveSum);
+	        lblNegativeSurgeKarma.Text = String.Format("{0}/30", intNegativeSum);
+	    }
     }
 }

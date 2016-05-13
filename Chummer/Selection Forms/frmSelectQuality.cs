@@ -336,7 +336,7 @@ namespace Chummer
 			{
 				// Treat everything as being uppercase so the search is case-insensitive.
 				string strSearch = "/chummer/qualities/quality[(" + _objCharacter.Options.BookXPath() + ") and ((contains(translate(name,'abcdefghijklmnopqrstuvwxyzàáâãäåçèéêëìíîïñòóôõöùúûüýß','ABCDEFGHIJKLMNOPQRSTUVWXYZÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÑÒÓÔÕÖÙÚÛÜÝß'), \"" + txtSearch.Text.ToUpper() + "\") and not(translate)) or contains(translate(translate,'abcdefghijklmnopqrstuvwxyzàáâãäåçèéêëìíîïñòóôõöùúûüýß','ABCDEFGHIJKLMNOPQRSTUVWXYZÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÑÒÓÔÕÖÙÚÛÜÝß'), \"" + txtSearch.Text.ToUpper() + "\"))";
-                strSearch += " and not (category = 'positive' and metagenetic = 'yes')";
+                strSearch += " and not (category = 'Positive' and metagenetic = 'yes')";
                 if (cboMetagenetic.SelectedValue.ToString() == "yes")
                 {
                     strSearch += " and (metagenetic = 'yes')";
@@ -386,7 +386,7 @@ namespace Chummer
 					objXmlMetatypeDocument = XmlManager.Instance.Load("metatypes.xml");
 
 				string strXPath = "category = \"" + cboCategory.SelectedValue + "\" and (" + _objCharacter.Options.BookXPath() + ")";
-                strXPath += " and not (category = 'positive' and metagenetic = 'yes')";
+                strXPath += " and not (category = 'Positive' and metagenetic = 'yes')";
                 if (cboMetagenetic.SelectedValue.ToString() == "yes")
                 {
                     strXPath += " and (metagenetic = 'yes')";
@@ -482,18 +482,10 @@ namespace Chummer
                     _objCharacter.AdeptEnabled = true;
                     break;
                 case "Changeling (Class I SURGE)":
-                    _objCharacter.SurgeEnabled = true;
-                    _objCharacter.MetageneticLimit = 30;
-                    break;
-                case "Changeling (Class II SURGE)":
-                    _objCharacter.SurgeEnabled = true;
-                    _objCharacter.MetageneticLimit = 30;
-                    break;
+                case "Changeling (Class II SURGE)":                    
                 case "Changeling (Class III SURGE)":
                     _objCharacter.SurgeEnabled = true;
                     _objCharacter.MetageneticLimit = 30;
-                    break;
-                default:
                     break;
             }
 
