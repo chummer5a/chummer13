@@ -15699,27 +15699,6 @@ namespace Chummer
             int intPositiveFree = _objImprovementManager.ValueOf(Improvement.ImprovementType.FreePositiveQualities) * _objOptions.KarmaQuality;
             int intNegativeFree = _objImprovementManager.ValueOf(Improvement.ImprovementType.FreeNegativeQualities) * _objOptions.KarmaQuality;
 
-            //Add difference from SURGE Qualities
-            int intPositiveSum = 0, intNegativeSum = 0;
-            foreach (Quality objQuality in _objCharacter.SurgeQualities)
-            {
-                if (objQuality.Type == QualityType.Negative)
-                {
-                    intNegativeSum -= objQuality.BP;
-                }
-                else
-                {
-                    intPositiveSum += objQuality.BP;
-                }
-            }
-		    if (intPositiveSum > intNegativeSum)
-		    {
-		        intPositiveQualities += intPositiveSum - intNegativeSum;
-		    }
-
-            intNegativeQualities -= intNegativeFree;
-            intPositiveQualities -= intPositiveFree;
-
             // If the character is only allowed to gain 25 BP from Negative Qualities but allowed to take as many as they'd like, limit their refunded points.
             if (_objOptions.ExceedNegativeQualitiesLimit)
             {
@@ -20713,7 +20692,7 @@ namespace Chummer
             {
                 int metageneticPositiveQualities = 0;
                 int metageneticNegativeQualities = 0;
-                foreach (Quality objQuality in _objCharacter.Qualities)
+                foreach (Quality objQuality in _objCharacter.SurgeQualities)
                 {
                     if (objQuality._strMetagenetic == "yes" && objQuality.OriginSource.ToString() != QualitySource.Metatype.ToString())
                     {

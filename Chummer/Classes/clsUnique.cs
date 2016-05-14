@@ -1635,24 +1635,12 @@ namespace Chummer
 			{
 				bool blnReturn;
 
-				if (!_blnContributeToLimit || _objQualitySource == QualitySource.Metatype || _objQualitySource == QualitySource.MetatypeRemovable)
-					blnReturn = false;
-				else
-					blnReturn = true;
-
-                if (_strMetagenetic == "yes")
-                {
-                    foreach (Quality objQuality in _objCharacter.Qualities)
-                    {
-                        if (objQuality.Name == "Changeling (Class I SURGE)" || objQuality.Name == "Changeling (Class II SURGE)" || objQuality.Name == "Changeling (Class III SURGE)")
-                        { 
-                            _blnContributeToLimit = false;
-                        }
-                    }
-                    blnReturn = _blnContributeToLimit;
-                }
-
-				return blnReturn;
+			    if (!_blnContributeToLimit || _objQualitySource == QualitySource.Metatype ||
+			        _objQualitySource == QualitySource.MetatypeRemovable)
+			    {
+			        return false;
+			    }
+			    return true;
 			}
 			set
 			{
@@ -1675,18 +1663,8 @@ namespace Chummer
                 else
                 {
                     bool blnContribute = true;
-                    //Positive Metagenetic Qualities are free if you're a Changeling. 
-                    if (_strMetagenetic == "yes")
-                    {
-                        foreach (Quality objQuality in _objCharacter.Qualities)
-                        {
-                            if (objQuality.Name == "Changeling (Class I SURGE)" || objQuality.Name == "Changeling (Class II SURGE)" || objQuality.Name == "Changeling (Class III SURGE)")
-                            { blnContribute = false; }
-                        }
-                        blnReturn = blnContribute;
-                    }
                     //The Beast's Way and the Spiritual Way get the Mentor Spirit for free.
-                    else if (_strName == "Mentor Spirit")
+                    if (_strName == "Mentor Spirit")
                     {
                         foreach (Quality objQuality in _objCharacter.Qualities)
                         {
