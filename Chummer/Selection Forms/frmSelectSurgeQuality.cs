@@ -247,7 +247,7 @@ namespace Chummer
 			{
 				// Treat everything as being uppercase so the search is case-insensitive.
 				string strSearch = "/chummer/qualities/quality[(" + _objCharacter.Options.BookXPath() + ") and ((contains(translate(name,'abcdefghijklmnopqrstuvwxyzàáâãäåçèéêëìíîïñòóôõöùúûüýß','ABCDEFGHIJKLMNOPQRSTUVWXYZÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÑÒÓÔÕÖÙÚÛÜÝß'), \"" + txtSearch.Text.ToUpper() + "\") and not(translate)) or contains(translate(translate,'abcdefghijklmnopqrstuvwxyzàáâãäåçèéêëìíîïñòóôõöùúûüýß','ABCDEFGHIJKLMNOPQRSTUVWXYZÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÑÒÓÔÕÖÙÚÛÜÝß'), \"" + txtSearch.Text.ToUpper() + "\"))";
-                strSearch += " and (required/oneof[contains(., 'Changeling (Class I SURGE)')] or metagenetic = 'yes')]";
+                strSearch += " and (required/oneof[contains(., 'Changeling (Class I SURGE)')] or metagenetic = 'yes') and (category = \"" + _strCategory + "\")]";
 
 				XmlNodeList objXmlQualityList = _objXmlDocument.SelectNodes(strSearch);
 				foreach (XmlNode objXmlQuality in objXmlQualityList)
@@ -262,17 +262,7 @@ namespace Chummer
                                 objItem.Name = objXmlQuality["translate"].InnerText;
                             else
                                 objItem.Name = objXmlQuality["name"].InnerText;
-
-                             try
-                             {
-                                 objItem.Name += " [" + _lstCategory.Find(objFind => objFind.Value == objXmlQuality["category"].InnerText).Name + "]";
-                            
-                                 lstQuality.Add(objItem);
-                            
-                             }
-                             catch
-                             {
-                             }
+                            lstQuality.Add(objItem);
                         }
                     }
 				}
