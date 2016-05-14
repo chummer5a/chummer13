@@ -15699,14 +15699,10 @@ namespace Chummer
             int intPositiveFree = _objImprovementManager.ValueOf(Improvement.ImprovementType.FreePositiveQualities) * _objOptions.KarmaQuality;
             int intNegativeFree = _objImprovementManager.ValueOf(Improvement.ImprovementType.FreeNegativeQualities) * _objOptions.KarmaQuality;
 
-<<<<<<< HEAD
-            // If the character is only allowed to gain 25 BP from Negative Qualities but allowed to take as many as they'd like, limit their refunded points.
-=======
             intNegativeQualities -= intNegativeFree;
             intPositiveQualities -= intPositiveFree;
 
             // If the character is only allowed to gain 25 BP from Negative Qualities but allowed to take as many as they'd like, limit their refunded points.		    
->>>>>>> master
             if (_objOptions.ExceedNegativeQualitiesLimit)
             {
                 if ((_objCharacter.BuildMethod == CharacterBuildMethod.SumtoTen ||
