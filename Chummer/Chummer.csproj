@@ -116,6 +116,14 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Backend\Character Creation\AbstractCharacterSetupInfo.cs" />
+    <Compile Include="Backend\Character Creation\BaseSetupAction.cs" />
+    <Compile Include="Backend\Character Creation\CharacterSetupAction.cs" />
+    <Compile Include="Backend\Character Creation\CompiledCharacterSetupInfo.cs" />
+    <Compile Include="Backend\Character Creation\PriorityBasedCharacterSetupInfo.cs" />
+    <Compile Include="Backend\Datastructures\GuidItem.cs" />
+    <Compile Include="Backend\Datastructures\OptionListWrapper.cs" />
+    <Compile Include="Backend\_Character\ICharacter.cs" />
     <Compile Include="Backend\Datastructures\ReverseTree.cs" />
     <Compile Include="Backend\Datastructures\TranslatedField.cs" />
     <Compile Include="Backend\Debugging\CrashHandler.cs" />

@@ -1,0 +1,16 @@
+Porpose of this branch is to create a class and all required support to replace the current character creation selection process. 
+Among those goals is the abstraction of the data layer for this part, to make a possible switch to a database possible in the future.
+
+The design is intended to be so that during character setup, the player creates an CharacterSetupInfo object that is given to the character during construction. 
+It should then later be possible to change the CharacterSetupInfo with another to change everything about the character. Within limits.
+
+The way this is archived is that the CharacterSetupInfo will present the options the character selects during setup. This will then be turned into a list of tasks that needs to be done before the character is ready to play.
+
+This will then be compared with the list of tasks that the character already contains, and only the difference will be executed or removed.
+
+For older characters this might or might not lead to easy converting, but it should give a really powerfull system allowing easy seamless changing of priorities and if wished, between priority based to karma based
+
+Another goal of this is the integration of real, working, unit testing.
+
+
+

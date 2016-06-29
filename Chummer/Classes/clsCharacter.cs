@@ -29,8 +29,10 @@ using System.Xml;
 using System.Xml.XPath;
 ﻿﻿using Chummer.Annotations;
 ﻿using Chummer.Backend;
- using Chummer.Backend.Equipment;
- using Chummer.Skills;
+using Chummer.Backend._Character;
+using Chummer.Backend.Character_Creation;
+using Chummer.Backend.Equipment;
+using Chummer.Skills;
 
 // MAGEnabledChanged Event Handler
 public delegate void MAGEnabledChangedHandler(Chummer.Character sender);
@@ -93,7 +95,7 @@ namespace Chummer
     /// <summary>
     /// Class that holds all of the information that makes up a complete Character.
     /// </summary>
-    public class Character : INotifyPropertyChanged
+    public class Character : INotifyPropertyChanged, ICharacter
     {
 	    private XmlNode oldSkillsBackup;
 	    private XmlNode oldSKillGroupBackup;
@@ -155,8 +157,11 @@ namespace Chummer
 		// If true, the Character creation has been finalized and is maintained through Karma.
 		private bool _blnCreated = false;
 
-        // Build Points
-	    private int _intSumtoTen = 10;
+		//Build info
+	    private CompiledCharacterSetupInfo _setupInfo;
+
+		// Build Points
+		private int _intSumtoTen = 10;
         private int _intBuildPoints = 800;
 	    private decimal _decNuyenMaximumBP = 50m;
         private decimal _decNuyenBP = 0m;
@@ -327,8 +332,10 @@ namespace Chummer
         /// <summary>
         /// Character.
         /// </summary>
-        public Character()
+        public Character(CompiledCharacterSetupInfo setupInfo = null)  //TOOD: probably remove = null
         {
+	        SetupInfo = setupInfo;
+
             _attBOD._objCharacter = this;
             _attAGI._objCharacter = this;
             _attREA._objCharacter = this;
@@ -347,6 +354,8 @@ namespace Chummer
 			_objOptions = new CharacterOptions(this);
 			SkillsSection = new SkillsSection(this);
 			SkillsSection.Reset();
+
+			
         }
 
         /// <summary>
@@ -5704,6 +5713,19 @@ namespace Chummer
         #endregion
 
         #region Build Properties
+
+	    public CompiledCharacterSetupInfo SetupInfo
+	    {
+		    get { return _setupInfo; }
+		    set
+		    {
+				if(value == null && _setupInfo != null) throw new NullReferenceException();
+				else if(value == null) return;  //TODO: lots of odd places use characters, they do not know this system yet. Remove this pass where it allows setup with null
+			    value.ApplyTo(this);
+			    _setupInfo = value;
+		    }
+	    }
+
         /// <summary>
         /// Method being used to build the character.
         /// </summary>
@@ -7391,5 +7413,6 @@ namespace Chummer
 				ImprovementEvent?.Invoke(_lstTransaction, improvementManager);
 			}
 		}
-	}
+
+    }
 }
