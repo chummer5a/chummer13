@@ -1,4 +1,4 @@
-﻿namespace Chummer
+﻿namespace Chummer.UI.Character_Creation
 {
     partial class frmSelectBuildMethod
     {

@@ -121,8 +121,12 @@
     <Compile Include="Backend\Character Creation\CharacterSetupAction.cs" />
     <Compile Include="Backend\Character Creation\CompiledCharacterSetupInfo.cs" />
     <Compile Include="Backend\Character Creation\PriorityBasedCharacterSetupInfo.cs" />
+    <Compile Include="Backend\Data\Infrastructure\IChummerDataSource.cs" />
     <Compile Include="Backend\Datastructures\GuidItem.cs" />
     <Compile Include="Backend\Datastructures\OptionListWrapper.cs" />
+    <Compile Include="Backend\Data\Items\GameplayOptionData.cs" />
+    <Compile Include="Backend\Data\Sources\DataList.cs" />
+    <Compile Include="Backend\Data\Sources\Xml\CharacterSetupData.cs" />
     <Compile Include="Backend\_Character\ICharacter.cs" />
     <Compile Include="Backend\Datastructures\ReverseTree.cs" />
     <Compile Include="Backend\Datastructures\TranslatedField.cs" />
@@ -286,6 +290,12 @@
     </Compile>
     <Compile Include="Selection Forms\frmSelectSkillSpec.Designer.cs">
       <DependentUpon>frmSelectSkillSpec.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Character Creation\frmSelectBuildMethod.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Character Creation\frmSelectBuildMethod.Designer.cs">
+      <DependentUpon>frmSelectBuildMethod.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Shared\CharacterShared.cs" />
     <Compile Include="UI\Skills\KnowledgeSkillControl.cs">
@@ -636,12 +646,6 @@
     <Compile Include="Selection Forms\frmSelectArmor.Designer.cs">
       <DependentUpon>frmSelectArmor.cs</DependentUpon>
     </Compile>
-    <Compile Include="Character Creation\frmSelectBuildMethod.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Character Creation\frmSelectBuildMethod.Designer.cs">
-      <DependentUpon>frmSelectBuildMethod.cs</DependentUpon>
-    </Compile>
     <Compile Include="Selection Forms\frmSelectCyberware.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -836,6 +840,9 @@
     <EmbeddedResource Include="Selection Forms\frmSelectSkillSpec.resx">
       <DependentUpon>frmSelectSkillSpec.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\Character Creation\frmSelectBuildMethod.resx">
+      <DependentUpon>frmSelectBuildMethod.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\Skills\KnowledgeSkillControl.resx">
       <DependentUpon>KnowledgeSkillControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -1011,9 +1018,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Selection Forms\frmSelectArmor.resx">
       <DependentUpon>frmSelectArmor.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Character Creation\frmSelectBuildMethod.resx">
-      <DependentUpon>frmSelectBuildMethod.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Selection Forms\frmSelectCyberware.resx">
       <DependentUpon>frmSelectCyberware.cs</DependentUpon>
@@ -1649,6 +1653,7 @@
     </Content>
     <EmbeddedResource Include="Expand.png" />
     <Content Include="data\Priorities.AI.xml" />
+    <None Include="Documentation\Unsorted.md" />
     <Content Include="export\Squad Manager.xsl">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

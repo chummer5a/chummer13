@@ -22,8 +22,10 @@ using System.Linq;
 using System.Windows.Forms;
 using System.Xml;
 using System.Reflection;
+ using Chummer.Backend.Data.Sources.Xml;
  using Chummer.Backend.Equipment;
  using Chummer.Skills;
+ using Chummer.UI.Character_Creation;
 
 namespace Chummer
 {
@@ -585,7 +587,7 @@ namespace Chummer
 			}
 
 			// Show the BP selection window.
-			frmSelectBuildMethod frmBP = new frmSelectBuildMethod(objCharacter);
+			frmSelectBuildMethod frmBP = new frmSelectBuildMethod(new CharacterOptions(), CharacterSetupData.Instance.GameplayOption);
 			frmBP.ShowDialog();
 
 			if (frmBP.DialogResult == DialogResult.Cancel)

@@ -29,6 +29,7 @@ using System.Xml.XPath;
 using Chummer.Skills;
 using System.Diagnostics;
 using Chummer.Backend.Equipment;
+using Chummer.UI.Character_Creation;
 
 namespace Chummer
 {
@@ -3564,11 +3565,11 @@ namespace Chummer
 
         private void mnuSpecialBPAvailLimit_Click(object sender, EventArgs e)
         {
-            frmSelectBuildMethod frmPickBP = new frmSelectBuildMethod(_objCharacter, true);
-            frmPickBP.ShowDialog(this);
+            //frmSelectBuildMethod frmPickBP = new frmSelectBuildMethod(_objCharacter, true);
+            //frmPickBP.ShowDialog(this);
 
-            if (frmPickBP.DialogResult == DialogResult.Cancel)
-                UpdateCharacterInfo();
+            //if (frmPickBP.DialogResult == DialogResult.Cancel)
+            //    UpdateCharacterInfo();
         }
 
         private void mnuSpecialConvertToFreeSprite_Click(object sender, EventArgs e)

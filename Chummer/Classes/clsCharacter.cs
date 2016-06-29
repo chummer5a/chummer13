@@ -351,7 +351,7 @@ namespace Chummer
             _attESS._objCharacter = this;
 			_attDEP._objCharacter = this;
 			_objImprovementManager = new ImprovementManager(this);
-			_objOptions = new CharacterOptions(this);
+			_objOptions = new CharacterOptions();
 			SkillsSection = new SkillsSection(this);
 			SkillsSection.Reset();
 

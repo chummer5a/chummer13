@@ -1,36 +1,125 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
+using Chummer.Backend.Data.Infrastructure;
+using Chummer.Backend.Data.Items;
 using Chummer.Backend.Datastructures;
 
 namespace Chummer.Backend.Character_Creation
 {
 	class PriorityBasedCharacterSetupInfo : AbstractCharacterSetupInfo
 	{
-		private int _karma;
-		private int _nuyen;
+	    private readonly IChummerDataSource<GameplayOptionData> _gameplayOptionDataSource;
+	    private int _karma;
+		private int _bonusNuyen;
 		private int _maxRating;
 		private bool _ignoreRules;
 
 		private readonly OptionListWrapper<GuidItem> _category = new OptionListWrapper<GuidItem>();
-		private OptionListWrapper<GuidItem> _metatype = new OptionListWrapper<GuidItem>();
-		private OptionListWrapper<GuidItem> _metavariant = new OptionListWrapper<GuidItem>();
+		private readonly OptionListWrapper<GuidItem> _metatype = new OptionListWrapper<GuidItem>();
+		private readonly OptionListWrapper<GuidItem> _metavariant = new OptionListWrapper<GuidItem>();
 
-		private OptionListWrapper<GuidItem> _gameplayOption = new OptionListWrapper<GuidItem>();
+		private readonly OptionListWrapper<GuidItem> _gameplayOption = new OptionListWrapper<GuidItem>();
+	    private CharacterBuildMethod _buildType;
+	    private int _sumToTenValue;
+	    private CharacterBuildMethod _buildMethod;
 
-		public PriorityBasedCharacterSetupInfo()
+	    public int SumToTenValue
+	    {
+	        get { return _sumToTenValue; }
+	        set { MaybeNotifyChanged(ref _sumToTenValue, value); }
+	    }
+
+	    public PriorityBasedCharacterSetupInfo(IChummerDataSource<GameplayOptionData> gameplayOptionDataSource)
 		{
-			
+            _category.ListChangedEvent += CategoryOnListChangedEvent;
+            _category.SelectedItemChangedEvent += CategoryOnSelectedItemChangedEvent;
+
+            _metatype.ListChangedEvent += MetatypeOnListChangedEvent;
+            _metatype.SelectedItemChangedEvent += MetatypeOnSelectedItemChangedEvent;
+
+            _metavariant.ListChangedEvent += MetavariantOnListChangedEvent;
+            _metavariant.SelectedItemChangedEvent += MetavariantOnSelectedItemChangedEvent;
+
+            _gameplayOption.ListChangedEvent += GameplayOptionOnListChangedEvent;
+            _gameplayOption.SelectedItemChangedEvent += GameplayOptionOnSelectedItemChangedEvent;
+
+
+
+
+            _gameplayOptionDataSource = gameplayOptionDataSource;
+
+		    foreach (GameplayOptionData data in _gameplayOptionDataSource)
+		    {
+		        GuidItem item = new GuidItem(data.DisplayName, data.ItemId);
+                _gameplayOption.Add(item);
+
+		        if (data.Default)
+		        {
+		            _gameplayOption.SelectedItem = item;
+		        }
+		    }
+
+
 		}
 
-		public override int Karma
+	    private void GameplayOptionOnSelectedItemChangedEvent(GuidItem selected)
+	    {
+	        throw new NotImplementedException();
+	    }
+
+	    private void GameplayOptionOnListChangedEvent()
+	    {
+	        throw new NotImplementedException();
+	    }
+
+	    private void MetavariantOnSelectedItemChangedEvent(GuidItem selected)
+	    {
+	        throw new NotImplementedException();
+	    }
+
+	    private void MetavariantOnListChangedEvent()
+	    {
+	        throw new NotImplementedException();
+	    }
+
+	    private void MetatypeOnSelectedItemChangedEvent(GuidItem selected)
+	    {
+	        throw new NotImplementedException();
+	    }
+
+	    private void MetatypeOnListChangedEvent()
+	    {
+	        throw new NotImplementedException();
+	    }
+
+	    private void CategoryOnSelectedItemChangedEvent(GuidItem selected)
+	    {
+	        throw new NotImplementedException();
+	    }
+
+	    private void CategoryOnListChangedEvent()
+	    {
+	        throw new NotImplementedException();
+	    }
+
+	    public override CharacterBuildMethod BuildMethod
+	    {
+	        get { return _buildMethod; }
+	        set { _buildMethod = value; }
+	    }
+
+	    public override int Karma
 		{
 			get { return _karma; }
 			set { _karma = value; }
 		}
 
-		public override int Nuyen
+		public override int BonusNuyen
 		{
-			get { return _nuyen; }
-			set { _nuyen = value; }
+			get { return _bonusNuyen; }
+			set { _bonusNuyen = value; }
 		}
 
 		public override int MaxRating
@@ -77,9 +166,21 @@ namespace Chummer.Backend.Character_Creation
 
 		public override IReadOnlyCollection<GuidItem> GameplayOptionList => _gameplayOption.ReadOnly;
 
-		protected override IEnumerable<CharacterSetupAction> SetupActions()
+	   
+
+	    protected override IEnumerable<CharacterSetupAction> SetupActions()
 		{
 			throw new System.NotImplementedException();
 		}
-	}
+
+	    private void MaybeNotifyChanged<T>(ref T own, T value, [CallerMemberName] string name = "")
+	    {
+	        if ((own == null && value != null) || (own != null && value == null) || (own != null && value != null && !value.Equals(own))) 
+	        {
+                own = value;
+                OnPropertyChanged(new PropertyChangedEventArgs(name));
+	        }
+	    }
+
+    }
 }

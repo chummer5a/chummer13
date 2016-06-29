@@ -64,6 +64,12 @@ namespace Chummer.Backend.Datastructures
 			ListChangedEvent?.Invoke();
 		}
 
+	    public void AddRange(IEnumerable<T> items)
+	    {
+            _listImplementation.AddRange(items);
+            ListChangedEvent?.Invoke();
+        }
+
 		public void Clear()
 		{
 			_listImplementation.Clear();

@@ -8,6 +8,8 @@ namespace Chummer.Backend.Character_Creation
 {
 	public abstract class AbstractCharacterSetupInfo : INotifyPropertyChanged
 	{
+        public abstract CharacterBuildMethod BuildMethod { get; set; }
+
 		//User options always "visible"
 		/// <summary>
 		/// How much karma does the player have for construction
@@ -17,7 +19,7 @@ namespace Chummer.Backend.Character_Creation
 		/// <summary>
 		/// How much base nuyen does the player have for construction
 		/// </summary>
-		public abstract int Nuyen { get; set; }
+		public abstract int BonusNuyen { get; set; }
 
 		/// <summary>
 		/// What is the max rating of gear the player can aquire
@@ -49,7 +51,7 @@ namespace Chummer.Backend.Character_Creation
 		{
 			List<CharacterSetupAction> actions = SetupActions().ToList();
 
-			actions.Add(new BaseSetupAction(Karma, Nuyen, MaxRating, IgnoreRules));
+			actions.Add(new BaseSetupAction(Karma, BonusNuyen, MaxRating, IgnoreRules));
 
 			return actions;
 		}
@@ -58,5 +60,10 @@ namespace Chummer.Backend.Character_Creation
 		{
 			return new CompiledCharacterSetupInfo(GetAllActions());
 		}
+
+	    protected virtual void OnPropertyChanged(PropertyChangedEventArgs e)
+	    {
+	        PropertyChanged?.Invoke(this, e);
+	    }
 	}
 }

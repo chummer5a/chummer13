@@ -12,5 +12,7 @@ For older characters this might or might not lead to easy converting, but it sho
 
 Another goal of this is the integration of real, working, unit testing.
 
-
+Missing/removed features needed:
+mnuSpecialBPAvailLimit_Click has been removed. Need recreation
+I broke Prime runner contact count. Needed replacement anyway
 

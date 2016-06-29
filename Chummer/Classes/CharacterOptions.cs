@@ -177,9 +177,8 @@ namespace Chummer
 
 
 		#region Initialization, Save, and Load Methods
-		public CharacterOptions(Character character)
+		public CharacterOptions()
 		{
-			_character = character;
 			// Create the settings directory if it does not exist.
 			string settingsDirectoryPath = Path.Combine(Environment.CurrentDirectory, "settings");
 			if (!Directory.Exists(settingsDirectoryPath))
@@ -1528,23 +1527,11 @@ namespace Chummer
 		{
 			get
 			{
-				if (_character?.GameplayOption == "Prime Runner") return _intFreeContactsMultiplier*2;  //HACK. Should really read from gameplayoptions
 				return _intFreeContactsMultiplier;
 			}
 			set
 			{
-				//As this is a hack, not quite sure how this is glued together. 
-				//If i understand it right (COMUNICATING TROUGHT FUCKING FILES?) this should never happen. 
-				//Keyword should
-				if (_character == null)
-				{
-					_intFreeContactsMultiplier = value;
-				}
-				else
-				{
-					if (Debugger.IsAttached)
-						Debugger.Break();
-				}
+				_intFreeContactsMultiplier = value;
 			}
 		}
 
