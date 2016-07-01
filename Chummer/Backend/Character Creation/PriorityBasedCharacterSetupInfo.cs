@@ -21,8 +21,7 @@ namespace Chummer.Backend.Character_Creation
 		private readonly OptionListWrapper<GuidItem> _metavariant = new OptionListWrapper<GuidItem>();
 
 		private readonly OptionListWrapper<GuidItem> _gameplayOption = new OptionListWrapper<GuidItem>();
-	    private CharacterBuildMethod _buildType;
-	    private int _sumToTenValue;
+	    private int _sumToTenValue = 10;
 	    private CharacterBuildMethod _buildMethod;
 
 	    public int SumToTenValue
