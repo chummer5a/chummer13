@@ -121,6 +121,7 @@
     <Compile Include="Backend\Character Creation\CharacterSetupAction.cs" />
     <Compile Include="Backend\Character Creation\CompiledCharacterSetupInfo.cs" />
     <Compile Include="Backend\Character Creation\PriorityBasedCharacterSetupInfo.cs" />
+    <Compile Include="Backend\Character Creation\PriorityTableEntryData.cs" />
     <Compile Include="Backend\Data\Infrastructure\IChummerDataSource.cs" />
     <Compile Include="Backend\Datastructures\GuidItem.cs" />
     <Compile Include="Backend\Datastructures\OptionListWrapper.cs" />
@@ -1653,7 +1654,6 @@
     </Content>
     <EmbeddedResource Include="Expand.png" />
     <Content Include="data\Priorities.AI.xml" />
-    <None Include="Documentation\Unsorted.md" />
     <Content Include="export\Squad Manager.xsl">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

@@ -30,7 +30,7 @@ namespace Chummer.Backend.Character_Creation
 	        set { MaybeNotifyChanged(ref _sumToTenValue, value); }
 	    }
 
-	    public PriorityBasedCharacterSetupInfo(IChummerDataSource<GameplayOptionData> gameplayOptionDataSource)
+	    public PriorityBasedCharacterSetupInfo(IChummerDataSource<GameplayOptionData> gameplayOptionDataSource, IChummerDataSource<PriorityTableEntryData> priorityTableEntryDataSource)
 		{
             _category.ListChangedEvent += CategoryOnListChangedEvent;
             _category.SelectedItemChangedEvent += CategoryOnSelectedItemChangedEvent;
@@ -65,42 +65,42 @@ namespace Chummer.Backend.Character_Creation
 
 	    private void GameplayOptionOnSelectedItemChangedEvent(GuidItem selected)
 	    {
-	        throw new NotImplementedException();
+	        //throw new NotImplementedException();
 	    }
 
 	    private void GameplayOptionOnListChangedEvent()
 	    {
-	        throw new NotImplementedException();
+	        //throw new NotImplementedException();
 	    }
 
 	    private void MetavariantOnSelectedItemChangedEvent(GuidItem selected)
 	    {
-	        throw new NotImplementedException();
+	        //throw new NotImplementedException();
 	    }
 
 	    private void MetavariantOnListChangedEvent()
 	    {
-	        throw new NotImplementedException();
+	        //throw new NotImplementedException();
 	    }
 
 	    private void MetatypeOnSelectedItemChangedEvent(GuidItem selected)
 	    {
-	        throw new NotImplementedException();
+	        //throw new NotImplementedException();
 	    }
 
 	    private void MetatypeOnListChangedEvent()
 	    {
-	        throw new NotImplementedException();
+	        //throw new NotImplementedException();
 	    }
 
 	    private void CategoryOnSelectedItemChangedEvent(GuidItem selected)
 	    {
-	        throw new NotImplementedException();
+	        //throw new NotImplementedException();
 	    }
 
 	    private void CategoryOnListChangedEvent()
 	    {
-	        throw new NotImplementedException();
+	        //throw new NotImplementedException();
 	    }
 
 	    public override CharacterBuildMethod BuildMethod

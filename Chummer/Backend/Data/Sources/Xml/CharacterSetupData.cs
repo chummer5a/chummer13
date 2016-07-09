@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Xml;
+using Chummer.Backend.Character_Creation;
 using Chummer.Backend.Data.Items;
 
 namespace Chummer.Backend.Data.Sources.Xml
@@ -13,10 +14,10 @@ namespace Chummer.Backend.Data.Sources.Xml
 
         public CharacterSetupData()
         {
-            XmlDocument document = XmlManager.Instance.Load("gameplayoptions.xml");
+            XmlDocument gameplayoptions = XmlManager.Instance.Load("gameplayoptions.xml");
 
             GameplayOption = new DataList<GameplayOptionData>(
-                document.SelectNodes("/chummer/gameplayoptions/gameplayoption")
+                gameplayoptions.SelectNodes("/chummer/gameplayoptions/gameplayoption")
                 .OfType<XmlNode>()
                 .Select(x => 
                 {
@@ -32,8 +33,26 @@ namespace Chummer.Backend.Data.Sources.Xml
                     };
                 })
                 .ToDictionary(x => x.ItemId));
+
+            XmlDocument priority = XmlManager.Instance.Load("priorities.xml");
+
+            PriorityEntries = new DataList<PriorityTableEntryData>(
+                priority.SelectNodes("/chummer/priorities/prioritiy")
+                .OfType<XmlNode>()
+                .Select(node =>
+                {
+                    return new PriorityTableEntryData
+                    {
+                        ItemId = Guid.Parse(node["id"].InnerText),
+                        Name = node["name"].Attributes["translate"]?.InnerText ?? node["name"].InnerText,
+                        Value = int.Parse(node["value"].InnerText.Split(',').Last()),
+                        Category = node["category"].InnerText
+                    };
+                }).ToDictionary(x => x.ItemId));
         }
 
         public DataList<GameplayOptionData> GameplayOption { get; }
+
+        public DataList<PriorityTableEntryData> PriorityEntries { get; }
     }
 }

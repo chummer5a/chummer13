@@ -33,15 +33,17 @@ namespace Chummer.UI.Character_Creation
 
         private readonly CharacterOptions _objOptions;
         private readonly IChummerDataSource<GameplayOptionData> _gameplayDataSource;
+        private readonly IChummerDataSource<PriorityTableEntryData> _priorityTableEntryDataSource;
         private readonly Dictionary<string, BuildGroup> _buildInfoTypes;
 		int intQualityLimits = 0;
 	    int intNuyenBP = 0;
 
 		#region Control Events
-		public frmSelectBuildMethod(CharacterOptions objOptions, IChummerDataSource<GameplayOptionData> gameplayDataSource)
+		public frmSelectBuildMethod(CharacterOptions objOptions, IChummerDataSource<GameplayOptionData> gameplayDataSource, IChummerDataSource<PriorityTableEntryData> priorityTableEntryDataSource)
         {
 		    _objOptions = objOptions;
 		    _gameplayDataSource = gameplayDataSource;
+		    _priorityTableEntryDataSource = priorityTableEntryDataSource;
 		    InitializeComponent();
             LanguageManager.Instance.Load(GlobalOptions.Instance.Language, this);
 
@@ -54,14 +56,14 @@ namespace Chummer.UI.Character_Creation
                 {
                     "Priority",
                     new BuildGroup(this,
-                        new PriorityBasedCharacterSetupInfo(_gameplayDataSource) {BuildMethod = CharacterBuildMethod.Priority},
+                        new PriorityBasedCharacterSetupInfo(_gameplayDataSource, _priorityTableEntryDataSource) {BuildMethod = CharacterBuildMethod.Priority},
                         "String_SelectBP_PrioritySummary")
                 },
                 {"Karma", new BuildGroup(this, null, "String_SelectBP_KarmaSummary")},
                 {
                     "SumtoTen",
                     new BuildGroup(this,
-                        new PriorityBasedCharacterSetupInfo(_gameplayDataSource) {BuildMethod = CharacterBuildMethod.SumtoTen},
+                        new PriorityBasedCharacterSetupInfo(_gameplayDataSource, _priorityTableEntryDataSource) {BuildMethod = CharacterBuildMethod.SumtoTen},
                         "String_SelectBP_PrioritySummary")
                 },
             };
@@ -113,6 +115,7 @@ namespace Chummer.UI.Character_Creation
         private void cboBuildMethod_SelectedIndexChanged(object sender, EventArgs e)
         {
             var selected = _buildInfoTypes[(string)cboBuildMethod.SelectedValue];
+            if (selected.SetupInfo == null) return;
 
             nudSumtoTen.Visible = selected.SetupInfo.BuildMethod == CharacterBuildMethod.SumtoTen;
 
@@ -123,7 +126,7 @@ namespace Chummer.UI.Character_Creation
 
             if (selected.SetupInfo.BuildMethod == CharacterBuildMethod.SumtoTen)
             {
-                nudSumtoTen.DataBindings.Add("Value", selected, nameof(PriorityBasedCharacterSetupInfo.SumToTenValue));
+                nudSumtoTen.DataBindings.Add("Value", selected.SetupInfo, nameof(PriorityBasedCharacterSetupInfo.SumToTenValue));
             }
 
             nudKarma.DataBindings.Add("Value", selected.SetupInfo, nameof(AbstractCharacterSetupInfo.Karma));
@@ -133,7 +136,9 @@ namespace Chummer.UI.Character_Creation
 
             lblDescription.Text = selected.Description;
 
-            
+            cboGamePlay.ValueMember = "Guid";
+            cboGamePlay.DisplayMember = "DisplayName";
+            cboGamePlay.DataSource = selected.SetupInfo.GameplayOptionList;
         }
 
         private void frmSelectBuildMethod_Load(object sender, EventArgs e)

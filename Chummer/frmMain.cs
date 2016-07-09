@@ -587,7 +587,7 @@ namespace Chummer
 			}
 
 			// Show the BP selection window.
-			frmSelectBuildMethod frmBP = new frmSelectBuildMethod(new CharacterOptions(), CharacterSetupData.Instance.GameplayOption);
+			frmSelectBuildMethod frmBP = new frmSelectBuildMethod(new CharacterOptions(), CharacterSetupData.Instance.GameplayOption, CharacterSetupData.Instance.PriorityEntries);
 			frmBP.ShowDialog();
 
 			if (frmBP.DialogResult == DialogResult.Cancel)
