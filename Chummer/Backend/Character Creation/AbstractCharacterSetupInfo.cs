@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using Chummer.Backend.Data.Items;
 using Chummer.Backend.Datastructures;
 
 namespace Chummer.Backend.Character_Creation
@@ -33,7 +34,7 @@ namespace Chummer.Backend.Character_Creation
 
 		public abstract GuidItem SelectedCategory { get; set; }
 		public abstract GuidItem SelectedMetatype { get; set; }
-		public abstract GuidItem SelectedMetavarian { get; set; }
+		public abstract GuidItem SelectedMetavariant { get; set; }
 
 		public abstract IReadOnlyCollection<GuidItem> CategoryList { get; }
 		public abstract IReadOnlyCollection<GuidItem> MetatypeList { get; }
@@ -41,6 +42,8 @@ namespace Chummer.Backend.Character_Creation
 		
 		public abstract GuidItem SelectedGameplayOption { get; set; }
 		public abstract IReadOnlyCollection<GuidItem> GameplayOptionList { get; }
+
+	    internal abstract IReadOnlyList<MetatypeData.AttributesData> Attributes { get; }
 
 		public event PropertyChangedEventHandler PropertyChanged;
 

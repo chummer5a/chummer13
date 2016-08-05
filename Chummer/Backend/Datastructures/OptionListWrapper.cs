@@ -76,6 +76,16 @@ namespace Chummer.Backend.Datastructures
 			ListChangedEvent?.Invoke();
 		}
 
+	    public void ReplaceWith(IEnumerable<T> items)
+	    {
+	        _listImplementation.Clear();
+	        _listImplementation.AddRange(items);
+
+            _selectedItem = default(T); //Not sure if first would be better
+            ListChangedEvent?.Invoke();
+            SelectedItemChangedEvent?.Invoke(_selectedItem);
+	    }
+
 		public bool Contains(T item)
 		{
 			return _listImplementation.Contains(item);

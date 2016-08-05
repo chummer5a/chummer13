@@ -126,6 +126,7 @@
     <Compile Include="Backend\Datastructures\GuidItem.cs" />
     <Compile Include="Backend\Datastructures\OptionListWrapper.cs" />
     <Compile Include="Backend\Data\Items\GameplayOptionData.cs" />
+    <Compile Include="Backend\Data\Items\MetatypeData.cs" />
     <Compile Include="Backend\Data\Sources\DataList.cs" />
     <Compile Include="Backend\Data\Sources\Xml\CharacterSetupData.cs" />
     <Compile Include="Backend\_Character\ICharacter.cs" />
@@ -292,11 +293,35 @@
     <Compile Include="Selection Forms\frmSelectSkillSpec.Designer.cs">
       <DependentUpon>frmSelectSkillSpec.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Character Creation\frmPriorityBuildForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Character Creation\frmPriorityBuildForm.Designer.cs">
+      <DependentUpon>frmPriorityBuildForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\Character Creation\frmSelectBuildMethod.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\Character Creation\frmSelectBuildMethod.Designer.cs">
       <DependentUpon>frmSelectBuildMethod.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Character Creation\MetatypeAttributeDisplay.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Character Creation\MetatypeAttributeDisplay.Designer.cs">
+      <DependentUpon>MetatypeAttributeDisplay.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Character Creation\PriorityBuildSelector.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Character Creation\PriorityBuildSelector.Designer.cs">
+      <DependentUpon>PriorityBuildSelector.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Character Creation\RaceSelector.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Character Creation\RaceSelector.Designer.cs">
+      <DependentUpon>RaceSelector.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Shared\CharacterShared.cs" />
     <Compile Include="UI\Skills\KnowledgeSkillControl.cs">
@@ -841,8 +866,20 @@
     <EmbeddedResource Include="Selection Forms\frmSelectSkillSpec.resx">
       <DependentUpon>frmSelectSkillSpec.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\Character Creation\frmPriorityBuildForm.resx">
+      <DependentUpon>frmPriorityBuildForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\Character Creation\frmSelectBuildMethod.resx">
       <DependentUpon>frmSelectBuildMethod.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Character Creation\MetatypeAttributeDisplay.resx">
+      <DependentUpon>MetatypeAttributeDisplay.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Character Creation\PriorityBuildSelector.resx">
+      <DependentUpon>PriorityBuildSelector.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Character Creation\RaceSelector.resx">
+      <DependentUpon>RaceSelector.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Skills\KnowledgeSkillControl.resx">
       <DependentUpon>KnowledgeSkillControl.cs</DependentUpon>

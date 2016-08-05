@@ -18,5 +18,11 @@ namespace Chummer.Backend.Datastructures
 
 		public string DisplayName { get; }
 		public Guid Guid { get; }
+
+	    public override bool Equals(object obj)
+	    {
+	        return obj is GuidItem && ((GuidItem) obj).Guid == Guid;
+
+	    }
 	}
 }

@@ -24,6 +24,8 @@ using System.Xml;
 using Chummer.Backend.Character_Creation;
 using Chummer.Backend.Data.Infrastructure;
 using Chummer.Backend.Data.Items;
+using Chummer.Backend.Data.Sources.Xml;
+using Chummer.Backend.Datastructures;
 
 namespace Chummer.UI.Character_Creation
 {
@@ -32,18 +34,16 @@ namespace Chummer.UI.Character_Creation
         public AbstractCharacterSetupInfo SelectedCharacterSetupMethod => _buildInfoTypes[(string) cboBuildMethod.SelectedValue].SetupInfo;
 
         private readonly CharacterOptions _objOptions;
-        private readonly IChummerDataSource<GameplayOptionData> _gameplayDataSource;
-        private readonly IChummerDataSource<PriorityTableEntryData> _priorityTableEntryDataSource;
+        private readonly ICreationData _dataSource;
         private readonly Dictionary<string, BuildGroup> _buildInfoTypes;
 		int intQualityLimits = 0;
 	    int intNuyenBP = 0;
 
 		#region Control Events
-		public frmSelectBuildMethod(CharacterOptions objOptions, IChummerDataSource<GameplayOptionData> gameplayDataSource, IChummerDataSource<PriorityTableEntryData> priorityTableEntryDataSource)
+		internal frmSelectBuildMethod(CharacterOptions objOptions, ICreationData datasource)
         {
 		    _objOptions = objOptions;
-		    _gameplayDataSource = gameplayDataSource;
-		    _priorityTableEntryDataSource = priorityTableEntryDataSource;
+		    _dataSource = datasource;
 		    InitializeComponent();
             LanguageManager.Instance.Load(GlobalOptions.Instance.Language, this);
 
@@ -56,14 +56,14 @@ namespace Chummer.UI.Character_Creation
                 {
                     "Priority",
                     new BuildGroup(this,
-                        new PriorityBasedCharacterSetupInfo(_gameplayDataSource, _priorityTableEntryDataSource) {BuildMethod = CharacterBuildMethod.Priority},
+                        new PriorityBasedCharacterSetupInfo(_dataSource) {BuildMethod = CharacterBuildMethod.Priority},
                         "String_SelectBP_PrioritySummary")
                 },
                 {"Karma", new BuildGroup(this, null, "String_SelectBP_KarmaSummary")},
                 {
                     "SumtoTen",
                     new BuildGroup(this,
-                        new PriorityBasedCharacterSetupInfo(_gameplayDataSource, _priorityTableEntryDataSource) {BuildMethod = CharacterBuildMethod.SumtoTen},
+                        new PriorityBasedCharacterSetupInfo(_dataSource) {BuildMethod = CharacterBuildMethod.SumtoTen},
                         "String_SelectBP_PrioritySummary")
                 },
             };
@@ -118,7 +118,9 @@ namespace Chummer.UI.Character_Creation
             if (selected.SetupInfo == null) return;
 
             nudSumtoTen.Visible = selected.SetupInfo.BuildMethod == CharacterBuildMethod.SumtoTen;
+            lblSumToX.Visible = selected.SetupInfo.BuildMethod == CharacterBuildMethod.SumtoTen;
 
+            cboGamePlay.DataBindings.Clear();
             nudSumtoTen.DataBindings.Clear();
             nudKarma.DataBindings.Clear();
             nudMaxAvail.DataBindings.Clear();
@@ -144,18 +146,12 @@ namespace Chummer.UI.Character_Creation
         private void frmSelectBuildMethod_Load(object sender, EventArgs e)
         {
             this.Height = cmdOK.Bottom + 40;
-            cboBuildMethod_SelectedIndexChanged(this, e);
         }
         #endregion
 
         private void cboGamePlay_SelectedIndexChanged(object sender, EventArgs e)
         {
-            // Load the Priority information.
-            XmlDocument objXmlDocumentGameplayOption = XmlManager.Instance.Load("gameplayoptions.xml");
-            XmlNode objXmlGameplayOption = objXmlDocumentGameplayOption.SelectSingleNode("/chummer/gameplayoptions/gameplayoption[name = \"" + cboGamePlay.Text + "\"]");
-			nudMaxAvail.Value = Convert.ToInt32(objXmlGameplayOption["maxavailability"].InnerText);
-			intQualityLimits = Convert.ToInt32(objXmlGameplayOption["karma"].InnerText);
-	        intNuyenBP = Convert.ToInt32(objXmlGameplayOption["maxnuyen"].InnerText);
+            SelectedCharacterSetupMethod.SelectedGameplayOption = (GuidItem) cboGamePlay.SelectedItem;
         }
 
         private class BuildGroup

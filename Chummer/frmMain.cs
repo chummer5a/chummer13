@@ -22,6 +22,7 @@ using System.Linq;
 using System.Windows.Forms;
 using System.Xml;
 using System.Reflection;
+ using Chummer.Backend.Character_Creation;
  using Chummer.Backend.Data.Sources.Xml;
  using Chummer.Backend.Equipment;
  using Chummer.Skills;
@@ -587,28 +588,29 @@ namespace Chummer
 			}
 
 			// Show the BP selection window.
-			frmSelectBuildMethod frmBP = new frmSelectBuildMethod(new CharacterOptions(), CharacterSetupData.Instance.GameplayOption, CharacterSetupData.Instance.PriorityEntries);
+			frmSelectBuildMethod frmBP = new frmSelectBuildMethod(new CharacterOptions(), CharacterSetupData.Instance);
 			frmBP.ShowDialog();
 
 			if (frmBP.DialogResult == DialogResult.Cancel)
 				return;
-            if (objCharacter.BuildMethod == CharacterBuildMethod.Karma || objCharacter.BuildMethod == CharacterBuildMethod.LifeModule)
-            {
-                frmKarmaMetatype frmSelectMetatype = new frmKarmaMetatype(objCharacter);
-                frmSelectMetatype.ShowDialog();
 
-                if (frmSelectMetatype.DialogResult == DialogResult.Cancel)
+            if (frmBP.SelectedCharacterSetupMethod is PriorityBasedCharacterSetupInfo)
+            {
+                frmPriorityBuildForm form = new frmPriorityBuildForm((PriorityBasedCharacterSetupInfo) frmBP.SelectedCharacterSetupMethod);
+
+                form.ShowDialog();
+
+                if (form.DialogResult == DialogResult.Cancel)
                 { return; }
             }
-            // Show the Metatype selection window.
-            else if (objCharacter.BuildMethod == CharacterBuildMethod.Priority || objCharacter.BuildMethod == CharacterBuildMethod.SumtoTen)
+            //else if(frmBP.SelectedCharacterSetupMethod is PriorityBasedCharacterSetupInfo) {}
+            else
             {
-                frmPriorityMetatype frmSelectMetatype = new frmPriorityMetatype(objCharacter);
-                frmSelectMetatype.ShowDialog();
-
-                if (frmSelectMetatype.DialogResult == DialogResult.Cancel)
-                { return; }
+                MessageBox.Show("Not supported. A developer forgot something. Sorry");
+                return;
             }
+
+            
 
 			// Add the Unarmed Attack Weapon to the character.
 			try

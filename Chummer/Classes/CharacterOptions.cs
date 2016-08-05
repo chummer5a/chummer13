@@ -168,7 +168,7 @@ namespace Chummer
 		private int _intKarmaWeaponFocus = 3;
 
 		// Default build settings.
-		private string _strBuildMethod = "Karma";
+		private string _strBuildMethod = "Priority";
 		private int _intBuildPoints = 800;
 		private int _intAvailability = 12;
 
