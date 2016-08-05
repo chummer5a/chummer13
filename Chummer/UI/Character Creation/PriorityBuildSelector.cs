@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Chummer.Backend.Character_Creation;
+using Chummer.Backend.Datastructures;
 
 namespace Chummer.UI.Character_Creation
 {
@@ -33,24 +34,109 @@ namespace Chummer.UI.Character_Creation
                 {
                     _setupInfo.PropertyChanged += SetupInfoOnPropertyChanged;
                     attributeDisplay.SetContents(_setupInfo.Attributes);
+
+                    cboHeritage.SelectedIndexChanged -= cboHeritage_SelectedIndexChanged;
+                    cboAttributes.SelectedIndexChanged -= cboAttributes_SelectedIndexChanged;
+                    cboTalent.SelectedIndexChanged -= cboTalent_SelectedIndexChanged;
+                    cboSkills.SelectedIndexChanged -= cboSkills_SelectedIndexChanged;
+                    cboResources.SelectedIndexChanged -= cboResources_SelectedIndexChanged;
+                    
+                    
+
+
+                    cboHeritage.ValueMember = "Guid";
+                    cboHeritage.DisplayMember = "DisplayName";
+                    cboHeritage.DataSource = _setupInfo.HeritageList;
+
+                    cboAttributes.ValueMember = "Guid";
+                    cboAttributes.DisplayMember = "DisplayName";
+                    cboAttributes.DataSource = _setupInfo.AttributesList;
+
+                    cboTalent.ValueMember = "Guid";
+                    cboTalent.DisplayMember = "DisplayName";
+                    cboTalent.DataSource = _setupInfo.TalentList;
+
+                    cboSkills.ValueMember = "Guid";
+                    cboSkills.DisplayMember = "DisplayName";
+                    cboSkills.DataSource = _setupInfo.SkillsList;
+
+                    cboResources.ValueMember = "Guid";
+                    cboResources.DisplayMember = "DisplayName";
+                    cboResources.DataSource = _setupInfo.ResourcesList;
+
+                    cboHeritage.SelectedItem = _setupInfo.SelectedHeritage;
+                    cboAttributes.SelectedItem = _setupInfo.SelectedAttributes;
+                    cboTalent.SelectedItem = _setupInfo.SelectedTalent;
+                    cboSkills.SelectedItem = _setupInfo.SelectedSkills;
+                    cboResources.SelectedItem = _setupInfo.SelectedResources;
+
+                    cboHeritage.SelectedIndexChanged += cboHeritage_SelectedIndexChanged;
+                    cboAttributes.SelectedIndexChanged += cboAttributes_SelectedIndexChanged;
+                    cboTalent.SelectedIndexChanged += cboTalent_SelectedIndexChanged;
+                    cboSkills.SelectedIndexChanged += cboSkills_SelectedIndexChanged;
+                    cboResources.SelectedIndexChanged += cboResources_SelectedIndexChanged;
+
+
+
                 }
             }
         }
 
-        private void SetupInfoOnPropertyChanged(object sender, PropertyChangedEventArgs propertyChangedEventArgs)
+        private void SetupInfoOnPropertyChanged(object sender, PropertyChangedEventArgs args)
         {
-            if (propertyChangedEventArgs.PropertyName == nameof(AbstractCharacterSetupInfo.Attributes))
+            switch (args.PropertyName)
             {
-                attributeDisplay.SetContents(_setupInfo.Attributes);
+                case nameof(AbstractCharacterSetupInfo.Attributes):
+                    attributeDisplay.SetContents(_setupInfo.Attributes);
+                    break;
+                case nameof(PriorityBasedCharacterSetupInfo.SelectedHeritage):
+                    cboHeritage.SelectedItem = _setupInfo.SelectedHeritage;
+                    break;
+                case nameof(PriorityBasedCharacterSetupInfo.SelectedAttributes):
+                    cboAttributes.SelectedItem = _setupInfo.SelectedAttributes;
+                    break;
+                case nameof(PriorityBasedCharacterSetupInfo.SelectedTalent):
+                    cboTalent.SelectedItem = _setupInfo.SelectedTalent;
+                    break;
+                case nameof(PriorityBasedCharacterSetupInfo.SelectedSkills):
+                    cboSkills.SelectedItem = _setupInfo.SelectedSkills;
+                    break;
+                case nameof(PriorityBasedCharacterSetupInfo.SelectedResources):
+                    cboResources.SelectedItem = _setupInfo.SelectedResources;
+                    break;
             }
-
-            //if (propertyChangedEventArgs.PropertyName == nameof(AbstractCharacterSetupInfo.SelectedMetatype))
+            //if (args.PropertyName == nameof(AbstractCharacterSetupInfo.SelectedMetatype))
             //{
 
-                //}
-                //else if(propertyChangedEventArgs.PropertyName == nameof(AbstractCharacterSetupInfo.SelectedMetavariant))
-                //{ }
+            //}
+            //else if(args.PropertyName == nameof(AbstractCharacterSetupInfo.SelectedMetavariant))
+            //{ }
+        }
 
+        //something clever can probably be done here to turn those 5 into one. IDK
+        private void cboHeritage_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            _setupInfo.SelectedHeritage = (GuidItem)cboHeritage.SelectedItem;
+        }
+
+        private void cboAttributes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            _setupInfo.SelectedAttributes = (GuidItem)cboAttributes.SelectedItem;
+        }
+
+        private void cboTalent_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            _setupInfo.SelectedTalent = (GuidItem)cboTalent.SelectedItem;
+        }
+
+        private void cboSkills_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            _setupInfo.SelectedSkills = (GuidItem)cboSkills.SelectedItem;
+        }
+
+        private void cboResources_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            _setupInfo.SelectedResources = (GuidItem)cboResources.SelectedItem;
         }
     }
 }

@@ -38,9 +38,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.cboCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboCategory.FormattingEnabled = true;
-            this.cboCategory.Location = new System.Drawing.Point(3, 3);
+            this.cboCategory.Location = new System.Drawing.Point(0, 0);
             this.cboCategory.Name = "cboCategory";
-            this.cboCategory.Size = new System.Drawing.Size(158, 21);
+            this.cboCategory.Size = new System.Drawing.Size(164, 21);
             this.cboCategory.TabIndex = 7;
             this.cboCategory.SelectedIndexChanged += new System.EventHandler(this.cboCategory_SelectedIndexChanged);
             // 
@@ -50,9 +50,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lstMetatypes.FormattingEnabled = true;
-            this.lstMetatypes.Location = new System.Drawing.Point(4, 31);
+            this.lstMetatypes.Location = new System.Drawing.Point(0, 27);
             this.lstMetatypes.Name = "lstMetatypes";
-            this.lstMetatypes.Size = new System.Drawing.Size(157, 238);
+            this.lstMetatypes.Size = new System.Drawing.Size(164, 264);
             this.lstMetatypes.TabIndex = 8;
             this.lstMetatypes.SelectedIndexChanged += new System.EventHandler(this.lstMetatypes_SelectedIndexChanged);
             // 
@@ -62,8 +62,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.lstMetatypes);
             this.Controls.Add(this.cboCategory);
+            this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "RaceSelector";
-            this.Size = new System.Drawing.Size(164, 273);
+            this.Size = new System.Drawing.Size(164, 293);
             this.ResumeLayout(false);
 
         }

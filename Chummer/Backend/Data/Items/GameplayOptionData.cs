@@ -14,5 +14,6 @@ namespace Chummer.Backend.Data.Items
         public int MaxNuyen { get; set; }
         public int ContactMultiplier { get; set; }
         public bool Default { get; set; }
+        public HashSet<Guid> Entries { get; set; }
     }
 }

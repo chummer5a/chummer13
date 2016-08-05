@@ -20,6 +20,8 @@ namespace Chummer.Backend.Character_Creation
 		private int _maxRating;
 		private bool _ignoreRules;
 
+	    private readonly PriorityTable _priorityTableImplentation;
+
 		private readonly OptionListWrapper<GuidItem> _category = new OptionListWrapper<GuidItem>();
 		private readonly OptionListWrapper<GuidItem> _metatype = new OptionListWrapper<GuidItem>();
 		private readonly OptionListWrapper<GuidItem> _metavariant = new OptionListWrapper<GuidItem>();
@@ -66,15 +68,21 @@ namespace Chummer.Backend.Character_Creation
             _category.AddRange(_dataSource.Categories);
             _category.SelectedItem = _category[0];
 
+            _priorityTableImplentation = new PriorityTable(_dataSource, this, true);
+	        _priorityTableImplentation.HeritageOptions.SelectedItemChangedEvent += selected => NotifyChanged(nameof(SelectedHeritage));
+            _priorityTableImplentation.AttributesOptions.SelectedItemChangedEvent += selected => NotifyChanged(nameof(SelectedAttributes));
+            _priorityTableImplentation.TalentOptions.SelectedItemChangedEvent += selected => NotifyChanged(nameof(SelectedTalent));
+            _priorityTableImplentation.SkillsOptions.SelectedItemChangedEvent += selected => NotifyChanged(nameof(SelectedSkills));
+            _priorityTableImplentation.ResourcesOptions.SelectedItemChangedEvent += selected => NotifyChanged(nameof(SelectedResources));
 
-		}
+        }
 
 	    private void GameplayOptionOnSelectedItemChangedEvent(GuidItem selected)
 	    {
 	        GameplayOptionData option = _dataSource.GameplayOption[selected.Guid];
 	        Karma = option.Karma;
 	        MaxRating = option.MaxAvailability;
-
+            NotifyChanged(nameof(SelectedGameplayOption));
 	    }
 
 	    private void GameplayOptionOnListChangedEvent()
@@ -84,6 +92,7 @@ namespace Chummer.Backend.Character_Creation
 
         private void MetavariantOnSelectedItemChangedEvent(GuidItem selected)
 	    {
+            NotifyChanged(nameof(SelectedMetavariant));
 	        throw new NotImplementedException();
 	    }
 
@@ -94,6 +103,7 @@ namespace Chummer.Backend.Character_Creation
 
 	    private void MetatypeOnSelectedItemChangedEvent(GuidItem selected)
 	    {
+            NotifyChanged(nameof(SelectedMetatype));
 	        //throw new NotImplementedException();
             if(selected == null) return;
 	        
@@ -110,6 +120,7 @@ namespace Chummer.Backend.Character_Creation
 
 	    private void CategoryOnSelectedItemChangedEvent(GuidItem selected)
 	    {
+            NotifyChanged(nameof(SelectedCategory));
             _metatype.ReplaceWith(_dataSource.Metatypes.Where(metatype => metatype.Categoryid == selected.Guid).Select(m => new GuidItem(m.DisplayName, m.Id)));
 	        
 	    }
@@ -213,8 +224,47 @@ namespace Chummer.Backend.Character_Creation
 	        get { return _attributes; }
 	    }
 
+	    public GuidItem SelectedHeritage
+	    {
+            get { return _priorityTableImplentation.HeritageOptions.SelectedItem; }
+	        set { _priorityTableImplentation.HeritageOptions.SelectedItem = value; }
+	    }
 
-	    protected override IEnumerable<CharacterSetupAction> SetupActions()
+	    public IReadOnlyCollection<GuidItem> HeritageList => _priorityTableImplentation.HeritageOptions.ReadOnly;
+
+        public GuidItem SelectedAttributes
+        {
+            get { return _priorityTableImplentation.AttributesOptions.SelectedItem; }
+            set { _priorityTableImplentation.AttributesOptions.SelectedItem = value; }
+        }
+
+        public IReadOnlyCollection<GuidItem> AttributesList => _priorityTableImplentation.AttributesOptions.ReadOnly;
+
+        public GuidItem SelectedTalent
+        {
+            get { return _priorityTableImplentation.TalentOptions.SelectedItem; }
+            set { _priorityTableImplentation.TalentOptions.SelectedItem = value; }
+        }
+
+        public IReadOnlyCollection<GuidItem> TalentList => _priorityTableImplentation.TalentOptions.ReadOnly;
+
+        public GuidItem SelectedSkills
+        {
+            get { return _priorityTableImplentation.SkillsOptions.SelectedItem; }
+            set { _priorityTableImplentation.SkillsOptions.SelectedItem = value; }
+        }
+
+        public IReadOnlyCollection<GuidItem> SkillsList => _priorityTableImplentation.SkillsOptions.ReadOnly;
+
+        public GuidItem SelectedResources
+        {
+            get { return _priorityTableImplentation.ResourcesOptions.SelectedItem; }
+            set { _priorityTableImplentation.ResourcesOptions.SelectedItem = value; }
+        }
+
+        public IReadOnlyCollection<GuidItem> ResourcesList => _priorityTableImplentation.ResourcesOptions.ReadOnly;
+
+        protected override IEnumerable<CharacterSetupAction> SetupActions()
 		{
 			throw new System.NotImplementedException();
 		}
@@ -228,5 +278,9 @@ namespace Chummer.Backend.Character_Creation
 	        }
 	    }
 
+	    private void NotifyChanged([CallerMemberName] string name = "")
+	    {
+            OnPropertyChanged(new PropertyChangedEventArgs(name));
+        }
     }
 }

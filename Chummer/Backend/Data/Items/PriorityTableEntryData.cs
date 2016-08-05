@@ -1,7 +1,6 @@
 using System;
-using System.Collections.Generic;
 
-namespace Chummer.Backend.Character_Creation
+namespace Chummer.Backend.Data.Items
 {
     public class PriorityTableEntryData
     {
@@ -9,7 +8,7 @@ namespace Chummer.Backend.Character_Creation
         public string Name { get; set; }
         public int Value { get; set; }
         public string Category { get; set; }
+        public int Sort { get; set; }
         
-
     }
 }

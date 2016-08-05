@@ -30,7 +30,8 @@ namespace Chummer.Backend.Data.Sources.Xml
                         Karma = int.Parse(x["karma"].InnerText),
                         MaxAvailability = int.Parse(x["maxavailability"].InnerText),
                         MaxNuyen = int.Parse(x["contactmultiplier"].InnerText),
-                        Default = element != null && (element.InnerText == "yes")
+                        Default = x.TryCheckValue("default", "yes"),
+                        Entries = new HashSet<Guid>(x["entries"].ChildNodes.OfType<XmlElement>().Select(q => Guid.Parse(q.InnerText)))
                     };
                 })
                 .ToDictionary(x => x.ItemId));
@@ -38,7 +39,7 @@ namespace Chummer.Backend.Data.Sources.Xml
             XmlDocument priority = XmlManager.Instance.Load("priorities.xml");
 
             PriorityEntries = new DataList<PriorityTableEntryData>(
-                priority.SelectNodes("/chummer/priorities/prioritiy")
+                priority.SelectNodes("/chummer/priorities/priority")
                 .OfType<XmlNode>()
                 .Select(node =>
                 {
@@ -47,7 +48,8 @@ namespace Chummer.Backend.Data.Sources.Xml
                         ItemId = Guid.Parse(node["id"].InnerText),
                         Name = node["name"].Attributes["translate"]?.InnerText ?? node["name"].InnerText,
                         Value = int.Parse(node["value"].InnerText.Split(',').Last()),
-                        Category = node["category"].InnerText
+                        Sort = int.Parse(node["sort"].InnerText),
+                        Category = node["category"].InnerText,
                     };
                 }).ToDictionary(x => x.ItemId));
 
@@ -104,5 +106,7 @@ namespace Chummer.Backend.Data.Sources.Xml
         DataList<GuidItem> Categories { get; }
 
         DataList<MetatypeData> Metatypes { get; }
+
+
     }
 }

@@ -121,7 +121,8 @@
     <Compile Include="Backend\Character Creation\CharacterSetupAction.cs" />
     <Compile Include="Backend\Character Creation\CompiledCharacterSetupInfo.cs" />
     <Compile Include="Backend\Character Creation\PriorityBasedCharacterSetupInfo.cs" />
-    <Compile Include="Backend\Character Creation\PriorityTableEntryData.cs" />
+    <Compile Include="Backend\Character Creation\PriorityTable.cs" />
+    <Compile Include="Backend\Data\Items\PriorityTableEntryData.cs" />
     <Compile Include="Backend\Data\Infrastructure\IChummerDataSource.cs" />
     <Compile Include="Backend\Datastructures\GuidItem.cs" />
     <Compile Include="Backend\Datastructures\OptionListWrapper.cs" />

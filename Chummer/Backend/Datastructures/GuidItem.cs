@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 
 namespace Chummer.Backend.Datastructures
 {
+    [DebuggerDisplay("{DisplayName}")]
 	public class GuidItem
 	{
 		public GuidItem(string displayName) : this(displayName, Guid.NewGuid())

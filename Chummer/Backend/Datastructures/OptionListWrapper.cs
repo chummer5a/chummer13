@@ -36,7 +36,7 @@ namespace Chummer.Backend.Datastructures
 			}
 		}
 
-		public IReadOnlyList<T> ReadOnly => _readonlyLazy ?? (_readonlyLazy = _listImplementation.AsReadOnly());
+        public IReadOnlyList<T> ReadOnly => _readonlyLazy ?? (_readonlyLazy = _listImplementation.AsReadOnly());
 
 		public OptionListWrapper() : this(new List<T>())
 		{
