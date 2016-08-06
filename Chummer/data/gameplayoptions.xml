@@ -143,12 +143,83 @@
 		</gameplayoption>
 		<gameplayoption>
 			<id>b9d5c0ae-0d2c-4e86-9e09-f42a23ab27a6</id>
-			<name>Street Scum</name>
+			<name>Street Scum BCDEE</name>
 			<karma>13</karma>
 			<maxavailability>10</maxavailability>
 			<maxnuyen>5</maxnuyen>
 			<contactmultiplier>3</contactmultiplier>
-      <entries></entries>
+      <entries>
+        <!--Heritage-->
+        <id>325026c2-c14e-4ed6-aecc-e89bbe9fe78e</id>
+        <id>f9aa712d-7140-4ddd-9e88-4a06e8bae222</id>
+        <id>988b7ce3-5739-4300-bc21-a6c92b869262</id>
+        <id>255da2ba-8d21-4a73-9f81-37156901db72</id>
+        <id>91dccab9-c3fc-4868-abf8-1825b70e8a6c</id>
+        <!--Attributes-->
+        <id>c9571337-7644-47f3-9259-615c6dad0c3c</id>
+        <id>521c1f60-f382-479e-af3b-a3eda5201f22</id>
+        <id>0a224d86-d355-4cd6-8e4e-b94e31f97c4b</id>
+        <id>984600d8-5b2f-437c-86eb-693a5bbff030</id>
+        <id>f6a36071-41ab-4f8e-884d-3cee92d8f181</id>
+        <!--Talent-->
+        <id>22f50329-450f-4ac9-916e-f3fe7d201d11</id>
+        <id>774fd89a-ecea-4f5f-ad2b-c4476ca46f70</id>
+        <id>aae3a140-d306-4811-a9d2-874140600150</id>
+        <id>b97be625-a732-4c3c-80e4-06c4d88bac91</id>
+        <id>9753a254-94b0-46e8-83f4-e7627bdb8571</id>
+        <!--Skill-->
+        <id>2cf61272-1d40-4f22-af49-79f0b5fffb74</id>
+        <id>bde37645-6789-4401-bcec-4c0e61c7fe17</id>
+        <id>57c52154-489e-4e8a-b885-13b341700deb</id>
+        <id>61e1758f-e4ca-4e53-ad45-bb88a0e5ac04</id>
+        <id>b1ca5551-46a4-4ef0-9d07-c33ae0abbcd1</id>
+        <!--Resources-->
+        <id>ff9b72c1-8b01-4da2-be47-cc5b89a98996</id>
+        <id>ddb56487-f6ef-480d-9812-cf6077111c2b</id>
+        <id>be69802a-5379-457b-8084-87b22d2e9ea6</id>
+        <id>b977475b-9728-45a0-9873-a77bb036fb99</id>
+        <id>dd4eb137-e218-4d92-9ac2-db4d6bad4704</id>
+      </entries>
 		</gameplayoption>
+    <gameplayoption>
+      <id>f54e6393-1121-4acc-badb-8a4a3ec0262c</id>
+      <name>Street Scum CCDDE</name>
+      <karma>13</karma>
+      <maxavailability>10</maxavailability>
+      <maxnuyen>5</maxnuyen>
+      <contactmultiplier>3</contactmultiplier>
+      <entries>
+        <!--Heritage-->
+        <id>a04e2a28-07d4-41ff-9f90-2e8e2df986c6</id>
+        <id>9cc71397-3b1c-4b64-adcb-27b42152b9dd</id>
+        <id>988b7ce3-5739-4300-bc21-a6c92b869262</id>
+        <id>255da2ba-8d21-4a73-9f81-37156901db72</id>
+        <id>91dccab9-c3fc-4868-abf8-1825b70e8a6c</id>
+        <!--Attributes-->
+        <id>a8c8118d-737b-40b1-bbe7-fd842daea039</id>
+        <id>336af2de-35e8-4959-aa95-a7dfc16e812b</id>
+        <id>0a224d86-d355-4cd6-8e4e-b94e31f97c4b</id>
+        <id>984600d8-5b2f-437c-86eb-693a5bbff030</id>
+        <id>f6a36071-41ab-4f8e-884d-3cee92d8f181</id>
+        <!--Talent-->
+        <id>5fbab1eb-0309-4078-b48b-e12fbc855c6d</id>
+        <id>d2051a9c-dcda-424d-be8d-56b03371957b</id>
+        <id>aae3a140-d306-4811-a9d2-874140600150</id>
+        <id>b97be625-a732-4c3c-80e4-06c4d88bac91</id>
+        <id>9753a254-94b0-46e8-83f4-e7627bdb8571</id>
+        <!--Skill-->
+        <id>9b93924b-5fe6-480b-8ee1-e32c9d8f86ec</id>
+        <id>ba7486f2-dde5-44bc-b93c-bf006095a0f5</id>
+        <id>57c52154-489e-4e8a-b885-13b341700deb</id>
+        <id>61e1758f-e4ca-4e53-ad45-bb88a0e5ac04</id>
+        <id>b1ca5551-46a4-4ef0-9d07-c33ae0abbcd1</id>
+        <!--Resources-->
+        <id>1426e8c5-768a-4a7c-813e-57ce91ccad7e</id>
+        <id>cbca5ad1-82f2-4fcd-ae8d-b1d2d7753774</id>
+        <id>be69802a-5379-457b-8084-87b22d2e9ea6</id>
+        <id>b977475b-9728-45a0-9873-a77bb036fb99</id>
+        <id>dd4eb137-e218-4d92-9ac2-db4d6bad4704</id>
+      </entries>
+    </gameplayoption>
 	</gameplayoptions>
 </chummer>

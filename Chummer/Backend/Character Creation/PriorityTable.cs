@@ -60,7 +60,7 @@ namespace Chummer.Backend.Character_Creation
             var gameplayguid = _setup.SelectedGameplayOption.Guid;
             var option = _data.GameplayOption[gameplayguid];
             var temp =
-                data.PriorityEntries.Where(x => option.Entries.Contains(x.ItemId));
+                data.PriorityEntries.Where(x => option.Entries.Contains(x.ItemId)).OrderByDescending(x => x.Sort);
             foreach (PriorityTableEntryData entry in temp)
             {
                 GuidItem item;

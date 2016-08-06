@@ -27,6 +27,7 @@
 		<category>Resources</category>
 	</categories>
 	<priorities>
+    <!-- Region Standard-->
 		<!-- Region Metatypes-->
 		<priority>
 			<id>55bc32fb-e097-4234-bdd5-a70e4f043b3d</id>
@@ -988,10 +989,8 @@
 				</metatype>
 			</metatypes>
 		</priority>
-		<!-- End Region -->
-		<!-- End Region -->
+		<!-- End Metatypes -->
 		<!-- Region Talents -->
-		<!-- Region Default -->
 		<priority>
 			<id>9d58a295-7c59-4d3f-8001-a5565da6b836</id>
 			<name>A - Magician or Technomancer</name>
@@ -1212,10 +1211,8 @@
 				</talent>
 			</talents>
 		</priority>
-		<!-- End Region -->
-		<!-- End Region -->
+		<!-- End Talents -->
 		<!-- Region Attributes -->
-		<!-- Region Default -->
 		<priority>
 			<id>1c4a7955-1ae1-4a5b-9ed4-5ab8525d13b0</id>
 			<name>A - 24 Attributes</name>
@@ -1256,62 +1253,8 @@
 			<category>Attributes</category>
 			<attributes>12</attributes>
 		</priority>
-		<!-- End Region -->
-		<!-- End Region -->
+		<!-- End Attributes -->
 		<!-- Region Skills -->
-		<!-- Region Street Scum -->
-		<priority>
-			<id>3d9194a1-ea79-46e0-b209-3acf5cb9a995</id>
-			<name>A - 36 Skills/5 Skill Groups</name>
-			<value>A,4</value>
-      <sort>50</sort>
-			<category>Skills</category>
-			<gameplayoption>b9d5c0ae-0d2c-4e86-9e09-f42a23ab27a6</gameplayoption>
-			<skills>36</skills>
-			<skillgroups>5</skillgroups>
-		</priority>
-		<priority>
-			<id>eb49bdef-4127-4634-bc9f-0922915522bf</id>
-			<name>B - 28 Skills/2 Skill Groups</name>
-			<value>B,3</value>
-      <sort>40</sort>
-			<category>Skills</category>
-			<gameplayoption>b9d5c0ae-0d2c-4e86-9e09-f42a23ab27a6</gameplayoption>
-			<skills>28</skills>
-			<skillgroups>2</skillgroups>
-		</priority>
-		<priority>
-			<id>830a6c2f-ec3b-4fc7-b928-de4921ccb5ea</id>
-			<name>C - 22 Skills/0 Skill Groups</name>
-			<value>C,2</value>
-      <sort>30</sort>
-			<category>Skills</category>
-			<gameplayoption>b9d5c0ae-0d2c-4e86-9e09-f42a23ab27a6</gameplayoption>
-			<skills>22</skills>
-			<skillgroups>0</skillgroups>
-		</priority>
-		<priority>
-			<id>c1b74a83-4874-400a-a4d5-2c810a312944</id>
-			<name>D - 18 Skills/0 Skill Groups</name>
-			<value>D,1</value>
-      <sort>20</sort>
-			<category>Skills</category>
-			<gameplayoption>b9d5c0ae-0d2c-4e86-9e09-f42a23ab27a6</gameplayoption>
-			<skills>18</skills>
-			<skillgroups>0</skillgroups>
-		</priority>
-		<priority>
-			<id>ac15704e-30bf-4840-86d8-1da4cb133809</id>
-			<name>E - 18 Skills/0 Skill Groups</name>
-			<value>E,0</value>
-      <sort>10</sort>
-			<category>Skills</category>
-			<gameplayoption>b9d5c0ae-0d2c-4e86-9e09-f42a23ab27a6</gameplayoption>
-			<skills>18</skills>
-			<skillgroups>0</skillgroups>
-		</priority>
-		<!-- End Region -->
-		<!-- Region Default -->
 		<priority>
 			<id>45a5f7b4-c152-4e05-839f-1b3d14e56058</id>
 			<name>A - 46 Skills/10 Skill Groups</name>
@@ -1357,10 +1300,8 @@
 			<skills>18</skills>
 			<skillgroups>0</skillgroups>
 		</priority>
-		<!-- End Region -->
-		<!-- End Region -->
+		<!-- End Skills -->
 		<!-- Region Resources	-->
-		<!-- Region Standard -->
 		<priority>
 			<id>ee17af88-5564-4009-b0a1-4c8632bffaf4</id>
 			<name>A - 450,000¥</name>
@@ -1407,7 +1348,8 @@
 			<resources>6000</resources>
 		</priority>
 		<!-- End Region -->
-		<!-- Region Prime Runner -->
+    <!-- End Standard-->
+		<!-- Region Prime Runner Resources -->
 		<priority>
 			<id>7e4c5695-52c8-4b16-b233-058af14a41d1</id>
 			<name>A - 500,000¥</name>
@@ -1454,7 +1396,7 @@
 			<resources>100000</resources>
 		</priority>
 		<!-- End Region -->
-		<!-- Region Street Level -->
+		<!-- Region Street Level Resources-->
 		<priority>
 			<id>dc72a445-a956-4ea5-b383-0f775c638f05</id>
 			<name>A - 75,000¥</name>
@@ -1501,53 +1443,564 @@
 			<resources>6000</resources>
 		</priority>
 		<!-- End Region	-->
-		<!-- Region Street Scum -->
-		<priority>
-			<id>242f38cb-7625-4cd2-9496-ce8895a5b485</id>
-			<name>A - 50,000¥</name>
-			<value>A,4</value>
-      <sort>50</sort>
-			<gameplayoption>b9d5c0ae-0d2c-4e86-9e09-f42a23ab27a6</gameplayoption>
-			<category>Resources</category>
-			<resources>50000</resources>
-		</priority>
-		<priority>
-			<id>cae768c5-140d-43cf-8a80-f89abdd96a9a</id>
-			<name>B - 25,000¥</name>
-			<value>B,3</value>
-      <sort>40</sort>
-			<gameplayoption>b9d5c0ae-0d2c-4e86-9e09-f42a23ab27a6</gameplayoption>
-			<category>Resources</category>
-			<resources>25000</resources>
-		</priority>
-		<priority>
-			<id>b80c5890-1cce-4f80-8599-bf543da818ae</id>
-			<name>C - 15,000¥</name>
-			<value>C,2</value>
-      <sort>30</sort>
-			<gameplayoption>b9d5c0ae-0d2c-4e86-9e09-f42a23ab27a6</gameplayoption>
-			<category>Resources</category>
-			<resources>15000</resources>
-		</priority>
-		<priority>
-			<id>6d8d3a6f-80fd-4c5c-93fc-ee754f4a44f1</id>
-			<name>D - 15,000¥</name>
-			<value>D,1</value>
-      <sort>20</sort>
-			<gameplayoption>b9d5c0ae-0d2c-4e86-9e09-f42a23ab27a6</gameplayoption>
-			<category>Resources</category>
-			<resources>6000</resources>
-		</priority>
-		<priority>
-			<id>9e0f8c4d-5020-4efe-8f65-6d729ab7138c</id>
-			<name>E - 6,000¥</name>
-			<value>E,0</value>
-      <sort>10</sort>
-			<gameplayoption>b9d5c0ae-0d2c-4e86-9e09-f42a23ab27a6</gameplayoption>
-			<category>Resources</category>
-			<resources>6000</resources>
-		</priority>
-		<!-- End Region	-->
-		<!-- End Region	-->
-	</priorities>
+		<!-- Region Street Scum BCDEE-->
+    <priority>
+      <id>325026c2-c14e-4ed6-aecc-e89bbe9fe78e</id>
+      <name>E - Human</name>
+      <value>4</value>
+      <sort>9</sort>
+      <category>Heritage</category>
+      <metatypes>
+        <metatype>
+          <name>Human</name>
+          <value>1</value>
+          <karma>0</karma>
+          <metavariants>
+            <metavariant>
+              <name>Nartaki</name>
+              <value>1</value>
+              <karma>0</karma>
+            </metavariant>
+            <metavariant>
+              <name>Ghoul</name>
+              <value>1</value>
+              <karma>29</karma>
+            </metavariant>
+            <metavariant>
+              <name>Nosferatu</name>
+              <value>1</value>
+              <karma>48</karma>
+            </metavariant>
+            <metavariant>
+              <name>Vampire</name>
+              <value>1</value>
+              <karma>27</karma>
+            </metavariant>
+            <metavariant>
+              <name>Loup-Garou</name>
+              <value>1</value>
+              <karma>30</karma>
+            </metavariant>
+          </metavariants>
+        </metatype>
+      </metatypes>
+    </priority>
+    <priority>
+      <id>c9571337-7644-47f3-9259-615c6dad0c3c</id>
+      <name>E - 12 Attributes</name>
+      <value>E,4</value>
+      <sort>9</sort>
+      <category>Attributes</category>
+      <attributes>12</attributes>
+    </priority>
+    <priority>
+      <id>22f50329-450f-4ac9-916e-f3fe7d201d11</id>
+      <name>E - Mundane</name>
+      <value>4</value>
+      <sort>9</sort>
+      <category>Talent</category>
+      <talents>
+        <talent>
+          <name>Mundane</name>
+          <value>Mundane</value>
+        </talent>
+      </talents>
+    </priority>
+    <priority>
+      <id>2cf61272-1d40-4f22-af49-79f0b5fffb74</id>
+      <name>E - 18 Skills/0 Skill Groups</name>
+      <value>4</value>
+      <sort>9</sort>
+      <category>Skills</category>
+      <skills>18</skills>
+      <skillgroups>0</skillgroups>
+    </priority>
+    <priority>
+      <id>ff9b72c1-8b01-4da2-be47-cc5b89a98996</id>
+      <name>E - 6,000¥</name>
+      <value>4</value>
+      <sort>9</sort>
+      <gameplayoption>054559be-d80a-42b9-a0a9-d6957d2b3c55</gameplayoption>
+      <category>Resources</category>
+      <resources>6000</resources>
+    </priority>
+    <!-- End Region	-->
+    <!-- Region Screet Scum CCDDE-->
+    <priority>
+      <id>a04e2a28-07d4-41ff-9f90-2e8e2df986c6</id>
+      <name>C - Human, Dwarf, Elf, or Ork</name>
+      <value>C,4</value>
+      <sort>29</sort>
+      <category>Heritage</category>
+      <metatypes>
+        <metatype>
+          <name>Human</name>
+          <value>5</value>
+          <karma>0</karma>
+          <metavariants>
+            <metavariant>
+              <name>Nartaki</name>
+              <value>4</value>
+              <karma>0</karma>
+              <metavariant>
+                <name>Ghoul</name>
+                <value>5</value>
+                <karma>29</karma>
+              </metavariant>
+              <metavariant>
+                <name>Nosferatu</name>
+                <value>5</value>
+                <karma>48</karma>
+              </metavariant>
+              <metavariant>
+                <name>Vampire</name>
+                <value>5</value>
+                <karma>27</karma>
+              </metavariant>
+              <metavariant>
+                <name>Loup-Garou</name>
+                <value>5</value>
+                <karma>30</karma>
+              </metavariant>
+            </metavariant>
+          </metavariants>
+        </metatype>
+        <metatype>
+          <name>Elf</name>
+          <value>3</value>
+          <karma>0</karma>
+          <metavariants>
+            <metavariant>
+              <name>Nocturna</name>
+              <value>3</value>
+              <karma>0</karma>
+            </metavariant>
+            <metavariant>
+              <name>Wakyambi</name>
+              <value>3</value>
+              <karma>12</karma>
+            </metavariant>
+            <metavariant>
+              <name>Xapiri Thëpë</name>
+              <value>3</value>
+              <karma>0</karma>
+            </metavariant>
+            <metavariant>
+              <name>Dryad</name>
+              <value>3</value>
+              <karma>0</karma>
+            </metavariant>
+            <metavariant>
+              <name>Banshee</name>
+              <value>3</value>
+              <karma>32</karma>
+            </metavariant>
+            <metavariant>
+              <name>Harvester</name>
+              <value>3</value>
+              <karma>29</karma>
+            </metavariant>
+            <metavariant>
+              <name>Ghoul</name>
+              <value>3</value>
+              <karma>29</karma>
+            </metavariant>
+          </metavariants>
+        </metatype>
+        <metatype>
+          <name>Dwarf</name>
+          <value>1</value>
+          <karma>0</karma>
+          <metavariants>
+            <metavariant>
+              <name>Gnome</name>
+              <value>1</value>
+              <karma>7</karma>
+            </metavariant>
+            <metavariant>
+              <name>Hanuman</name>
+              <value>1</value>
+              <karma>5</karma>
+            </metavariant>
+            <metavariant>
+              <name>Koborokuru</name>
+              <value>1</value>
+              <karma>0</karma>
+            </metavariant>
+            <metavariant>
+              <name>Menehune</name>
+              <value>1</value>
+              <karma>2</karma>
+            </metavariant>
+            <metavariant>
+              <name>Goblin</name>
+              <value>1</value>
+              <karma>27</karma>
+            </metavariant>
+            <metavariant>
+              <name>Gnawer</name>
+              <value>1</value>
+              <karma>29</karma>
+            </metavariant>
+            <metavariant>
+              <name>Ghoul</name>
+              <value>1</value>
+              <karma>29</karma>
+            </metavariant>
+          </metavariants>
+        </metatype>
+        <metatype>
+          <name>Ork</name>
+          <value>0</value>
+          <karma>0</karma>
+          <metavariants>
+            <metavariant>
+              <name>Ogre</name>
+              <value>0</value>
+              <karma>8</karma>
+            </metavariant>
+            <metavariant>
+              <name>Oni</name>
+              <value>0</value>
+              <karma>-4</karma>
+            </metavariant>
+            <metavariant>
+              <name>Satyr</name>
+              <value>0</value>
+              <karma>10</karma>
+            </metavariant>
+            <metavariant>
+              <name>Hobgoblin</name>
+              <value>0</value>
+              <karma>-5</karma>
+            </metavariant>
+            <metavariant>
+              <name>Wendigo</name>
+              <value>0</value>
+              <karma>47</karma>
+            </metavariant>
+            <metavariant>
+              <name>Grendel</name>
+              <value>0</value>
+              <karma>32</karma>
+            </metavariant>
+            <metavariant>
+              <name>Ghoul</name>
+              <value>0</value>
+              <karma>29</karma>
+            </metavariant>
+          </metavariants>
+        </metatype>
+        <metatype>
+          <name>Centaur</name>
+          <value>0</value>
+          <karma>25</karma>
+        </metatype>
+        <metatype>
+          <name>Naga</name>
+          <value>0</value>
+          <karma>25</karma>
+        </metatype>
+        <metatype>
+          <name>Pixie</name>
+          <value>0</value>
+          <karma>15</karma>
+        </metatype>
+        <metatype>
+          <name>Sasquatch</name>
+          <value>0</value>
+          <karma>20</karma>
+          <metavariants>
+            <metavariant>
+              <name>Ghoul</name>
+              <value>0</value>
+              <karma>49</karma>
+            </metavariant>
+            <metavariant>
+              <name>Bandersnatch</name>
+              <value>0</value>
+              <karma>42</karma>
+            </metavariant>
+          </metavariants>
+        </metatype>
+        <metatype>
+          <name>Shapeshifter: Bovine</name>
+          <value>4</value>
+          <karma>5</karma>
+        </metatype>
+        <metatype>
+          <name>Shapeshifter: Vulpine</name>
+          <value>4</value>
+          <karma>5</karma>
+        </metatype>
+        <metatype>
+          <name>Shapeshifter: Canine</name>
+          <value>3</value>
+          <karma>10</karma>
+        </metatype>
+        <metatype>
+          <name>Shapeshifter: Falconine</name>
+          <value>3</value>
+          <karma>10</karma>
+        </metatype>
+        <metatype>
+          <name>Shapeshifter: Lupine</name>
+          <value>2</value>
+          <karma>15</karma>
+        </metatype>
+        <metatype>
+          <name>Shapeshifter: Equine</name>
+          <value>2</value>
+          <karma>15</karma>
+        </metatype>
+        <metatype>
+          <name>Shapeshifter: Leonine</name>
+          <value>0</value>
+          <karma>20</karma>
+        </metatype>
+        <metatype>
+          <name>Shapeshifter: Ursine</name>
+          <value>0</value>
+          <karma>20</karma>
+        </metatype>
+        <metatype>
+          <name>Shapeshifter: Pantherine</name>
+          <value>0</value>
+          <karma>25</karma>
+        </metatype>
+        <metatype>
+          <name>Shapeshifter: Tigrine</name>
+          <value>0</value>
+          <karma>25</karma>
+        </metatype>
+      </metatypes>
+    </priority>
+    <priority>
+      <id>9cc71397-3b1c-4b64-adcb-27b42152b9dd</id>
+      <name>D - Human or Elf</name>
+      <value>D,3</value>
+      <sort>19</sort>
+      <category>Heritage</category>
+      <metatypes>
+        <metatype>
+          <name>Human</name>
+          <value>3</value>
+          <karma>0</karma>
+          <metavariants>
+            <metavariant>
+              <name>Nartaki</name>
+              <value>2</value>
+              <karma>0</karma>
+            </metavariant>
+            <metavariant>
+              <name>Ghoul</name>
+              <value>3</value>
+              <karma>29</karma>
+            </metavariant>
+            <metavariant>
+              <name>Nosferatu</name>
+              <value>3</value>
+              <karma>48</karma>
+            </metavariant>
+            <metavariant>
+              <name>Vampire</name>
+              <value>3</value>
+              <karma>27</karma>
+            </metavariant>
+            <metavariant>
+              <name>Loup-Garou</name>
+              <value>3</value>
+              <karma>30</karma>
+            </metavariant>
+          </metavariants>
+        </metatype>
+        <metatype>
+          <name>Elf</name>
+          <value>0</value>
+          <karma>0</karma>
+          <metavariants>
+            <metavariant>
+              <name>Nocturna</name>
+              <value>0</value>
+              <karma>0</karma>
+            </metavariant>
+            <metavariant>
+              <name>Wakyambi</name>
+              <value>0</value>
+              <karma>12</karma>
+            </metavariant>
+            <metavariant>
+              <name>Xapiri Thëpë</name>
+              <value>0</value>
+              <karma>0</karma>
+            </metavariant>
+            <metavariant>
+              <name>Dryad</name>
+              <value>0</value>
+              <karma>0</karma>
+            </metavariant>
+            <metavariant>
+              <name>Banshee</name>
+              <value>0</value>
+              <karma>32</karma>
+            </metavariant>
+            <metavariant>
+              <name>Harvester</name>
+              <value>0</value>
+              <karma>29</karma>
+            </metavariant>
+            <metavariant>
+              <name>Ghoul</name>
+              <value>0</value>
+              <karma>29</karma>
+            </metavariant>
+          </metavariants>
+        </metatype>
+      </metatypes>
+    </priority>
+    <priority>
+      <id>a8c8118d-737b-40b1-bbe7-fd842daea039</id>
+      <name>C - 16 Attributes</name>
+      <value>C,4</value>
+      <sort>29</sort>
+      <category>Attributes</category>
+      <attributes>16</attributes>
+    </priority>
+    <priority>
+      <id>336af2de-35e8-4959-aa95-a7dfc16e812b</id>
+      <name>D - 14 Attributes</name>
+      <value>D,3</value>
+      <sort>19</sort>
+      <category>Attributes</category>
+      <attributes>14</attributes>
+    </priority>
+    <priority>
+      <id>5fbab1eb-0309-4078-b48b-e12fbc855c6d</id>
+      <name>C - Adept, Magician, or Technomancer</name>
+      <value>C,4</value>
+      <sort>31</sort>
+      <category>Talent</category>
+      <talents>
+        <talent>
+          <name>Adept - 4 Magic</name>
+          <value>Adept</value>
+          <qualities>
+            <quality>Adept</quality>
+          </qualities>
+          <magic>4</magic>
+          <skillqty>1</skillqty>
+          <skillval>2</skillval>
+          <skilltype>active</skilltype>
+        </talent>
+        <talent>
+          <name>Magician - 3 Magic/5 Spells</name>
+          <value>Magician</value>
+          <qualities>
+            <quality>Magician</quality>
+          </qualities>
+          <magic>3</magic>
+          <spells>5</spells>
+        </talent>
+        <talent>
+          <name>Mystic Adept - 3 Magic/5 Spells</name>
+          <value>Mystic Adept</value>
+          <qualities>
+            <quality>Mystic Adept</quality>
+          </qualities>
+          <magic>3</magic>
+          <spells>5</spells>
+        </talent>
+        <talent>
+          <name>Aspected Magician - 3 Magic</name>
+          <value>Aspected Magician</value>
+          <qualities>
+            <quality>Aspected Magician</quality>
+          </qualities>
+          <skillgroupchoices>
+            <skillgroup>Conjuring</skillgroup>
+            <skillgroup>Enchanting</skillgroup>
+            <skillgroup>Sorcery</skillgroup>
+          </skillgroupchoices>
+          <magic>3</magic>
+          <skillgroupqty>1</skillgroupqty>
+          <skillgroupval>2</skillgroupval>
+          <skillgrouptype>magic</skillgrouptype>
+        </talent>
+        <talent>
+          <name>Technomancer - 3 Resonance/1 Complex Forms</name>
+          <value>Technomancer</value>
+          <qualities>
+            <quality>Technomancer</quality>
+          </qualities>
+          <resonance>3</resonance>
+          <cfp>1</cfp>
+        </talent>
+      </talents>
+    </priority>
+    <priority>
+      <id>d2051a9c-dcda-424d-be8d-56b03371957b</id>
+      <name>D - Adept or Aspected Magician</name>
+      <value>D,3</value>
+      <sort>21</sort>
+      <category>Talent</category>
+      <talents>
+        <talent>
+          <name>Adept - 2 Magic</name>
+          <value>Adept</value>
+          <qualities>
+            <quality>Adept</quality>
+          </qualities>
+          <magic>2</magic>
+        </talent>
+        <talent>
+          <name>Aspected Magician - 2 Magic</name>
+          <value>Aspected Magician</value>
+          <qualities>
+            <quality>Aspected Magician</quality>
+          </qualities>
+          <magic>2</magic>
+          <skillgroupqty>1</skillgroupqty>
+          <skillgroupval>0</skillgroupval>
+        </talent>
+      </talents>
+    </priority>
+    <priority>
+      <id>9b93924b-5fe6-480b-8ee1-e32c9d8f86ec</id>
+      <name>C - 28 Skills/2 Skill Groups</name>
+      <value>C,4</value>
+      <sort>29</sort>
+      <category>Skills</category>
+      <skills>28</skills>
+      <skillgroups>2</skillgroups>
+    </priority>
+    <priority>
+      <id>ba7486f2-dde5-44bc-b93c-bf006095a0f5</id>
+      <name>D - 22 Skills/0 Skill Groups</name>
+      <value>D,3</value>
+      <sort>19</sort>
+      <category>Skills</category>
+      <skills>22</skills>
+      <skillgroups>0</skillgroups>
+    </priority>
+    <priority>
+      <id>1426e8c5-768a-4a7c-813e-57ce91ccad7e</id>
+      <name>C - 140,000¥</name>
+      <value>C,4</value>
+      <sort>29</sort>
+      <gameplayoption>054559be-d80a-42b9-a0a9-d6957d2b3c55</gameplayoption>
+      <category>Resources</category>
+      <resources>140000</resources>
+    </priority>
+    <priority>
+      <id>cbca5ad1-82f2-4fcd-ae8d-b1d2d7753774</id>
+      <name>D - 50,000¥</name>
+      <value>D,3</value>
+      <sort>19</sort>
+      <gameplayoption>054559be-d80a-42b9-a0a9-d6957d2b3c55</gameplayoption>
+      <category>Resources</category>
+      <resources>50000</resources>
+    </priority>
+
+    <!-- End Region-->
+    </priorities>
 </chummer>
