@@ -50,14 +50,34 @@ namespace Chummer.Backend.Data.Sources.Xml
                         Value = int.Parse(node["value"].InnerText.Split(',').Last()),
                         Sort = int.Parse(node["sort"].InnerText),
                         Category = node["category"].InnerText,
+                        PickId = Guid.Parse(node["pickid"].InnerText)
                     };
                 }).ToDictionary(x => x.ItemId));
+
+
+            Picks =
+                new DataList<PickData>(
+                    priority.SelectNodes("/chummer/picks/pick")
+                        .OfType<XmlNode>()
+                        .Select(
+                            node =>
+                                new PickData(
+                                    Guid.Parse(node["id"].InnerText),
+                                    node["heritages"].ChildNodes.OfType<XmlNode>()
+                                        .Select(
+                                            child =>
+                                                new HeritageData(
+                                                    Guid.Parse(child["hid"].InnerText),
+                                                    int.Parse(child["special"].InnerText),
+                                                    int.Parse(child["karma"].InnerText)))
+                                        .ToList()))
+                        .ToDictionary(x => x.Id));
 
 
             XmlDocument metatypes = XmlManager.Instance.Load("metatypes.xml");
 
             Metatypes =
-                new DataList<MetatypeData>(metatypes.SelectNodes("/chummer/races/race").OfType<XmlNode>().Select(
+                new DataList<MetatypeData>(metatypes.SelectNodes("/chummer/heritages/heritage").OfType<XmlNode>().Select(
                     node =>
                         new MetatypeData(Guid.Parse(node["id"].InnerText),
                             node["name"].Attributes["translate"]?.InnerText ?? node["name"].InnerText,
@@ -95,6 +115,8 @@ namespace Chummer.Backend.Data.Sources.Xml
         public DataList<GuidItem> Categories { get; }
 
         public DataList<MetatypeData> Metatypes { get; }
+
+        public DataList<PickData> Picks { get; }
     }
 
     interface ICreationData
@@ -107,6 +129,6 @@ namespace Chummer.Backend.Data.Sources.Xml
 
         DataList<MetatypeData> Metatypes { get; }
 
-
+        DataList<PickData> Picks { get; }
     }
 }

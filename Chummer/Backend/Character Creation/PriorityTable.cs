@@ -49,70 +49,50 @@ namespace Chummer.Backend.Character_Creation
 
         }
 
+        class _pair
+        {
+            public GuidItem Item;
+            public List<GuidItem> List = new List<GuidItem>();
+            public int I;
+        }
+
         private void SetupTable(ICreationData data)
         {
-            foreach (var optionList in _allOptions)
-            {
-                optionList.Clear();
-            }
             _guidCostMap.Clear();
 
             var gameplayguid = _setup.SelectedGameplayOption.Guid;
             var option = _data.GameplayOption[gameplayguid];
-            var temp =
-                data.PriorityEntries.Where(x => option.Entries.Contains(x.ItemId)).OrderByDescending(x => x.Sort);
-            foreach (PriorityTableEntryData entry in temp)
+            Dictionary<string, _pair> things = new Dictionary<string, _pair>
             {
-                GuidItem item;
-                switch (entry.Category)
-                {
-                    case "Heritage":
-                        item = new GuidItem(entry.Name, entry.ItemId);
-                        HeritageOptions.Add(item);
-                        if (_selected[0] == entry.Value)
-                        {
-                            HeritageOptions.SelectedItem = item;
-                        }
-                        break;
-                    case "Attributes":
-                        item = new GuidItem(entry.Name, entry.ItemId);
-                        AttributesOptions.Add(item);
-                        if (_selected[1] == entry.Value)
-                        {
-                            AttributesOptions.SelectedItem = item;
-                        }
-                        break;
-                    case "Talent":
-                        item = new GuidItem(entry.Name, entry.ItemId);
-                        TalentOptions.Add(item);
-                        if (_selected[2] == entry.Value)
-                        {
-                            TalentOptions.SelectedItem = item;
-                        }
-                        break;
-                    case "Skills":
-                        item = new GuidItem(entry.Name, entry.ItemId);
-                        SkillsOptions.Add(item);
-                        if (_selected[3] == entry.Value)
-                        {
-                            SkillsOptions.SelectedItem = item;
-                        }
-                        break;
-                    case "Resources":
-                        item = new GuidItem(entry.Name, entry.ItemId);
-                        ResourcesOptions.Add(item);
-                        if (_selected[4] == entry.Value)
-                        {
-                            ResourcesOptions.SelectedItem = item;
-                        }
-                        break;
-                    default:
-                        Utils.BreakIfDebug();
-                        break;
-                }
+                {"Heritage", new _pair {I = 4} },
+                { "Attributes", new _pair{I = 3}},
+                { "Talent", new _pair{I = 2}},
+                { "Skills", new _pair{I = 1}},
+                { "Resources", new _pair{I = 0}}
+            };
 
+            foreach (PriorityTableEntryData entry in
+                    data.PriorityEntries
+                    .Where(x => option.Entries.Contains(x.ItemId))
+                    .OrderByDescending(x => x.Sort))
+            {
+                GuidItem item = new GuidItem(entry.Name, entry.ItemId);
+                _pair p = things[entry.Category];
+                p.List.Add(item);
+                if (p.I == entry.Value)
+                {
+                    p.Item = item;
+                }
                 _guidCostMap.Add(entry.ItemId, entry.Value);
             }
+
+            var v = things.OrderByDescending(x => x.Value.I).Select(x => x.Value).ToList();
+            for (int i = 0; i < 5; i++)
+            {
+                _allOptions[i].ReplaceWith(v[i].List);
+                _allOptions[i].SelectedItem = v[i].Item;
+            }
+
         }
 
         private void SetupOnPropertyChanged(object sender, PropertyChangedEventArgs propertyChangedEventArgs)

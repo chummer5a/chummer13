@@ -18,7 +18,7 @@ namespace Chummer.UI.Character_Creation
         public PriorityBuildSelector()
         {
             InitializeComponent();
-
+            LanguageManager.Instance.Load(GlobalOptions.Instance.Language, this);
         }
 
         public PriorityBasedCharacterSetupInfo SetupInfo

@@ -109,7 +109,8 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(164, 23);
             this.label1.TabIndex = 7;
-            this.label1.Text = "label1";
+            this.label1.Tag = "Label_PriorityHeritage";
+            this.label1.Text = "[Heritage]";
             // 
             // label2
             // 
@@ -117,7 +118,8 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(164, 23);
             this.label2.TabIndex = 8;
-            this.label2.Text = "label2";
+            this.label2.Tag = "Label_PriorityAttributes";
+            this.label2.Text = "[Attributes]";
             // 
             // label3
             // 
@@ -125,7 +127,8 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(164, 23);
             this.label3.TabIndex = 9;
-            this.label3.Text = "label3";
+            this.label3.Tag = "Label_PriorityTalent";
+            this.label3.Text = "[Talent]";
             // 
             // label4
             // 
@@ -133,7 +136,8 @@
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(164, 23);
             this.label4.TabIndex = 10;
-            this.label4.Text = "label4";
+            this.label4.Tag = "Label_PrioritySkills";
+            this.label4.Text = "[Skills]";
             // 
             // label5
             // 
@@ -141,10 +145,13 @@
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(164, 23);
             this.label5.TabIndex = 11;
-            this.label5.Text = "label5";
+            this.label5.Tag = "Label_PriorityResources";
+            this.label5.Text = "[Resources]";
             // 
             // cboTalentSelection
             // 
+            this.cboTalentSelection.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.cboTalentSelection.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboTalentSelection.FormattingEnabled = true;
             this.cboTalentSelection.Location = new System.Drawing.Point(173, 139);

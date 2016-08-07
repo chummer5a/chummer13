@@ -39,8 +39,10 @@ namespace Chummer.Backend.Character_Creation
 
 	    internal PriorityBasedCharacterSetupInfo(ICreationData dataSource)
 		{
-	        _dataSource = dataSource;
-	        _category.ListChangedEvent += CategoryOnListChangedEvent;
+            _dataSource = dataSource;
+
+            
+            _category.ListChangedEvent += CategoryOnListChangedEvent;
             _category.SelectedItemChangedEvent += CategoryOnSelectedItemChangedEvent;
 
             _metatype.ListChangedEvent += MetatypeOnListChangedEvent;
@@ -52,30 +54,65 @@ namespace Chummer.Backend.Character_Creation
             _gameplayOption.ListChangedEvent += GameplayOptionOnListChangedEvent;
             _gameplayOption.SelectedItemChangedEvent += GameplayOptionOnSelectedItemChangedEvent;
 
-            _dataSource = dataSource;
-
-		    foreach (GameplayOptionData data in _dataSource.GameplayOption)
-		    {
-		        GuidItem item = new GuidItem(data.DisplayName, data.ItemId);
+            
+            
+            foreach (GameplayOptionData data in _dataSource.GameplayOption)
+            {
+                GuidItem item = new GuidItem(data.DisplayName, data.ItemId);
                 _gameplayOption.Add(item);
 
-		        if (data.Default)
-		        {
-		            _gameplayOption.SelectedItem = item;
-		        }
-		    }
-
-            _category.AddRange(_dataSource.Categories);
-            _category.SelectedItem = _category[0];
+                if (data.Default)
+                {
+                    _gameplayOption.SelectedItem = item;
+                }
+            }
 
             _priorityTableImplentation = new PriorityTable(_dataSource, this, true);
-	        _priorityTableImplentation.HeritageOptions.SelectedItemChangedEvent += selected => NotifyChanged(nameof(SelectedHeritage));
-            _priorityTableImplentation.AttributesOptions.SelectedItemChangedEvent += selected => NotifyChanged(nameof(SelectedAttributes));
-            _priorityTableImplentation.TalentOptions.SelectedItemChangedEvent += selected => NotifyChanged(nameof(SelectedTalent));
-            _priorityTableImplentation.SkillsOptions.SelectedItemChangedEvent += selected => NotifyChanged(nameof(SelectedSkills));
-            _priorityTableImplentation.ResourcesOptions.SelectedItemChangedEvent += selected => NotifyChanged(nameof(SelectedResources));
+            _priorityTableImplentation.HeritageOptions.SelectedItemChangedEvent += selected =>
+            {
+                UpdateMetatypes();
+                NotifyChanged(nameof(SelectedHeritage));
+            };
+            _priorityTableImplentation.AttributesOptions.SelectedItemChangedEvent += selected =>
+            {
+                NotifyChanged(nameof(SelectedAttributes));
+            };
+            _priorityTableImplentation.TalentOptions.SelectedItemChangedEvent += selected =>
+            {
+                NotifyChanged(nameof(SelectedTalent));
+            };
+            _priorityTableImplentation.SkillsOptions.SelectedItemChangedEvent += selected =>
+            {
+                NotifyChanged(nameof(SelectedSkills));
+            };
+            _priorityTableImplentation.ResourcesOptions.SelectedItemChangedEvent += selected =>
+            {
+                NotifyChanged(nameof(SelectedResources));
+            };
+
+            _category.AddRange(_dataSource.Categories);
 
         }
+
+        private void UpdateMetatypes()
+	    {
+            //this would be somewhat easy to change to get all selected. 
+	        List<HeritageData> data = HeritagesList();
+	        
+	        _metatype.ReplaceWith(
+	            data.Select(x => _dataSource.Metatypes[x.Metatype])
+	                .Where(m => m.Parrent == Guid.Empty && m.Categoryid == SelectedCategory.Guid)
+	                .Select(x => new GuidItem(x.DisplayName, x.Id)));
+
+            //Update metavariants that is visible (rmbr "None") 
+            //Make OptionWraper more inteligent about events and make sure things don't update more often than required
+	        //throw new NotImplementedException();
+	    }
+
+	    private List<HeritageData> HeritagesList()
+	    {
+	        return _dataSource.Picks[_dataSource.PriorityEntries[SelectedHeritage.Guid].PickId].Heritages;
+	    }
 
 	    private void GameplayOptionOnSelectedItemChangedEvent(GuidItem selected)
 	    {
@@ -121,8 +158,8 @@ namespace Chummer.Backend.Character_Creation
 	    private void CategoryOnSelectedItemChangedEvent(GuidItem selected)
 	    {
             NotifyChanged(nameof(SelectedCategory));
-            _metatype.ReplaceWith(_dataSource.Metatypes.Where(metatype => metatype.Categoryid == selected.Guid).Select(m => new GuidItem(m.DisplayName, m.Id)));
-	        
+            //_metatype.ReplaceWith(_dataSource.Metatypes.Where(metatype => metatype.Categoryid == selected.Guid).Select(m => new GuidItem(m.DisplayName, m.Id)));
+	        UpdateMetatypes();
 	    }
 
 	    private void CategoryOnListChangedEvent()

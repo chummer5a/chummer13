@@ -21,20 +21,23 @@ namespace Chummer.Backend.Datastructures
 
 		public T SelectedItem
 		{
-			get { return _selectedItem; }
-			set
+		    get
+		    {
+                return _selectedItem;
+		    }
+            set
 			{
-				if (Contains(value))
-				{
-					_selectedItem = value;
-					SelectedItemChangedEvent?.Invoke(value);
-				}
-				else
-				{
-					throw new InvalidOperationException("This item does not exist in the collection of options");
-				}
-			}
-		}
+			    if (_listImplementation.Contains(value))
+			    {
+			        _selectedItem = value;
+                    SelectedItemChangedEvent?.Invoke(value);
+			    }
+			    else
+			    {
+			        throw new InvalidOperationException("Value not in list of Values");
+			    }
+            }
+        }
 
         public IReadOnlyList<T> ReadOnly => _readonlyLazy ?? (_readonlyLazy = _listImplementation.AsReadOnly());
 
@@ -60,33 +63,65 @@ namespace Chummer.Backend.Datastructures
 
 		public void Add(T item)
 		{
-			_listImplementation.Add(item);
-			ListChangedEvent?.Invoke();
-		}
-
-	    public void AddRange(IEnumerable<T> items)
-	    {
-            _listImplementation.AddRange(items);
+		    int count = _listImplementation.Count;
+            _listImplementation.Add(item);
             ListChangedEvent?.Invoke();
+		    if (count == 0)
+		    {
+		        SelectedItem = _listImplementation[0];
+                SelectedItemChangedEvent?.Invoke(SelectedItem);
+		    }
         }
 
-		public void Clear()
+        public void AddRange(IEnumerable<T> items)
+	    {
+            int count = _listImplementation.Count;
+            _listImplementation.AddRange(items);
+            ListChangedEvent?.Invoke();
+            if (count == 0)
+            {
+                SelectedItem = _listImplementation[0];
+                SelectedItemChangedEvent?.Invoke(SelectedItem);
+            }
+
+        }
+
+        public void Clear()
 		{
-			_listImplementation.Clear();
-			ListChangedEvent?.Invoke();
+            _listImplementation.Clear();
+            _selectedItem = default(T);
+            ListChangedEvent?.Invoke();
+            SelectedItemChangedEvent?.Invoke(SelectedItem);
+
 		}
 
-	    public void ReplaceWith(IEnumerable<T> items)
+        public void ReplaceWith(IEnumerable<T> items)
 	    {
-	        _listImplementation.Clear();
-	        _listImplementation.AddRange(items);
-
-            _selectedItem = default(T); //Not sure if first would be better
+            _listImplementation.Clear();
+            _listImplementation.AddRange(items);
             ListChangedEvent?.Invoke();
-            SelectedItemChangedEvent?.Invoke(_selectedItem);
+            if (!_listImplementation.Contains(_selectedItem))
+            {
+                FindNewSelected();
+            }
+
+        }
+
+	    private void FindNewSelected()
+	    {
+	        if (_listImplementation.Count > 0)
+	        {
+	            SelectedItem = _listImplementation[0];
+	            SelectedItemChangedEvent?.Invoke(SelectedItem);
+	        }
+	        else
+	        {
+	            _selectedItem = default(T);
+	            SelectedItemChangedEvent?.Invoke(_selectedItem);
+	        }
 	    }
 
-		public bool Contains(T item)
+	    public bool Contains(T item)
 		{
 			return _listImplementation.Contains(item);
 		}
@@ -98,18 +133,17 @@ namespace Chummer.Backend.Datastructures
 
 		public bool Remove(T item)
 		{
-			bool sucess = _listImplementation.Remove(item);
-			ListChangedEvent?.Invoke();
+		    bool same = (item != null && item.Equals(SelectedItem)) || (item == null && SelectedItem == null);
+		    bool ret = _listImplementation.Remove(item);
+            if(same) FindNewSelected();
 
-			return sucess;
+            ListChangedEvent?.Invoke();
+            return ret;
 		}
 
-		public int Count
-		{
-			get { return _listImplementation.Count; }
-		}
+		public int Count => _listImplementation.Count;
 
-		public bool IsReadOnly => (_listImplementation as IList<T>).IsReadOnly;
+	    public bool IsReadOnly => (_listImplementation as IList<T>).IsReadOnly;
 
 		public int IndexOf(T item)
 		{
@@ -118,24 +152,30 @@ namespace Chummer.Backend.Datastructures
 
 		public void Insert(int index, T item)
 		{
-			_listImplementation.Insert(index, item);
-			ListChangedEvent?.Invoke();
+            _listImplementation.Insert(index, item);
+		    if (_listImplementation.Count == 1)
+		    {
+		        SelectedItem = _listImplementation[0];
+                SelectedItemChangedEvent?.Invoke(SelectedItem);
+		    }
+            ListChangedEvent?.Invoke();
+
 		}
 
-		public void RemoveAt(int index)
+        public void RemoveAt(int index)
 		{
-			_listImplementation.RemoveAt(index);
-			ListChangedEvent?.Invoke();
-		}
+            throw new NotImplementedException();
 
-		public T this[int index]
+        }
+
+        public T this[int index]
 		{
 			get { return _listImplementation[index]; }
 			set
 			{
-				_listImplementation[index] = value;
-				ListChangedEvent?.Invoke();
-			}
-		}
+                throw new NotImplementedException();
+
+            }
+        }
 	}
 }

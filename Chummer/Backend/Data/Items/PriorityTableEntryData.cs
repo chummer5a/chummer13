@@ -9,6 +9,6 @@ namespace Chummer.Backend.Data.Items
         public int Value { get; set; }
         public string Category { get; set; }
         public int Sort { get; set; }
-        
+        public Guid PickId { get; set; }
     }
 }

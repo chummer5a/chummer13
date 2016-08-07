@@ -22,6 +22,7 @@ namespace Chummer.Backend.Data.Items
         }
 
         public Guid Id { get; }
+        public Guid Parrent { get; } = Guid.Empty;
         public string DisplayName { get; }
         public int Karma { get; }
         public Guid Categoryid { get; }

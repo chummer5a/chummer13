@@ -35,295 +35,7 @@
 			<value>A,4</value>
       <sort>50</sort>
 			<category>Heritage</category>
-			<metatypes>
-				<metatype>
-					<name>E-Ghost</name>
-					<value>9</value>
-					<karma>0</karma>
-				</metatype>
-				<metatype>
-					<name>Human</name>
-					<value>9</value>
-					<karma>0</karma>
-					<metavariants>
-						<metavariant>
-							<name>Nartaki</name>
-							<value>8</value>
-							<karma>0</karma>
-						</metavariant>
-						<metavariant>
-							<name>Ghoul</name>
-							<value>9</value>
-							<karma>29</karma>
-						</metavariant>
-						<metavariant>
-							<name>Nosferatu</name>
-							<value>9</value>
-							<karma>48</karma>
-						</metavariant>
-						<metavariant>
-							<name>Vampire</name>
-							<value>9</value>
-							<karma>27</karma>
-						</metavariant>
-						<metavariant>
-							<name>Loup-Garou</name>
-							<value>9</value>
-							<karma>30</karma>
-						</metavariant>
-					</metavariants>		  
-				</metatype>
-				<metatype>
-					<name>Elf</name>
-					<value>8</value>
-					<karma>0</karma>
-					<metavariants>
-						<metavariant>
-							<name>Dryad</name>
-							<value>8</value>
-							<karma>0</karma>
-						</metavariant>	
-						<metavariant>
-							<name>Nocturna</name>
-							<value>8</value>
-							<karma>0</karma>
-						</metavariant>
-						<metavariant>
-							<name>Wakyambi</name>
-							<value>8</value>
-							<karma>12</karma>
-						</metavariant>
-						<metavariant>
-							<name>Xapiri Thëpë</name>
-							<value>8</value>
-							<karma>0</karma>
-						</metavariant>
-						<metavariant>
-							<name>Banshee</name>
-							<value>8</value>
-							<karma>32</karma>
-						</metavariant>
-						<metavariant>
-							<name>Harvester</name>
-							<value>8</value>
-							<karma>29</karma>
-						</metavariant>
-						<metavariant>
-							<name>Ghoul</name>
-							<value>8</value>
-							<karma>29</karma>
-						</metavariant>
-					</metavariants>		  
-				</metatype>				
-				<metatype>
-					<name>Dwarf</name>
-					<value>7</value>
-					<karma>0</karma>
-					<metavariants>
-						<metavariant>
-							<name>Gnome</name>
-							<value>7</value>
-							<karma>7</karma>
-						</metavariant>
-						<metavariant>
-							<name>Hanuman</name>
-							<value>7</value>
-							<karma>5</karma>
-						</metavariant>
-						<metavariant>
-							<name>Koborokuru</name>
-							<value>7</value>
-							<karma>0</karma>
-						</metavariant>
-						<metavariant>
-							<name>Menehune</name>
-							<value>7</value>
-							<karma>2</karma>
-						</metavariant>
-						<metavariant>
-							<name>Goblin</name>
-							<value>7</value>
-							<karma>27</karma>
-						</metavariant>
-						<metavariant>
-							<name>Gnawer</name>
-							<value>7</value>
-							<karma>29</karma>
-						</metavariant>
-						<metavariant>
-							<name>Ghoul</name>
-							<value>7</value>
-							<karma>29</karma>
-						</metavariant>
-					</metavariants>		  
-				</metatype>
-				<metatype>
-					<name>Ork</name>
-					<value>7</value>
-					<karma>0</karma>
-					<metavariants>
-						<metavariant>
-							<name>Hobgoblin</name>
-							<value>7</value>
-							<karma>5</karma>
-						</metavariant>	
-						<metavariant>
-							<name>Ogre</name>
-							<value>7</value>
-							<karma>8</karma>
-						</metavariant>
-						<metavariant>
-							<name>Oni</name>
-							<value>7</value>
-							<karma>4</karma>
-						</metavariant>
-						<metavariant>
-							<name>Satyr</name>
-							<value>7</value>
-							<karma>10</karma>
-						</metavariant>
-						<metavariant>
-							<name>Wendigo</name>
-							<value>7</value>
-							<karma>47</karma>
-						</metavariant>
-						<metavariant>
-							<name>Grendel</name>
-							<value>7</value>
-							<karma>32</karma>
-						</metavariant>
-						<metavariant>
-							<name>Ghoul</name>
-							<value>7</value>
-							<karma>29</karma>
-						</metavariant>
-					</metavariants>		  
-				</metatype>
-				<metatype>
-					<name>Troll</name>
-					<value>5</value>
-					<karma>0</karma>
-					<metavariants>
-						<metavariant>
-							<name>Cyclopean</name>
-							<value>5</value>
-							<karma>2</karma>
-						</metavariant>
-						<metavariant>
-							<name>Fomorian</name>
-							<value>5</value>
-							<karma>12</karma>
-						</metavariant>
-						<metavariant>
-							<name>Giant</name>
-							<value>5</value>
-							<karma>2</karma>
-						</metavariant>
-						<metavariant>
-							<name>Minotaur</name>
-							<value>5</value>
-							<karma>2</karma>
-						</metavariant>
-						<metavariant>
-							<name>Dzoo-Noo-Qua</name>
-							<value>5</value>
-							<karma>43</karma>
-						</metavariant>
-						<metavariant>
-							<name>Fomóraig</name>
-							<value>5</value>
-							<karma>22</karma>
-						</metavariant>
-						<metavariant>
-							<name>Ghoul</name>
-							<value>5</value>
-							<karma>29</karma>
-						</metavariant>
-					</metavariants>		  
-				</metatype>
-				<metatype>
-					<name>Centaur</name>
-					<value>6</value>
-					<karma>25</karma>					
-				</metatype>		
-				<metatype>
-					<name>Naga</name>
-					<value>4</value>
-					<karma>25</karma>					
-				</metatype>
-				<metatype>
-					<name>Pixie</name>
-					<value>6</value>	
-					<karma>15</karma>					
-				</metatype>
-				<metatype>
-					<name>Sasquatch</name>
-					<value>5</value>	
-					<karma>20</karma>
-					<metavariants>
-						<metavariant>
-							<name>Ghoul</name>
-							<value>5</value>
-							<karma>49</karma>
-						</metavariant>
-						<metavariant>
-							<name>Bandersnatch</name>
-							<value>5</value>
-							<karma>42</karma>
-						</metavariant>
-					</metavariants>	
-				</metatype>	
-				<metatype>
-					<name>Shapeshifter: Bovine</name>
-					<value>8</value>	
-					<karma>5</karma>		  
-				</metatype>
-				<metatype>
-					<name>Shapeshifter: Vulpine</name>
-					<value>8</value>
-					<karma>5</karma>		  
-				</metatype>
-				<metatype>
-					<name>Shapeshifter: Canine</name>
-					<value>7</value>	
-					<karma>10</karma>		  
-				</metatype>
-				<metatype>
-					<name>Shapeshifter: Falconine</name>
-					<value>7</value>	
-					<karma>10</karma>		  
-				</metatype>
-				<metatype>
-					<name>Shapeshifter: Lupine</name>
-					<value>6</value>		
-					<karma>15</karma>		  
-				</metatype>
-				<metatype>
-					<name>Shapeshifter: Equine</name>
-					<value>6</value>		
-					<karma>15</karma>		  
-				</metatype>
-				<metatype>
-					<name>Shapeshifter: Leonine</name>
-					<value>4</value>	
-					<karma>20</karma>		  
-				</metatype>
-				<metatype>
-					<name>Shapeshifter: Ursine</name>
-					<value>4</value>	
-					<karma>20</karma>		  
-				</metatype>
-				<metatype>
-					<name>Shapeshifter: Pantherine</name>
-					<value>4</value>		  
-					<karma>25</karma>
-				</metatype>
-				<metatype>
-					<name>Shapeshifter: Tigrine</name>
-					<value>4</value>		  		
-					<karma>25</karma>
-				</metatype> 				
-			</metatypes>
+      <pickid>3a03963e-9ecd-4e6a-b4ac-d9c995d7e035</pickid>
 		</priority>
 		<priority>
 			<id>f9aa712d-7140-4ddd-9e88-4a06e8bae222</id>
@@ -331,290 +43,7 @@
 			<value>B,3</value>
       <sort>40</sort>
 			<category>Heritage</category>
-			<metatypes>
-				<metatype>
-					<name>Human</name>
-					<value>7</value>
-					<karma>0</karma>
-					<metavariants>
-						<metavariant>
-							<name>Nartaki</name>
-							<value>6</value>
-							<karma>0</karma>
-						</metavariant>
-						<metavariant>
-							<name>Ghoul</name>
-							<value>7</value>
-							<karma>29</karma>
-						</metavariant>
-						<metavariant>
-							<name>Nosferatu</name>
-							<value>7</value>
-							<karma>48</karma>
-						</metavariant>
-						<metavariant>
-							<name>Vampire</name>
-							<value>7</value>
-							<karma>27</karma>
-						</metavariant>
-						<metavariant>
-							<name>Loup-Garou</name>
-							<value>7</value>
-							<karma>30</karma>
-						</metavariant>
-					</metavariants>		  
-				</metatype>
-				<metatype>
-					<name>Elf</name>
-					<value>6</value>
-					<karma>0</karma>
-					<metavariants>
-						<metavariant>
-							<name>Nocturna</name>
-							<value>6</value>
-							<karma>0</karma>
-						</metavariant>
-						<metavariant>
-							<name>Wakyambi</name>
-							<value>6</value>
-							<karma>12</karma>
-						</metavariant>
-						<metavariant>
-							<name>Xapiri Thëpë</name>
-							<value>6</value>
-							<karma>0</karma>
-						</metavariant>
-						<metavariant>
-							<name>Dryad</name>
-							<value>6</value>
-							<karma>0</karma>
-						</metavariant>
-						<metavariant>
-							<name>Banshee</name>
-							<value>6</value>
-							<karma>32</karma>
-						</metavariant>
-						<metavariant>
-							<name>Harvester</name>
-							<value>6</value>
-							<karma>29</karma>
-						</metavariant>
-						<metavariant>
-							<name>Ghoul</name>
-							<value>6</value>
-							<karma>29</karma>
-						</metavariant>
-					</metavariants>		  
-				</metatype>				
-				<metatype>
-					<name>Dwarf</name>
-					<value>4</value>
-					<karma>0</karma>
-					<metavariants>
-						<metavariant>
-							<name>Gnome</name>
-							<value>4</value>
-							<karma>7</karma>
-						</metavariant>
-						<metavariant>
-							<name>Hanuman</name>
-							<value>4</value>
-							<karma>5</karma>
-						</metavariant>
-						<metavariant>
-							<name>Koborokuru</name>
-							<value>4</value>
-							<karma>0</karma>
-						</metavariant>
-						<metavariant>
-							<name>Menehune</name>
-							<value>4</value>
-							<karma>2</karma>
-						</metavariant>
-						<metavariant>
-							<name>Goblin</name>
-							<value>4</value>
-							<karma>27</karma>
-						</metavariant>
-						<metavariant>
-							<name>Gnawer</name>
-							<value>4</value>
-							<karma>29</karma>
-						</metavariant>
-						<metavariant>
-							<name>Ghoul</name>
-							<value>4</value>
-							<karma>29</karma>
-						</metavariant>		  
-					</metavariants>		  
-				</metatype>
-				<metatype>
-					<name>Ork</name>
-					<value>4</value>
-					<karma>0</karma>
-					<metavariants>
-						<metavariant>
-							<name>Ogre</name>
-							<value>4</value>
-							<karma>8</karma>
-						</metavariant>
-						<metavariant>
-							<name>Oni</name>
-							<value>4</value>
-							<karma>4</karma>
-						</metavariant>
-						<metavariant>
-							<name>Satyr</name>
-							<value>4</value>
-							<karma>10</karma>
-						</metavariant>
-						<metavariant>
-							<name>Hobgoblin</name>
-							<value>4</value>
-							<karma>5</karma>
-						</metavariant>
-						<metavariant>
-							<name>Wendigo</name>
-							<value>4</value>
-							<karma>47</karma>
-						</metavariant>
-						<metavariant>
-							<name>Grendel</name>
-							<value>4</value>
-							<karma>32</karma>
-						</metavariant>
-						<metavariant>
-							<name>Ghoul</name>
-							<value>4</value>
-							<karma>29</karma>
-						</metavariant>		  
-					</metavariants>		  
-				</metatype>
-				<metatype>
-					<name>Troll</name>
-					<value>0</value>
-					<karma>0</karma>
-					<metavariants>
-						<metavariant>
-							<name>Cyclopean</name>
-							<value>0</value>
-							<karma>2</karma>
-						</metavariant>
-						<metavariant>
-							<name>Fomorian</name>
-							<value>0</value>
-							<karma>12</karma>
-						</metavariant>
-						<metavariant>
-							<name>Giant</name>
-							<value>0</value>
-							<karma>2</karma>
-						</metavariant>
-						<metavariant>
-							<name>Minotaur</name>
-							<value>0</value>
-							<karma>2</karma>
-						</metavariant>
-						<metavariant>
-							<name>Dzoo-Noo-Qua</name>
-							<value>0</value>
-							<karma>43</karma>
-						</metavariant>
-						<metavariant>
-							<name>Fomóraig</name>
-							<value>0</value>
-							<karma>22</karma>
-						</metavariant>
-						<metavariant>
-							<name>Ghoul</name>
-							<value>0</value>
-							<karma>29</karma>
-						</metavariant>		  
-					</metavariants>		  
-				</metatype>
-				<metatype>
-					<name>Centaur</name>
-					<value>3</value>
-					<karma>25</karma>					
-				</metatype>		
-				<metatype>
-					<name>Naga</name>
-					<value>2</value>
-					<karma>25</karma>					
-				</metatype>
-				<metatype>
-					<name>Pixie</name>
-					<value>3</value>	
-					<karma>15</karma>					
-				</metatype>
-				<metatype>
-					<name>Sasquatch</name>
-					<value>2</value>	
-					<karma>20</karma>
-					<metavariants>
-						<metavariant>
-							<name>Ghoul</name>
-							<value>2</value>
-							<karma>49</karma>
-						</metavariant>
-						<metavariant>
-							<name>Bandersnatch</name>
-							<value>2</value>
-							<karma>42</karma>
-						</metavariant>
-					</metavariants>					
-				</metatype>	
-				<metatype>
-					<name>Shapeshifter: Bovine</name>
-					<value>6</value>	
-					<karma>5</karma>		  
-				</metatype>
-				<metatype>
-					<name>Shapeshifter: Vulpine</name>
-					<value>6</value>
-					<karma>5</karma>		  
-				</metatype>
-				<metatype>
-					<name>Shapeshifter: Canine</name>
-					<value>5</value>	
-					<karma>10</karma>		  
-				</metatype>
-				<metatype>
-					<name>Shapeshifter: Falconine</name>
-					<value>5</value>	
-					<karma>10</karma>		  
-				</metatype>
-				<metatype>
-					<name>Shapeshifter: Lupine</name>
-					<value>4</value>		
-					<karma>15</karma>		  
-				</metatype>
-				<metatype>
-					<name>Shapeshifter: Equine</name>
-					<value>4</value>		
-					<karma>15</karma>		  
-				</metatype>
-				<metatype>
-					<name>Shapeshifter: Leonine</name>
-					<value>2</value>	
-					<karma>20</karma>		  
-				</metatype>
-				<metatype>
-					<name>Shapeshifter: Ursine</name>
-					<value>2</value>	
-					<karma>20</karma>		  
-				</metatype>
-				<metatype>
-					<name>Shapeshifter: Pantherine</name>
-					<value>2</value>		  
-					<karma>25</karma>
-				</metatype>
-				<metatype>
-					<name>Shapeshifter: Tigrine</name>
-					<value>2</value>		  		
-					<karma>25</karma>
-				</metatype> 				
-			</metatypes>
+      <pickid>efe29a7e-4165-4b51-ab13-bf27b71e604a</pickid>
 		</priority>
 		<priority>
 			<id>988b7ce3-5739-4300-bc21-a6c92b869262</id>
@@ -622,248 +51,7 @@
 			<value>C,2</value>
       <sort>30</sort>
 			<category>Heritage</category>
-			<metatypes>
-				<metatype>
-					<name>Human</name>
-					<value>5</value>
-					<karma>0</karma>
-					<metavariants>
-						<metavariant>
-							<name>Nartaki</name>
-							<value>4</value>
-							<karma>0</karma>
-						<metavariant>
-							<name>Ghoul</name>
-							<value>5</value>
-							<karma>29</karma>
-						</metavariant>
-						<metavariant>
-							<name>Nosferatu</name>
-							<value>5</value>
-							<karma>48</karma>
-						</metavariant>
-						<metavariant>
-							<name>Vampire</name>
-							<value>5</value>
-							<karma>27</karma>
-						</metavariant>
-						<metavariant>
-							<name>Loup-Garou</name>
-							<value>5</value>
-							<karma>30</karma>
-						</metavariant>
-						</metavariant>
-					</metavariants>		  
-				</metatype>
-				<metatype>
-					<name>Elf</name>
-					<value>3</value>
-					<karma>0</karma>
-					<metavariants>
-						<metavariant>
-							<name>Nocturna</name>
-							<value>3</value>
-							<karma>0</karma>
-						</metavariant>
-						<metavariant>
-							<name>Wakyambi</name>
-							<value>3</value>
-							<karma>12</karma>
-						</metavariant>
-						<metavariant>
-							<name>Xapiri Thëpë</name>
-							<value>3</value>
-							<karma>0</karma>
-						</metavariant>
-						<metavariant>
-							<name>Dryad</name>
-							<value>3</value>
-							<karma>0</karma>
-						</metavariant>
-						<metavariant>
-							<name>Banshee</name>
-							<value>3</value>
-							<karma>32</karma>
-						</metavariant>
-						<metavariant>
-							<name>Harvester</name>
-							<value>3</value>
-							<karma>29</karma>
-						</metavariant>
-						<metavariant>
-							<name>Ghoul</name>
-							<value>3</value>
-							<karma>29</karma>
-						</metavariant>		  
-					</metavariants>		  
-				</metatype>
-				<metatype>
-					<name>Dwarf</name>
-					<value>1</value>
-					<karma>0</karma>
-					<metavariants>
-						<metavariant>
-							<name>Gnome</name>
-							<value>1</value>
-							<karma>7</karma>
-						</metavariant>
-						<metavariant>
-							<name>Hanuman</name>
-							<value>1</value>
-							<karma>5</karma>
-						</metavariant>
-						<metavariant>
-							<name>Koborokuru</name>
-							<value>1</value>
-							<karma>0</karma>
-						</metavariant>
-						<metavariant>
-							<name>Menehune</name>
-							<value>1</value>
-							<karma>2</karma>
-						</metavariant>
-						<metavariant>
-							<name>Goblin</name>
-							<value>1</value>
-							<karma>27</karma>
-						</metavariant>
-						<metavariant>
-							<name>Gnawer</name>
-							<value>1</value>
-							<karma>29</karma>
-						</metavariant>
-						<metavariant>
-							<name>Ghoul</name>
-							<value>1</value>
-							<karma>29</karma>
-						</metavariant>			  
-					</metavariants>		  
-				</metatype>
-				<metatype>
-					<name>Ork</name>
-					<value>0</value>
-					<karma>0</karma>
-					<metavariants>
-						<metavariant>
-							<name>Ogre</name>
-							<value>0</value>
-							<karma>8</karma>
-						</metavariant>
-						<metavariant>
-							<name>Oni</name>
-							<value>0</value>
-							<karma>-4</karma>
-						</metavariant>
-						<metavariant>
-							<name>Satyr</name>
-							<value>0</value>
-							<karma>10</karma>
-						</metavariant>
-						<metavariant>
-							<name>Hobgoblin</name>
-							<value>0</value>
-							<karma>-5</karma>
-						</metavariant>
-						<metavariant>
-							<name>Wendigo</name>
-							<value>0</value>
-							<karma>47</karma>
-						</metavariant>
-						<metavariant>
-							<name>Grendel</name>
-							<value>0</value>
-							<karma>32</karma>
-						</metavariant>
-						<metavariant>
-							<name>Ghoul</name>
-							<value>0</value>
-							<karma>29</karma>
-						</metavariant>			  
-					</metavariants>		  
-				</metatype>
-				<metatype>
-					<name>Centaur</name>
-					<value>0</value>
-					<karma>25</karma>					
-				</metatype>		
-				<metatype>
-					<name>Naga</name>
-					<value>0</value>
-					<karma>25</karma>					
-				</metatype>
-				<metatype>
-					<name>Pixie</name>
-					<value>0</value>	
-					<karma>15</karma>					
-				</metatype>
-				<metatype>
-					<name>Sasquatch</name>
-					<value>0</value>	
-					<karma>20</karma>
-					<metavariants>
-						<metavariant>
-							<name>Ghoul</name>
-							<value>0</value>
-							<karma>49</karma>
-						</metavariant>
-						<metavariant>
-							<name>Bandersnatch</name>
-							<value>0</value>
-							<karma>42</karma>
-						</metavariant>
-					</metavariants>						
-				</metatype>	
-				<metatype>
-					<name>Shapeshifter: Bovine</name>
-					<value>4</value>	
-					<karma>5</karma>		  
-				</metatype>
-				<metatype>
-					<name>Shapeshifter: Vulpine</name>
-					<value>4</value>
-					<karma>5</karma>		  
-				</metatype>
-				<metatype>
-					<name>Shapeshifter: Canine</name>
-					<value>3</value>	
-					<karma>10</karma>		  
-				</metatype>
-				<metatype>
-					<name>Shapeshifter: Falconine</name>
-					<value>3</value>	
-					<karma>10</karma>		  
-				</metatype>
-				<metatype>
-					<name>Shapeshifter: Lupine</name>
-					<value>2</value>		
-					<karma>15</karma>		  
-				</metatype>
-				<metatype>
-					<name>Shapeshifter: Equine</name>
-					<value>2</value>		
-					<karma>15</karma>		  
-				</metatype>
-				<metatype>
-					<name>Shapeshifter: Leonine</name>
-					<value>0</value>	
-					<karma>20</karma>		  
-				</metatype>
-				<metatype>
-					<name>Shapeshifter: Ursine</name>
-					<value>0</value>	
-					<karma>20</karma>		  
-				</metatype>
-				<metatype>
-					<name>Shapeshifter: Pantherine</name>
-					<value>0</value>		  
-					<karma>25</karma>
-				</metatype>
-				<metatype>
-					<name>Shapeshifter: Tigrine</name>
-					<value>0</value>		  		
-					<karma>25</karma>
-				</metatype> 				
-			</metatypes>
+      <pickid>ca4e0ed8-579d-453e-aeec-94aa8fd12d8b</pickid>
 		</priority>
 		<priority>
 			<id>255da2ba-8d21-4a73-9f81-37156901db72</id>
@@ -871,82 +59,7 @@
 			<value>D,1</value>
       <sort>20</sort>
 			<category>Heritage</category>
-			<metatypes>
-				<metatype>
-					<name>Human</name>
-					<value>3</value>
-					<karma>0</karma>
-					<metavariants>
-						<metavariant>
-							<name>Nartaki</name>
-							<value>2</value>
-							<karma>0</karma>
-						</metavariant>
-						<metavariant>		
-							<name>Ghoul</name>
-							<value>3</value>
-							<karma>29</karma>
-						</metavariant>
-						<metavariant>
-							<name>Nosferatu</name>
-							<value>3</value>
-							<karma>48</karma>
-						</metavariant>
-						<metavariant>
-							<name>Vampire</name>
-							<value>3</value>
-							<karma>27</karma>
-						</metavariant>
-						<metavariant>
-							<name>Loup-Garou</name>
-							<value>3</value>
-							<karma>30</karma>
-						</metavariant>					
-					</metavariants>		  
-				</metatype>
-				<metatype>
-					<name>Elf</name>
-					<value>0</value>
-					<karma>0</karma>
-					<metavariants>
-						<metavariant>
-							<name>Nocturna</name>
-							<value>0</value>
-							<karma>0</karma>
-						</metavariant>
-						<metavariant>
-							<name>Wakyambi</name>
-							<value>0</value>
-							<karma>12</karma>
-						</metavariant>
-						<metavariant>
-							<name>Xapiri Thëpë</name>
-							<value>0</value>
-							<karma>0</karma>
-						</metavariant>
-						<metavariant>
-							<name>Dryad</name>
-							<value>0</value>
-							<karma>0</karma>
-						</metavariant>
-						<metavariant>
-							<name>Banshee</name>
-							<value>0</value>
-							<karma>32</karma>
-						</metavariant>
-						<metavariant>
-							<name>Harvester</name>
-							<value>0</value>
-							<karma>29</karma>
-						</metavariant>
-						<metavariant>
-							<name>Ghoul</name>
-							<value>0</value>
-							<karma>29</karma>
-						</metavariant>			  
-					</metavariants>		  
-				</metatype>
-			</metatypes>
+      <pickid>076d9742-bb0c-4e6f-a006-cf0814ad90bb</pickid>
 		</priority>
 		<priority>
 			<id>91dccab9-c3fc-4868-abf8-1825b70e8a6c</id>
@@ -954,40 +67,7 @@
 			<value>E,0</value>
       <sort>10</sort>
 			<category>Heritage</category>
-			<metatypes>
-				<metatype>
-					<name>Human</name>
-					<value>1</value>
-					<karma>0</karma>
-					<metavariants>
-						<metavariant>
-							<name>Nartaki</name>
-							<value>1</value>
-							<karma>0</karma>
-						</metavariant>
-						<metavariant>		
-							<name>Ghoul</name>
-							<value>1</value>
-							<karma>29</karma>
-						</metavariant>
-						<metavariant>
-							<name>Nosferatu</name>
-							<value>1</value>
-							<karma>48</karma>
-						</metavariant>
-						<metavariant>
-							<name>Vampire</name>
-							<value>1</value>
-							<karma>27</karma>
-						</metavariant>
-						<metavariant>
-							<name>Loup-Garou</name>
-							<value>1</value>
-							<karma>30</karma>
-						</metavariant>
-					</metavariants>		  
-				</metatype>
-			</metatypes>
+      <pickid>07d65a1e-f97d-404e-894f-5156d4a50e7b</pickid>
 		</priority>
 		<!-- End Metatypes -->
 		<!-- Region Talents -->
@@ -997,6 +77,7 @@
 			<value>A,4</value>
       <sort>50</sort>
 			<category>Talent</category>
+      <pickid>00000000-0000-0000-0000-000000000000</pickid>
 			<talents>
 				<talent>
 					<name>Magician - 6 Magic/10 Spells</name>
@@ -1042,6 +123,7 @@
 			<value>B,3</value>
       <sort>40</sort>
 			<category>Talent</category>
+      <pickid>00000000-0000-0000-0000-000000000000</pickid>
 			<talents>
 				<talent>
 					<name>Adept - 6 Magic</name>
@@ -1113,6 +195,7 @@
 			<name>C - Adept, Magician, or Technomancer</name>
 			<value>C,2</value>
       <sort>30</sort>
+      <pickid>00000000-0000-0000-0000-000000000000</pickid>
 			<category>Talent</category>
 			<talents>
 				<talent>
@@ -1177,6 +260,7 @@
 			<value>D,1</value>
       <sort>20</sort>
 			<category>Talent</category>
+      <pickid>00000000-0000-0000-0000-000000000000</pickid>
 			<talents>
 				<talent>
 					<name>Adept - 2 Magic</name>
@@ -1204,6 +288,7 @@
 			<value>E,0</value>
       <sort>10</sort>
 			<category>Talent</category>
+      <pickid>00000000-0000-0000-0000-000000000000</pickid>
 			<talents>
 				<talent>
 					<name>Mundane</name>
@@ -1219,6 +304,7 @@
 			<value>A,4</value>
       <sort>50</sort>
 			<category>Attributes</category>
+      <pickid>00000000-0000-0000-0000-000000000000</pickid>
 			<attributes>24</attributes>
 		</priority>
 		<priority>
@@ -1227,6 +313,7 @@
 			<value>B,3</value>
       <sort>40</sort>
 			<category>Attributes</category>
+      <pickid>00000000-0000-0000-0000-000000000000</pickid>
 			<attributes>20</attributes>
 		</priority>
 		<priority>
@@ -1235,6 +322,7 @@
 			<value>C,2</value>
       <sort>30</sort>
 			<category>Attributes</category>
+      <pickid>00000000-0000-0000-0000-000000000000</pickid>
 			<attributes>16</attributes>
 		</priority>
 		<priority>
@@ -1243,6 +331,7 @@
 			<value>D,1</value>
       <sort>20</sort>
 			<category>Attributes</category>
+      <pickid>00000000-0000-0000-0000-000000000000</pickid>
 			<attributes>14</attributes>
 		</priority>
 		<priority>
@@ -1251,6 +340,7 @@
 			<value>E,0</value>
       <sort>10</sort>
 			<category>Attributes</category>
+      <pickid>00000000-0000-0000-0000-000000000000</pickid>
 			<attributes>12</attributes>
 		</priority>
 		<!-- End Attributes -->
@@ -1261,6 +351,7 @@
 			<value>A,4</value>
       <sort>50</sort>
 			<category>Skills</category>
+      <pickid>00000000-0000-0000-0000-000000000000</pickid>
 			<skills>46</skills>
 			<skillgroups>10</skillgroups>
 		</priority>
@@ -1270,6 +361,7 @@
 			<value>B,3</value>
       <sort>40</sort>
 			<category>Skills</category>
+      <pickid>00000000-0000-0000-0000-000000000000</pickid>
 			<skills>36</skills>
 			<skillgroups>5</skillgroups>
 		</priority>
@@ -1279,6 +371,7 @@
 			<value>C,2</value>
       <sort>30</sort>
 			<category>Skills</category>
+      <pickid>00000000-0000-0000-0000-000000000000</pickid>
 			<skills>28</skills>
 			<skillgroups>2</skillgroups>
 		</priority>
@@ -1288,6 +381,7 @@
 			<value>D,1</value>
       <sort>20</sort>
 			<category>Skills</category>
+      <pickid>00000000-0000-0000-0000-000000000000</pickid>
 			<skills>22</skills>
 			<skillgroups>0</skillgroups>
 		</priority>
@@ -1297,6 +391,7 @@
       <value>E,0</value>
       <sort>10</sort>
 			<category>Skills</category>
+      <pickid>00000000-0000-0000-0000-000000000000</pickid>
 			<skills>18</skills>
 			<skillgroups>0</skillgroups>
 		</priority>
@@ -1307,7 +402,7 @@
 			<name>A - 450,000¥</name>
 			<value>A,4</value>
       <sort>50</sort>
-			<gameplayoption>054559be-d80a-42b9-a0a9-d6957d2b3c55</gameplayoption>
+      <pickid>00000000-0000-0000-0000-000000000000</pickid>
 			<category>Resources</category>
 			<resources>450000</resources>
 		</priority>
@@ -1316,8 +411,8 @@
 			<name>B - 275,000¥</name>
 			<value>B,3</value>
       <sort>40</sort>
-			<gameplayoption>054559be-d80a-42b9-a0a9-d6957d2b3c55</gameplayoption>
 			<category>Resources</category>
+      <pickid>00000000-0000-0000-0000-000000000000</pickid>
 			<resources>275000</resources>
 		</priority>
 		<priority>
@@ -1325,8 +420,8 @@
 			<name>C - 140,000¥</name>
 			<value>C,2</value>
       <sort>30</sort>
-			<gameplayoption>054559be-d80a-42b9-a0a9-d6957d2b3c55</gameplayoption>
 			<category>Resources</category>
+      <pickid>00000000-0000-0000-0000-000000000000</pickid>
 			<resources>140000</resources>
 		</priority>
 		<priority>
@@ -1334,8 +429,8 @@
 			<name>D - 50,000¥</name>
 			<value>D,1</value>
       <sort>20</sort>
-			<gameplayoption>054559be-d80a-42b9-a0a9-d6957d2b3c55</gameplayoption>
 			<category>Resources</category>
+      <pickid>00000000-0000-0000-0000-000000000000</pickid>
 			<resources>50000</resources>
 		</priority>
 		<priority>
@@ -1343,8 +438,8 @@
 			<name>E - 6,000¥</name>
 			<value>E,0</value>
       <sort>10</sort>
-			<gameplayoption>054559be-d80a-42b9-a0a9-d6957d2b3c55</gameplayoption>
 			<category>Resources</category>
+      <pickid>00000000-0000-0000-0000-000000000000</pickid>
 			<resources>6000</resources>
 		</priority>
 		<!-- End Region -->
@@ -1355,45 +450,45 @@
 			<name>A - 500,000¥</name>
 			<value>A,4</value>
       <sort>50</sort>
-			<gameplayoption>5b1281c0-466d-441d-a844-5a2bc93d9843</gameplayoption>
 			<category>Resources</category>
 			<resources>500000</resources>
+      <pickid>00000000-0000-0000-0000-000000000000</pickid>
 		</priority>
 		<priority>
 			<id>1da0e4d3-e75b-40ab-b366-e1eba499e8ca</id>
 			<name>B - 325,000¥</name>
 			<value>B,3</value>
       <sort>40</sort>
-			<gameplayoption>5b1281c0-466d-441d-a844-5a2bc93d9843</gameplayoption>
 			<category>Resources</category>
 			<resources>325000</resources>
+      <pickid>00000000-0000-0000-0000-000000000000</pickid>
 		</priority>
 		<priority>
 			<id>0fdfe7f7-119d-4971-a629-4a4dea938c6c</id>
 			<name>C - 210,000¥</name>
 			<value>C,2</value>
       <sort>30</sort>
-			<gameplayoption>5b1281c0-466d-441d-a844-5a2bc93d9843</gameplayoption>
 			<category>Resources</category>
 			<resources>210000</resources>
+      <pickid>00000000-0000-0000-0000-000000000000</pickid>
 		</priority>
 		<priority>
 			<id>2cbe209a-ae97-4985-b42f-4839613dfb28</id>
 			<name>D - 150,000¥</name>
 			<value>D,1</value>
       <sort>20</sort>
-			<gameplayoption>5b1281c0-466d-441d-a844-5a2bc93d9843</gameplayoption>
 			<category>Resources</category>
 			<resources>150000</resources>
+      <pickid>00000000-0000-0000-0000-000000000000</pickid>
 		</priority>
 		<priority>
 			<id>860a9601-e06f-424f-8f40-bee843a6b5dc</id>
 			<name>E - 100,000¥</name>
 			<value>E,0</value>
       <sort>10</sort>
-			<gameplayoption>5b1281c0-466d-441d-a844-5a2bc93d9843</gameplayoption>
 			<category>Resources</category>
 			<resources>100000</resources>
+      <pickid>00000000-0000-0000-0000-000000000000</pickid>
 		</priority>
 		<!-- End Region -->
 		<!-- Region Street Level Resources-->
@@ -1402,45 +497,45 @@
 			<name>A - 75,000¥</name>
 			<value>A,4</value>
       <sort>50</sort>
-			<gameplayoption>def8a6aa-4bfa-4c73-a20f-2a8e80d2b1df</gameplayoption>
 			<category>Resources</category>
 			<resources>75000</resources>
+      <pickid>00000000-0000-0000-0000-000000000000</pickid>
 		</priority>
 		<priority>
 			<id>edc5db00-8d4c-4510-85d2-8d82d6c66ed6</id>
 			<name>B - 50,000¥</name>
 			<value>B,3</value>
       <sort>40</sort>
-			<gameplayoption>def8a6aa-4bfa-4c73-a20f-2a8e80d2b1df</gameplayoption>
 			<category>Resources</category>
 			<resources>50000</resources>
+      <pickid>00000000-0000-0000-0000-000000000000</pickid>
 		</priority>
 		<priority>
 			<id>9aecfa32-4d5c-4ba9-a88e-9a04f83e516b</id>
 			<name>C - 25,000¥</name>
 			<value>C,2</value>
       <sort>30</sort>
-			<gameplayoption>def8a6aa-4bfa-4c73-a20f-2a8e80d2b1df</gameplayoption>
 			<category>Resources</category>
 			<resources>25000</resources>
+      <pickid>00000000-0000-0000-0000-000000000000</pickid>
 		</priority>
 		<priority>
 			<id>c5b45f74-3396-45c7-afa9-b69c0c8db6ee</id>
 			<name>D - 15,000¥</name>
 			<value>D,1</value>
       <sort>20</sort>
-			<gameplayoption>def8a6aa-4bfa-4c73-a20f-2a8e80d2b1df</gameplayoption>
 			<category>Resources</category>
 			<resources>15000</resources>
+      <pickid>00000000-0000-0000-0000-000000000000</pickid>
 		</priority>
 		<priority>
 			<id>cb4060e7-61b9-40d7-b97f-9ab9129bfc26</id>
 			<name>E - 6,000¥</name>
 			<value>E,0</value>
       <sort>10</sort>
-			<gameplayoption>def8a6aa-4bfa-4c73-a20f-2a8e80d2b1df</gameplayoption>
 			<category>Resources</category>
 			<resources>6000</resources>
+      <pickid>00000000-0000-0000-0000-000000000000</pickid>
 		</priority>
 		<!-- End Region	-->
 		<!-- Region Street Scum BCDEE-->
@@ -1484,6 +579,7 @@
           </metavariants>
         </metatype>
       </metatypes>
+      <pickid>00000000-0000-0000-0000-000000000000</pickid>
     </priority>
     <priority>
       <id>c9571337-7644-47f3-9259-615c6dad0c3c</id>
@@ -1492,6 +588,7 @@
       <sort>9</sort>
       <category>Attributes</category>
       <attributes>12</attributes>
+      <pickid>00000000-0000-0000-0000-000000000000</pickid>
     </priority>
     <priority>
       <id>22f50329-450f-4ac9-916e-f3fe7d201d11</id>
@@ -1499,6 +596,7 @@
       <value>4</value>
       <sort>9</sort>
       <category>Talent</category>
+      <pickid>00000000-0000-0000-0000-000000000000</pickid>
       <talents>
         <talent>
           <name>Mundane</name>
@@ -1512,6 +610,7 @@
       <value>4</value>
       <sort>9</sort>
       <category>Skills</category>
+      <pickid>00000000-0000-0000-0000-000000000000</pickid>
       <skills>18</skills>
       <skillgroups>0</skillgroups>
     </priority>
@@ -1520,8 +619,8 @@
       <name>E - 6,000¥</name>
       <value>4</value>
       <sort>9</sort>
-      <gameplayoption>054559be-d80a-42b9-a0a9-d6957d2b3c55</gameplayoption>
       <category>Resources</category>
+      <pickid>00000000-0000-0000-0000-000000000000</pickid>
       <resources>6000</resources>
     </priority>
     <!-- End Region	-->
@@ -1532,6 +631,7 @@
       <value>C,4</value>
       <sort>29</sort>
       <category>Heritage</category>
+      <pickid>00000000-0000-0000-0000-000000000000</pickid>
       <metatypes>
         <metatype>
           <name>Human</name>
@@ -1780,6 +880,7 @@
       <name>D - Human or Elf</name>
       <value>D,3</value>
       <sort>19</sort>
+      <pickid>00000000-0000-0000-0000-000000000000</pickid>
       <category>Heritage</category>
       <metatypes>
         <metatype>
@@ -1865,6 +966,7 @@
       <sort>29</sort>
       <category>Attributes</category>
       <attributes>16</attributes>
+      <pickid>00000000-0000-0000-0000-000000000000</pickid>
     </priority>
     <priority>
       <id>336af2de-35e8-4959-aa95-a7dfc16e812b</id>
@@ -1873,6 +975,7 @@
       <sort>19</sort>
       <category>Attributes</category>
       <attributes>14</attributes>
+      <pickid>00000000-0000-0000-0000-000000000000</pickid>
     </priority>
     <priority>
       <id>5fbab1eb-0309-4078-b48b-e12fbc855c6d</id>
@@ -1936,6 +1039,7 @@
           <cfp>1</cfp>
         </talent>
       </talents>
+      <pickid>00000000-0000-0000-0000-000000000000</pickid>
     </priority>
     <priority>
       <id>d2051a9c-dcda-424d-be8d-56b03371957b</id>
@@ -1943,6 +1047,7 @@
       <value>D,3</value>
       <sort>21</sort>
       <category>Talent</category>
+      <pickid>00000000-0000-0000-0000-000000000000</pickid>
       <talents>
         <talent>
           <name>Adept - 2 Magic</name>
@@ -1972,6 +1077,7 @@
       <category>Skills</category>
       <skills>28</skills>
       <skillgroups>2</skillgroups>
+      <pickid>00000000-0000-0000-0000-000000000000</pickid>
     </priority>
     <priority>
       <id>ba7486f2-dde5-44bc-b93c-bf006095a0f5</id>
@@ -1981,26 +1087,199 @@
       <category>Skills</category>
       <skills>22</skills>
       <skillgroups>0</skillgroups>
+      <pickid>00000000-0000-0000-0000-000000000000</pickid>
     </priority>
     <priority>
       <id>1426e8c5-768a-4a7c-813e-57ce91ccad7e</id>
       <name>C - 140,000¥</name>
       <value>C,4</value>
       <sort>29</sort>
-      <gameplayoption>054559be-d80a-42b9-a0a9-d6957d2b3c55</gameplayoption>
       <category>Resources</category>
       <resources>140000</resources>
+      <pickid>00000000-0000-0000-0000-000000000000</pickid>
     </priority>
     <priority>
       <id>cbca5ad1-82f2-4fcd-ae8d-b1d2d7753774</id>
       <name>D - 50,000¥</name>
       <value>D,3</value>
       <sort>19</sort>
-      <gameplayoption>054559be-d80a-42b9-a0a9-d6957d2b3c55</gameplayoption>
       <category>Resources</category>
       <resources>50000</resources>
+      <pickid>00000000-0000-0000-0000-000000000000</pickid>
     </priority>
 
     <!-- End Region-->
     </priorities>
+  <picks>
+    <pick> <!--E-->
+      <id>07d65a1e-f97d-404e-894f-5156d4a50e7b</id>
+      <heritages>
+        <heritage>
+          <hid>a53d885d-a4a4-443d-b6a6-b0a55b0a96c7</hid>
+          <special>1</special>
+          <karma>0</karma>
+        </heritage>
+      </heritages>
+    </pick>
+    <pick>
+      <id>076d9742-bb0c-4e6f-a006-cf0814ad90bb</id>
+      <heritages>
+        <heritage>
+          <hid>a53d885d-a4a4-443d-b6a6-b0a55b0a96c7</hid>
+          <special>3</special>
+          <karma>0</karma>
+        </heritage>
+        <heritage>
+          <hid>b3259991-b315-4dbe-ae3c-51f71a1116e2</hid>
+          <special>0</special>
+          <karma>0</karma>
+        </heritage>
+      </heritages>
+    </pick>
+    <pick>
+      <id>ca4e0ed8-579d-453e-aeec-94aa8fd12d8b</id>
+      <heritages>
+        <heritage>
+          <hid>a53d885d-a4a4-443d-b6a6-b0a55b0a96c7</hid>
+          <special>5</special>
+          <karma>0</karma>
+        </heritage>
+        <heritage>
+          <hid>b3259991-b315-4dbe-ae3c-51f71a1116e2</hid>
+          <special>3</special>
+          <karma>0</karma>
+        </heritage>
+        <heritage>
+          <hid>08f2c9cc-f9f8-4f1a-9efb-63555af71788</hid>
+          <special>1</special>
+          <karma>0</karma>
+        </heritage>
+        <heritage>
+          <hid>8ed6892f-88e6-42d0-a704-b805778ec13e</hid>
+          <special>0</special>
+          <karma>0</karma>
+        </heritage>
+        <heritage>
+          <hid>8768ec05-4fbb-43ae-b3ba-94ba57610069</hid>
+          <special>0</special>
+          <karma>25</karma>
+        </heritage>
+        <heritage>
+          <hid>6d59c1ff-d79a-4f14-8578-3c4c790f2d52</hid>
+          <special>0</special>
+          <karma>25</karma>
+        </heritage>
+        <heritage>
+          <hid>7a096dc7-b1cb-4df8-b17e-9f28bf8f6d99</hid>
+          <special>0</special>
+          <karma>20</karma>
+        </heritage>
+        <heritage>
+          <hid>2f51fff5-131a-465d-b054-b64d54059f28</hid>
+          <special>0</special>
+          <karma>15</karma>
+        </heritage>
+      </heritages>
+    </pick>
+    <pick>
+      <id>efe29a7e-4165-4b51-ab13-bf27b71e604a</id>
+      <heritages>
+        <heritage>
+          <hid>a53d885d-a4a4-443d-b6a6-b0a55b0a96c7</hid>
+          <special>7</special>
+          <karma>0</karma>
+        </heritage>
+        <heritage>
+          <hid>b3259991-b315-4dbe-ae3c-51f71a1116e2</hid>
+          <special>6</special>
+          <karma>0</karma>
+        </heritage>
+        <heritage>
+          <hid>08f2c9cc-f9f8-4f1a-9efb-63555af71788</hid>
+          <special>4</special>
+          <karma>0</karma>
+        </heritage>
+        <heritage>
+          <hid>8ed6892f-88e6-42d0-a704-b805778ec13e</hid>
+          <special>4</special>
+          <karma>0</karma>
+        </heritage>
+        <heritage>
+          <hid>77fa1ed8-f4e6-4763-9f0b-f125318b9782</hid>
+          <special>0</special>
+          <karma>0</karma>
+        </heritage>
+        <heritage>
+          <hid>8768ec05-4fbb-43ae-b3ba-94ba57610069</hid>
+          <special>3</special>
+          <karma>25</karma>
+        </heritage>
+        <heritage>
+          <hid>6d59c1ff-d79a-4f14-8578-3c4c790f2d52</hid>
+          <special>2</special>
+          <karma>25</karma>
+        </heritage>
+        <heritage>
+          <hid>7a096dc7-b1cb-4df8-b17e-9f28bf8f6d99</hid>
+          <special>2</special>
+          <karma>20</karma>
+        </heritage>
+        <heritage>
+          <hid>2f51fff5-131a-465d-b054-b64d54059f28</hid>
+          <special>3</special>
+          <karma>15</karma>
+        </heritage>
+      </heritages>
+    </pick>
+    <pick>
+      <id>3a03963e-9ecd-4e6a-b4ac-d9c995d7e035</id>
+      <heritages>
+        <heritage>
+          <hid>a53d885d-a4a4-443d-b6a6-b0a55b0a96c7</hid>
+          <special>9</special>
+          <karma>0</karma>
+        </heritage>
+        <heritage>
+          <hid>b3259991-b315-4dbe-ae3c-51f71a1116e2</hid>
+          <special>8</special>
+          <karma>0</karma>
+        </heritage>
+        <heritage>
+          <hid>08f2c9cc-f9f8-4f1a-9efb-63555af71788</hid>
+          <special>7</special>
+          <karma>0</karma>
+        </heritage>
+        <heritage>
+          <hid>8ed6892f-88e6-42d0-a704-b805778ec13e</hid>
+          <special>7</special>
+          <karma>0</karma>
+        </heritage>
+        <heritage>
+          <hid>77fa1ed8-f4e6-4763-9f0b-f125318b9782</hid>
+          <special>5</special>
+          <karma>0</karma>
+        </heritage>
+        <heritage>
+          <hid>8768ec05-4fbb-43ae-b3ba-94ba57610069</hid>
+          <special>6</special>
+          <karma>25</karma>
+        </heritage>
+        <heritage>
+          <hid>6d59c1ff-d79a-4f14-8578-3c4c790f2d52</hid>
+          <special>4</special>
+          <karma>25</karma>
+        </heritage>
+        <heritage>
+          <hid>7a096dc7-b1cb-4df8-b17e-9f28bf8f6d99</hid>
+          <special>5</special>
+          <karma>20</karma>
+        </heritage>
+        <heritage>
+          <hid>2f51fff5-131a-465d-b054-b64d54059f28</hid>
+          <special>6</special>
+          <karma>15</karma>
+        </heritage>
+      </heritages>
+    </pick>
+  </picks>
 </chummer>

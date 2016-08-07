@@ -122,6 +122,7 @@
     <Compile Include="Backend\Character Creation\CompiledCharacterSetupInfo.cs" />
     <Compile Include="Backend\Character Creation\PriorityBasedCharacterSetupInfo.cs" />
     <Compile Include="Backend\Character Creation\PriorityTable.cs" />
+    <Compile Include="Backend\Data\Items\PickData.cs" />
     <Compile Include="Backend\Data\Items\PriorityTableEntryData.cs" />
     <Compile Include="Backend\Data\Infrastructure\IChummerDataSource.cs" />
     <Compile Include="Backend\Datastructures\GuidItem.cs" />

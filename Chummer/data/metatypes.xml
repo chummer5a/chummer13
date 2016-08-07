@@ -32,8 +32,8 @@
       <id>70f8802e-4880-4959-8060-30ee9932efe0</id>
     </category>
   </categories>
-  <races>
-    <race>
+  <heritages>
+    <heritage>
       <id>a53d885d-a4a4-443d-b6a6-b0a55b0a96c7</id>
       <name>Human</name>
       <karma>0</karma>
@@ -109,8 +109,8 @@
           <aug>7</aug>
         </edg>
       </attributes>
-    </race>
-    <race>
+    </heritage>
+    <heritage>
       <id>b3259991-b315-4dbe-ae3c-51f71a1116e2</id>
       <name>Elf</name>
       <karma>40</karma>
@@ -186,8 +186,8 @@
           <aug>6</aug>
         </edg>
       </attributes>
-    </race>
-    <race>
+    </heritage>
+    <heritage>
       <id>08f2c9cc-f9f8-4f1a-9efb-63555af71788</id>
       <name>Dwarf</name>
       <karma>50</karma>
@@ -263,8 +263,8 @@
           <aug>6</aug>
         </edg>
       </attributes>
-    </race>
-    <race>
+    </heritage>
+    <heritage>
       <id>8ed6892f-88e6-42d0-a704-b805778ec13e</id>
       <name>Ork</name>
       <karma>50</karma>
@@ -340,8 +340,8 @@
           <aug>6</aug>
         </edg>
       </attributes>
-    </race>
-    <race>
+    </heritage>
+    <heritage>
       <id>77fa1ed8-f4e6-4763-9f0b-f125318b9782</id>
       <name>Troll</name>
       <karma>90</karma>
@@ -417,8 +417,8 @@
           <aug>6</aug>
         </edg>
       </attributes>
-    </race>
-    <race>
+    </heritage>
+    <heritage>
       <id>8768ec05-4fbb-43ae-b3ba-94ba57610069</id>
       <name>Centaur</name>
       <karma>60</karma>
@@ -501,8 +501,8 @@
           <aug>6</aug>
         </mag>
       </attributes>
-    </race>
-    <race>
+    </heritage>
+    <heritage>
       <id>6d59c1ff-d79a-4f14-8578-3c4c790f2d52</id>
       <name>Naga</name>
       <karma>95</karma>
@@ -585,8 +585,8 @@
           <aug>6</aug>
         </mag>
       </attributes>
-    </race>
-    <race>
+    </heritage>
+    <heritage>
       <id>7a096dc7-b1cb-4df8-b17e-9f28bf8f6d99</id>
       <name>Sasquatch</name>
       <karma>90</karma>
@@ -669,8 +669,8 @@
           <aug>6</aug>
         </mag>
       </attributes>
-    </race>
-    <race>
+    </heritage>
+    <heritage>
       <id>2f51fff5-131a-465d-b054-b64d54059f28</id>
       <name>Pixie</name>
       <karma>70</karma>
@@ -753,8 +753,8 @@
           <aug>6</aug>
         </mag>
       </attributes>
-    </race>
-    <race>
+    </heritage>
+    <heritage>
       <id>18316ccd-5a96-49c3-8e31-39c189f5b6fe</id>
       <name>Metasapient</name>
       <karma>180</karma>
@@ -809,8 +809,8 @@
           <aug>6</aug>
         </dep>
       </attributes>
-    </race>
-    <race>
+    </heritage>
+    <heritage>
       <id>2ec2397e-ed20-476a-9a99-b170137e24bd</id>
       <name>Protosapient</name>
       <karma>0</karma>
@@ -865,8 +865,8 @@
           <aug>6</aug>
         </dep>
       </attributes>
-    </race>
-    <race>
+    </heritage>
+    <heritage>
       <id>091b89a2-1d23-4007-b1fe-f11d272a8e9c</id>
       <name>Xenosapient</name>
       <karma>0</karma>
@@ -921,8 +921,8 @@
           <aug>6</aug>
         </dep>
       </attributes>
-    </race>
-    <race>
+    </heritage>
+    <heritage>
       <id>11913674-f31f-4d41-a33e-9528c6b8a898</id>
       <name>E-ghost</name>
       <karma>0</karma>
@@ -977,6 +977,6 @@
           <aug>6</aug>
         </dep>
       </attributes>
-    </race>
-  </races>
+    </heritage>
+  </heritages>
 </chummer>
