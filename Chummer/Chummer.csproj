@@ -194,6 +194,12 @@
     <Compile Include="Controls\DiceRollerControl.Designer.cs">
       <DependentUpon>DiceRollerControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\WeaponDisplayControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\WeaponDisplayControl.Designer.cs">
+      <DependentUpon>WeaponDisplayControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmAddToken.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -788,6 +794,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\DiceRollerControl.resx">
       <DependentUpon>DiceRollerControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\WeaponDisplayControl.resx">
+      <DependentUpon>WeaponDisplayControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmAddToken.resx">
       <DependentUpon>frmAddToken.cs</DependentUpon>

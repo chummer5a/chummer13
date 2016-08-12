@@ -29,6 +29,7 @@ using System.Xml.XPath;
 using Chummer.Skills;
 using System.Diagnostics;
 using Chummer.Backend.Equipment;
+using Chummer.Controls;
 
 namespace Chummer
 {
@@ -5669,9 +5670,9 @@ namespace Chummer
                     }
                 }
                 UpdateCharacterInfo();
-                RefreshSelectedWeapon();
+				RefreshObject(treWeapons.SelectedNode.Tag.ToString());
 
-                _blnIsDirty = true;
+				_blnIsDirty = true;
                 UpdateWindowTitle();
             }
             catch
@@ -8180,9 +8181,9 @@ namespace Chummer
             treWeapons.SelectedNode.Expand();
 
             UpdateCharacterInfo();
-            RefreshSelectedWeapon();
+			RefreshObject(treWeapons.SelectedNode.Tag.ToString());
 
-            if (frmPickWeaponAccessory.AddAgain)
+			if (frmPickWeaponAccessory.AddAgain)
                 tsWeaponAddAccessory_Click(sender, e);
         }
 
@@ -9113,8 +9114,8 @@ namespace Chummer
             //treWeapons.SelectedNode = objNode;
 
             UpdateCharacterInfo();
-            RefreshSelectedWeapon();
-        }
+			RefreshObject(treWeapons.SelectedNode.Tag.ToString());
+		}
 
         private void tsGearAddNexus_Click(object sender, EventArgs e)
         {
@@ -11134,8 +11135,8 @@ namespace Chummer
                 tsWeaponAccessoryGearMenuAddAsPlugin_Click(sender, e);
 
             UpdateCharacterInfo();
-            RefreshSelectedWeapon();
-        }
+			RefreshObject(treWeapons.SelectedNode.Tag.ToString());
+		}
 
         private void tsVehicleRenameLocation_Click(object sender, EventArgs e)
         {
@@ -11599,12 +11600,24 @@ namespace Chummer
 
         #region Additional Street Gear Tab Control Events
         private void treWeapons_AfterSelect(object sender, TreeViewEventArgs e)
-        {
-            RefreshSelectedWeapon();
-            RefreshPasteStatus();
-        }
+		{
+			panWeaponPanel.Controls.Clear();
+	        RefreshObject(treWeapons.SelectedNode.Tag.ToString());
+		}
 
-        private void treWeapons_ItemDrag(object sender, ItemDragEventArgs e)
+		private void RefreshObject(string strTag)
+		{
+			Weapon objWeapon = _objFunctions.FindWeapon(strTag, _objCharacter.Weapons);
+			if (objWeapon != null)
+			{
+				WeaponDisplayControl objWeaponDisplayControl = new WeaponDisplayControl(tipTooltip);
+				panWeaponPanel.Controls.Add(objWeaponDisplayControl);
+				objWeaponDisplayControl.RefreshSelectedWeapon(objWeapon, _objCharacter, _objFunctions, _objOptions, tipTooltip);
+			}
+			RefreshPasteStatus();
+		}
+
+		private void treWeapons_ItemDrag(object sender, ItemDragEventArgs e)
         {
             try
             {
@@ -12089,72 +12102,6 @@ namespace Chummer
             }
         }
 
-        private void chkWeaponAccessoryInstalled_CheckedChanged(object sender, EventArgs e)
-        {
-            bool blnAccessory = false;
-
-            // Locate the selected Weapon Accessory or Modification.
-            WeaponAccessory objAccessory = _objFunctions.FindWeaponAccessory(treWeapons.SelectedNode.Tag.ToString(), _objCharacter.Weapons);
-            if (objAccessory != null)
-                blnAccessory = true;
-
-            if (blnAccessory)
-            {
-                objAccessory.Installed = chkWeaponAccessoryInstalled.Checked;
-            }
-            else
-            {
-                    // Determine if this is an Underbarrel Weapon.
-                    bool blnUnderbarrel = false;
-                    Weapon objWeapon = _objFunctions.FindWeapon(treWeapons.SelectedNode.Tag.ToString(), _objCharacter.Weapons);
-                    if (objWeapon != null)
-                    {
-                        objWeapon.Installed = chkWeaponAccessoryInstalled.Checked;
-                        blnUnderbarrel = true;
-                    }
-
-                    if (!blnUnderbarrel)
-                    {
-                        // Find the selected Gear.
-                        Gear objSelectedGear = new Gear(_objCharacter);
-
-                        try
-                        {
-                            objSelectedGear = _objFunctions.FindWeaponGear(treWeapons.SelectedNode.Tag.ToString(), _objCharacter.Weapons, out objAccessory);
-                            objSelectedGear.Equipped = chkWeaponAccessoryInstalled.Checked;
-
-                            _objController.ChangeGearEquippedStatus(objSelectedGear, chkWeaponAccessoryInstalled.Checked);
-
-                            UpdateCharacterInfo();
-                        }
-                        catch
-                        {
-                        }
-                    }
-            }
-
-            _blnIsDirty = true;
-            UpdateWindowTitle();
-        }
-
-        private void chkIncludedInWeapon_CheckedChanged(object sender, EventArgs e)
-        {
-            bool blnAccessory = false;
-
-            // Locate the selected Weapon Accessory or Modification.
-            WeaponAccessory objAccessory = _objFunctions.FindWeaponAccessory(treWeapons.SelectedNode.Tag.ToString(), _objCharacter.Weapons);
-            if (objAccessory != null)
-                blnAccessory = true;
-
-            if (blnAccessory)
-            {
-                objAccessory.IncludedInWeapon = chkIncludedInWeapon.Checked;
-            }
-
-            _blnIsDirty = true;
-            UpdateWindowTitle();
-            UpdateCharacterInfo();
-        }
 
         private void treGear_ItemDrag(object sender, ItemDragEventArgs e)
         {
@@ -13989,11 +13936,6 @@ namespace Chummer
         #endregion
 
         #region Sourcebook Label Events
-        private void lblWeaponSource_Click(object sender, EventArgs e)
-        {
-            CommonFunctions objCommon = new CommonFunctions(_objCharacter);
-            _objFunctions.OpenPDF(lblWeaponSource.Text);
-        }
 
         private void lblMetatypeSource_Click(object sender, EventArgs e)
         {
@@ -16048,267 +15990,6 @@ namespace Chummer
                 if (objImprovement.ImproveType == Improvement.ImprovementType.LimitModifier || objImprovement.ImproveType == Improvement.ImprovementType.PhysicalLimit || objImprovement.ImproveType == Improvement.ImprovementType.MentalLimit || objImprovement.ImproveType == Improvement.ImprovementType.SocialLimit)
                 {
                     treLimit.Add(objImprovement, cmsLimitModifier);
-                }
-            }
-        }
-
-        /// <summary>
-        /// Refresh the information for the currently displayed Weapon.
-        /// </summary>
-        public void RefreshSelectedWeapon()
-        {
-            lblWeaponDeviceRating.Text = "";
-            lblWeaponAttack.Text = "";
-            lblWeaponSleaze.Text = "";
-            lblWeaponDataProcessing.Text = "";
-            lblWeaponFirewall.Text = "";
-
-            bool blnClear = false;
-            try
-            {
-                if (treWeapons.SelectedNode.Level == 0)
-                    blnClear = true;
-            }
-            catch
-            {
-                blnClear = true;
-            }
-            if (blnClear)
-            {
-                lblWeaponName.Text = "";
-                lblWeaponCategory.Text = "";
-                lblWeaponAvail.Text = "";
-                lblWeaponCost.Text = "";
-                lblWeaponAccuracy.Text = "";
-                lblWeaponConceal.Text = "";
-                lblWeaponDamage.Text = "";
-                lblWeaponRC.Text = "";
-                lblWeaponAP.Text = "";
-                lblWeaponReach.Text = "";
-                lblWeaponMode.Text = "";
-                lblWeaponAmmo.Text = "";
-				lblWeaponRating.Text = "";
-				lblWeaponSource.Text = "";
-                tipTooltip.SetToolTip(lblWeaponSource, null);
-                chkWeaponAccessoryInstalled.Enabled = false;
-                chkIncludedInWeapon.Enabled = false;
-                chkIncludedInWeapon.Checked = false;
-
-                // Hide Weapon Ranges.
-                lblWeaponRangeShort.Text = "";
-                lblWeaponRangeMedium.Text = "";
-                lblWeaponRangeLong.Text = "";
-                lblWeaponRangeExtreme.Text = "";
-                return;
-            }
-
-            lblWeaponDicePool.Text = "";
-            tipTooltip.SetToolTip(lblWeaponDicePool, "");
-
-            // Locate the selected Weapon.
-            if (treWeapons.SelectedNode.Level == 1)
-            {
-                Weapon objWeapon = _objFunctions.FindWeapon(treWeapons.SelectedNode.Tag.ToString(), _objCharacter.Weapons);
-                if (objWeapon == null)
-                    return;
-
-                // If this is a Cyberweapon, grab the STR of the limb.
-                int intUseSTR = 0;
-                if (objWeapon.Cyberware)
-                {
-                    foreach (Cyberware objCyberware in _objCharacter.Cyberware)
-                    {
-                        foreach (Cyberware objPlugin in objCyberware.Children)
-                        {
-                            if (objPlugin.WeaponID == objWeapon.InternalId)
-                            {
-                                intUseSTR = objCyberware.TotalStrength;
-                                break;
-                            }
-                        }
-                    }
-                }
-
-                _blnSkipRefresh = true;
-                lblWeaponName.Text = objWeapon.DisplayNameShort;
-                lblWeaponCategory.Text = objWeapon.DisplayCategory;
-                string strBook = _objOptions.LanguageBookShort(objWeapon.Source);
-                string strPage = objWeapon.Page;
-                lblWeaponSource.Text = strBook + " " + strPage;
-                tipTooltip.SetToolTip(lblWeaponSource, _objOptions.LanguageBookLong(objWeapon.Source) + " " + LanguageManager.Instance.GetString("String_Page") + " " + objWeapon.Page);
-                chkWeaponAccessoryInstalled.Enabled = false;
-                chkIncludedInWeapon.Enabled = false;
-                chkIncludedInWeapon.Checked = false;
-
-                // Show the Weapon Ranges.
-                lblWeaponRangeShort.Text = objWeapon.RangeShort;
-                lblWeaponRangeMedium.Text = objWeapon.RangeMedium;
-                lblWeaponRangeLong.Text = objWeapon.RangeLong;
-                lblWeaponRangeExtreme.Text = objWeapon.RangeExtreme;
-                _blnSkipRefresh = false;
-
-                lblWeaponAvail.Text = objWeapon.TotalAvail;
-                lblWeaponCost.Text = String.Format("{0:###,###,##0¥}", objWeapon.TotalCost);
-                lblWeaponConceal.Text = objWeapon.CalculatedConcealability();
-                lblWeaponDamage.Text = objWeapon.CalculatedDamage(intUseSTR);
-                lblWeaponAccuracy.Text = objWeapon.TotalAccuracy.ToString();
-                lblWeaponRC.Text = objWeapon.TotalRC;
-                lblWeaponAP.Text = objWeapon.TotalAP;
-                lblWeaponReach.Text = objWeapon.TotalReach.ToString();
-                lblWeaponMode.Text = objWeapon.CalculatedMode;
-                lblWeaponAmmo.Text = objWeapon.CalculatedAmmo();
-				lblWeaponRating.Text = "";
-				lblWeaponSlots.Text = objWeapon.AccessoryMounts;
-                lblWeaponDicePool.Text = objWeapon.DicePool;
-                tipTooltip.SetToolTip(lblWeaponDicePool, objWeapon.DicePoolTooltip);
-                tipTooltip.SetToolTip(lblWeaponRC, objWeapon.RCToolTip);
-
-                UpdateCharacterInfo();
-            }
-            else
-            {
-                // See if this is an Underbarrel Weapon.
-                bool blnUnderbarrel = false;
-                Weapon objWeapon = _objFunctions.FindWeapon(treWeapons.SelectedNode.Tag.ToString(), _objCharacter.Weapons);
-                if (objWeapon != null)
-                {
-                    if (objWeapon.IsUnderbarrelWeapon)
-                        blnUnderbarrel = true;
-                }
-
-                if (blnUnderbarrel)
-                {
-                    _blnSkipRefresh = true;
-                    lblWeaponName.Text = objWeapon.DisplayNameShort;
-                    lblWeaponCategory.Text = objWeapon.DisplayCategory;
-                    string strBook = _objOptions.LanguageBookShort(objWeapon.Source);
-                    string strPage = objWeapon.Page;
-                    lblWeaponSource.Text = strBook + " " + strPage;
-                    tipTooltip.SetToolTip(lblWeaponSource, _objOptions.LanguageBookLong(objWeapon.Source) + " " + LanguageManager.Instance.GetString("String_Page") + " " + objWeapon.Page);
-                    chkWeaponAccessoryInstalled.Enabled = true;
-                    chkWeaponAccessoryInstalled.Checked = objWeapon.Installed;
-                    chkIncludedInWeapon.Enabled = false;
-                    chkIncludedInWeapon.Checked = objWeapon.IncludedInWeapon;
-
-                    // Show the Weapon Ranges.
-                    lblWeaponRangeShort.Text = objWeapon.RangeShort;
-                    lblWeaponRangeMedium.Text = objWeapon.RangeMedium;
-                    lblWeaponRangeLong.Text = objWeapon.RangeLong;
-                    lblWeaponRangeExtreme.Text = objWeapon.RangeExtreme;
-                    _blnSkipRefresh = false;
-
-                    lblWeaponAvail.Text = objWeapon.TotalAvail;
-                    lblWeaponCost.Text = String.Format("{0:###,###,##0¥}", objWeapon.TotalCost);
-                    lblWeaponConceal.Text = "+4";
-                    lblWeaponDamage.Text = objWeapon.CalculatedDamage();
-                    lblWeaponAccuracy.Text = objWeapon.TotalAccuracy.ToString();
-                    lblWeaponRC.Text = objWeapon.TotalRC;
-                    lblWeaponAP.Text = objWeapon.TotalAP;
-                    lblWeaponReach.Text = objWeapon.TotalReach.ToString();
-                    lblWeaponMode.Text = objWeapon.CalculatedMode;
-                    lblWeaponAmmo.Text = objWeapon.CalculatedAmmo();
-					lblWeaponRating.Text = "";
-					lblWeaponSlots.Text = objWeapon.AccessoryMounts;
-					lblWeaponDicePool.Text = objWeapon.DicePool;
-                    tipTooltip.SetToolTip(lblWeaponDicePool, objWeapon.DicePoolTooltip);
-
-                    UpdateCharacterInfo();
-                }
-                else
-                {
-                    bool blnAccessory = false;
-                    Weapon objSelectedWeapon = new Weapon(_objCharacter);
-                    WeaponAccessory objSelectedAccessory = _objFunctions.FindWeaponAccessory(treWeapons.SelectedNode.Tag.ToString(), _objCharacter.Weapons);
-                    if (objSelectedAccessory != null)
-                    {
-                        blnAccessory = true;
-                        objSelectedWeapon = objSelectedAccessory.Parent;
-                    }
-
-                    if (blnAccessory)
-                    {
-                        lblWeaponName.Text = objSelectedAccessory.DisplayNameShort;
-                        lblWeaponCategory.Text = LanguageManager.Instance.GetString("String_WeaponAccessory");
-                        lblWeaponAvail.Text = objSelectedAccessory.TotalAvail;
-                        lblWeaponCost.Text = String.Format("{0:###,###,##0¥}", Convert.ToInt32(objSelectedAccessory.TotalCost));
-                        lblWeaponConceal.Text = objSelectedAccessory.Concealability.ToString();
-                        lblWeaponDamage.Text = "";
-                        lblWeaponAccuracy.Text = objSelectedAccessory.Accuracy.ToString();
-                        lblWeaponRC.Text = objSelectedAccessory.RC;
-                        lblWeaponAP.Text = "";
-                        lblWeaponReach.Text = "";
-                        lblWeaponMode.Text = "";
-                        lblWeaponAmmo.Text = "";
-						lblWeaponRating.Text = objSelectedAccessory.Rating.ToString();
-
-                        string[] strMounts = objSelectedAccessory.Mount.Split('/');
-                        string strMount = "";
-                        foreach (string strCurrentMount in strMounts)
-                        {
-                            if (strCurrentMount != "")
-                                strMount += LanguageManager.Instance.GetString("String_Mount" + strCurrentMount) + "/";
-                        }
-                        // Remove the trailing /
-                        if (strMount != "" && strMount.Contains('/'))
-                            strMount = strMount.Substring(0, strMount.Length - 1);
-
-                        lblWeaponSlots.Text = strMount;
-                        string strBook = _objOptions.LanguageBookShort(objSelectedAccessory.Source);
-                        string strPage = objSelectedAccessory.Page;
-                        lblWeaponSource.Text = strBook + " " + strPage;
-                        tipTooltip.SetToolTip(lblWeaponSource, _objOptions.BookFromCode(objSelectedAccessory.Source) + " " + LanguageManager.Instance.GetString("String_Page") + " " + objSelectedAccessory.Page);
-                        chkWeaponAccessoryInstalled.Enabled = true;
-                        chkWeaponAccessoryInstalled.Checked = objSelectedAccessory.Installed;
-                        chkIncludedInWeapon.Enabled = _objOptions.AllowEditPartOfBaseWeapon;
-                        chkIncludedInWeapon.Checked = objSelectedAccessory.IncludedInWeapon;
-                        UpdateCharacterInfo();
-                    }
-                    else
-                    {
-						    // Find the selected Gear.
-                            _blnSkipRefresh = true;
-                            WeaponAccessory objAccessory = new WeaponAccessory(_objCharacter);
-                            Gear objGear = _objFunctions.FindWeaponGear(treWeapons.SelectedNode.Tag.ToString(), _objCharacter.Weapons, out objAccessory);
-                            lblWeaponName.Text = objGear.DisplayNameShort;
-                            lblWeaponCategory.Text = objGear.DisplayCategory;
-                            lblWeaponAvail.Text = objGear.TotalAvail(true);
-                            lblWeaponCost.Text = String.Format("{0:###,###,##0¥}", objGear.TotalCost);
-                            lblWeaponConceal.Text = "";
-                            lblWeaponDamage.Text = "";
-                            lblWeaponRC.Text = "";
-                            lblWeaponAP.Text = "";
-                            lblWeaponAccuracy.Text = "";
-                            lblWeaponReach.Text = "";
-                            lblWeaponMode.Text = "";
-                            lblWeaponAmmo.Text = "";
-                            lblWeaponSlots.Text = "";
-							lblWeaponRating.Text = "";
-							string strBook = _objOptions.LanguageBookShort(objGear.Source);
-                            string strPage = objGear.Page;
-                            lblWeaponSource.Text = strBook + " " + strPage;
-                            tipTooltip.SetToolTip(lblWeaponSource, _objOptions.BookFromCode(objGear.Source) + " " + LanguageManager.Instance.GetString("String_Page") + " " + objGear.Page);
-                            chkWeaponAccessoryInstalled.Enabled = true;
-                            chkWeaponAccessoryInstalled.Checked = objGear.Equipped;
-                            chkIncludedInWeapon.Enabled = false;
-                            chkIncludedInWeapon.Checked = false;
-                            _blnSkipRefresh = false;
-
-                            if (objGear.GetType() == typeof(Commlink))
-                            {
-                                Commlink objCommlink = (Commlink)objGear;
-                                lblWeaponDeviceRating.Text = objCommlink.DeviceRating.ToString();
-                                lblWeaponAttack.Text = objCommlink.Attack.ToString();
-                                lblWeaponSleaze.Text = objCommlink.Sleaze.ToString();
-                                lblWeaponDataProcessing.Text = objCommlink.DataProcessing.ToString();
-                                lblWeaponFirewall.Text = objCommlink.Firewall.ToString();
-                            }
-                    }
-
-                    // Show the Weapon Ranges.
-                    lblWeaponRangeShort.Text = objSelectedWeapon.RangeShort;
-                    lblWeaponRangeMedium.Text = objSelectedWeapon.RangeMedium;
-                    lblWeaponRangeLong.Text = objSelectedWeapon.RangeLong;
-                    lblWeaponRangeExtreme.Text = objSelectedWeapon.RangeExtreme;
                 }
             }
         }
@@ -22006,8 +21687,6 @@ namespace Chummer
             tipTooltip.SetToolTip(lblLivingPersonaDeviceRatingLabel, LanguageManager.Instance.GetString("Tip_TechnomancerResponse"));
             // Armor Tab.
             tipTooltip.SetToolTip(chkArmorEquipped, LanguageManager.Instance.GetString("Tip_ArmorEquipped"));
-            // Weapon Tab.
-            tipTooltip.SetToolTip(chkWeaponAccessoryInstalled, LanguageManager.Instance.GetString("Tip_WeaponInstalled"));
             // Gear Tab.
             tipTooltip.SetToolTip(chkActiveCommlink, LanguageManager.Instance.GetString("Tip_ActiveCommlink"));
             // Vehicles Tab.
@@ -22307,59 +21986,6 @@ namespace Chummer
             lblArmorDataProcessing.Left = lblArmorDataProcessingLabel.Left + lblArmorDataProcessingLabel.Width + 6;
             lblArmorFirewallLabel.Left = lblArmorDataProcessing.Left + lblArmorDataProcessing.Width + 20;
             lblArmorFirewall.Left = lblArmorFirewallLabel.Left + lblArmorFirewallLabel.Width + 6;
-
-            // Weapons tab.
-            lblWeaponName.Left = lblWeaponNameLabel.Left + lblWeaponNameLabel.Width + 6;
-            lblWeaponCategory.Left = lblWeaponCategoryLabel.Left + lblWeaponCategoryLabel.Width + 6;
-
-            intWidth = Math.Max(lblWeaponNameLabel.Width, lblWeaponCategoryLabel.Width);
-            intWidth = Math.Max(intWidth, lblWeaponDamageLabel.Width);
-            intWidth = Math.Max(intWidth, lblWeaponReachLabel.Width);
-            intWidth = Math.Max(intWidth, lblWeaponAvailLabel.Width);
-            intWidth = Math.Max(intWidth, lblWeaponSlotsLabel.Width);
-            intWidth = Math.Max(intWidth, lblWeaponSourceLabel.Width);
-
-            lblWeaponName.Left = lblWeaponNameLabel.Left + intWidth + 6;
-            lblWeaponCategory.Left = lblWeaponCategoryLabel.Left + intWidth + 6;
-            lblWeaponDamage.Left = lblWeaponDamageLabel.Left + intWidth + 6;
-            lblWeaponReach.Left = lblWeaponReachLabel.Left + intWidth + 6;
-            lblWeaponAvail.Left = lblWeaponAvailLabel.Left + intWidth + 6;
-            lblWeaponSlots.Left = lblWeaponSlotsLabel.Left + intWidth + 6;
-            lblWeaponSource.Left = lblWeaponSourceLabel.Left + intWidth + 6;
-
-            intWidth = Math.Max(lblWeaponRCLabel.Width, lblWeaponModeLabel.Width);
-            intWidth = Math.Max(intWidth, lblWeaponCostLabel.Width);
-
-            lblWeaponRCLabel.Left = lblWeaponDamageLabel.Left + 176;
-            lblWeaponRC.Left = lblWeaponRCLabel.Left + intWidth + 6;
-            lblWeaponModeLabel.Left = lblWeaponDamageLabel.Left + 176;
-            lblWeaponMode.Left = lblWeaponModeLabel.Left + intWidth + 6;
-            lblWeaponCostLabel.Left = lblWeaponDamageLabel.Left + 176;
-            lblWeaponCost.Left = lblWeaponCostLabel.Left + intWidth + 6;
-            chkIncludedInWeapon.Left = lblWeaponDamageLabel.Left + 176;
-            lblWeaponAccuracy.Left = lblWeaponAccuracyLabel.Left + lblWeaponAccuracyLabel.Width + 6;
-
-            intWidth = Math.Max(lblWeaponAPLabel.Width, lblWeaponAmmoLabel.Width);
-            intWidth = Math.Max(intWidth, lblWeaponConcealLabel.Width);
-
-            lblWeaponAttackLabel.Left = lblWeaponDeviceRating.Left + lblWeaponDeviceRating.Width + 20;
-            lblWeaponAttack.Left = lblWeaponAttackLabel.Left + lblWeaponAttackLabel.Width + 6;
-            lblWeaponSleazeLabel.Left = lblWeaponAttack.Left + lblWeaponAttack.Width + 20;
-            lblWeaponSleaze.Left = lblWeaponSleazeLabel.Left + lblWeaponSleazeLabel.Width + 6;
-            lblWeaponDataProcessingLabel.Left = lblWeaponSleaze.Left + lblWeaponSleaze.Width + 20;
-            lblWeaponDataProcessing.Left = lblWeaponDataProcessingLabel.Left + lblWeaponDataProcessingLabel.Width + 6;
-            lblWeaponFirewallLabel.Left = lblWeaponDataProcessing.Left + lblWeaponDataProcessing.Width + 20;
-            lblWeaponFirewall.Left = lblWeaponFirewallLabel.Left + lblWeaponFirewallLabel.Width + 6;
-
-            lblWeaponAPLabel.Left = lblWeaponRC.Left + 95;
-            lblWeaponAP.Left = lblWeaponAPLabel.Left + intWidth + 6;
-            lblWeaponAmmoLabel.Left = lblWeaponRC.Left + 95;
-            lblWeaponAmmo.Left = lblWeaponAmmoLabel.Left + intWidth + 6;
-            lblWeaponConcealLabel.Left = lblWeaponRC.Left + 95;
-            lblWeaponConceal.Left = lblWeaponConcealLabel.Left + intWidth + 6;
-            chkWeaponAccessoryInstalled.Left = lblWeaponRC.Left + 95;
-
-            lblWeaponDicePool.Left = lblWeaponDicePoolLabel.Left + intWidth + 6;
 
             // Gear tab.
             intWidth = Math.Max(lblGearNameLabel.Width, lblGearCategoryLabel.Width);
