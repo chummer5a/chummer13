@@ -194,10 +194,16 @@
     <Compile Include="Controls\DiceRollerControl.Designer.cs">
       <DependentUpon>DiceRollerControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\WeaponDisplayControl.cs">
+    <Compile Include="UI\Equipment\GearDisplayControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\WeaponDisplayControl.Designer.cs">
+    <Compile Include="UI\Equipment\GearDisplayControl.Designer.cs">
+      <DependentUpon>GearDisplayControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Equipment\WeaponDisplayControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Equipment\WeaponDisplayControl.Designer.cs">
       <DependentUpon>WeaponDisplayControl.cs</DependentUpon>
     </Compile>
     <Compile Include="frmAddToken.cs">
@@ -795,7 +801,10 @@
     <EmbeddedResource Include="Controls\DiceRollerControl.resx">
       <DependentUpon>DiceRollerControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\WeaponDisplayControl.resx">
+    <EmbeddedResource Include="UI\Equipment\GearDisplayControl.resx">
+      <DependentUpon>GearDisplayControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Equipment\WeaponDisplayControl.resx">
       <DependentUpon>WeaponDisplayControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmAddToken.resx">
