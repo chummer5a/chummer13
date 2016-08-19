@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Linq;
-using System.Text;
 
 namespace Chummer.Backend.Datastructures
 {
-	class OptionListWrapper<T> : IList<T>
+	class OptionListWrapper<T> : IList<T>, INotifyCollectionChanged
 	{
 		private readonly List<T> _listImplementation;
 		private IReadOnlyList<T> _readonlyLazy;
@@ -16,8 +16,7 @@ namespace Chummer.Backend.Datastructures
 		public delegate void ListChanged();
 
 		public event SelectedChanged SelectedItemChangedEvent;
-		public event ListChanged ListChangedEvent;
-
+		public event NotifyCollectionChangedEventHandler CollectionChanged;
 
 		public T SelectedItem
 		{
@@ -65,7 +64,7 @@ namespace Chummer.Backend.Datastructures
 		{
 		    int count = _listImplementation.Count;
             _listImplementation.Add(item);
-            ListChangedEvent?.Invoke();
+            CollectionChanged?.Invoke(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add, new List<T> {item}));
 		    if (count == 0)
 		    {
 		        SelectedItem = _listImplementation[0];
@@ -74,10 +73,11 @@ namespace Chummer.Backend.Datastructures
         }
 
         public void AddRange(IEnumerable<T> items)
-	    {
+        {
+	        var item2 = items.ToList();
             int count = _listImplementation.Count;
-            _listImplementation.AddRange(items);
-            ListChangedEvent?.Invoke();
+            _listImplementation.AddRange(item2);
+            CollectionChanged?.Invoke(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add, item2));
             if (count == 0)
             {
                 SelectedItem = _listImplementation[0];
@@ -86,25 +86,27 @@ namespace Chummer.Backend.Datastructures
 
         }
 
-        public void Clear()
+		public void Clear()
 		{
             _listImplementation.Clear();
             _selectedItem = default(T);
-            ListChangedEvent?.Invoke();
+            CollectionChanged?.Invoke(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset));
             SelectedItemChangedEvent?.Invoke(SelectedItem);
 
 		}
 
-        public void ReplaceWith(IEnumerable<T> items)
+		public void ReplaceWith(IEnumerable<T> items)
 	    {
+			var oldItems = new List<T>(_listImplementation);
+			var newItems = new List<T>(items);
             _listImplementation.Clear();
-            _listImplementation.AddRange(items);
-            ListChangedEvent?.Invoke();
+            _listImplementation.AddRange(newItems);
+            
             if (!_listImplementation.Contains(_selectedItem))
             {
                 FindNewSelected();
             }
-
+			CollectionChanged?.Invoke(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Replace, newItems, oldItems));
         }
 
 	    private void FindNewSelected()
@@ -137,14 +139,14 @@ namespace Chummer.Backend.Datastructures
 		    bool ret = _listImplementation.Remove(item);
             if(same) FindNewSelected();
 
-            ListChangedEvent?.Invoke();
+            CollectionChanged?.Invoke(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Remove, new List<T> {item}));
             return ret;
 		}
 
 		public int Count => _listImplementation.Count;
 
-	    public bool IsReadOnly => (_listImplementation as IList<T>).IsReadOnly;
-
+		public bool IsReadOnly => (_listImplementation as IList<T>).IsReadOnly;
+		
 		public int IndexOf(T item)
 		{
 			return _listImplementation.IndexOf(item);
@@ -158,7 +160,7 @@ namespace Chummer.Backend.Datastructures
 		        SelectedItem = _listImplementation[0];
                 SelectedItemChangedEvent?.Invoke(SelectedItem);
 		    }
-            ListChangedEvent?.Invoke();
+            CollectionChanged?.Invoke(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add, new List<T> {item}, index));
 
 		}
 
@@ -168,7 +170,7 @@ namespace Chummer.Backend.Datastructures
 
         }
 
-        public T this[int index]
+		public T this[int index]
 		{
 			get { return _listImplementation[index]; }
 			set
@@ -177,5 +179,9 @@ namespace Chummer.Backend.Datastructures
 
             }
         }
+
+		
+		
+		
 	}
 }

@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Xml;
-using Chummer.Backend.Data.Infrastructure;
 using Chummer.Backend.Data.Items;
-using Chummer.Backend.Data.Sources;
 using Chummer.Backend.Data.Sources.Xml;
 using Chummer.Backend.Datastructures;
 
@@ -42,16 +40,16 @@ namespace Chummer.Backend.Character_Creation
             _dataSource = dataSource;
 
             
-            _category.ListChangedEvent += CategoryOnListChangedEvent;
+            _category.CollectionChanged += CategoryOnCollectionChanged;
             _category.SelectedItemChangedEvent += CategoryOnSelectedItemChangedEvent;
 
-            _metatype.ListChangedEvent += MetatypeOnListChangedEvent;
+            _metatype.CollectionChanged += MetatypeOnCollectionChanged;
             _metatype.SelectedItemChangedEvent += MetatypeOnSelectedItemChangedEvent;
 
-            _metavariant.ListChangedEvent += MetavariantOnListChangedEvent;
+            _metavariant.CollectionChanged += MetavariantOnCollectionChanged;
             _metavariant.SelectedItemChangedEvent += MetavariantOnSelectedItemChangedEvent;
 
-            _gameplayOption.ListChangedEvent += GameplayOptionOnListChangedEvent;
+            _gameplayOption.CollectionChanged += GameplayOptionOnCollectionChanged;
             _gameplayOption.SelectedItemChangedEvent += GameplayOptionOnSelectedItemChangedEvent;
 
             
@@ -90,27 +88,37 @@ namespace Chummer.Backend.Character_Creation
                 NotifyChanged(nameof(SelectedResources));
             };
 
-            _category.AddRange(_dataSource.Categories);
+		    UpdateMetatypes();//_category.AddRange(_dataSource.Categories);
 
         }
 
         private void UpdateMetatypes()
 	    {
             //this would be somewhat easy to change to get all selected. 
-	        List<HeritageData> data = HeritagesList();
-	        
-	        _metatype.ReplaceWith(
-	            data.Select(x => _dataSource.Metatypes[x.Metatype])
-	                .Where(m => m.Parrent == Guid.Empty && m.Categoryid == SelectedCategory.Guid)
-	                .Select(x => new GuidItem(x.DisplayName, x.Id)));
+	        List<HeritageData> pickData = HeritagesList();
 
-            //Update metavariants that is visible (rmbr "None") 
-            //Make OptionWraper more inteligent about events and make sure things don't update more often than required
+			//All possible metatype/variants at current pick
+	        List<MetatypeData> metatypeData = pickData.Select(x => _dataSource.Metatypes[x.Metatype])
+		        .ToList();
+
+			_category.ReplaceWith(_dataSource.Categories.Where(x => metatypeData.Any(m => m.Categoryid == x.Guid)));
+
+			_metatype.ReplaceWith(
+	            metatypeData				
+				// top level (type not variant) and part of the selected category
+				.Where(m => m.Parrent == Guid.Empty && m.Categoryid == SelectedCategory.Guid) 
+				.Select(x => new GuidItem(x.DisplayName, x.Id)));
+
+	        
+
+	        //Update metavariants that is visible (rmbr "None") 
+	        //Make OptionWraper more inteligent about events and make sure things don't update more often than required
 	        //throw new NotImplementedException();
 	    }
 
 	    private List<HeritageData> HeritagesList()
 	    {
+			//select the list of metatype/variants picks (not the metatype data) available to the current priority selection.
 	        return _dataSource.Picks[_dataSource.PriorityEntries[SelectedHeritage.Guid].PickId].Heritages;
 	    }
 
@@ -122,7 +130,7 @@ namespace Chummer.Backend.Character_Creation
             NotifyChanged(nameof(SelectedGameplayOption));
 	    }
 
-	    private void GameplayOptionOnListChangedEvent()
+	    private void GameplayOptionOnCollectionChanged(object collection, NotifyCollectionChangedEventArgs e)
 	    {
             OnPropertyChanged(new PropertyChangedEventArgs(nameof(GameplayOptionList)));
         }
@@ -133,7 +141,7 @@ namespace Chummer.Backend.Character_Creation
 	        throw new NotImplementedException();
 	    }
 
-	    private void MetavariantOnListChangedEvent()
+	    private void MetavariantOnCollectionChanged(object collection, NotifyCollectionChangedEventArgs e)
 	    {
 	        OnPropertyChanged(new PropertyChangedEventArgs(nameof(MetavariantList)));
         }
@@ -142,7 +150,8 @@ namespace Chummer.Backend.Character_Creation
 	    {
             NotifyChanged(nameof(SelectedMetatype));
 	        //throw new NotImplementedException();
-            if(selected == null) return;
+            if(selected == null)
+				return;
 	        
 
 	        MetatypeData data = _dataSource.Metatypes[selected.Guid];
@@ -150,7 +159,7 @@ namespace Chummer.Backend.Character_Creation
             OnPropertyChanged(new PropertyChangedEventArgs(nameof(Attributes)));
 	    }
 
-	    private void MetatypeOnListChangedEvent()
+	    private void MetatypeOnCollectionChanged(object collection, NotifyCollectionChangedEventArgs e)
 	    {
 	        OnPropertyChanged(new PropertyChangedEventArgs(nameof(MetatypeList)));
 	    }
@@ -162,7 +171,7 @@ namespace Chummer.Backend.Character_Creation
 	        UpdateMetatypes();
 	    }
 
-	    private void CategoryOnListChangedEvent()
+	    private void CategoryOnCollectionChanged(object collection, NotifyCollectionChangedEventArgs e)
 	    {
             OnPropertyChanged(new PropertyChangedEventArgs(nameof(CategoryList)));
         }
