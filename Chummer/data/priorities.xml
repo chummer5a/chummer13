@@ -1179,6 +1179,12 @@
           <special>0</special>
           <karma>15</karma>
         </heritage>
+        <heritage>
+          <hid>18316ccd-5a96-49c3-8e31-39c189f5b6fe</hid>
+          <special>0</special>
+          <karma>0</karma>
+          <!--TODO: Add ilegal AI but only visible if Ignore Rules is enabled-->
+        </heritage>
       </heritages>
     </pick>
     <pick>
@@ -1229,6 +1235,11 @@
           <special>3</special>
           <karma>15</karma>
         </heritage>
+        <heritage>
+          <hid>18316ccd-5a96-49c3-8e31-39c189f5b6fe</hid>
+          <special>2</special>
+          <karma>0</karma>
+        </heritage>
       </heritages>
     </pick>
     <pick>
@@ -1278,6 +1289,11 @@
           <hid>2f51fff5-131a-465d-b054-b64d54059f28</hid>
           <special>6</special>
           <karma>15</karma>
+        </heritage>
+        <heritage>
+          <hid>18316ccd-5a96-49c3-8e31-39c189f5b6fe</hid>
+          <special>4</special>
+          <karma>0</karma>
         </heritage>
       </heritages>
     </pick>
