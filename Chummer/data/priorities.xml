@@ -1111,11 +1111,17 @@
     <!-- End Region-->
     </priorities>
   <picks>
+    <!--Metatypes start-->
     <pick> <!--E-->
       <id>07d65a1e-f97d-404e-894f-5156d4a50e7b</id>
       <heritages>
         <heritage>
           <hid>a53d885d-a4a4-443d-b6a6-b0a55b0a96c7</hid>
+          <special>1</special>
+          <karma>0</karma>
+        </heritage>
+        <heritage>
+          <hid>2b8be494-a8d3-4f21-b616-7f3bf07d64bf</hid>
           <special>1</special>
           <karma>0</karma>
         </heritage>
@@ -1297,5 +1303,7 @@
         </heritage>
       </heritages>
     </pick>
+    <!--Metatypes end-->
+    
   </picks>
 </chummer>

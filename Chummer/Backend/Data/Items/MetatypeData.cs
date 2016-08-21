@@ -7,7 +7,7 @@ namespace Chummer.Backend.Data.Items
 {
     public class MetatypeData
     {
-        public MetatypeData(Guid id, string displayName, int karma, Guid categoryid, string walk, string run, string sprint, string source, int page, IEnumerable<AttributesData> attributes)
+        public MetatypeData(Guid id, Guid parrent, string displayName, int karma, Guid categoryid, string walk, string run, string sprint, string source, int page, IEnumerable<AttributesData> attributes)
         {
             Id = id;
             DisplayName = displayName;
@@ -18,11 +18,12 @@ namespace Chummer.Backend.Data.Items
             Sprint = sprint;
             Source = source;
             Page = page;
-            Attributes = attributes.ToList().AsReadOnly();
+	        Parrent = parrent;
+	        Attributes = attributes.ToList().AsReadOnly();
         }
 
         public Guid Id { get; }
-        public Guid Parrent { get; } = Guid.Empty;
+        public Guid Parrent { get; }
         public string DisplayName { get; }
         public int Karma { get; }
         public Guid Categoryid { get; }

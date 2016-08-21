@@ -69,7 +69,8 @@ namespace Chummer.Backend.Character_Creation
             _priorityTableImplentation.HeritageOptions.SelectedItemChangedEvent += selected =>
             {
                 UpdateMetatypes();
-                NotifyChanged(nameof(SelectedHeritage));
+				UpdateMetavariant();
+				NotifyChanged(nameof(SelectedHeritage));
             };
             _priorityTableImplentation.AttributesOptions.SelectedItemChangedEvent += selected =>
             {
@@ -138,7 +139,7 @@ namespace Chummer.Backend.Character_Creation
         private void MetavariantOnSelectedItemChangedEvent(GuidItem selected)
 	    {
             NotifyChanged(nameof(SelectedMetavariant));
-	        throw new NotImplementedException();
+	        //throw new NotImplementedException();
 	    }
 
 	    private void MetavariantOnCollectionChanged(object collection, NotifyCollectionChangedEventArgs e)
@@ -156,10 +157,32 @@ namespace Chummer.Backend.Character_Creation
 
 	        MetatypeData data = _dataSource.Metatypes[selected.Guid];
 	        _attributes = data.Attributes;
-            OnPropertyChanged(new PropertyChangedEventArgs(nameof(Attributes)));
+			OnPropertyChanged(new PropertyChangedEventArgs(nameof(Attributes)));
+
+			UpdateMetavariant();
 	    }
 
-	    private void MetatypeOnCollectionChanged(object collection, NotifyCollectionChangedEventArgs e)
+		private void UpdateMetavariant()
+		{
+			List<HeritageData> pickData = HeritagesList();
+
+			//All possible metatype/variants at current pick
+			List<MetatypeData> metatypeData = pickData.Select(x => _dataSource.Metatypes[x.Metatype])
+				.ToList();
+
+			_category.ReplaceWith(_dataSource.Categories.Where(x => metatypeData.Any(m => m.Categoryid == x.Guid)));
+
+			_metavariant.ReplaceWith(
+				Enumerable.Repeat(new GuidItem("None", SelectedMetatype.Guid), 1)
+					.Concat(
+						metatypeData
+							// top level (type not variant) and part of the selected category
+							.Where(m => m.Parrent == SelectedMetatype.Guid)
+							.Select(x => new GuidItem(x.DisplayName, x.Id))
+					));
+		}
+
+		private void MetatypeOnCollectionChanged(object collection, NotifyCollectionChangedEventArgs e)
 	    {
 	        OnPropertyChanged(new PropertyChangedEventArgs(nameof(MetatypeList)));
 	    }

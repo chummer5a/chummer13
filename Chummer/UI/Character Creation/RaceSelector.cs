@@ -39,6 +39,11 @@ namespace Chummer.UI.Character_Creation
 			lstMetatypes.ValueMember = "Guid";
 			lstMetatypes.DisplayMember = "DisplayName";
 			lstMetatypes.DataSource = value.MetatypeList;
+
+
+			lstMetavariants.ValueMember = "Guid";
+			lstMetavariants.DisplayMember = "DisplayName";
+			lstMetavariants.DataSource = value.MetavariantList;
             
             value.PropertyChanged += ValueOnPropertyChanged;
 
@@ -57,6 +62,15 @@ namespace Chummer.UI.Character_Creation
 					lstMetatypes.DataSource = _setupInfo.MetatypeList;
 				    lstMetatypes.SelectedItem = _setupInfo.SelectedMetatype;
 			    }
+			    if (propertyChangedEventArgs.PropertyName == nameof(AbstractCharacterSetupInfo.MetavariantList))
+			    {
+					lstMetavariants.DataSource = null;
+					lstMetavariants.ValueMember = "Guid";
+					lstMetavariants.DisplayMember = "DisplayName";
+					lstMetavariants.DataSource = _setupInfo.MetavariantList;
+					lstMetavariants.SelectedItem = _setupInfo.SelectedMetavariant;
+				}
+
 			    if (propertyChangedEventArgs.PropertyName == nameof(AbstractCharacterSetupInfo.CategoryList))
 			    {
 				    cboCategory.DataSource = null;
@@ -102,5 +116,13 @@ namespace Chummer.UI.Character_Creation
                 _setupInfo.SelectedMetatype = (GuidItem)lstMetatypes.SelectedItem;
             }
         }
-    }
+
+		private void lstMetavariants_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			if (_setupInfo != null && !gate.Locked)
+			{
+				_setupInfo.SelectedMetavariant = (GuidItem) lstMetavariants.SelectedItem;
+			}
+		}
+	}
 }

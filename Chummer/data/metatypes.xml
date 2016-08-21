@@ -35,13 +35,13 @@
   <heritages>
     <heritage>
       <id>a53d885d-a4a4-443d-b6a6-b0a55b0a96c7</id>
+      <parrent>00000000-0000-0000-0000-000000000000</parrent>
       <name>Human</name>
       <karma>0</karma>
       <categoryid>b58da1c5-b276-4b15-a10d-39f5d1abdfcb</categoryid>
       <walk>AGI*2</walk>
       <run>AGI*4</run>
       <sprint>+2m/hit</sprint>
-      <bonus />
       <source>SR5</source>
       <page>50</page>
       <attributes>
@@ -111,7 +111,85 @@
       </attributes>
     </heritage>
     <heritage>
+      <id>2b8be494-a8d3-4f21-b616-7f3bf07d64bf</id>
+      <parrent>a53d885d-a4a4-443d-b6a6-b0a55b0a96c7</parrent>
+      <name>Nartaki</name>
+      <karma>0</karma>
+      <categoryid>b58da1c5-b276-4b15-a10d-39f5d1abdfcb</categoryid>
+      <walk>AGI*2</walk>
+      <run>AGI*4</run>
+      <sprint>+2m/hit</sprint>
+      <source>RF</source>
+      <page>104</page>
+      <attributes>
+        <bod>
+          <name>Body</name>
+          <short>BOD</short>
+          <min>1</min>
+          <max>6</max>
+          <aug>10</aug>
+        </bod>
+        <agi>
+          <name>Agility</name>
+          <short>AGI</short>
+          <min>1</min>
+          <max>6</max>
+          <aug>10</aug>
+        </agi>
+        <rea>
+          <name>Reaction</name>
+          <short>REA</short>
+          <min>1</min>
+          <max>6</max>
+          <aug>10</aug>
+        </rea>
+        <str>
+          <name>Strength</name>
+          <short>STR</short>
+          <min>1</min>
+          <max>6</max>
+          <aug>10</aug>
+        </str>
+        <wil>
+          <name>Willpower</name>
+          <short>WIL</short>
+          <min>1</min>
+          <max>6</max>
+          <aug>10</aug>
+        </wil>
+        <log>
+          <name>Logic</name>
+          <short>LOG</short>
+          <min>1</min>
+          <max>6</max>
+          <aug>10</aug>
+        </log>
+        <int>
+          <name>Intuition</name>
+          <short>INT</short>
+          <min>1</min>
+          <max>6</max>
+          <aug>10</aug>
+        </int>
+        <cha>
+          <name>Charisma</name>
+          <short>CHA</short>
+          <min>1</min>
+          <max>6</max>
+          <aug>10</aug>
+        </cha>
+        <edg>
+          <name>Edge</name>
+          <short>EDG</short>
+          <min>1</min>
+          <max>6</max>
+          <aug>6</aug>
+        </edg>
+      </attributes>
+    </heritage>
+    <heritage>
       <id>b3259991-b315-4dbe-ae3c-51f71a1116e2</id>
+      <parrent>00000000-0000-0000-0000-000000000000</parrent>
       <name>Elf</name>
       <karma>40</karma>
       <categoryid>b58da1c5-b276-4b15-a10d-39f5d1abdfcb</categoryid>
@@ -189,6 +267,7 @@
     </heritage>
     <heritage>
       <id>08f2c9cc-f9f8-4f1a-9efb-63555af71788</id>
+      <parrent>00000000-0000-0000-0000-000000000000</parrent>
       <name>Dwarf</name>
       <karma>50</karma>
       <categoryid>b58da1c5-b276-4b15-a10d-39f5d1abdfcb</categoryid>
@@ -266,6 +345,7 @@
     </heritage>
     <heritage>
       <id>8ed6892f-88e6-42d0-a704-b805778ec13e</id>
+      <parrent>00000000-0000-0000-0000-000000000000</parrent>
       <name>Ork</name>
       <karma>50</karma>
       <categoryid>b58da1c5-b276-4b15-a10d-39f5d1abdfcb</categoryid>
@@ -343,6 +423,7 @@
     </heritage>
     <heritage>
       <id>77fa1ed8-f4e6-4763-9f0b-f125318b9782</id>
+      <parrent>00000000-0000-0000-0000-000000000000</parrent>
       <name>Troll</name>
       <karma>90</karma>
       <categoryid>b58da1c5-b276-4b15-a10d-39f5d1abdfcb</categoryid>
@@ -420,6 +501,7 @@
     </heritage>
     <heritage>
       <id>8768ec05-4fbb-43ae-b3ba-94ba57610069</id>
+      <parrent>00000000-0000-0000-0000-000000000000</parrent>
       <name>Centaur</name>
       <karma>60</karma>
       <categoryid>8df7fd25-0876-416b-bb97-706460141e04</categoryid>
@@ -504,6 +586,7 @@
     </heritage>
     <heritage>
       <id>6d59c1ff-d79a-4f14-8578-3c4c790f2d52</id>
+      <parrent>00000000-0000-0000-0000-000000000000</parrent>
       <name>Naga</name>
       <karma>95</karma>
       <categoryid>8df7fd25-0876-416b-bb97-706460141e04</categoryid>
@@ -588,6 +671,7 @@
     </heritage>
     <heritage>
       <id>7a096dc7-b1cb-4df8-b17e-9f28bf8f6d99</id>
+      <parrent>00000000-0000-0000-0000-000000000000</parrent>
       <name>Sasquatch</name>
       <karma>90</karma>
       <categoryid>8df7fd25-0876-416b-bb97-706460141e04</categoryid>
@@ -672,6 +756,7 @@
     </heritage>
     <heritage>
       <id>2f51fff5-131a-465d-b054-b64d54059f28</id>
+      <parrent>00000000-0000-0000-0000-000000000000</parrent>
       <name>Pixie</name>
       <karma>70</karma>
       <categoryid>8df7fd25-0876-416b-bb97-706460141e04</categoryid>
@@ -756,6 +841,7 @@
     </heritage>
     <heritage>
       <id>18316ccd-5a96-49c3-8e31-39c189f5b6fe</id>
+      <parrent>00000000-0000-0000-0000-000000000000</parrent>
       <name>Metasapient</name>
       <karma>180</karma>
       <categoryid>70f8802e-4880-4959-8060-30ee9932efe0</categoryid>
@@ -812,6 +898,7 @@
     </heritage>
     <heritage>
       <id>2ec2397e-ed20-476a-9a99-b170137e24bd</id>
+      <parrent>00000000-0000-0000-0000-000000000000</parrent>
       <name>Protosapient</name>
       <karma>0</karma>
       <categoryid>70f8802e-4880-4959-8060-30ee9932efe0</categoryid>
@@ -868,6 +955,7 @@
     </heritage>
     <heritage>
       <id>091b89a2-1d23-4007-b1fe-f11d272a8e9c</id>
+      <parrent>00000000-0000-0000-0000-000000000000</parrent>
       <name>Xenosapient</name>
       <karma>0</karma>
       <categoryid>70f8802e-4880-4959-8060-30ee9932efe0</categoryid>
@@ -924,6 +1012,7 @@
     </heritage>
     <heritage>
       <id>11913674-f31f-4d41-a33e-9528c6b8a898</id>
+      <parrent>00000000-0000-0000-0000-000000000000</parrent>
       <name>E-ghost</name>
       <karma>0</karma>
       <categoryid>70f8802e-4880-4959-8060-30ee9932efe0</categoryid>

@@ -79,8 +79,10 @@ namespace Chummer.Backend.Data.Sources.Xml
             Metatypes =
                 new DataList<MetatypeData>(metatypes.SelectNodes("/chummer/heritages/heritage").OfType<XmlNode>().Select(
                     node =>
-                        new MetatypeData(Guid.Parse(node["id"].InnerText),
-                            node["name"].Attributes["translate"]?.InnerText ?? node["name"].InnerText,
+                        new MetatypeData(
+							Guid.Parse(node["id"].InnerText), 
+							Guid.Parse(node["parrent"].InnerText),
+							node["name"].Attributes["translate"]?.InnerText ?? node["name"].InnerText,
                             int.Parse(node["karma"].InnerText), Guid.Parse(node["categoryid"].InnerText),
                             node["walk"].InnerText,
                             node["run"].InnerText, node["sprint"].InnerText, node["source"].InnerText,
@@ -95,7 +97,9 @@ namespace Chummer.Backend.Data.Sources.Xml
                                             int.Parse(child["min"].InnerText),
                                             int.Parse(child["max"].InnerText),
                                             int.Parse(child["aug"].InnerText)))
+
                             )
+
                     ).ToDictionary(x => x.Id));
 
             Categories = new DataList<GuidItem>(metatypes.SelectNodes("/chummer/categories/category")
