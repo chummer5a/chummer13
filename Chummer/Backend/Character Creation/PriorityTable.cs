@@ -73,7 +73,7 @@ namespace Chummer.Backend.Character_Creation
 
             foreach (PriorityTableEntryData entry in
                     data.PriorityEntries
-                    .Where(x => option.Entries.Contains(x.ItemId))
+                    .Where(x => option.PriorityTableEntries.Contains(x.ItemId))
                     .OrderByDescending(x => x.Sort))
             {
                 GuidItem item = new GuidItem(entry.Name, entry.ItemId);

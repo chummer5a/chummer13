@@ -5,6 +5,9 @@ using System.Text;
 
 namespace Chummer.Backend.Data.Items
 {
+	/// <summary>
+	/// All data required for a metatype
+	/// </summary>
     public class MetatypeData
     {
         public MetatypeData(Guid id, Guid parrent, string displayName, int karma, Guid categoryid, string walk, string run, string sprint, string source, int page, IEnumerable<AttributesData> attributes)
@@ -23,6 +26,9 @@ namespace Chummer.Backend.Data.Items
         }
 
         public Guid Id { get; }
+		/// <summary>
+		/// Parrent metatype. 
+		/// </summary>
         public Guid Parrent { get; }
         public string DisplayName { get; }
         public int Karma { get; }
@@ -33,7 +39,8 @@ namespace Chummer.Backend.Data.Items
         //public string Bonus { get; set; }
         public string Source { get; }
         public int Page { get; }
-        public IReadOnlyList<AttributesData> Attributes { get; }
+		public List<Guid> Qualities;
+		public IReadOnlyList<AttributesData> Attributes { get; }
 
         public class AttributesData
         {

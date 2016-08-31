@@ -31,7 +31,7 @@ namespace Chummer.Backend.Data.Sources.Xml
                         MaxAvailability = int.Parse(x["maxavailability"].InnerText),
                         MaxNuyen = int.Parse(x["contactmultiplier"].InnerText),
                         Default = x.TryCheckValue("default", "yes"),
-                        Entries = new HashSet<Guid>(x["entries"].ChildNodes.OfType<XmlElement>().Select(q => Guid.Parse(q.InnerText)))
+                        PriorityTableEntries = new HashSet<Guid>(x["entries"].ChildNodes.OfType<XmlElement>().Select(q => Guid.Parse(q.InnerText)))
                     };
                 })
                 .ToDictionary(x => x.ItemId));
@@ -63,14 +63,19 @@ namespace Chummer.Backend.Data.Sources.Xml
                             node =>
                                 new PickData(
                                     Guid.Parse(node["id"].InnerText),
-                                    node["heritages"].ChildNodes.OfType<XmlNode>()
+                                    node["heritages"]?.ChildNodes.OfType<XmlNode>()
                                         .Select(
                                             child =>
                                                 new HeritageData(
                                                     Guid.Parse(child["hid"].InnerText),
                                                     int.Parse(child["special"].InnerText),
                                                     int.Parse(child["karma"].InnerText)))
-                                        .ToList()))
+                                        .ToList(), 
+									int.Parse(node["attributes"]?.InnerText ?? ""),
+									null,
+									null,
+									int.Parse(node["nuyen"]?.InnerText ?? "")
+									))
                         .ToDictionary(x => x.Id));
 
 
