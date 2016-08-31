@@ -33,7 +33,8 @@ namespace Chummer.Backend.Data.Items
         //public string Bonus { get; set; }
         public string Source { get; }
         public int Page { get; }
-        public IReadOnlyList<AttributesData> Attributes { get; }
+		public List<Guid> Qualities;
+		public IReadOnlyList<AttributesData> Attributes { get; }
 
         public class AttributesData
         {
