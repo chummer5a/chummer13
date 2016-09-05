@@ -69,6 +69,11 @@
 			this.lblWeaponAvail = new System.Windows.Forms.Label();
 			this.lblWeaponRC = new System.Windows.Forms.Label();
 			this.lblWeaponAvailLabel = new System.Windows.Forms.Label();
+			this.cmdReloadWeapon = new System.Windows.Forms.Button();
+			this.lblWeaponAmmoRemaining = new System.Windows.Forms.Label();
+			this.lblWeaponAmmoRemainingLabel = new System.Windows.Forms.Label();
+			this.cmdWeaponBuyAmmo = new System.Windows.Forms.Button();
+			this.cmdFireWeapon = new SplitButton();
 			this.SuspendLayout();
 			// 
 			// lblWeaponAccuracyLabel
@@ -93,7 +98,7 @@
 			// lblWeaponDicePool
 			// 
 			this.lblWeaponDicePool.AutoSize = true;
-			this.lblWeaponDicePool.Location = new System.Drawing.Point(216, 140);
+			this.lblWeaponDicePool.Location = new System.Drawing.Point(216, 134);
 			this.lblWeaponDicePool.Name = "lblWeaponDicePool";
 			this.lblWeaponDicePool.Size = new System.Drawing.Size(34, 13);
 			this.lblWeaponDicePool.TabIndex = 206;
@@ -102,7 +107,7 @@
 			// lblWeaponDicePoolLabel
 			// 
 			this.lblWeaponDicePoolLabel.AutoSize = true;
-			this.lblWeaponDicePoolLabel.Location = new System.Drawing.Point(152, 140);
+			this.lblWeaponDicePoolLabel.Location = new System.Drawing.Point(152, 134);
 			this.lblWeaponDicePoolLabel.Name = "lblWeaponDicePoolLabel";
 			this.lblWeaponDicePoolLabel.Size = new System.Drawing.Size(56, 13);
 			this.lblWeaponDicePoolLabel.TabIndex = 205;
@@ -112,7 +117,7 @@
 			// lblWeaponConceal
 			// 
 			this.lblWeaponConceal.AutoSize = true;
-			this.lblWeaponConceal.Location = new System.Drawing.Point(216, 118);
+			this.lblWeaponConceal.Location = new System.Drawing.Point(216, 113);
 			this.lblWeaponConceal.Name = "lblWeaponConceal";
 			this.lblWeaponConceal.Size = new System.Drawing.Size(52, 13);
 			this.lblWeaponConceal.TabIndex = 204;
@@ -121,7 +126,7 @@
 			// lblWeaponConcealLabel
 			// 
 			this.lblWeaponConcealLabel.AutoSize = true;
-			this.lblWeaponConcealLabel.Location = new System.Drawing.Point(152, 118);
+			this.lblWeaponConcealLabel.Location = new System.Drawing.Point(152, 113);
 			this.lblWeaponConcealLabel.Name = "lblWeaponConcealLabel";
 			this.lblWeaponConcealLabel.Size = new System.Drawing.Size(49, 13);
 			this.lblWeaponConcealLabel.TabIndex = 203;
@@ -130,7 +135,7 @@
 			// 
 			// lblWeaponRangeExtreme
 			// 
-			this.lblWeaponRangeExtreme.Location = new System.Drawing.Point(219, 264);
+			this.lblWeaponRangeExtreme.Location = new System.Drawing.Point(219, 216);
 			this.lblWeaponRangeExtreme.Name = "lblWeaponRangeExtreme";
 			this.lblWeaponRangeExtreme.Size = new System.Drawing.Size(64, 13);
 			this.lblWeaponRangeExtreme.TabIndex = 202;
@@ -139,7 +144,7 @@
 			// 
 			// lblWeaponRangeLong
 			// 
-			this.lblWeaponRangeLong.Location = new System.Drawing.Point(149, 264);
+			this.lblWeaponRangeLong.Location = new System.Drawing.Point(149, 216);
 			this.lblWeaponRangeLong.Name = "lblWeaponRangeLong";
 			this.lblWeaponRangeLong.Size = new System.Drawing.Size(64, 13);
 			this.lblWeaponRangeLong.TabIndex = 201;
@@ -148,7 +153,7 @@
 			// 
 			// lblWeaponRangeMedium
 			// 
-			this.lblWeaponRangeMedium.Location = new System.Drawing.Point(79, 264);
+			this.lblWeaponRangeMedium.Location = new System.Drawing.Point(79, 216);
 			this.lblWeaponRangeMedium.Name = "lblWeaponRangeMedium";
 			this.lblWeaponRangeMedium.Size = new System.Drawing.Size(64, 13);
 			this.lblWeaponRangeMedium.TabIndex = 200;
@@ -157,7 +162,7 @@
 			// 
 			// lblWeaponRangeShort
 			// 
-			this.lblWeaponRangeShort.Location = new System.Drawing.Point(9, 264);
+			this.lblWeaponRangeShort.Location = new System.Drawing.Point(9, 216);
 			this.lblWeaponRangeShort.Name = "lblWeaponRangeShort";
 			this.lblWeaponRangeShort.Size = new System.Drawing.Size(64, 13);
 			this.lblWeaponRangeShort.TabIndex = 199;
@@ -167,7 +172,7 @@
 			// lblWeaponRangeExtremeLabel
 			// 
 			this.lblWeaponRangeExtremeLabel.AutoSize = true;
-			this.lblWeaponRangeExtremeLabel.Location = new System.Drawing.Point(221, 247);
+			this.lblWeaponRangeExtremeLabel.Location = new System.Drawing.Point(221, 199);
 			this.lblWeaponRangeExtremeLabel.Name = "lblWeaponRangeExtremeLabel";
 			this.lblWeaponRangeExtremeLabel.Size = new System.Drawing.Size(63, 13);
 			this.lblWeaponRangeExtremeLabel.TabIndex = 198;
@@ -178,7 +183,7 @@
 			// lblWeaponRangeLongLabel
 			// 
 			this.lblWeaponRangeLongLabel.AutoSize = true;
-			this.lblWeaponRangeLongLabel.Location = new System.Drawing.Point(158, 247);
+			this.lblWeaponRangeLongLabel.Location = new System.Drawing.Point(158, 199);
 			this.lblWeaponRangeLongLabel.Name = "lblWeaponRangeLongLabel";
 			this.lblWeaponRangeLongLabel.Size = new System.Drawing.Size(49, 13);
 			this.lblWeaponRangeLongLabel.TabIndex = 197;
@@ -189,7 +194,7 @@
 			// lblWeaponRangeMediumLabel
 			// 
 			this.lblWeaponRangeMediumLabel.AutoSize = true;
-			this.lblWeaponRangeMediumLabel.Location = new System.Drawing.Point(81, 247);
+			this.lblWeaponRangeMediumLabel.Location = new System.Drawing.Point(81, 199);
 			this.lblWeaponRangeMediumLabel.Name = "lblWeaponRangeMediumLabel";
 			this.lblWeaponRangeMediumLabel.Size = new System.Drawing.Size(62, 13);
 			this.lblWeaponRangeMediumLabel.TabIndex = 196;
@@ -200,7 +205,7 @@
 			// lblWeaponRangeShortLabel
 			// 
 			this.lblWeaponRangeShortLabel.AutoSize = true;
-			this.lblWeaponRangeShortLabel.Location = new System.Drawing.Point(17, 247);
+			this.lblWeaponRangeShortLabel.Location = new System.Drawing.Point(17, 199);
 			this.lblWeaponRangeShortLabel.Name = "lblWeaponRangeShortLabel";
 			this.lblWeaponRangeShortLabel.Size = new System.Drawing.Size(50, 13);
 			this.lblWeaponRangeShortLabel.TabIndex = 195;
@@ -211,7 +216,7 @@
 			// lblWeaponRangeLabel
 			// 
 			this.lblWeaponRangeLabel.AutoSize = true;
-			this.lblWeaponRangeLabel.Location = new System.Drawing.Point(8, 224);
+			this.lblWeaponRangeLabel.Location = new System.Drawing.Point(8, 176);
 			this.lblWeaponRangeLabel.Name = "lblWeaponRangeLabel";
 			this.lblWeaponRangeLabel.Size = new System.Drawing.Size(39, 13);
 			this.lblWeaponRangeLabel.TabIndex = 194;
@@ -222,7 +227,7 @@
 			// 
 			this.chkIncludedInWeapon.AutoSize = true;
 			this.chkIncludedInWeapon.Enabled = false;
-			this.chkIncludedInWeapon.Location = new System.Drawing.Point(8, 200);
+			this.chkIncludedInWeapon.Location = new System.Drawing.Point(80, 232);
 			this.chkIncludedInWeapon.Name = "chkIncludedInWeapon";
 			this.chkIncludedInWeapon.Size = new System.Drawing.Size(127, 17);
 			this.chkIncludedInWeapon.TabIndex = 193;
@@ -234,7 +239,7 @@
 			// 
 			this.chkWeaponAccessoryInstalled.AutoSize = true;
 			this.chkWeaponAccessoryInstalled.Enabled = false;
-			this.chkWeaponAccessoryInstalled.Location = new System.Drawing.Point(8, 176);
+			this.chkWeaponAccessoryInstalled.Location = new System.Drawing.Point(8, 232);
 			this.chkWeaponAccessoryInstalled.Name = "chkWeaponAccessoryInstalled";
 			this.chkWeaponAccessoryInstalled.Size = new System.Drawing.Size(65, 17);
 			this.chkWeaponAccessoryInstalled.TabIndex = 192;
@@ -283,7 +288,7 @@
 			// lblWeaponAmmo
 			// 
 			this.lblWeaponAmmo.AutoSize = true;
-			this.lblWeaponAmmo.Location = new System.Drawing.Point(216, 96);
+			this.lblWeaponAmmo.Location = new System.Drawing.Point(216, 92);
 			this.lblWeaponAmmo.Name = "lblWeaponAmmo";
 			this.lblWeaponAmmo.Size = new System.Drawing.Size(42, 13);
 			this.lblWeaponAmmo.TabIndex = 187;
@@ -292,7 +297,7 @@
 			// lblWeaponAmmoLabel
 			// 
 			this.lblWeaponAmmoLabel.AutoSize = true;
-			this.lblWeaponAmmoLabel.Location = new System.Drawing.Point(152, 96);
+			this.lblWeaponAmmoLabel.Location = new System.Drawing.Point(152, 92);
 			this.lblWeaponAmmoLabel.Name = "lblWeaponAmmoLabel";
 			this.lblWeaponAmmoLabel.Size = new System.Drawing.Size(39, 13);
 			this.lblWeaponAmmoLabel.TabIndex = 186;
@@ -302,7 +307,7 @@
 			// lblWeaponMode
 			// 
 			this.lblWeaponMode.AutoSize = true;
-			this.lblWeaponMode.Location = new System.Drawing.Point(216, 30);
+			this.lblWeaponMode.Location = new System.Drawing.Point(216, 29);
 			this.lblWeaponMode.Name = "lblWeaponMode";
 			this.lblWeaponMode.Size = new System.Drawing.Size(40, 13);
 			this.lblWeaponMode.TabIndex = 185;
@@ -311,7 +316,7 @@
 			// lblWeaponModeLabel
 			// 
 			this.lblWeaponModeLabel.AutoSize = true;
-			this.lblWeaponModeLabel.Location = new System.Drawing.Point(152, 30);
+			this.lblWeaponModeLabel.Location = new System.Drawing.Point(152, 29);
 			this.lblWeaponModeLabel.Name = "lblWeaponModeLabel";
 			this.lblWeaponModeLabel.Size = new System.Drawing.Size(37, 13);
 			this.lblWeaponModeLabel.TabIndex = 184;
@@ -369,7 +374,7 @@
 			// lblWeaponAP
 			// 
 			this.lblWeaponAP.AutoSize = true;
-			this.lblWeaponAP.Location = new System.Drawing.Point(216, 74);
+			this.lblWeaponAP.Location = new System.Drawing.Point(216, 71);
 			this.lblWeaponAP.Name = "lblWeaponAP";
 			this.lblWeaponAP.Size = new System.Drawing.Size(27, 13);
 			this.lblWeaponAP.TabIndex = 181;
@@ -387,7 +392,7 @@
 			// lblWeaponAPLabel
 			// 
 			this.lblWeaponAPLabel.AutoSize = true;
-			this.lblWeaponAPLabel.Location = new System.Drawing.Point(152, 74);
+			this.lblWeaponAPLabel.Location = new System.Drawing.Point(152, 71);
 			this.lblWeaponAPLabel.Name = "lblWeaponAPLabel";
 			this.lblWeaponAPLabel.Size = new System.Drawing.Size(24, 13);
 			this.lblWeaponAPLabel.TabIndex = 180;
@@ -407,7 +412,7 @@
 			// lblWeaponCost
 			// 
 			this.lblWeaponCost.AutoSize = true;
-			this.lblWeaponCost.Location = new System.Drawing.Point(216, 52);
+			this.lblWeaponCost.Location = new System.Drawing.Point(216, 50);
 			this.lblWeaponCost.Name = "lblWeaponCost";
 			this.lblWeaponCost.Size = new System.Drawing.Size(34, 13);
 			this.lblWeaponCost.TabIndex = 179;
@@ -425,7 +430,7 @@
 			// lblWeaponCostLabel
 			// 
 			this.lblWeaponCostLabel.AutoSize = true;
-			this.lblWeaponCostLabel.Location = new System.Drawing.Point(152, 52);
+			this.lblWeaponCostLabel.Location = new System.Drawing.Point(152, 50);
 			this.lblWeaponCostLabel.Name = "lblWeaponCostLabel";
 			this.lblWeaponCostLabel.Size = new System.Drawing.Size(31, 13);
 			this.lblWeaponCostLabel.TabIndex = 178;
@@ -470,10 +475,69 @@
 			this.lblWeaponAvailLabel.Tag = "Label_Avail";
 			this.lblWeaponAvailLabel.Text = "Avail:";
 			// 
+			// cmdReloadWeapon
+			// 
+			this.cmdReloadWeapon.Enabled = false;
+			this.cmdReloadWeapon.Location = new System.Drawing.Point(93, 280);
+			this.cmdReloadWeapon.Name = "cmdReloadWeapon";
+			this.cmdReloadWeapon.Size = new System.Drawing.Size(79, 23);
+			this.cmdReloadWeapon.TabIndex = 212;
+			this.cmdReloadWeapon.Tag = "Button_Reload";
+			this.cmdReloadWeapon.Text = "Reload";
+			this.cmdReloadWeapon.UseVisualStyleBackColor = true;
+			// 
+			// lblWeaponAmmoRemaining
+			// 
+			this.lblWeaponAmmoRemaining.AutoSize = true;
+			this.lblWeaponAmmoRemaining.Location = new System.Drawing.Point(104, 256);
+			this.lblWeaponAmmoRemaining.Name = "lblWeaponAmmoRemaining";
+			this.lblWeaponAmmoRemaining.Size = new System.Drawing.Size(95, 13);
+			this.lblWeaponAmmoRemaining.TabIndex = 210;
+			this.lblWeaponAmmoRemaining.Text = "[Ammo Remaining]";
+			// 
+			// lblWeaponAmmoRemainingLabel
+			// 
+			this.lblWeaponAmmoRemainingLabel.AutoSize = true;
+			this.lblWeaponAmmoRemainingLabel.Location = new System.Drawing.Point(8, 256);
+			this.lblWeaponAmmoRemainingLabel.Name = "lblWeaponAmmoRemainingLabel";
+			this.lblWeaponAmmoRemainingLabel.Size = new System.Drawing.Size(92, 13);
+			this.lblWeaponAmmoRemainingLabel.TabIndex = 209;
+			this.lblWeaponAmmoRemainingLabel.Tag = "Label_AmmoRemaining";
+			this.lblWeaponAmmoRemainingLabel.Text = "Ammo Remaining:";
+			// 
+			// cmdWeaponBuyAmmo
+			// 
+			this.cmdWeaponBuyAmmo.Enabled = false;
+			this.cmdWeaponBuyAmmo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.cmdWeaponBuyAmmo.Image = global::Chummer.Properties.Resources.basket_add;
+			this.cmdWeaponBuyAmmo.Location = new System.Drawing.Point(178, 280);
+			this.cmdWeaponBuyAmmo.Name = "cmdWeaponBuyAmmo";
+			this.cmdWeaponBuyAmmo.Size = new System.Drawing.Size(24, 24);
+			this.cmdWeaponBuyAmmo.TabIndex = 213;
+			this.cmdWeaponBuyAmmo.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+			this.cmdWeaponBuyAmmo.UseVisualStyleBackColor = true;
+			// 
+			// cmdFireWeapon
+			// 
+			this.cmdFireWeapon.AutoSize = true;
+			this.cmdFireWeapon.Enabled = false;
+			this.cmdFireWeapon.Location = new System.Drawing.Point(8, 280);
+			this.cmdFireWeapon.Name = "cmdFireWeapon";
+			this.cmdFireWeapon.Size = new System.Drawing.Size(79, 23);
+			this.cmdFireWeapon.TabIndex = 211;
+			this.cmdFireWeapon.Tag = "Button_Fire";
+			this.cmdFireWeapon.Text = "FIRE!";
+			this.cmdFireWeapon.UseVisualStyleBackColor = true;
+			// 
 			// WeaponDisplayControl
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.Controls.Add(this.cmdReloadWeapon);
+			this.Controls.Add(this.lblWeaponAmmoRemaining);
+			this.Controls.Add(this.lblWeaponAmmoRemainingLabel);
+			this.Controls.Add(this.cmdWeaponBuyAmmo);
+			this.Controls.Add(this.cmdFireWeapon);
 			this.Controls.Add(this.lblWeaponAccuracyLabel);
 			this.Controls.Add(this.lblWeaponAccuracy);
 			this.Controls.Add(this.lblWeaponDicePool);
@@ -516,7 +580,7 @@
 			this.Controls.Add(this.lblWeaponRC);
 			this.Controls.Add(this.lblWeaponAvailLabel);
 			this.Name = "WeaponDisplayControl";
-			this.Size = new System.Drawing.Size(291, 290);
+			this.Size = new System.Drawing.Size(291, 394);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -564,5 +628,10 @@
 		private System.Windows.Forms.Label lblWeaponAvail;
 		private System.Windows.Forms.Label lblWeaponRC;
 		private System.Windows.Forms.Label lblWeaponAvailLabel;
+		private System.Windows.Forms.Button cmdReloadWeapon;
+		private System.Windows.Forms.Label lblWeaponAmmoRemaining;
+		private System.Windows.Forms.Label lblWeaponAmmoRemainingLabel;
+		private System.Windows.Forms.Button cmdWeaponBuyAmmo;
+		private SplitButton cmdFireWeapon;
 	}
 }
