@@ -129,10 +129,14 @@ namespace Chummer.Classes
 				_strUnique);
 		}
 
-		public void qualitylevel(XmlNode bonusNode)
+		public void sinlevel(XmlNode bonusNode)
 		{
+			//Requires a remove function that will step down a level. But once this works, should be trival(ish)
+			//Also needs to keep track of a freenegativequalities but not a problem once adding works. Just update value and save an id in "TEMP_RESERVED"
+
+
 			//List of qualities to work with
-			Guid[] all =
+			List<Guid> all = new List<Guid>
 			{
 				Guid.Parse("9ac85feb-ae1e-4996-8514-3570d411e1d5"), //national
 				Guid.Parse("d9479e5c-d44a-45b9-8fb4-d1e08a9487b2"), //dirty criminal
@@ -140,16 +144,62 @@ namespace Chummer.Classes
 				Guid.Parse("e00623e1-54b0-4a91-b234-3c7e141deef4") //Corp
 			};
 
-			//Add to list
-			//retrive list
-			//sort list
-			//find active instance
-			//if active = list[top]
-			//	return
-			//else
-			//	remove active
-			//  add list[top]
-			//	set list[top] active
+			//Make a hash of "all" combined. Future proofing in case other variations pops up
+			string identifier =
+				all
+				.Aggregate(0, (i, guid) => unchecked (i*1034221 /*large prime*/) ^ guid.GetHashCode())
+				.ToString();
+
+			Improvement data = _objCharacter.Improvements.FirstOrDefault(imp => imp.UniqueName == identifier);
+			//BUG: this is breaking transactions as i modify the improvement. Needs rewrite to handle adding and removing/modifying
+
+			if (data == null)
+			{
+				Utils.BreakIfDebug();
+				return;
+			}
+
+			//Stores data in the format active_quality;level;level;level...
+
+			List<int> levels;
+			Quality active;
+			{
+				string[] parts = data.ImprovedName.Split(';');
+				active = _objCharacter.Qualities.FirstOrDefault(x => x.InternalId == parts[0]);
+				levels = parts.Skip(2).Select(int.Parse).ToList();
+
+				
+			}
+
+			if (active == null)
+			{
+				Utils.BreakIfDebug();
+				return;
+			}
+
+			int newlevel = int.Parse(bonusNode.InnerText);
+			if (levels.Count > 0)
+			{
+				int oldlevel = all.IndexOf(Guid.Parse(active.QualityId));
+
+				if (newlevel > oldlevel)
+				{
+					//swarp out quality
+				}
+				
+			}
+			else
+			{
+				//add new quality
+			}
+
+
+			levels.Add(newlevel);
+			levels.Sort();
+
+			data.ImprovedName = active.InternalId + ";TEMP_RESERVED;" + string.Join(";", levels);
+
+
 		}
 
 		public void addattribute(XmlNode bonusNode)
@@ -3826,3 +3876,4 @@ namespace Chummer.Classes
 	{
 	}
 }
+
