@@ -13,7 +13,7 @@ namespace Chummer.UI.Options
 {
     public partial class OptionItem : UserControl
     {
-        const int MUTABLE_START = 5, LABEL_START = 70, UNIT_HEIGHT = 23, SPACING_TOP = 5;
+        const int MUTABLE_START = 5, LABEL_START = 70, UNIT_HEIGHT = 25, SPACING_TOP = 5;
         private object _target = null;
         private readonly List<Wrapper> _contents = new List<Wrapper>();
         private readonly Control _destinationControl; //Probably not going to be used, but allows easy changing of destination
@@ -56,23 +56,35 @@ namespace Chummer.UI.Options
 				Wrapper w = new Wrapper(this, tuple.Item1, tuple.Item2, strDisplayName, strTooltip);
                 w.ReadFrom(w.Target());
                 w.SetPos(i);
-
+                _contents.Add(w);
                 i++;
             }
         }
 
         public void WriteBack(object target = null)
         {
-            if (target != null) _target = target;
-            if(_target == null)
+            if (target == null) target = _target;
+            if (target == null)
                 throw new InvalidOperationException("target is never set, cannot work with null data");
+
+            foreach (Wrapper item in _contents)
+            {
+                item.WriteTo(target);
+            }
+
+
         }
 
         public void ReadFrom(object target = null)
         {
-            if (target != null) _target = target;
-            if (_target == null)
+            if (target == null) target = _target;
+            if (target == null)
                 throw new InvalidOperationException("target is never set, cannot work with null data");
+
+            foreach (Wrapper item in _contents)
+            {
+                item.ReadFrom(target);
+            }
         }
 
         private class Wrapper
