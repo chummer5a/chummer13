@@ -40,10 +40,10 @@ namespace Chummer
             //	flowLayoutPanel1.Controls.Add(objControl);
             //}
 
-            //TODO: get existing characteroptions?
-            CharacterOptions o = new CharacterOptions(null);
+            //TODO: dropdown that allows you to select/add multiple
+            CharacterOptions o = Program.OptionsManager.Default; 
             optionTree = GetInitialTree(o);
-
+            optionTree.Children.Add(new BookNode(o.Books));
 
             PopulateTree(treeView1.Nodes, optionTree);
 
@@ -53,7 +53,7 @@ namespace Chummer
             //OptionItem item = new OptionItem();
             //Controls.Add(item);
             //Controls.SetChildIndex(item, 0);
-            //item.Setoptions(o.GetType().GetProperties().ToList(), o);
+            //item.SetManyToSingleOptions(o.GetType().GetProperties().ToList(), o);
 		}
 
 	    private void MaybeSpawnAndMakeVisible(TreeNode selectedNode)
@@ -102,6 +102,7 @@ namespace Chummer
 	        //Collect all properties in groups based on their option path
 	        foreach (PropertyInfo info in o.GetType().GetProperties())
 	        {
+	            if (info.GetCustomAttribute<DisplayIgnoreAttribute>() != null) continue;
 	            if (info.GetCustomAttribute<OptionAttributes>() != null)
 	            {
 	                currentName = info.GetCustomAttribute<OptionAttributes>().Path;
@@ -111,9 +112,11 @@ namespace Chummer
 	        }
 
 
-	        foreach (KeyValuePair<string, List<PropertyInfo>> group in properties
-	                    .Where(x => !string.IsNullOrWhiteSpace(x.Key))
-	                    .OrderByDescending(x => x.Key))
+	        var temp = properties
+	            .Where(x => !string.IsNullOrWhiteSpace(x.Key))
+	            .OrderBy(x => x.Key);
+
+            foreach (KeyValuePair<string, List<PropertyInfo>> group in temp)
 	        {
 	            string[] path = group.Key.Split('/');
 	            AbstractOptionTree parrent = root;
@@ -145,7 +148,7 @@ namespace Chummer
 		    {
 		        ClassSaver saver = new ClassSaver();
 		        writer.WriteStartElement("settings");
-		        saver.Save(new CharacterOptions(null), writer);
+		        //saver.Save(writer);
 		        writer.WriteEndElement();
 		        writer.Flush();
 		    }

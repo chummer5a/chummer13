@@ -51,7 +51,7 @@ namespace Chummer.Classes
         private OptionItem GenerateItem()
         {
             OptionItem item = new OptionItem();
-            item.Setoptions(_properies,_target);
+            item.SetManyToSingleOptions(_properies,_target);
             return item;
         }
 
@@ -79,6 +79,25 @@ namespace Chummer.Classes
         public override void Save()
         {
             
+        }
+    }
+
+    class BookNode : AbstractOptionTree
+    {
+        private readonly HashSet<string> _enabledBooks;
+        private readonly Lazy<BookControl> _bookControl;
+        public BookNode(HashSet<string> enabledBooks) : base(LanguageManager.Instance.GetString("String_Books"))
+        {
+            _enabledBooks = enabledBooks;
+            _bookControl = new Lazy<BookControl>(() => new BookControl(_enabledBooks));
+        }
+
+        public override bool Created => _bookControl.IsValueCreated;
+        public override Control ControlLazy() => _bookControl.Value;
+
+        public override void Save()
+        {
+            _bookControl.Value.Save();
         }
     }
 }
