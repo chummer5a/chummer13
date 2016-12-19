@@ -1,21 +1,18 @@
-using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
 using System.Linq;
-using System.Text;
-using System.Windows.Forms;
 using System.Xml;
-using Chummer.Backend.Attributes.OptionDisplayAttributes;
+using Chummer.Backend.Attributes.OptionAttributes;
 using Chummer.Backend.Attributes.SaveAttributes;
-using Microsoft.Win32;
+using Chummer.Backend.Options;
 
 namespace Chummer
 {
 	public class CharacterOptions
 	{
-		#region Default Values
+	    #region Default Values
 		public readonly string FileName = "default.xml";
+
+
 
 	    // Settings.
 		private bool _blnAllow2ndMaxAttribute;
@@ -149,16 +146,7 @@ namespace Chummer
 		/// <param name="strCode">Book code to search for.</param>
 		public bool BookEnabled(string strCode)
 		{
-			bool blnReturn = false;
-			foreach (string strBook in Books)
-			{
-				if (strBook == strCode)
-				{
-					blnReturn = true;
-					break;
-				}
-			}
-			return blnReturn;
+		    return Books[strCode];
 		}
 
 		/// <summary>
@@ -171,7 +159,7 @@ namespace Chummer
 
 			string strPath = "(";
 
-			foreach (string strBook in Books)
+			foreach (string strBook in EnabledBooks())
 			{
 				if (strBook != "")
 					strPath += "source = \"" + strBook + "\" or ";
@@ -194,7 +182,7 @@ namespace Chummer
 
 		public List<string> BookLinq()
 		{
-			return Books.ToList();
+			return EnabledBooks().ToList();
 		}
 		#endregion
 
@@ -265,6 +253,7 @@ namespace Chummer
 		/// Whether Life Modules should automatically generate a character background.
 		/// </summary>
 		[SavePropertyAs("autobackstory")]
+	    [OptionTag(Tags = new []{"OPTIONALRULE+SR5"})] //TODO: REMOVE THIS LINE BEFORE RELEASE!
 		public bool AutomaticBackstory { get; internal set; } = true;
 
 	    #region Printing
@@ -478,15 +467,18 @@ namespace Chummer
 		[DisplayConfiguration("Checkbox_Options_CyberlegMovement")]
 		public bool CyberlegMovement { get; set; }
 
+
+	    private OptionConstaint<CharacterOptions> DroneArmorConstaint { get; } =
+	        new OptionConstaint<CharacterOptions>(option => option.DroneArmorMultiplierEnabled);
 	    /// <summary>
-		/// The Drone Body multiplier for maximal Armor //TODO: Link the enabled state to DroneArmorMultiplierEnabled.
+		/// The Drone Body multiplier for maximal Armor
 		/// </summary>
 		[SavePropertyAs("dronearmorflatnumber")]
 		[DisplayConfiguration("Checkbox_Options_DroneArmorMultiplier")]
-		public int DroneArmorMultiplier { get; set; } = 2;
+	    public int DroneArmorMultiplier { get; set; } = 2;
 
 	    /// <summary>
-		/// Whether or not the DroneArmorMultiplier house rule is enabled. //TODO: Link DroneArmorMultiplier to the enabled state. Redundant?
+		/// Whether or not the DroneArmorMultiplier house rule is enabled.
 		/// </summary>
 		[SavePropertyAs("dronearmormultiplierenabled")]
 		[DisplayConfiguration("Checkbox_Options_DroneArmorMultiplier")]
@@ -603,7 +595,9 @@ namespace Chummer
 		/// <summary>
 		/// The CHA multiplier to be used with the Free Contacts Option.
 		/// </summary>
-		/// //TODO: Link the enabled state to FreeContactsMultiplierEnabled.
+
+		private OptionConstaint<CharacterOptions> ContactsConstaint =
+		    new OptionConstaint<CharacterOptions>(option => option.FreeContactsMultiplierEnabled);
 		[OptionAttributes("House Rules/Character Creation")]
 		[SavePropertyAs("freekarmacontactsmultiplier")]
 		[DisplayConfiguration("Checkbox_Options_ContactMultiplier")]
@@ -612,7 +606,7 @@ namespace Chummer
 	    /// <summary>
 		/// Whether or not characters get a flat number of BP for free Contacts.
 		/// </summary>
-		/// //TODO: Link FreeContactsMultiplier to the enabled state. Redundant?
+
 		[SavePropertyAs("freecontactsmultiplierenabled")]
 		[DisplayConfiguration("Checkbox_Options_ContactMultiplier")]
 		public bool FreeContactsMultiplierEnabled { get; set; }
@@ -813,7 +807,7 @@ namespace Chummer
 		/// Karma cost for a Initiation = 10 + (New Rating x this value).
 		/// </summary>
 		[SavePropertyAs("karmainitiation")]
-		[DisplayConfiguration("Tab_Initiation")]
+		[DisplayConfiguration("Label_Options_Initiation")]
 		public int KarmaInitiation { get; set; } = 3;
 
 	    /// <summary>
@@ -985,10 +979,19 @@ namespace Chummer
 		#endregion
 		#endregion
 
-		/// <summary>
-		/// Sourcebooks.
-		/// </summary>
-		public HashSet<string> Books { get; } = new HashSet<string>();
+	    /// <summary>
+	    /// Sourcebooks.
+	    /// </summary>
+	    public Dictionary<string, bool> Books { get; } = GlobalOptions.Instance.SourcebookInfo.ToDictionary(x => x.Code, x => x.Code == "SR5");
+
+	    public IEnumerable<string> EnabledBooks()
+	    {
+	        foreach (KeyValuePair<string,bool> book in Books)
+	        {
+	            if (book.Value)
+	                yield return book.Key;
+	        }
+	    }
 
 	    /// <summary>
 		/// Setting name.

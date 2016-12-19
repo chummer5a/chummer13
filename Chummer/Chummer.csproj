@@ -119,9 +119,10 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Backend\Attributes\OptionDisplayAttributes\DisplayConfigurationAttribute.cs" />
-    <Compile Include="Backend\Attributes\OptionDisplayAttributes\DisplayIgnoreAttribute.cs" />
-    <Compile Include="Backend\Attributes\OptionDisplayAttributes\OptionDisplayAttribute.cs" />
+    <Compile Include="Backend\Attributes\OptionAttributes\DisplayConfigurationAttribute.cs" />
+    <Compile Include="Backend\Attributes\OptionAttributes\DisplayIgnoreAttribute.cs" />
+    <Compile Include="Backend\Attributes\OptionAttributes\OptionDisplayAttribute.cs" />
+    <Compile Include="Backend\Attributes\OptionAttributes\OptionTagAttribute.cs" />
     <Compile Include="Backend\Attributes\SaveAttributes\SaveIgnorePropertyAttribute.cs" />
     <Compile Include="Backend\Attributes\SaveAttributes\SavePropertyAsAttribute.cs" />
     <Compile Include="Backend\ClassSaver.cs" />
@@ -129,6 +130,7 @@
     <Compile Include="Backend\Datastructures\DictionaryList.cs" />
     <Compile Include="Backend\Datastructures\ReverseTree.cs" />
     <Compile Include="Backend\Datastructures\TranslatedField.cs" />
+    <Compile Include="Backend\Datastructures\SimpleTree.cs" />
     <Compile Include="Backend\Debugging\CrashHandler.cs" />
     <Compile Include="Backend\Debugging\ExceptionHeatMap.cs" />
     <Compile Include="Backend\Equipment\Armor.cs" />
@@ -152,6 +154,16 @@
     <Compile Include="Backend\Extensions\IEnumerableExtensions.cs" />
     <Compile Include="Backend\Debugging\PerformanceDebugUtils.cs" />
     <Compile Include="Backend\OptionsManager.cs" />
+    <Compile Include="Backend\Options\IGroupLayoutProvider.cs" />
+    <Compile Include="Backend\Options\OptionCollectionCache.cs" />
+    <Compile Include="Backend\Options\OptionConstaint.cs" />
+    <Compile Include="Backend\Options\OptionDictionaryEntryProxy.cs" />
+    <Compile Include="Backend\Options\OptionGroup.cs" />
+    <Compile Include="Backend\Options\OptionItem.cs" />
+    <Compile Include="Backend\Options\OptionRenderItem.cs" />
+    <Compile Include="Backend\Options\TabAlignmentGroupLayoutProvider.cs" />
+    <Compile Include="Backend\Options\OptionEntryProxy.cs" />
+    <Compile Include="Backend\Options\OptionExtactor.cs" />
     <Compile Include="Backend\Skills\ExoticSkill.cs" />
     <Compile Include="Backend\Skills\KnowledgeSkill.cs" />
     <Compile Include="Backend\Skills\Skill.core.cs" />
@@ -319,12 +331,21 @@
     <Compile Include="Selection Forms\frmSelectSkillSpec.Designer.cs">
       <DependentUpon>frmSelectSkillSpec.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\Options\BookControl.cs" />
-    <Compile Include="UI\Options\OptionItem.cs">
+    <Compile Include="UI\Options\BookControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UI\Options\OptionItem.Designer.cs">
-      <DependentUpon>OptionItem.cs</DependentUpon>
+    <Compile Include="UI\Options\BookSettingControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Options\BookSettingControl.Designer.cs">
+      <DependentUpon>BookSettingControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Options\ControlGenerators\BookOptionFactory.cs" />
+    <Compile Include="UI\Options\ControlGenerators\CheckBoxOptionFactory.cs" />
+    <Compile Include="UI\Options\ControlGenerators\IOptionWinFromControlFactory.cs" />
+    <Compile Include="UI\Options\ControlGenerators\NumericUpDownOptionFactory.cs" />
+    <Compile Include="UI\Options\OptionRender.cs">
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\Options\OptionsNumberControl.cs">
       <SubType>UserControl</SubType>
@@ -669,12 +690,6 @@
     <Compile Include="Selection Forms\frmSelectSkillGroup.Designer.cs">
       <DependentUpon>frmSelectSkillGroup.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmOptions.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmOptions.Designer.cs">
-      <DependentUpon>frmOptions.cs</DependentUpon>
-    </Compile>
     <Compile Include="Selection Forms\frmSelectArmor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -887,8 +902,8 @@
     <EmbeddedResource Include="Selection Forms\frmSelectSkillSpec.resx">
       <DependentUpon>frmSelectSkillSpec.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\Options\OptionItem.resx">
-      <DependentUpon>OptionItem.cs</DependentUpon>
+    <EmbeddedResource Include="UI\Options\BookSettingControl.resx">
+      <DependentUpon>BookSettingControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Options\OptionsNumberControl.resx">
       <DependentUpon>OptionsNumberControl.cs</DependentUpon>
@@ -1062,9 +1077,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Selection Forms\frmSelectSkillGroup.resx">
       <DependentUpon>frmSelectSkillGroup.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmOptions.resx">
-      <DependentUpon>frmOptions.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Selection Forms\frmSelectArmor.resx">
       <DependentUpon>frmSelectArmor.cs</DependentUpon>
@@ -1381,6 +1393,18 @@
     <None Include="chummer.ico" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="icons\Collapse.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icons\Expand.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icons\checkbox_check.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icons\checkbox_checked.png" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="icons\disk.png" />
   </ItemGroup>
   <ItemGroup>
@@ -1469,6 +1493,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="icons\server_lightning.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icons\missing_image_temp.png" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
@@ -1594,7 +1621,6 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Contributors.cs</LastGenOutput>
     </Content>
-    <Content Include="Admin\manifestlang.xml" />
     <Content Include="data\armor.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <SubType>Designer</SubType>
@@ -1740,8 +1766,6 @@
     <Content Include="lang\jp_data.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="Resources\Collapse.png" />
-    <None Include="Resources\Expand.png" />
     <Content Include="sheets\Commlinks.xsl">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -1826,11 +1850,17 @@
     <PostBuildEvent Condition=" '$(OS)' != 'Unix' ">copy "$(SolutionDir)LICENSE.txt" "$(TargetDir)LICENSE.txt"</PostBuildEvent>
     <PostBuildEvent Condition=" '$(OS)' == 'Unix' ">cp "$(SolutionDir)LICENSE.txt" "$(TargetDir)LICENSE.txt"; cp -r $(ProjectDir){data,lang,sheets} "$(TargetDir)"</PostBuildEvent>
   </PropertyGroup>
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+
+       Other similar extension points exist, see Microsoft.Common.targets.
+
+  <Target Name="BeforeBuild">
+
+  </Target>
+
+  <Target Name="AfterBuild">
+
+  </Target>
+
   -->
 </Project>
