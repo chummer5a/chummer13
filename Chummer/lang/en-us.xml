@@ -8185,6 +8185,10 @@ Do you want to continue?</text>
 			<text>Positive/Negative Quality\t\t{} x Karma Cost</text>
 		</string>
 		<string>
+			<key>Tooltip_KarmaQuality</key>
+			<text>The cost for aquiring a new quality</text>
+		</string>
+		<string>
 			<key>Display_KarmaContact</key>
 			<text>Contacts\t\t{} x (Connection + Loyality)</text>
 		</string>
@@ -8616,7 +8620,10 @@ Do you want to continue?</text>
 			<key>Display_PrintNotes</key>
 			<text>_\t\t{}</text>
 		</string>
-
+		<string>
+			<key>OptionHeader_CharacterOptions</key>
+			<text>Character options</text>
+		</string>
 		<!-- End Region -->
 		<!-- End Region -->
 	</strings>

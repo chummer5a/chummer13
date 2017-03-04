@@ -121,6 +121,7 @@
   <ItemGroup>
     <Compile Include="Backend\Attributes\OptionAttributes\DisplayConfigurationAttribute.cs" />
     <Compile Include="Backend\Attributes\OptionAttributes\DisplayIgnoreAttribute.cs" />
+    <Compile Include="Backend\Attributes\OptionAttributes\IsPathAttribute.cs" />
     <Compile Include="Backend\Attributes\OptionAttributes\OptionDisplayAttribute.cs" />
     <Compile Include="Backend\Attributes\OptionAttributes\OptionTagAttribute.cs" />
     <Compile Include="Backend\Attributes\SaveAttributes\SaveIgnorePropertyAttribute.cs" />
@@ -129,6 +130,7 @@
     <Compile Include="Backend\ColorUtilities.cs" />
     <Compile Include="Backend\Datastructures\DictionaryList.cs" />
     <Compile Include="Backend\Datastructures\ReverseTree.cs" />
+    <Compile Include="Backend\Datastructures\RTree.cs" />
     <Compile Include="Backend\Datastructures\TranslatedField.cs" />
     <Compile Include="Backend\Datastructures\SimpleTree.cs" />
     <Compile Include="Backend\Datastructures\Vector3.cs" />
@@ -176,6 +178,7 @@
     <Compile Include="Backend\Skills\SkillSorters.cs" />
     <Compile Include="Backend\Skills\SkillsSection.cs" />
     <Compile Include="Backend\UI\BookImageManager.cs" />
+    <Compile Include="Backend\UI\HowerHelper.cs" />
     <Compile Include="Character Creation\frmSelectLifeModule.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -347,6 +350,7 @@
     <Compile Include="UI\Options\ControlGenerators\CheckBoxOptionFactory.cs" />
     <Compile Include="UI\Options\ControlGenerators\IOptionWinFromControlFactory.cs" />
     <Compile Include="UI\Options\ControlGenerators\NumericUpDownOptionFactory.cs" />
+    <Compile Include="UI\Options\ControlGenerators\PathSelectiorFactory.cs" />
     <Compile Include="UI\Options\OptionRender.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -355,6 +359,12 @@
     </Compile>
     <Compile Include="UI\Options\OptionsNumberControl.Designer.cs">
       <DependentUpon>OptionsNumberControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Options\PathSelectorControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Options\PathSelectorControl.Designer.cs">
+      <DependentUpon>PathSelectorControl.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Shared\CharacterShared.cs" />
     <Compile Include="UI\Skills\KnowledgeSkillControl.cs">
@@ -910,6 +920,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Options\OptionsNumberControl.resx">
       <DependentUpon>OptionsNumberControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Options\PathSelectorControl.resx">
+      <DependentUpon>PathSelectorControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Skills\KnowledgeSkillControl.resx">
       <DependentUpon>KnowledgeSkillControl.cs</DependentUpon>

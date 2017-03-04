@@ -5,7 +5,6 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
 using System.Text;
-using System.Xml.Xsl.Runtime;
 using Chummer.Datastructures;
 using Chummer.Backend.Attributes.OptionAttributes;
 using Chummer.Classes;
@@ -78,15 +77,22 @@ namespace Chummer.Backend.Options
             {
                 string[] path = group.Key.Split('/');
                 SimpleTree<OptionRenderItem> parrent = root;
-
+                string header;
                 //find path in option tree, skip last as thats new
                 //Breaks if trying to "jump" a path element
                 for (int i = 0; i < path.Length - 1; i++)
                 {
-                    parrent = parrent.Children.First(x => (string) x.Tag == path[i]);
+
+                    if(!LanguageManager.Instance.TryGetString(path[i], out header))
+                        header = path[i];
+                    parrent = parrent.Children.First(x => (string) x.Tag == header);
                 }
 
-                SimpleTree<OptionRenderItem> newChild = new SimpleTree<OptionRenderItem> {Tag = path.Last()};
+
+                if(!LanguageManager.Instance.TryGetString(path.Last(), out header))
+                    header = path.Last();
+
+                SimpleTree<OptionRenderItem> newChild = new SimpleTree<OptionRenderItem> {Tag = header};
 
 
                 foreach (PropertyInfo propertyInfo in group.Value)
@@ -97,7 +103,10 @@ namespace Chummer.Backend.Options
                         continue;
 
                     if (!_supported.Any(x => x(entryProxy)))
+                    {
+                        Console.WriteLine($"No controlfactory for {entryProxy.TargetProperty.PropertyType}");
                         continue;
+                    }
 
                     if (propertyInfo.GetCustomAttribute<HeaderAttribute>() != null)
                     {
@@ -173,7 +182,7 @@ namespace Chummer.Backend.Options
                 LanguageManager.Instance.TryGetString("Tooltip_" + arg.Name, out toolTip);
 
 
-                OptionEntryProxy option = new OptionEntryProxy(target, arg, displayString, toolTip);
+                OptionEntryProxy option = new OptionEntryProxy(target, arg, displayString, toolTip:toolTip);
 
                 OptionTagAttribute taga = arg.GetCustomAttribute<OptionTagAttribute>();
                 if (taga != null)
