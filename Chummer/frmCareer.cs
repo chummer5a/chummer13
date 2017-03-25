@@ -85,7 +85,7 @@ namespace Chummer
 			_objCharacter.SkillsSection.UncouthChanged += objCharacter_UncouthChanged;
 			_objCharacter.FameChanged += objCharacter_FameChanged;
 			tabSkillsUc.ChildPropertyChanged += SkillPropertyChanged;
-			GlobalOptions.Instance.MRUChanged += PopulateMRU;
+			GlobalOptions.MRUChanged += PopulateMRU;
 			GlobalOptions.Instance.MainForm.OpenCharacters.Add(_objCharacter);
 			LanguageManager.Instance.Load(GlobalOptions.Instance.Language, this);
 
@@ -1182,7 +1182,7 @@ namespace Chummer
 				_objCharacter.CritterTabEnabledChanged -= objCharacter_CritterTabEnabledChanged;
 				_objCharacter.SkillsSection.UneducatedChanged -= objCharacter_UneducatedChanged;
 				_objCharacter.SkillsSection.UncouthChanged -= objCharacter_UncouthChanged;
-				GlobalOptions.Instance.MRUChanged -= PopulateMRU;
+				GlobalOptions.MRUChanged -= PopulateMRU;
 
 				treGear.ItemDrag -= treGear_ItemDrag;
 				treGear.DragEnter -= treGear_DragEnter;
@@ -20833,7 +20833,7 @@ namespace Chummer
                 lblMovement.Text = _objCharacter.Movement;
 
 				string strFormat;
-				if (_objCharacter.Options.EssenceDecimals == 4)
+				if (GlobalOptions.Instance.EssenceDecimals == 4)
 					strFormat = "{0:0.0000}";
 				else
 					strFormat = "{0:0.00}";
@@ -22837,7 +22837,7 @@ namespace Chummer
 				_objCharacter.Save();
 				_blnIsDirty = false;
 				blnSaved = true;
-				GlobalOptions.Instance.AddToMRUList(_objCharacter.FileName);
+				GlobalOptions.MRUAdd(_objCharacter.FileName);
 			}
 			UpdateWindowTitle(false);
 
@@ -22868,7 +22868,7 @@ namespace Chummer
 				_objCharacter.Save();
 				_blnIsDirty = false;
 				blnSaved = true;
-				GlobalOptions.Instance.AddToMRUList(_objCharacter.FileName);
+				GlobalOptions.MRUAdd(_objCharacter.FileName);
 			}
 			UpdateWindowTitle(false);
 
@@ -25272,7 +25272,7 @@ namespace Chummer
 		/// </summary>
 		public bool ConfirmKarmaExpense(string strMessage)
 		{
-			if (!_objOptions.ConfirmKarmaExpense)
+			if (!GlobalOptions.Instance.ConfirmKarmaExpense)
 				return true;
 			else
 			{

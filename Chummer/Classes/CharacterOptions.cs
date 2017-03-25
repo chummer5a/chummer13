@@ -186,76 +186,7 @@ namespace Chummer
 		#region Program behavour
 
 	    #region Program options
-		/// <summary>
-		/// Whether or not confirmation messages are shown when deleting an object.
-		/// </summary>
-		[OptionAttributes("OptionHeader_ProgramOptions")]
-		[SavePropertyAs("confirmdelete")]
-		public bool ConfirmDelete { get; set; } = true;
-
-	    /// <summary>
-		/// Wehther or not confirmation messages are shown for Karma Expenses.
-		/// </summary>
-		[SavePropertyAs("confirmkarmaexpense")]
-		public bool ConfirmKarmaExpense { get; set; } = true;
-
-	    /// <summary>
-		/// Whether or not a backup copy of the character should be created before they are placed into Career Mode.
-		/// </summary>
-		[SavePropertyAs("createbackuponcareer")]
-		public bool CreateBackupOnCareer { get; set; }
-
-	    /// <summary>
-		/// Number of decimal places to round to when calculating Essence.
-		/// </summary>
-		[SavePropertyAs("essencedecimals")]
-		public int EssenceDecimals { get; set; } = 2;
-
-	    /// <summary>
-	    /// Default build method.
-	    /// </summary>
-	    [SavePropertyAs("buildmethod")]
-	    public CharacterBuildMethod BuildMethod { get; set; } = CharacterBuildMethod.Priority;
-
-	    /// <summary>
-		/// Default number of build points.
-		/// </summary>
-		[SavePropertyAs("buildpoints")]
-		public int BuildPoints { get; set; } = 800;
-
-	    /// <summary>
-		/// Default Availability.
-		/// </summary>
-		[SavePropertyAs("availability")]
-		public int Availability { get; set; } = 12;
-
-	    /// <summary>
-		/// Whether Life Modules should automatically generate a character background.
-		/// </summary>
-		[SavePropertyAs("autobackstory")]
-	    public bool AutomaticBackstory { get; internal set; } = true;
-
-	    #region Printing
-		/// <summary>
-		/// Whether or not all Active Skills with a total score higher than 0 should be printed.
-		/// </summary>
-		[OptionAttributes("OptionHeader_ProgramOptions/Display_PrintingOptions")]
-		[SavePropertyAs("printzeroratingskills")]
-		public bool PrintSkillsWithZeroRating { get; set; } = true;
-
-		/// <summary>
-		/// Whether or not the Karma and Nueyn Expenses should be printed on the character sheet.
-		/// </summary>
-		[SavePropertyAs("printexpenses")]
-		public bool PrintExpenses { get; set; }
-
-	    /// <summary>
-		/// Whether or not Notes should be printed.
-		/// </summary>
-		[SavePropertyAs("printnotes")]
-		public bool PrintNotes { get; set; }
-
-	    #endregion
+		
         #endregion
 
 	    #endregion
@@ -267,8 +198,8 @@ namespace Chummer
 	    /// Number of Limbs a standard character has.
 	    /// </summary>
 	    [SavePropertyAs("limbcount")]
-	    //TODO: Handler for comboboxes
-	    public int LimbCount { get; set; } = 6;
+	    
+	    public LimbCount LimbCount { get; set; } = LimbCount.All;
 
 	    /// <summary>
 	    /// Exclude a particular Limb Slot from count towards the Limb Count.
@@ -946,4 +877,24 @@ namespace Chummer
 		[DisplayIgnore] //TODO: Do something
 	    public string RecentImageFolder { get; set; } = "";
 	}
+
+    public enum LimbCount
+    {
+        //Hack with 2 purposes. First it fixes sorting order, second it allows us to have 2 enum values with the value 5
+        All = 6,
+        NoHead = 0x100+5,
+        NoTorso = 0x200+5,
+        NoHeadNoTorso = 0x300+4
+    }
+
+    public static class LimbCountExtensions
+    {
+        public static int GetNumberOfLimbs(this LimbCount limbCount) => (int)limbCount & 0xff;
+    }
+
+    public class CreationOptions
+    {
+        public CharacterBuildMethod DefaultBuildMethod { get; set; } = CharacterBuildMethod.Priority;
+        public int PointCount { get; set; } = 25;
+    }
 }

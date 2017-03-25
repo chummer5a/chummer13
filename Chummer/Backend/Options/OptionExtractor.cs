@@ -85,6 +85,10 @@ namespace Chummer.Backend.Options
 
                     if(!LanguageManager.Instance.TryGetString(path[i], out header))
                         header = path[i];
+
+                    //If you got an error and arrived here it is because you made an error with a class you are displaying
+                    //OptionAttributesAttribute contains the path in the tree where options should be displayed
+                    // and only the last one can be new.
                     parrent = parrent.Children.First(x => (string) x.Tag == header);
                 }
 
@@ -104,7 +108,7 @@ namespace Chummer.Backend.Options
 
                     if (!_supported.Any(x => x(entryProxy)))
                     {
-                        Console.WriteLine($"No controlfactory for {entryProxy.TargetProperty.PropertyType}");
+                        Console.WriteLine($"No controlfactory for {entryProxy.TargetProperty.PropertyType}({entryProxy.TargetProperty})");
                         continue;
                     }
 
@@ -123,7 +127,7 @@ namespace Chummer.Backend.Options
             return root;
         }
 
-        public List<OptionItem> BookOptions(CharacterOptions characterOptions, GlobalOptions globalOptions)
+        public List<OptionItem> BookOptions(CharacterOptions characterOptions, ProgramOptions globalOptions)
         {
             List<OptionDictionaryEntryProxy<string, bool>> options = characterOptions
                 .Books.Keys

@@ -348,7 +348,7 @@ namespace Chummer
             _attESS._objCharacter = this;
 			_attDEP._objCharacter = this;
 			_objImprovementManager = new ImprovementManager(this);
-            _objOptions = Program.OptionsManager.Default; //TODO: decide
+            _objOptions = GlobalOptions.Default; //TODO: decide
 			SkillsSection = new SkillsSection(this);
 			SkillsSection.Reset();
         }
@@ -1000,6 +1000,7 @@ namespace Chummer
 					bool blnMissingBooks = false;
 					string strMissingBooks = "";
 					//Does the list of enabled books contain the current item?
+                    //BUG: Crash if never heard about book
 					foreach (XmlNode objXmlNode in objXmlCharacter["sources"].Cast<XmlNode>().Where(objXmlNode => !_objOptions.Books[objXmlNode.InnerText]))
 					{
 						strMissingBooks += (objXmlNode.InnerText + ";");
@@ -2223,7 +2224,7 @@ namespace Chummer
 
                         objWriter.WriteStartElement("limitmodifier");
                         objWriter.WriteElementString("name", strName);
-                        if (this.Options.PrintNotes)
+                        if (GlobalOptions.Instance.PrintNotes)
                             objWriter.WriteElementString("notes", objImprovement.Notes);
                         objWriter.WriteEndElement();
                     }
@@ -2257,7 +2258,7 @@ namespace Chummer
 
                         objWriter.WriteStartElement("limitmodifier");
                         objWriter.WriteElementString("name", strName);
-                        if (this.Options.PrintNotes)
+                        if (GlobalOptions.Instance.PrintNotes)
                             objWriter.WriteElementString("notes", objImprovement.Notes);
                         objWriter.WriteEndElement();
                     }
@@ -2291,7 +2292,7 @@ namespace Chummer
 
                         objWriter.WriteStartElement("limitmodifier");
                         objWriter.WriteElementString("name", strName);
-                        if (this.Options.PrintNotes)
+                        if (GlobalOptions.Instance.PrintNotes)
                             objWriter.WriteElementString("notes", objImprovement.Notes);
                         objWriter.WriteEndElement();
                     }
@@ -2504,7 +2505,7 @@ namespace Chummer
             objWriter.WriteEndElement();
 
             // Print the Expense Log Entries if the option is enabled.
-            if (_objOptions.PrintExpenses)
+            if (GlobalOptions.Instance.PrintExpenses)
             {
                 // <expenses>
                 objWriter.WriteStartElement("expenses");

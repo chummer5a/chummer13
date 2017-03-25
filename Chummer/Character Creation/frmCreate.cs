@@ -93,7 +93,7 @@ namespace Chummer
 
 	        tabSkillUc.ChildPropertyChanged += SkillPropertyChanged;
 
-            GlobalOptions.Instance.MRUChanged += PopulateMRU;
+            GlobalOptions.MRUChanged += PopulateMRU;
 
             LanguageManager.Instance.Load(GlobalOptions.Instance.Language, this);
 
@@ -396,7 +396,7 @@ namespace Chummer
 				cmdLifeModule.Visible = true;
 				treQualities.Nodes.Add(new TreeNode("Life Modules"));
 				btnCreateBackstory.Visible = true;
-				btnCreateBackstory.Visible = _objCharacter.Options.AutomaticBackstory;
+				btnCreateBackstory.Visible = GlobalOptions.Instance.AutomaticBackstory;
 			}
 
             // Populate the Qualities list.
@@ -1174,7 +1174,7 @@ namespace Chummer
                 _objCharacter.SkillsSection.UncouthChanged -= objCharacter_UncouthChanged;
                 _objCharacter.FriendsInHighPlacesChanged -= objCharacter_FriendsInHighPlacesChanged;
                 _objCharacter.SkillsSection.SchoolOfHardKnocksChanged -= objCharacter_SchoolOfHardKnocksChanged;
-                GlobalOptions.Instance.MRUChanged -= PopulateMRU;
+                GlobalOptions.MRUChanged -= PopulateMRU;
 
                 treGear.ItemDrag -= treGear_ItemDrag;
                 treGear.DragEnter -= treGear_DragEnter;
@@ -15010,7 +15010,7 @@ namespace Chummer
                 lblNuyenTotal.Text = String.Format("= {0:###,###,##0�}", intNuyen);
 
                 string strFormat;
-                if (_objCharacter.Options.EssenceDecimals == 4)
+                if (GlobalOptions.Instance.EssenceDecimals == 4)
                     strFormat = "{0:0.0000}";
                 else
                     strFormat = "{0:0.00}";
@@ -16821,7 +16821,7 @@ namespace Chummer
                 _objCharacter.Save();
                 _blnIsDirty = false;
                 blnSaved = true;
-                GlobalOptions.Instance.AddToMRUList(_objCharacter.FileName);
+                GlobalOptions.MRUAdd(_objCharacter.FileName);
             }
             UpdateWindowTitle(false);
 
@@ -16870,7 +16870,7 @@ namespace Chummer
                 _objCharacter.Save();
                 _blnIsDirty = false;
                 blnSaved = true;
-                GlobalOptions.Instance.AddToMRUList(_objCharacter.FileName);
+                GlobalOptions.MRUAdd(_objCharacter.FileName);
             }
             if (blnEscapeAfterSave)
                 return blnSaved;
@@ -20189,7 +20189,7 @@ namespace Chummer
 
 			if (blnValid)
             {
-                if (_objOptions.CreateBackupOnCareer && chkCharacterCreated.Checked)
+                if (GlobalOptions.Instance.CreateBackupOnCareer && chkCharacterCreated.Checked)
                 {
                     // Create a pre-Career Mode backup of the character.
                     // Make sure the backup directory exists.

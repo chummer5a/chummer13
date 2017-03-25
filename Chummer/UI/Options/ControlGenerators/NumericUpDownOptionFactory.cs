@@ -9,6 +9,11 @@ namespace Chummer.UI.Options.ControlGenerators
 {
     public class NumericUpDownOptionFactory : IOptionWinFromControlFactory
     {
+        private const int BASE_SIZE = 18;
+        //Get from front in future
+        private const int LETTER_SIZE = 6;
+        private const int MIN_SIZE = 40;
+
         public bool IsSupported(OptionItem backingEntry)
         {
             OptionEntryProxy proxy = backingEntry as OptionEntryProxy;
@@ -20,7 +25,10 @@ namespace Chummer.UI.Options.ControlGenerators
         {
             OptionEntryProxy proxy = (OptionEntryProxy) backingEntry;
 
-            NumericUpDown nud = new NumericUpDown(){Maximum = 10000, Location = new Point(0, -2)};
+            NumericUpDown nud = new NumericUpDown(){
+                Maximum = 10000,
+                Location = new Point(0, -2)
+            };
             /*nud.DataBindings.Add(
                 nameof(NumericUpDown.Value),
                 proxy,
@@ -28,7 +36,10 @@ namespace Chummer.UI.Options.ControlGenerators
                 false,
                 DataSourceUpdateMode.OnPropertyChanged);
 */
-            nud.Width = 40;
+
+
+            int letters = (int)Math.Log10(Convert.ToInt32(proxy.Value)) + 2;
+            nud.Width = Math.Max(letters * LETTER_SIZE + BASE_SIZE, MIN_SIZE);
             if (Utils.IsLinux)
             {
                 nud.BackColor = Color.WhiteSmoke;

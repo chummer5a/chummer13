@@ -24,9 +24,10 @@ namespace Chummer
 	    private Control _currentVisibleControl;
 	    private AbstractOptionTree _winformTree;
 	    private OptionCollectionCache _options;
-	    private Lazy<OptionRender> _searchControl;
+	    private Lazy<OptionRender> _sharedRender;
+        List<IOptionWinFromControlFactory> controlFactories;
 
-	    public frmNewOptions()
+        public frmNewOptions()
 		{
 			InitializeComponent();
 
@@ -35,17 +36,19 @@ namespace Chummer
 
 	    private void OnLoad(object sender, EventArgs eventArgs)
 	    {
-	        List<IOptionWinFromControlFactory> controlFactories = new List<IOptionWinFromControlFactory>()
+	        controlFactories = new List<IOptionWinFromControlFactory>()
 	        {
 	            new CheckBoxOptionFactory(),
 	            new NumericUpDownOptionFactory(),
-                new BookOptionFactory(),
-	            new PathSelectiorFactory()
+	            new BookOptionFactory(),
+	            new PathSelectiorFactory(),
+	            new DropDownFactory(),
+	            new StringControlFactory()
 	        };
 
 	        //TODO: dropdown that allows you to select/add multiple
             //TODO: When doing so, remember to include selection login in btnReset_Click
-	        CharacterOptions o = Program.OptionsManager.Default;
+	        CharacterOptions o = GlobalOptions.Default;
 
 	        OptionExtractor extactor = new OptionExtractor(
 	            new List<Predicate<OptionItem>>(
@@ -70,7 +73,7 @@ namespace Chummer
 
 	        textBox1.TextChanged += SearchBoxChanged;
 
-	        _searchControl = new Lazy<OptionRender>(() =>
+	        _sharedRender = new Lazy<OptionRender>(() =>
 	        {
 	            OptionRender c = new OptionRender();
 	            c.Factories = controlFactories;
@@ -117,15 +120,15 @@ namespace Chummer
 
 	        if (hits.Count > 0)
 	        {
-	            _searchControl.Value.SetContents(hits);
+	            _sharedRender.Value.SetContents(hits);
 
 
-	            _currentVisibleControl = _searchControl.Value;
+	            _currentVisibleControl = _sharedRender.Value;
 	            _currentVisibleControl.Visible = true;
 	        }
 	        else
 	        {
-	            _currentVisibleControl = _searchControl.Value;
+	            _currentVisibleControl = _sharedRender.Value;
 	        }
 	    }
 
@@ -141,17 +144,30 @@ namespace Chummer
 	        AbstractOptionTree tree = (AbstractOptionTree) selectedNode.Tag;
 	        if (_currentVisibleControl != null) _currentVisibleControl.Visible = false;
 
-	        if (!tree.Created)
+	        SimpleOptionTree simpleOptionTree = tree as SimpleOptionTree;
+	        if (simpleOptionTree != null)
 	        {
-	            Control c = tree.ControlLazy();
-                SetupControl(c);
-                Controls.Add(c);
-                
-	        }
+	            _sharedRender.Value.SetContents(simpleOptionTree.Items);
+                _currentVisibleControl = _sharedRender.Value;
 
-	      
-           _currentVisibleControl = tree.ControlLazy();
-           _currentVisibleControl.Visible = true;
+	        }
+            else
+	        {
+	            _currentVisibleControl = tree.ControlLazy();
+
+	            if (_currentVisibleControl.Parent == null)
+	            {
+	                SetupControl(_currentVisibleControl);
+	                Controls.Add(_currentVisibleControl);
+	            }
+#if DEBUG
+	            else if (_currentVisibleControl.Parent != this)
+	            {
+	                Utils.BreakIfDebug();
+	            }
+#endif
+	        }
+	        _currentVisibleControl.Visible = true;
         }
 
 	    private void SetupControl(Control c)
@@ -183,70 +199,10 @@ namespace Chummer
             {
                 item.Save();
             }
-            string optionPath = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "settings",
-                Program.OptionsManager.Default.FileName);
+            
+            GlobalOptions.SaveCharacterOption(GlobalOptions.Default);
+            GlobalOptions.SaveGlobalOptions();
 
-            ClassSaver saver = new ClassSaver();
-
-            Directory.CreateDirectory(Path.GetDirectoryName(optionPath));
-            using (FileStream fs = new FileStream(optionPath, FileMode.Create))
-            {
-                XmlTextWriter writer = new XmlTextWriter(fs, Encoding.UTF8);
-                writer.WriteStartElement("settings");
-                writer.WriteAttributeString("fileversion", Assembly.GetExecutingAssembly().GetName().Version.ToString());
-                saver.Save(Program.OptionsManager.Default, writer);
-                writer.WriteStartElement("books");
-                foreach (var book in Program.OptionsManager.Default.Books.Where(x => x.Value).Select(x => x.Key))
-                {
-                    writer.WriteStartElement("book");
-                    writer.WriteElementString("book", book);
-                    writer.WriteEndElement();
-                }
-                writer.WriteEndElement();
-                writer.WriteEndElement();
-                writer.Flush();
-                fs.Flush();
-            }
-
-            if (Utils.IsLinux)
-            {
-                string globalOptionPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile),
-                    ".config", "Chummer5a", "globaloptions.xml");
-
-                Directory.CreateDirectory(Path.GetDirectoryName(globalOptionPath));
-                using (FileStream fs = new FileStream(globalOptionPath, FileMode.Create))
-                {
-                    XmlTextWriter writer = new XmlTextWriter(fs, Encoding.UTF8);
-                    writer.WriteStartElement("settings");
-
-                    saver.Save(GlobalOptions.Instance, writer);
-
-                    writer.WriteStartElement("books");
-                    foreach (SourcebookInfo book in GlobalOptions.Instance.SourcebookInfo)
-                    {
-                        writer.WriteStartElement("book");
-                        saver.Save(book, writer);
-                        writer.WriteEndElement();
-                    }
-                    writer.WriteEndElement();
-
-                    writer.WriteEndElement();
-                    writer.Flush();
-                    fs.Flush();
-                }
-            }
-            else
-            {
-                RegistryKey rootKey = Registry.CurrentUser.CreateSubKey("Software\\Chummer5");
-                saver.Save(GlobalOptions.Instance, rootKey);
-                int count = 0;
-                RegistryKey bookKey = Registry.CurrentConfig.CreateSubKey("Software\\Chummer5\\Books");
-                foreach (SourcebookInfo book in GlobalOptions.Instance.SourcebookInfo)
-                {
-                    RegistryKey k2 = bookKey.OpenSubKey(count.ToString("D2"), true);
-                    saver.Save(book, k2);
-                }
-            }
             Close();
         }
 
@@ -266,11 +222,11 @@ namespace Chummer
         private void btnDefault_Click(object sender, EventArgs e)
         {
             //TODO: Do for more stuff (GlobalOptions won't handle this)
-            CharacterOptions def = new CharacterOptions(Program.OptionsManager.Default.FileName);
+            CharacterOptions def = new CharacterOptions(GlobalOptions.Default.FileName);
 
             foreach (FieldInfo field in typeof(CharacterOptions).GetFields(BindingFlags.Instance | BindingFlags.NonPublic))
             {
-                field.SetValue(Program.OptionsManager.Default, field.GetValue(def));
+                field.SetValue(GlobalOptions.Default, field.GetValue(def));
             }
 
             Close();
