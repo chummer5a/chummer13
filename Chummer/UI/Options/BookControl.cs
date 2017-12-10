@@ -19,12 +19,12 @@ namespace Chummer.UI.Options
         private Panel _bookPanel;
         private Panel _detailPanel;
         private BookSettingControl _activeBookControl = null;
-        private OptionRender _optionRender;
+        //private OptionRender _optionRender;
         private readonly Dictionary<string, PictureBox> _pictures = new Dictionary<string, PictureBox>();
         private readonly Dictionary<string, BookSettingControl> _bookControls = new Dictionary<string, BookSettingControl>();
 
         //All options that options manage with some groups
-        private readonly OptionCollectionCache _options;
+        private readonly BookOptions _options;
 
         //Values used for display layout
         private const int IMAGE_HEIGHT = 360;
@@ -34,7 +34,7 @@ namespace Chummer.UI.Options
         private readonly int _checkboxWidth;
         
         //.ctor & Initialization
-        public BookControl(OptionCollectionCache options)
+        public BookControl(BookOptions options)
         {
             _options = options;
             using (Image checkbox = Properties.Resources.checkbox_checked)
@@ -64,10 +64,10 @@ namespace Chummer.UI.Options
             _bookPanel.AutoScroll = true;
 
 
-            _optionRender = new OptionRender()
-            {
-                Factories = _options.ControlFactories
-            };
+            //_optionRender = new OptionRender()
+            //{
+            //    Factories = _options.ControlFactories
+            //};
 
             System.Diagnostics.Stopwatch sw = Stopwatch.StartNew();
             foreach (SourcebookInfo book in GlobalOptions.Instance.SourcebookInfo)
@@ -154,9 +154,9 @@ namespace Chummer.UI.Options
         {
             if (_activeBookControl != null)
             {
-                _optionRender.Location = new Point(0, _activeBookControl.Right);
-                _optionRender.Width = Width - _activeBookControl.Right;
-                _optionRender.Height = _activeBookControl.Height;
+                //_optionRender.Location = new Point(0, _activeBookControl.Right);
+                //_optionRender.Width = Width - _activeBookControl.Right;
+                //_optionRender.Height = _activeBookControl.Height;
 
                 _detailPanel.Location = new Point(0, Height - _activeBookControl.Height);
                 _detailPanel.Size = new Size(Width, _activeBookControl.Height);
@@ -217,12 +217,12 @@ namespace Chummer.UI.Options
                 _detailPanel.Controls.Add(_activeBookControl);
             }
 
-            _optionRender.SetContents(
-                _options.NotBookOptions
-                    .Where(x => x.Tags.Any(y => y == "OPTIONALRULE+" + code))
-                    .Select<OptionItem, OptionRenderItem>(x => x)
-                    .ToList()
-            );
+            //_optionRender.SetContents(
+            //    _options.NotBookOptions
+            //        .Where(x => x.Tags.Any(y => y == "OPTIONALRULE+" + code))
+            //        .Select<OptionItem, OptionRenderItem>(x => x)
+            //        .ToList()
+            //);
         }
 
         //Control event handlers

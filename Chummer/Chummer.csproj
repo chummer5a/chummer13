@@ -162,7 +162,7 @@
     <Compile Include="Backend\OptionsManager.cs" />
     <Compile Include="Backend\Options\HeaderAttribute.cs" />
     <Compile Include="Backend\Options\IGroupLayoutProvider.cs" />
-    <Compile Include="Backend\Options\OptionCollectionCache.cs" />
+    <Compile Include="Backend\Options\BookOptions.cs" />
     <Compile Include="Backend\Options\OptionConstraint.cs" />
     <Compile Include="Backend\Options\OptionDictionaryEntryProxy.cs" />
     <Compile Include="Backend\Options\OptionGroup.cs" />
@@ -181,6 +181,7 @@
     <Compile Include="Backend\Skills\SkillsSection.cs" />
     <Compile Include="Backend\UI\BookImageManager.cs" />
     <Compile Include="Backend\UI\HoverHelper.cs" />
+    <Compile Include="Backend\UI\OptionTreeCreator.cs" />
     <Compile Include="Character Creation\frmSelectLifeModule.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -213,7 +214,6 @@
     <Compile Include="Classes\clsXmlManager.cs" />
     <Compile Include="Backend\Skills\SkillSpecialization.cs" />
     <Compile Include="Classes\GlobalOptions.cs" />
-    <Compile Include="Classes\Options.cs" />
     <Compile Include="Classes\OptionTree.cs" />
     <Compile Include="Classes\PDFParametersHelper.cs" />
     <Compile Include="Classes\RemoveImprovementCollection.cs">
@@ -362,12 +362,6 @@
     <Compile Include="UI\Options\ControlGenerators\StringControlFactory.cs" />
     <Compile Include="UI\Options\OptionRender.cs">
       <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UI\Options\OptionsNumberControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UI\Options\OptionsNumberControl.Designer.cs">
-      <DependentUpon>OptionsNumberControl.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Options\PathSelectorControl.cs">
       <SubType>UserControl</SubType>
@@ -926,9 +920,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Options\BookSettingControl.resx">
       <DependentUpon>BookSettingControl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI\Options\OptionsNumberControl.resx">
-      <DependentUpon>OptionsNumberControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Options\PathSelectorControl.resx">
       <DependentUpon>PathSelectorControl.cs</DependentUpon>

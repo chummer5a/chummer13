@@ -57,63 +57,63 @@ namespace Chummer.helpers
             set { _watermarkActive = value; }
         }
 
-        /// <summary>
-        /// Create a new TextBox that supports watermak hint
-        /// </summary>
-        public TextBox()
-        {
-            this._watermarkActive = true;
-            this.Text = _watermarkText;
-            this.ForeColor = Color.Gray;
+        ///// <summary>
+        ///// Create a new TextBox that supports watermak hint
+        ///// </summary>
+        //public TextBox()
+        //{
+        //    this._watermarkActive = true;
+        //    this.Text = _watermarkText;
+        //    this.ForeColor = Color.Gray;
 
-            GotFocus += (source, e) =>
-            {
-                RemoveWatermak();
-            };
+        //    GotFocus += (source, e) =>
+        //    {
+        //        RemoveWatermak();
+        //    };
 
-            LostFocus += (source, e) =>
-            {
-                ApplyWatermark();
-            };
+        //    LostFocus += (source, e) =>
+        //    {
+        //        ApplyWatermark();
+        //    };
 
-        }
+        //}
 
-        /// <summary>
-        /// Remove watermark from the textbox
-        /// </summary>
-        public void RemoveWatermak()
-        {
-            if (this._watermarkActive)
-            {
-                this._watermarkActive = false;
-                this.Text = "";
-                this.ForeColor = Color.Black;
-            }
-        }
+        ///// <summary>
+        ///// Remove watermark from the textbox
+        ///// </summary>
+        //public void RemoveWatermak()
+        //{
+        //    if (this._watermarkActive)
+        //    {
+        //        this._watermarkActive = false;
+        //        this.Text = "";
+        //        this.ForeColor = Color.Black;
+        //    }
+        //}
 
-        /// <summary>
-        /// Applywatermak immediately
-        /// </summary>
-        public void ApplyWatermark()
-        {
-            if (!this._watermarkActive && string.IsNullOrEmpty(this.Text)
-                || ForeColor == Color.Gray)
-            {
-                this._watermarkActive = true;
-                this.Text = _watermarkText;
-                this.ForeColor = Color.Gray;
-            }
-        }
+        ///// <summary>
+        ///// Applywatermak immediately
+        ///// </summary>
+        //public void ApplyWatermark()
+        //{
+        //    if (!this._watermarkActive && string.IsNullOrEmpty(this.Text)
+        //        || ForeColor == Color.Gray)
+        //    {
+        //        this._watermarkActive = true;
+        //        this.Text = _watermarkText;
+        //        this.ForeColor = Color.Gray;
+        //    }
+        //}
 
-        /// <summary>
-        /// Apply watermak to the textbox. 
-        /// </summary>
-        /// <param name="newText">Text to apply</param>
-        public void ApplyWatermark(string newText)
-        {
-            WatermarkText = newText;
-            ApplyWatermark();
-        }
+        ///// <summary>
+        ///// Apply watermak to the textbox. 
+        ///// </summary>
+        ///// <param name="newText">Text to apply</param>
+        //public void ApplyWatermark(string newText)
+        //{
+        //    WatermarkText = newText;
+        //    ApplyWatermark();
+        //}
 
     }
 }

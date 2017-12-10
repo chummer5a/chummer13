@@ -11,6 +11,7 @@ using System.Xml;
 using Chummer.Backend;
 using Chummer.Backend.Attributes.OptionAttributes;
 using Chummer.Backend.Options;
+using Chummer.Backend.UI;
 using Chummer.Classes;
 using Chummer.Datastructures;
 using Chummer.UI.Options;
@@ -22,10 +23,10 @@ namespace Chummer
 	public partial class frmNewOptions : Form
 	{
 	    private Control _currentVisibleControl;
-	    private AbstractOptionTree _winformTree;
-	    private OptionCollectionCache _options;
+	    private List<OptionItem> _searchList = null;
 	    private Lazy<OptionRender> _sharedRender;
-        List<IOptionWinFromControlFactory> controlFactories;
+	    private OptionTreeCreator _treeHandler = new OptionTreeCreator();
+
 
         public frmNewOptions()
 		{
@@ -36,52 +37,26 @@ namespace Chummer
 
 	    private void OnLoad(object sender, EventArgs eventArgs)
 	    {
-	        controlFactories = new List<IOptionWinFromControlFactory>()
-	        {
-	            new CheckBoxOptionFactory(),
-	            new NumericUpDownOptionFactory(),
-	            new BookOptionFactory(),
-	            new PathSelectiorFactory(),
-	            new DropDownFactory(),
-	            new StringControlFactory()
-	        };
-
-	        //TODO: dropdown that allows you to select/add multiple
-            //TODO: When doing so, remember to include selection login in btnReset_Click
-	        CharacterOptions o = GlobalOptions.Default;
-
-	        OptionExtractor extactor = new OptionExtractor(
-	            new List<Predicate<OptionItem>>(
-	                controlFactories.Select
-	                    <IOptionWinFromControlFactory, Predicate<OptionItem>>
-	                    (x => x.IsSupported)));
-
-            var temp = extactor.BookOptions(o, GlobalOptions.Instance);
-	        SimpleTree<OptionRenderItem> globalTree = extactor.Extract(GlobalOptions.Instance);
-	        SimpleTree<OptionRenderItem> rawTree = extactor.Extract(o);
-	        rawTree.Children.AddRange(globalTree.Children);
-	        _options = new OptionCollectionCache(rawTree, temp, controlFactories);
-	        _winformTree = GenerateWinFormTree(rawTree);
-	        _winformTree.Children.Add(new BookNode(_options));
-
-
-	        PopulateTree(treeView1.Nodes, _winformTree);
-
-	        if (treeView1.SelectedNode == null) {treeView1.SelectedNode = treeView1.Nodes[treeView1.Nodes.Count-1];}
-
-	        MaybeSpawnAndMakeVisible(treeView1.SelectedNode);
-
-	        textBox1.TextChanged += SearchBoxChanged;
-
-	        _sharedRender = new Lazy<OptionRender>(() =>
-	        {
-	            OptionRender c = new OptionRender();
-	            c.Factories = controlFactories;
-	            Controls.Add(c);
-	            SetupControl(c);
+            
+            AbstractOptionTree rawTree = _treeHandler.GenerateOptionTree(true);
+	        
+	        PopulateTree(treeView1.Nodes, rawTree);
+            _sharedRender = new Lazy<OptionRender>(() =>
+            {
+                OptionRender c = new OptionRender { Factories = OptionTreeCreator.ControlFactories };
+                Controls.Add(c);
+                SetupControl(c);
 
                 return c;
-	        });
+            });
+
+
+            MaybeSpawnAndMakeVisible(treeView1.Nodes[0].Nodes[0]);
+            treeView1.SelectedNode = treeView1.Nodes[0].Nodes[0];
+
+            textBox1.TextChanged += SearchBoxChanged;
+
+	        
 
             LanguageManager.Instance.Load(GlobalOptions.Instance.Language, this);
 
@@ -108,13 +83,13 @@ namespace Chummer
 	        }*/
 
 
-	        if (string.IsNullOrWhiteSpace(searchfor))
+	        if (string.IsNullOrWhiteSpace(searchfor) || _searchList == null)
 	        {
 	            MaybeSpawnAndMakeVisible(treeView1.SelectedNode);
 	            return;
 	        }
 
-	        List<OptionRenderItem> hits = _options.SearchList
+	        List<OptionRenderItem> hits = _searchList
 	            .Where(x => x.SearchStrings().Any(y => CultureInfo.InvariantCulture.CompareInfo.IndexOf(y, searchfor, CompareOptions.IgnoreCase) >= 0))
 	            .Take(20)
                 .Select<OptionItem, OptionRenderItem>(x => x)
@@ -134,19 +109,15 @@ namespace Chummer
 	        }
 	    }
 
-	    private AbstractOptionTree GenerateWinFormTree(SimpleTree<OptionRenderItem> tree)
-	    {
-	        SimpleOptionTree so = new SimpleOptionTree(tree.Tag.ToString(), new List<OptionRenderItem>(tree.Leafs), _options.ControlFactories);
-	        so.Children.AddRange(tree.Children.Select(GenerateWinFormTree));
-	        return so;
-	    }
+	    
 
 	    private void MaybeSpawnAndMakeVisible(TreeNode selectedNode)
 	    {
 	        AbstractOptionTree tree = (AbstractOptionTree) selectedNode.Tag;
 	        if (_currentVisibleControl != null) _currentVisibleControl.Visible = false;
-
-	        SimpleOptionTree simpleOptionTree = tree as SimpleOptionTree;
+            
+            
+            SimpleOptionTree simpleOptionTree = tree as SimpleOptionTree;
 	        if (simpleOptionTree != null)
 	        {
 	            _sharedRender.Value.SetContents(simpleOptionTree.Items);
@@ -170,7 +141,15 @@ namespace Chummer
 #endif
 	        }
 	        _currentVisibleControl.Visible = true;
-        }
+
+	        while (tree != null)
+	        {
+	            if (tree.SearchList != null)
+	                _searchList = tree.SearchList;
+
+	            tree = tree.Parent;
+	        }
+	    }
 
 	    private void SetupControl(Control c)
 	    {
@@ -197,7 +176,7 @@ namespace Chummer
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-            foreach (OptionItem item in _options.SearchList)
+            foreach (OptionItem item in _treeHandler.LoadedItems)
             {
                 item.Save();
             }
@@ -215,7 +194,7 @@ namespace Chummer
 
         private void btnReset_Click(object sender, EventArgs e)
         {
-            foreach (OptionItem item in _options.SearchList)
+            foreach (OptionItem item in _treeHandler.LoadedItems)
             {
                 item.Reload();
             }
@@ -223,13 +202,17 @@ namespace Chummer
 
         private void btnDefault_Click(object sender, EventArgs e)
         {
-            //TODO: Do for more stuff (GlobalOptions won't handle this)
+
+            //TODO: Very much bad code, but right now i cannot figure out how to just make every optionItem be updated to default value
+            //TODO: Do for more stuff (GlobalOptions won't be affected by this)
             CharacterOptions def = new CharacterOptions(GlobalOptions.Default.FileName);
 
             foreach (FieldInfo field in typeof(CharacterOptions).GetFields(BindingFlags.Instance | BindingFlags.NonPublic))
             {
                 field.SetValue(GlobalOptions.Default, field.GetValue(def));
             }
+
+            GlobalOptions.SaveCharacterOption(GlobalOptions.Default);
 
             Close();
         }

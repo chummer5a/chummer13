@@ -13,12 +13,14 @@ using Microsoft.Win32;
 
 namespace Chummer
 {
+    //TODO: Rename option manager
     static class GlobalOptions
     {
         private static ProgramOptions _instance;
         public static ProgramOptions Instance => _instance;
         public static List<MRUEntry> MostRecentlyUsedList { get; } = new List<MRUEntry>();
 
+        //Reserved filename in settings folder, would be global options in xml.
         private const string PROGRAM_SETTINGS_FILE = "programdata.local.xml";
         private static List<CharacterOptions> fileOptions;
         private static CharacterOptions _default;

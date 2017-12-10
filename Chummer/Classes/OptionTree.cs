@@ -14,7 +14,26 @@ namespace Chummer.Classes
     abstract class AbstractOptionTree
     {
         public string Name { get; }
-        public List<AbstractOptionTree> Children { get; }= new List<AbstractOptionTree>();
+        private readonly List<AbstractOptionTree> _children = new List<AbstractOptionTree>();
+        public IReadOnlyList<AbstractOptionTree> Children => _children;
+
+        public List<OptionItem> SearchList { get; } = null;
+
+        public void AddChild(AbstractOptionTree child)
+        {
+            if(child.Parent != null) throw new ArgumentException("child already belongs to something else");
+            child.Parent = this;
+            _children.Add(child);
+        }
+
+        public void InsertChild(int index, AbstractOptionTree child)
+        {
+            if (child.Parent != null) throw new ArgumentException("child already belongs to something else");
+            child.Parent = this;
+            _children.Insert(index, child);
+        }
+
+        public AbstractOptionTree Parent { get; private set; }
 
         protected AbstractOptionTree(string name)
         {
@@ -77,9 +96,9 @@ namespace Chummer.Classes
         * I think this needs a rewrite someday once i have a better idea on how this is supposed to work, but this saving methods probably won't end here.
         *
         */
-        private readonly OptionCollectionCache _enabledBooks;
+        private readonly BookOptions _enabledBooks;
         private readonly Lazy<BookControl> _bookControl;
-        public BookNode(OptionCollectionCache enabledBooks) : base(LanguageManager.Instance.GetString("String_Books"))
+        public BookNode(BookOptions enabledBooks) : base(LanguageManager.Instance.GetString("String_Books"))
         {
             _enabledBooks = enabledBooks;
             _bookControl = new Lazy<BookControl>(() => new BookControl(_enabledBooks));
