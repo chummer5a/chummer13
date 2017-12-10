@@ -91,7 +91,7 @@ namespace Chummer.UI.Options
 
             foreach (OptionDictionaryEntryProxy<string, bool> thing in _options.BookEnabled.Values)
             {
-                thing.ValueChanged += () =>
+                thing.PropertyChanged += (o,e) =>
                 {
                     _pictures[thing.Key].Image = Program.BookImageManager.GetImage(thing.Key, _options.BookEnabled[thing.Key].Value, false, SCALE);
                 };

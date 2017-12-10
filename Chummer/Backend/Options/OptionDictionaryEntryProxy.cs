@@ -27,11 +27,9 @@ namespace Chummer.Backend.Options
             {
                 _value = value;
                 OnPropertyChanged();
-                ValueChanged?.Invoke();
             }
         }
-
-        public event Action ValueChanged;
+        
         public event PropertyChangedEventHandler PropertyChanged;
 
         [NotifyPropertyChangedInvocator]
