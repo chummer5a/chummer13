@@ -18,7 +18,7 @@
     You can obtain the full source code for Chummer5a at
     https://github.com/chummer5a/chummer5a
 -->
-<chummer xmlns="" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<chummer xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://www.w3.org/2001/XMLSchema cyberware.xsd">
   <version>0</version>
   <grades>
@@ -343,14 +343,14 @@
       <capacity>0</capacity>
       <avail>2</avail>
       <cost>1000</cost>
+      <source>SR5</source>
+      <page>452</page>
       <gears>
         <usegear>
           <name>Universal Connector Cord (Meter)</name>
           <category>Tools</category>
         </usegear>
       </gears>
-      <source>SR5</source>
-      <page>452</page>
     </cyberware>
     <cyberware>
       <id>eb9e691a-8002-4138-ac8d-d9714d398b1e</id>
@@ -363,8 +363,8 @@
       <cost>Rating * 1000</cost>
       <source>SR5</source>
       <page>452</page>
-      <rating>12</rating>
       <devicerating>{Rating}</devicerating>
+      <rating>12</rating>
     </cyberware>
     <cyberware>
       <id>e9136c81-f8d5-4e7f-be2d-3be7ff6d1673</id>
@@ -696,11 +696,11 @@
       <capacity>[1]</capacity>
       <avail>6</avail>
       <cost>2250</cost>
+      <source>SR5</source>
+      <page>454</page>
       <bonus>
         <sonicresist>2</sonicresist>
       </bonus>
-      <source>SR5</source>
-      <page>454</page>
     </cyberware>
     <cyberware>
       <id>ab2e5330-25c6-4460-bab7-35a9e6b9aeb1</id>
@@ -877,11 +877,11 @@
       <cost>Rating * 4500</cost>
       <source>SR5</source>
       <page>455</page>
-      <rating>3</rating>
       <bonus>
-        <toxininhalationimmune />
         <pathogeninhalationimmune />
+        <toxininhalationimmune />
       </bonus>
+      <rating>3</rating>
     </cyberware>
     <cyberware>
       <id>46f80a44-80ae-41d7-a7c8-a119c4cff70f</id>
@@ -1000,7 +1000,6 @@
         <category>Headware</category>
         <category>Nanocybernetics</category>
       </allowsubsystems>
-      <selectside />
       <bonus>
         <conditionmonitor>
           <physical>1</physical>
@@ -1012,6 +1011,7 @@
         </oneof>
       </forbidden>
       <limbslot>arm</limbslot>
+      <selectside />
     </cyberware>
     <cyberware>
       <id>c7b88f7e-4e3c-4c29-9f86-a4e244ec5066</id>
@@ -1037,7 +1037,6 @@
         <category>Headware</category>
         <category>Nanocybernetics</category>
       </allowsubsystems>
-      <selectside />
       <bonus>
         <conditionmonitor>
           <physical>1</physical>
@@ -1045,12 +1044,13 @@
       </bonus>
       <forbidden>
         <oneof>
+          <cyberware>Smart Articulation</cyberware>
           <cyberwarecontains>Liminal</cyberwarecontains>
           <quality>Celerity</quality>
-          <cyberware>Smart Articulation</cyberware>
         </oneof>
       </forbidden>
       <limbslot>leg</limbslot>
+      <selectside />
     </cyberware>
     <cyberware>
       <id>eee044c5-3586-4f04-9577-5e290466c485</id>
@@ -1076,7 +1076,6 @@
         <category>Headware</category>
         <category>Nanocybernetics</category>
       </allowsubsystems>
-      <selectside />
       <bonus>
         <conditionmonitor>
           <physical>1</physical>
@@ -1084,11 +1083,12 @@
       </bonus>
       <forbidden>
         <oneof>
+          <cyberware>Smart Articulation</cyberware>
           <cyberwarecontains>Liminal</cyberwarecontains>
           <quality>Celerity</quality>
-          <cyberware>Smart Articulation</cyberware>
         </oneof>
       </forbidden>
+      <selectside />
     </cyberware>
     <cyberware>
       <id>cc503281-ff05-4e22-9121-09116a4a8306</id>
@@ -1114,7 +1114,6 @@
         <category>Headware</category>
         <category>Nanocybernetics</category>
       </allowsubsystems>
-      <selectside />
       <bonus>
         <conditionmonitor>
           <physical>1</physical>
@@ -1125,6 +1124,7 @@
           <cyberware>Smart Articulation</cyberware>
         </oneof>
       </forbidden>
+      <selectside />
     </cyberware>
     <cyberware>
       <id>fdb0ef96-2234-46fa-9d51-55c7d1164b7a</id>
@@ -1150,7 +1150,6 @@
         <category>Headware</category>
         <category>Nanocybernetics</category>
       </allowsubsystems>
-      <selectside />
       <bonus>
         <conditionmonitor>
           <physical>1</physical>
@@ -1161,6 +1160,7 @@
           <cyberware>Smart Articulation</cyberware>
         </oneof>
       </forbidden>
+      <selectside />
     </cyberware>
     <cyberware>
       <id>f769235c-c295-4c31-9843-e9d413d77adf</id>
@@ -1186,7 +1186,6 @@
         <category>Headware</category>
         <category>Nanocybernetics</category>
       </allowsubsystems>
-      <selectside />
       <bonus>
         <conditionmonitor>
           <physical>1</physical>
@@ -1198,6 +1197,7 @@
           <quality>Celerity</quality>
         </oneof>
       </forbidden>
+      <selectside />
     </cyberware>
     <cyberware>
       <id>48e490fb-fe6a-482c-a47d-40cb04985897</id>
@@ -1296,7 +1296,6 @@
         <category>Headware</category>
         <category>Nanocybernetics</category>
       </allowsubsystems>
-      <selectside />
       <bonus>
         <conditionmonitor>
           <physical>1</physical>
@@ -1308,6 +1307,7 @@
         </oneof>
       </forbidden>
       <limbslot>arm</limbslot>
+      <selectside />
     </cyberware>
     <cyberware>
       <id>bf29ff5e-839a-4fd3-8063-371ce05065d6</id>
@@ -1333,7 +1333,6 @@
         <category>Headware</category>
         <category>Nanocybernetics</category>
       </allowsubsystems>
-      <selectside />
       <bonus>
         <conditionmonitor>
           <physical>1</physical>
@@ -1341,12 +1340,13 @@
       </bonus>
       <forbidden>
         <oneof>
+          <cyberware>Smart Articulation</cyberware>
           <cyberwarecontains>Liminal</cyberwarecontains>
           <quality>Celerity</quality>
-          <cyberware>Smart Articulation</cyberware>
         </oneof>
       </forbidden>
       <limbslot>leg</limbslot>
+      <selectside />
     </cyberware>
     <cyberware>
       <id>1e511ad7-4806-4862-8685-a04887b1bec9</id>
@@ -1372,7 +1372,6 @@
         <category>Headware</category>
         <category>Nanocybernetics</category>
       </allowsubsystems>
-      <selectside />
       <bonus>
         <conditionmonitor>
           <physical>1</physical>
@@ -1380,11 +1379,12 @@
       </bonus>
       <forbidden>
         <oneof>
+          <cyberware>Smart Articulation</cyberware>
           <cyberwarecontains>Liminal</cyberwarecontains>
           <quality>Celerity</quality>
-          <cyberware>Smart Articulation</cyberware>
         </oneof>
       </forbidden>
+      <selectside />
     </cyberware>
     <cyberware>
       <id>a1591e59-d859-40fc-aaf8-30fde5cf6a42</id>
@@ -1410,7 +1410,6 @@
         <category>Headware</category>
         <category>Nanocybernetics</category>
       </allowsubsystems>
-      <selectside />
       <bonus>
         <conditionmonitor>
           <physical>1</physical>
@@ -1421,6 +1420,7 @@
           <cyberware>Smart Articulation</cyberware>
         </oneof>
       </forbidden>
+      <selectside />
     </cyberware>
     <cyberware>
       <id>4e8c4c99-b0bf-494f-b82c-1ab15ec26eb7</id>
@@ -1446,7 +1446,6 @@
         <category>Headware</category>
         <category>Nanocybernetics</category>
       </allowsubsystems>
-      <selectside />
       <bonus>
         <conditionmonitor>
           <physical>1</physical>
@@ -1457,6 +1456,7 @@
           <cyberware>Smart Articulation</cyberware>
         </oneof>
       </forbidden>
+      <selectside />
     </cyberware>
     <cyberware>
       <id>d3a7e6f2-cb8c-42c0-9aef-c88b26648859</id>
@@ -1482,7 +1482,6 @@
         <category>Headware</category>
         <category>Nanocybernetics</category>
       </allowsubsystems>
-      <selectside />
       <bonus>
         <conditionmonitor>
           <physical>1</physical>
@@ -1490,11 +1489,12 @@
       </bonus>
       <forbidden>
         <oneof>
+          <cyberware>Smart Articulation</cyberware>
           <cyberwarecontains>Liminal</cyberwarecontains>
           <quality>Celerity</quality>
-          <cyberware>Smart Articulation</cyberware>
         </oneof>
       </forbidden>
+      <selectside />
     </cyberware>
     <cyberware>
       <id>40878e5d-cabc-4980-ad87-0dd5d5f5c037</id>
@@ -1582,8 +1582,8 @@
       <bonus>
         <armor>Rating</armor>
       </bonus>
-      <rating>3</rating>
       <requireparent />
+      <rating>3</rating>
     </cyberware>
     <cyberware>
       <id>7d61f860-0637-4214-914d-c68022361d24</id>
@@ -1596,9 +1596,9 @@
       <cost>(Rating - MinRating + 1) * 5000</cost>
       <source>SR5</source>
       <page>456</page>
+      <requireparent />
       <minrating>MinimumSTR+1</minrating>
       <rating>MaximumSTR</rating>
-      <requireparent />
     </cyberware>
     <cyberware>
       <id>7afb23c7-435f-450c-9d1c-f7a0e7e631a6</id>
@@ -1611,9 +1611,9 @@
       <cost>(Rating - MinRating + 1) * 5000</cost>
       <source>SR5</source>
       <page>456</page>
+      <requireparent />
       <minrating>MinimumAGI+1</minrating>
       <rating>MaximumAGI</rating>
-      <requireparent />
     </cyberware>
     <cyberware>
       <id>a9f4efd4-b86c-4e90-b0f7-aefa32c3b9de</id>
@@ -1626,8 +1626,8 @@
       <cost>Rating * 6500</cost>
       <source>SR5</source>
       <page>456</page>
-      <rating>3</rating>
       <requireparent />
+      <rating>3</rating>
     </cyberware>
     <cyberware>
       <id>2c50d5c1-f2ff-4c7b-bf5e-46925e808648</id>
@@ -1640,8 +1640,8 @@
       <cost>Rating * 6500</cost>
       <source>SR5</source>
       <page>456</page>
-      <rating>3</rating>
       <requireparent />
+      <rating>3</rating>
     </cyberware>
     <cyberware>
       <id>eea42123-0449-4c20-8c0b-ae766025b72b</id>
@@ -1694,6 +1694,7 @@
     <cyberware>
       <id>c7a55431-c54c-41ba-8468-0d9c3028010a</id>
       <name>Hydraulic Jacks</name>
+      <limit>no</limit>
       <category>Cyberlimb Accessory</category>
       <ess>0</ess>
       <capacity>[Rating]</capacity>
@@ -1701,7 +1702,6 @@
       <cost>Rating * 2500</cost>
       <source>SR5</source>
       <page>457</page>
-      <blocksmounts>ankle,knee,hip</blocksmounts>
       <bonus>
         <limitmodifier>
           <limit>Physical</limit>
@@ -1709,7 +1709,7 @@
           <condition>Only for Gymnastics (Jumping) and Running (Sprinting)</condition>
         </limitmodifier>
       </bonus>
-      <limit>no</limit>
+      <blocksmounts>ankle,knee,hip</blocksmounts>
       <rating>6</rating>
       <required>
         <parentdetails>
@@ -2381,7 +2381,6 @@
       <cost>500</cost>
       <source>CF</source>
       <page>83</page>
-      <blocksmounts>wrist,elbow,shoulder</blocksmounts>
       <bonus>
         <limitmodifier>
           <limit>Physical</limit>
@@ -2394,15 +2393,16 @@
           <name>Swimming</name>
           <bonus>1</bonus>
         </specificskill>
-        <walkmultiplier>
-          <category>Swim</category>
-          <percent>50</percent>
-        </walkmultiplier>
         <sprintbonus>
           <category>Swim</category>
           <percent>50</percent>
         </sprintbonus>
+        <walkmultiplier>
+          <category>Swim</category>
+          <percent>50</percent>
+        </walkmultiplier>
       </pairbonus>
+      <blocksmounts>wrist,elbow,shoulder</blocksmounts>
       <required>
         <parentdetails>
           <OR>
@@ -2426,7 +2426,6 @@
       <cost>500</cost>
       <source>CF</source>
       <page>83</page>
-      <blocksmounts>ankle,knee,hip</blocksmounts>
       <bonus>
         <limitmodifier>
           <limit>Physical</limit>
@@ -2439,15 +2438,16 @@
           <name>Swimming</name>
           <bonus>1</bonus>
         </specificskill>
-        <walkmultiplier>
-          <category>Swim</category>
-          <percent>50</percent>
-        </walkmultiplier>
         <sprintbonus>
           <category>Swim</category>
           <percent>50</percent>
         </sprintbonus>
+        <walkmultiplier>
+          <category>Swim</category>
+          <percent>50</percent>
+        </walkmultiplier>
       </pairbonus>
+      <blocksmounts>ankle,knee,hip</blocksmounts>
       <required>
         <parentdetails>
           <OR>
@@ -2483,18 +2483,18 @@
       <capacity>0</capacity>
       <avail>4</avail>
       <cost>2000</cost>
-      <selectside />
-      <blocksmounts>wrist,elbow,shoulder</blocksmounts>
+      <source>CF</source>
+      <page>83</page>
       <forbidden>
         <oneof>
+          <bioware>Bone Density Augmentation</bioware>
           <cyberware>Bone Lacing (Plastic)</cyberware>
           <cyberware>Bone Lacing (Aluminum)</cyberware>
           <cyberware>Bone Lacing (Titanium)</cyberware>
-          <bioware>Bone Density Augmentation</bioware>
         </oneof>
       </forbidden>
-      <source>CF</source>
-      <page>83</page>
+      <blocksmounts>wrist,elbow,shoulder</blocksmounts>
+      <selectside />
     </cyberware>
     <cyberware>
       <id>7cc7acff-1418-47a7-95b7-5b18a52d0c36</id>
@@ -2507,8 +2507,6 @@
       <cost>2000</cost>
       <source>CF</source>
       <page>84</page>
-      <blocksmounts>ankle,knee,hip</blocksmounts>
-      <selectside />
       <bonus>
         <limitmodifier>
           <limit>Physical</limit>
@@ -2516,6 +2514,8 @@
           <condition>Only for knockdown resist, Must be engaged.</condition>
         </limitmodifier>
       </bonus>
+      <blocksmounts>ankle,knee,hip</blocksmounts>
+      <selectside />
       <required>
         <parentdetails>
           <OR>

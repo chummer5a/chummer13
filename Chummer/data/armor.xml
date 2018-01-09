@@ -2994,8 +2994,8 @@
       <avail>6</avail>
       <cost>Rating * 250</cost>
       <bonus unique="chemicalprotection">
-        <toxincontactresist>Rating</toxincontactresist>
         <pathogencontactresist>Rating</pathogencontactresist>
+        <toxincontactresist>Rating</toxincontactresist>
       </bonus>
       <source>SR5</source>
       <page>437</page>
@@ -3010,10 +3010,10 @@
       <avail>12R</avail>
       <cost>3000</cost>
       <bonus>
-        <toxincontactimmune />
-        <toxininhalationimmune />
         <pathogencontactimmune />
         <pathogeninhalationimmune />
+        <toxincontactimmune />
+        <toxininhalationimmune />
       </bonus>
       <source>SR5</source>
       <page>437</page>
@@ -3105,10 +3105,10 @@
       <avail>+6</avail>
       <cost>6000</cost>
       <bonus>
-        <toxincontactimmune />
-        <toxininhalationimmune />
         <pathogencontactimmune />
         <pathogeninhalationimmune />
+        <toxincontactimmune />
+        <toxininhalationimmune />
       </bonus>
       <source>SR5</source>
       <page>437</page>
@@ -3175,8 +3175,8 @@
       <avail>0</avail>
       <cost>0</cost>
       <bonus unique="chemicalprotection">
-        <toxincontactresist>4</toxincontactresist>
         <pathogencontactresist>4</pathogencontactresist>
+        <toxincontactresist>4</toxincontactresist>
       </bonus>
       <source>SR5</source>
       <page>437</page>
@@ -3218,8 +3218,8 @@
       <avail>0</avail>
       <cost>0</cost>
       <bonus unique="chemicalprotection">
-        <toxincontactresist>3</toxincontactresist>
         <pathogencontactresist>3</pathogencontactresist>
+        <toxincontactresist>3</toxincontactresist>
       </bonus>
       <source>SR5</source>
       <page>437</page>
@@ -3264,8 +3264,8 @@
       <avail>0</avail>
       <cost>0</cost>
       <bonus unique="chemicalprotection">
-        <toxincontactresist>2</toxincontactresist>
         <pathogencontactresist>2</pathogencontactresist>
+        <toxincontactresist>2</toxincontactresist>
       </bonus>
       <source>SR5</source>
       <page>437</page>
@@ -3310,8 +3310,8 @@
       <avail>0</avail>
       <cost>0</cost>
       <bonus unique="chemicalprotection">
-        <toxincontactresist>6</toxincontactresist>
         <pathogencontactresist>6</pathogencontactresist>
+        <toxincontactresist>6</toxincontactresist>
       </bonus>
       <source>SR5</source>
       <page>437</page>

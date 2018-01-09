@@ -472,8 +472,8 @@
         <gear>
           <name select="Bows">Arrow: Injection</name>
           <category>Ammunition</category>
-          <rating>4</rating>
           <qty>10</qty>
+          <rating>4</rating>
           <gears>
             <gear>
               <name>Narcoject</name>
@@ -484,8 +484,8 @@
         <gear>
           <name select="Bows">Arrow: Standard</name>
           <category>Ammunition</category>
-          <rating>4</rating>
           <qty>50</qty>
+          <rating>4</rating>
         </gear>
       </gears>
     </pack>
@@ -512,8 +512,8 @@
         <gear>
           <name select="Bows">Arrow: Injection</name>
           <category>Ammunition</category>
-          <rating>6</rating>
           <qty>5</qty>
+          <rating>6</rating>
           <gears>
             <gear>
               <name>Narcoject</name>
@@ -524,8 +524,8 @@
         <gear>
           <name select="Bows">Arrow: Standard</name>
           <category>Ammunition</category>
-          <rating>6</rating>
           <qty>50</qty>
+          <rating>6</rating>
         </gear>
       </gears>
     </pack>
@@ -1171,7 +1171,6 @@
       <weapons>
         <weapon>
           <name>Remington 950</name>
-          <accessories />
         </weapon>
         <weapon>
           <name>Bow (Rating 4)</name>
@@ -1195,8 +1194,8 @@
         <gear>
           <name select="Bows">Arrow: Standard</name>
           <category>Ammunition</category>
-          <rating>4</rating>
           <qty>20</qty>
+          <rating>4</rating>
         </gear>
         <gear>
           <name select="Sniper Rifles">Ammo: Regular Ammo</name>
@@ -1443,6 +1442,12 @@
       <armors>
         <armor>
           <name>Urban Explorer Jumpsuit</name>
+          <gears>
+            <gear>
+              <name>Biomonitor</name>
+              <category>Biotech</category>
+            </gear>
+          </gears>
           <mods>
             <mod>
               <name>Electrochromic Clothing</name>
@@ -1455,12 +1460,6 @@
               <name>Shock Frills</name>
             </mod>
           </mods>
-          <gears>
-            <gear>
-              <name>Biomonitor</name>
-              <category>Biotech</category>
-            </gear>
-          </gears>
         </armor>
         <armor>
           <name>Urban Explorer Jumpsuit: Helmet</name>
