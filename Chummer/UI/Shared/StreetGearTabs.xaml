@@ -1,0 +1,136 @@
+<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Chummer.UI.Shared"
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" x:Class="Chummer.UI.Shared.StreetGearTabs"
+             mc:Ignorable="d">
+    <Grid Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
+        <TabControl HorizontalAlignment="Left" VerticalAlignment="Top">
+            <TabItem Header="Gear">
+                <Grid Background="#FFE5E5E5">
+                    <xctk:DropDownButton x:Name="cmdAddGear" Content="Add Gear" HorizontalAlignment="Left" Margin="90,10,0,0" VerticalAlignment="Top" Width="75"/>
+                    <Button x:Name="cmdDeleteGear" Content="Delete" HorizontalAlignment="Left" Margin="170,10,0,0" VerticalAlignment="Top" Width="75" Height="22"/>
+                    <TreeView x:Name="treGear" HorizontalAlignment="Left" Height="349" Margin="10,63,0,0" VerticalAlignment="Top" Width="235"/>
+                    <xctk:WatermarkTextBox x:Name="txtGearSearch" HorizontalAlignment="Left" Height="23" Margin="10,35,0,0" TextWrapping="Wrap" Text="Search/Filter" VerticalAlignment="Top" Width="235"/>
+                    <Grid VerticalAlignment="Top" HorizontalAlignment="Left" Margin="250,10,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" MinWidth="80"/>
+                            <ColumnDefinition Width="Auto" MinWidth="80"/>
+                            <ColumnDefinition Width="Auto" MinWidth="80"/>
+                            <ColumnDefinition Width="Auto" MinWidth="80"/>
+                            <ColumnDefinition Width="Auto" MinWidth="80"/>
+                            <ColumnDefinition Width="Auto" MinWidth="80"/>
+                            <ColumnDefinition Width="Auto" MinWidth="80"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="25"/>
+                            <RowDefinition Height="26"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <Label Grid.Row="0" Name="lblGearNameLabel" Width="Auto">Name:</Label>
+                        <Label Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="5" Name="lblGearName" Width="Auto" Content="{Binding Name}" />
+
+                        <Label Grid.Row="1" Grid.Column="0" Name="lblGearCategoryLabel" Width="Auto">Category:</Label>
+                        <Label Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="5" Name="lblGearCategory" Width="Auto" Content="{Binding Category}" />
+
+                        <Label Grid.Row="2" Name="lblGearRatingLabel" Width="Auto">Rating:</Label>
+                        <xctk:IntegerUpDown Grid.Row="2" Grid.Column="1" Name="iudGearRating" Width="Auto" Value="{Binding Mode=TwoWay, Path=Rating}" Maximum="{Binding MaxRating}" IsReadOnly="{Binding CharacterObject.Created}" MinWidth="50" Minimum="{Binding MinRating}">
+                            <xctk:IntegerUpDown.Style>
+                                <Style TargetType="xctk:IntegerUpDown">
+                                    <Setter Property="Padding" Value="0,0,17,0"/>
+                                    <Setter Property="ShowButtonSpinner" Value="False"/>
+                                    <Setter Property="Background" Value="Transparent"/>
+                                    <Setter Property="BorderThickness" Value="0"/>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsReadOnly" Value="False">
+                                            <Setter Property="Padding" Value="0"/>
+                                            <Setter Property="ShowButtonSpinner" Value="True"/>
+                                            <Setter Property="Background" Value="White"/>
+                                            <Setter Property="BorderThickness" Value="1"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </xctk:IntegerUpDown.Style>
+                        </xctk:IntegerUpDown>
+
+                        <Label Grid.Row="2" Grid.Column="2" Name="lblGearAvailLabel" Width="Auto">Avail:</Label>
+                        <Label Grid.Row="2" Grid.Column="3" Name="lblGearAvail" Width="Auto" Content="{Binding TotalAvail}" />
+
+                        <Label Grid.Row="2" Grid.Column="4" Name="lblGearCostLabel" Width="Auto">Cost:</Label>
+                        <Label Grid.Row="2" Grid.Column="5" Name="lblGearCost" Width="Auto" Content="{Binding Cost}" />
+
+                        <Label Grid.Row="3" Name="lblGearCapacityLabel" Width="Auto">Capacity:</Label>
+                        <Label Grid.Row="3" Grid.Column="1" Name="lblGearCapacity" Width="Auto" Content="{Binding Capacity}" />
+
+                        <Label Grid.Row="4" Name="lblGearQtyLabel" Width="Auto">Quantity:</Label>
+                        <xctk:IntegerUpDown Grid.Row="4" Grid.Column="1" Name="iudGearCapacity" Width="Auto" Value="{Binding Mode=TwoWay, Path=Quantity}" IsReadOnly="{Binding CharacterObject.Created}" MinWidth="50" Minimum="0">
+                            <xctk:IntegerUpDown.Style>
+                                <Style TargetType="xctk:IntegerUpDown">
+                                    <Setter Property="Padding" Value="0,0,17,0"/>
+                                    <Setter Property="ShowButtonSpinner" Value="False"/>
+                                    <Setter Property="Background" Value="Transparent"/>
+                                    <Setter Property="BorderThickness" Value="0"/>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsReadOnly" Value="False">
+                                            <Setter Property="Padding" Value="0"/>
+                                            <Setter Property="ShowButtonSpinner" Value="True"/>
+                                            <Setter Property="Background" Value="White"/>
+                                            <Setter Property="BorderThickness" Value="1"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </xctk:IntegerUpDown.Style>
+                        </xctk:IntegerUpDown>
+
+                        <Label Grid.Row="5" Grid.Column="2" Name="lblGearAttackLabel" Width="Auto">Attack:</Label>
+                        <Label Grid.Row="5" Grid.Column="3" Name="lblGearSleazeLabel" Width="Auto">Sleaze:</Label>
+                        <Label Grid.Row="5" Grid.Column="4" Name="lblGearDataProcLabel" Width="Auto">Data Proc:</Label>
+                        <Label Grid.Row="5" Grid.Column="5" Name="lblGearFirewallkLabel" Width="Auto">Firewall:</Label>
+                        <Label Grid.Row="5" Grid.Column="6" Name="lblOverclocker" Width="Auto" Visibility="{Binding CanOverclock}">Overclocker:</Label>
+
+                        <ComboBox Grid.Row="6" Grid.Column="2" Name="cboGearAttack" Width="Auto" />
+                        <ComboBox Grid.Row="6" Grid.Column="3" Name="cboGearSleaze" Width="Auto" />
+                        <ComboBox Grid.Row="6" Grid.Column="4" Name="cboGearDataProc" Width="Auto" />
+                        <ComboBox Grid.Row="6" Grid.Column="5" Name="cboGearFirewallk" Width="Auto" />
+                        <ComboBox Grid.Row="6" Grid.Column="6" Name="cboOverclocker" Width="Auto" Visibility="{Binding CanOverclock}"/>
+                        <!-- Need some form of witchcraft to manage this better -->
+
+                        <Label Grid.Row="6" Name="lblGearDeviceRatingLabel" Width="Auto" Margin="0" MinWidth="80">Device Rating:</Label>
+                        <Label Grid.Row="6" Grid.Column="1" Name="lblGearDeviceRating" Width="Auto" Content="{Binding DeviceRating}" />
+
+                        <Label Grid.Row="7" Name="lblGearWeaponDamageLabel" Width="Auto" Margin="0" MinWidth="80">Damage:</Label>
+                        <Label Grid.Row="7" Grid.Column="1" Name="lblGearWeaponDamage" Width="Auto" Content="{Binding WeaponDamage}" />
+                        <Label Grid.Row="7" Grid.Column="2" Name="lblGearWeaponAPLabel" Width="Auto" Margin="0" MinWidth="80">AP:</Label>
+                        <Label Grid.Row="7" Grid.Column="3" Name="lblGearWeaponAP" Width="Auto" Content="{Binding WeaponAP}" />
+
+                        <Label Grid.Row="8" Name="lblSourceLabel" Width="Auto">Source:</Label>
+                        <Label Grid.Row="8" Grid.Column="1" Name="lblSource" Width="Auto" Content="{Binding Source}" />
+                        <CheckBox Grid.Row="9" Grid.Column="0" Name="chkEquipped" Width="Auto" Checked="{Binding Mode=TwoWay, Path=Equipped}" Content="Equipped" />
+                        <CheckBox Grid.Row="9" Grid.Column="1" Name="chkActiveCommlink" Width="Auto" Checked="{Binding Mode=TwoWay, Path=ActiveCommlink}" Content="Active Commlink" />
+                        <CheckBox Grid.Row="9" Grid.Column="2" Name="chkHomeNode" Width="Auto" Checked="{Binding Mode=TwoWay, Path=HomeNode}" Content="Home Node" />
+                    </Grid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Armor">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+            <TabItem Header="Weapons">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+            <TabItem Header="Lifestyle">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</UserControl>
+
