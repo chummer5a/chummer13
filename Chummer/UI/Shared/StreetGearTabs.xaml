@@ -35,6 +35,7 @@
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
 
                         <Label Grid.Row="0" Name="lblGearNameLabel" Width="Auto">Name:</Label>
@@ -71,9 +72,13 @@
 
                         <Label Grid.Row="3" Name="lblGearCapacityLabel" Width="Auto">Capacity:</Label>
                         <Label Grid.Row="3" Grid.Column="1" Name="lblGearCapacity" Width="Auto" Content="{Binding Capacity}" />
-
+                        <Button Grid.Row="4" Grid.Column="2" Name="btnPurchase" Content="Purchase"/>
+                        <Button Grid.Row="4" Grid.Column="3" Name="btnSell" Content="Sell"/>
+                        <Button Grid.Row="4" Grid.Column="4" Name="btnSplit" Content="Split"/>
+                        <Button Grid.Row="4" Grid.Column="5" Name="btnMerge" Content="Merge"/>
+                        <Button Grid.Row="4" Grid.Column="6" Name="btnMoveToVehicle" Content="Move to Vehicle"/>
                         <Label Grid.Row="4" Name="lblGearQtyLabel" Width="Auto">Quantity:</Label>
-                        <xctk:IntegerUpDown Grid.Row="4" Grid.Column="1" Name="iudGearCapacity" Width="Auto" Value="{Binding Mode=TwoWay, Path=Quantity}" IsReadOnly="{Binding CharacterObject.Created}" MinWidth="50" Minimum="0">
+                        <xctk:IntegerUpDown Grid.Row="4" Grid.Column="1" Name="iudGearQuantity" Width="Auto" Value="{Binding Mode=TwoWay, Path=Quantity}" IsReadOnly="{Binding CharacterObject.Created}" MinWidth="50" Minimum="0">
                             <xctk:IntegerUpDown.Style>
                                 <Style TargetType="xctk:IntegerUpDown">
                                     <Setter Property="Padding" Value="0,0,17,0"/>
@@ -116,13 +121,128 @@
                         <Label Grid.Row="8" Name="lblSourceLabel" Width="Auto">Source:</Label>
                         <Label Grid.Row="8" Grid.Column="1" Name="lblSource" Width="Auto" Content="{Binding Source}" />
                         <CheckBox Grid.Row="9" Grid.Column="0" Name="chkEquipped" Width="Auto" Checked="{Binding Mode=TwoWay, Path=Equipped}" Content="Equipped" />
-                        <CheckBox Grid.Row="9" Grid.Column="1" Name="chkActiveCommlink" Width="Auto" Checked="{Binding Mode=TwoWay, Path=ActiveCommlink}" Content="Active Commlink" />
-                        <CheckBox Grid.Row="9" Grid.Column="2" Name="chkHomeNode" Width="Auto" Checked="{Binding Mode=TwoWay, Path=HomeNode}" Content="Home Node" />
+                        <CheckBox Grid.Row="9" Grid.Column="1" Name="chkHomeNode" Width="Auto" Checked="{Binding Mode=TwoWay, Path=HomeNode}" Content="Home Node" />
+                        <CheckBox Grid.Row="10" Grid.Column="0" Name="chkActiveCommlink" Width="Auto" Checked="{Binding Mode=TwoWay, Path=ActiveCommlink}" Content="Active Commlink" />
                     </Grid>
                 </Grid>
             </TabItem>
             <TabItem Header="Armor">
-                <Grid Background="#FFE5E5E5"/>
+                <Grid Background="#FFE5E5E5">
+                    <xctk:DropDownButton x:Name="cmdAddArmor" Content="Add Gear" HorizontalAlignment="Left" Margin="90,10,0,0" VerticalAlignment="Top" Width="75"/>
+                    <Button x:Name="cmdDeleteArmor" Content="Delete" HorizontalAlignment="Left" Margin="170,10,0,0" VerticalAlignment="Top" Width="75" Height="22"/>
+                    <TreeView x:Name="treArmor" HorizontalAlignment="Left" Height="349" Margin="10,63,0,0" VerticalAlignment="Top" Width="235"/>
+                    <xctk:WatermarkTextBox x:Name="txtArmorSearch" HorizontalAlignment="Left" Height="23" Margin="10,35,0,0" TextWrapping="Wrap" Text="Search/Filter" VerticalAlignment="Top" Width="235"/>
+                    <Grid VerticalAlignment="Top" HorizontalAlignment="Left" Margin="250,10,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" MinWidth="80"/>
+                            <ColumnDefinition Width="Auto" MinWidth="80"/>
+                            <ColumnDefinition Width="Auto" MinWidth="80"/>
+                            <ColumnDefinition Width="Auto" MinWidth="80"/>
+                            <ColumnDefinition Width="Auto" MinWidth="80"/>
+                            <ColumnDefinition Width="Auto" MinWidth="80"/>
+                            <ColumnDefinition Width="Auto" MinWidth="80"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="25"/>
+                            <RowDefinition Height="26"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <Label Grid.Row="0" Name="lblArmorNameLabel" Width="Auto">Name:</Label>
+                        <Label Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="5" Name="lblArmorName" Width="Auto" Content="{Binding Name}" />
+
+                        <Label Grid.Row="1" Grid.Column="0" Name="lblArmorCategoryLabel" Width="Auto">Category:</Label>
+                        <Label Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="5" Name="lblArmorCategory" Width="Auto" Content="{Binding Category}" />
+
+                        <Label Grid.Row="2" Name="lblArmorRatingLabel" Width="Auto">Rating:</Label>
+                        <xctk:IntegerUpDown Grid.Row="2" Grid.Column="1" Name="iudArmorRating" Width="Auto" Value="{Binding Mode=TwoWay, Path=Rating}" Maximum="{Binding MaxRating}" IsReadOnly="{Binding CharacterObject.Created}" MinWidth="50" Minimum="{Binding MinRating}">
+                            <xctk:IntegerUpDown.Style>
+                                <Style TargetType="xctk:IntegerUpDown">
+                                    <Setter Property="Padding" Value="0,0,17,0"/>
+                                    <Setter Property="ShowButtonSpinner" Value="False"/>
+                                    <Setter Property="Background" Value="Transparent"/>
+                                    <Setter Property="BorderThickness" Value="0"/>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsReadOnly" Value="False">
+                                            <Setter Property="Padding" Value="0"/>
+                                            <Setter Property="ShowButtonSpinner" Value="True"/>
+                                            <Setter Property="Background" Value="White"/>
+                                            <Setter Property="BorderThickness" Value="1"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </xctk:IntegerUpDown.Style>
+                        </xctk:IntegerUpDown>
+
+                        <Label Grid.Row="2" Grid.Column="2" Name="lblArmorAvailLabel" Width="Auto">Avail:</Label>
+                        <Label Grid.Row="2" Grid.Column="3" Name="lblArmorAvail" Width="Auto" Content="{Binding TotalAvail}" />
+
+                        <Label Grid.Row="2" Grid.Column="4" Name="lblArmorCostLabel" Width="Auto">Cost:</Label>
+                        <Label Grid.Row="2" Grid.Column="5" Name="lblArmorCost" Width="Auto" Content="{Binding Cost}" />
+
+                        <Label Grid.Row="3" Name="lblArmorCapacityLabel" Width="Auto">Capacity:</Label>
+                        <Label Grid.Row="3" Grid.Column="1" Name="lblArmorCapacity" Width="Auto" Content="{Binding Capacity}" />
+                        <Button Grid.Row="4" Grid.Column="2" Name="btnArmorPurchase" Content="Purchase"/>
+                        <Button Grid.Row="4" Grid.Column="3" Name="btnArmorSell" Content="Sell"/>
+                        <Button Grid.Row="4" Grid.Column="4" Name="btnArmorSplit" Content="Split"/>
+                        <Button Grid.Row="4" Grid.Column="5" Name="btnArmorMerge" Content="Merge"/>
+                        <Button Grid.Row="4" Grid.Column="6" Name="btnArmorMoveToVehicle" Content="Move to Vehicle"/>
+                        <Label Grid.Row="4" Name="lblArmorQtyLabel" Width="Auto">Quantity:</Label>
+                        <xctk:IntegerUpDown Grid.Row="4" Grid.Column="1" Name="iudArmorQuantity" Width="Auto" Value="{Binding Mode=TwoWay, Path=Quantity}" IsReadOnly="{Binding CharacterObject.Created}" MinWidth="50" Minimum="0">
+                            <xctk:IntegerUpDown.Style>
+                                <Style TargetType="xctk:IntegerUpDown">
+                                    <Setter Property="Padding" Value="0,0,17,0"/>
+                                    <Setter Property="ShowButtonSpinner" Value="False"/>
+                                    <Setter Property="Background" Value="Transparent"/>
+                                    <Setter Property="BorderThickness" Value="0"/>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsReadOnly" Value="False">
+                                            <Setter Property="Padding" Value="0"/>
+                                            <Setter Property="ShowButtonSpinner" Value="True"/>
+                                            <Setter Property="Background" Value="White"/>
+                                            <Setter Property="BorderThickness" Value="1"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </xctk:IntegerUpDown.Style>
+                        </xctk:IntegerUpDown>
+
+                        <Label Grid.Row="5" Grid.Column="2" Name="lblArmorAttackLabel" Width="Auto">Attack:</Label>
+                        <Label Grid.Row="5" Grid.Column="3" Name="lblArmorSleazeLabel" Width="Auto">Sleaze:</Label>
+                        <Label Grid.Row="5" Grid.Column="4" Name="lblArmorDataProcLabel" Width="Auto">Data Proc:</Label>
+                        <Label Grid.Row="5" Grid.Column="5" Name="lblArmorFirewallkLabel" Width="Auto">Firewall:</Label>
+                        <Label Grid.Row="5" Grid.Column="6" Name="lblArmorOverclocker" Width="Auto" Visibility="{Binding CanOverclock}">Overclocker:</Label>
+
+                        <ComboBox Grid.Row="6" Grid.Column="2" Name="cboArmorAttack" Width="Auto" />
+                        <ComboBox Grid.Row="6" Grid.Column="3" Name="cboArmorSleaze" Width="Auto" />
+                        <ComboBox Grid.Row="6" Grid.Column="4" Name="cboArmorDataProc" Width="Auto" />
+                        <ComboBox Grid.Row="6" Grid.Column="5" Name="cboArmorFirewallk" Width="Auto" />
+                        <ComboBox Grid.Row="6" Grid.Column="6" Name="cboArmorOverclocker" Width="Auto" Visibility="{Binding CanOverclock}"/>
+                        <!-- Need some form of witchcraft to manage this better -->
+
+                        <Label Grid.Row="6" Name="lblArmorDeviceRatingLabel" Width="Auto" Margin="0" MinWidth="80">Device Rating:</Label>
+                        <Label Grid.Row="6" Grid.Column="1" Name="lblArmorDeviceRating" Width="Auto" Content="{Binding DeviceRating}" />
+
+                        <Label Grid.Row="7" Name="lblArmorWeaponDamageLabel" Width="Auto" Margin="0" MinWidth="80">Damage:</Label>
+                        <Label Grid.Row="7" Grid.Column="1" Name="lblArmorWeaponDamage" Width="Auto" Content="{Binding WeaponDamage}" />
+                        <Label Grid.Row="7" Grid.Column="2" Name="lblArmorWeaponAPLabel" Width="Auto" Margin="0" MinWidth="80">AP:</Label>
+                        <Label Grid.Row="7" Grid.Column="3" Name="lblArmorWeaponAP" Width="Auto" Content="{Binding WeaponAP}" />
+
+                        <Label Grid.Row="8" Name="lblArmorSourceLabel" Width="Auto">Source:</Label>
+                        <Label Grid.Row="8" Grid.Column="1" Name="lblArmorSource" Width="Auto" Content="{Binding Source}" />
+                        <CheckBox Grid.Row="9" Grid.Column="0" Name="chkArmorEquipped" Width="Auto" Checked="{Binding Mode=TwoWay, Path=Equipped}" Content="Equipped" />
+                        <CheckBox Grid.Row="9" Grid.Column="1" Name="chkArmorHomeNode" Width="Auto" Checked="{Binding Mode=TwoWay, Path=HomeNode}" Content="Home Node" />
+                        <CheckBox Grid.Row="10" Grid.Column="0" Name="chkArmorActiveCommlink" Width="Auto" Checked="{Binding Mode=TwoWay, Path=ActiveCommlink}" Content="Active Commlink" />
+                    </Grid>
+                </Grid>
             </TabItem>
             <TabItem Header="Weapons">
                 <Grid Background="#FFE5E5E5"/>
