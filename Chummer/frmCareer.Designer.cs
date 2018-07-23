@@ -632,8 +632,45 @@ namespace Chummer
 			this.tabStreetGear = new System.Windows.Forms.TabPage();
 			this.tabStreetGearTabs = new System.Windows.Forms.TabControl();
 			this.tabGear = new System.Windows.Forms.TabPage();
+			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+			this.lblGearNameLabel = new System.Windows.Forms.Label();
+			this.lblGearName = new System.Windows.Forms.Label();
+			this.chkGearActiveCommlink = new System.Windows.Forms.CheckBox();
+			this.lblGearCategoryLabel = new System.Windows.Forms.Label();
+			this.lblGearCategory = new System.Windows.Forms.Label();
+			this.lblGearRatingLabel = new System.Windows.Forms.Label();
+			this.chkGearHomeNode = new System.Windows.Forms.CheckBox();
+			this.lblGearRating = new System.Windows.Forms.Label();
+			this.lblGearAP = new System.Windows.Forms.Label();
+			this.chkGearEquipped = new System.Windows.Forms.CheckBox();
+			this.lblGearAvailLabel = new System.Windows.Forms.Label();
+			this.lblGearAPLabel = new System.Windows.Forms.Label();
+			this.lblGearAvail = new System.Windows.Forms.Label();
+			this.lblGearSource = new System.Windows.Forms.Label();
+			this.lblGearDamage = new System.Windows.Forms.Label();
+			this.lblGearSourceLabel = new System.Windows.Forms.Label();
+			this.lblGearCostLabel = new System.Windows.Forms.Label();
+			this.lblGearDamageLabel = new System.Windows.Forms.Label();
+			this.lblGearCost = new System.Windows.Forms.Label();
+			this.lblGearCapacityLabel = new System.Windows.Forms.Label();
+			this.lblGearCapacity = new System.Windows.Forms.Label();
+			this.lblGearDeviceRating = new System.Windows.Forms.Label();
+			this.lblGearQtyLabel = new System.Windows.Forms.Label();
+			this.lblGearDeviceRatingLabel = new System.Windows.Forms.Label();
+			this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+			this.lblGearQty = new System.Windows.Forms.Label();
+			this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
+			this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+			this.lblGearAttackLabel = new System.Windows.Forms.Label();
 			this.cboGearOverclocker = new System.Windows.Forms.ComboBox();
+			this.cboGearFirewall = new System.Windows.Forms.ComboBox();
+			this.cboGearDataProcessing = new System.Windows.Forms.ComboBox();
+			this.lblGearFirewallLabel = new System.Windows.Forms.Label();
+			this.cboGearAttack = new System.Windows.Forms.ComboBox();
 			this.lblGearOverclocker = new System.Windows.Forms.Label();
+			this.lblGearSleazeLabel = new System.Windows.Forms.Label();
+			this.lblGearDataProcessingLabel = new System.Windows.Forms.Label();
+			this.cboGearSleaze = new System.Windows.Forms.ComboBox();
 			this.tabGearMatrixCM = new System.Windows.Forms.TabControl();
 			this.tabGearMatrixCMPage = new System.Windows.Forms.TabPage();
 			this.chkGearMatrixCM1 = new System.Windows.Forms.CheckBox();
@@ -660,43 +697,10 @@ namespace Chummer
 			this.chkGearMatrixCM22 = new System.Windows.Forms.CheckBox();
 			this.chkGearMatrixCM23 = new System.Windows.Forms.CheckBox();
 			this.chkGearMatrixCM24 = new System.Windows.Forms.CheckBox();
-			this.cboGearDataProcessing = new System.Windows.Forms.ComboBox();
-			this.cboGearFirewall = new System.Windows.Forms.ComboBox();
-			this.cboGearSleaze = new System.Windows.Forms.ComboBox();
-			this.cboGearAttack = new System.Windows.Forms.ComboBox();
-			this.lblGearFirewallLabel = new System.Windows.Forms.Label();
-			this.lblGearDataProcessingLabel = new System.Windows.Forms.Label();
-			this.lblGearSleazeLabel = new System.Windows.Forms.Label();
-			this.lblGearAttackLabel = new System.Windows.Forms.Label();
-			this.lblGearDeviceRating = new System.Windows.Forms.Label();
-			this.lblGearDeviceRatingLabel = new System.Windows.Forms.Label();
-			this.chkGearActiveCommlink = new System.Windows.Forms.CheckBox();
 			this.chkCommlinks = new System.Windows.Forms.CheckBox();
 			this.cmdCreateStackedFocus = new System.Windows.Forms.Button();
-			this.chkGearHomeNode = new System.Windows.Forms.CheckBox();
-			this.lblGearAP = new System.Windows.Forms.Label();
-			this.lblGearAPLabel = new System.Windows.Forms.Label();
-			this.lblGearDamage = new System.Windows.Forms.Label();
-			this.lblGearDamageLabel = new System.Windows.Forms.Label();
 			this.cmdAddLocation = new System.Windows.Forms.Button();
-			this.chkGearEquipped = new System.Windows.Forms.CheckBox();
-			this.lblGearRating = new System.Windows.Forms.Label();
-			this.lblGearQty = new System.Windows.Forms.Label();
 			this.treFoci = new System.Windows.Forms.TreeView();
-			this.lblGearSource = new System.Windows.Forms.Label();
-			this.lblGearSourceLabel = new System.Windows.Forms.Label();
-			this.lblGearQtyLabel = new System.Windows.Forms.Label();
-			this.lblGearCost = new System.Windows.Forms.Label();
-			this.lblGearCostLabel = new System.Windows.Forms.Label();
-			this.lblGearAvail = new System.Windows.Forms.Label();
-			this.lblGearAvailLabel = new System.Windows.Forms.Label();
-			this.lblGearCapacity = new System.Windows.Forms.Label();
-			this.lblGearCapacityLabel = new System.Windows.Forms.Label();
-			this.lblGearCategory = new System.Windows.Forms.Label();
-			this.lblGearCategoryLabel = new System.Windows.Forms.Label();
-			this.lblGearName = new System.Windows.Forms.Label();
-			this.lblGearNameLabel = new System.Windows.Forms.Label();
-			this.lblGearRatingLabel = new System.Windows.Forms.Label();
 			this.treGear = new System.Windows.Forms.TreeView();
 			this.cmdAddGear = new SplitButton();
 			this.cmdDeleteGear = new SplitButton();
@@ -1258,6 +1262,10 @@ namespace Chummer
 			this.tabStreetGear.SuspendLayout();
 			this.tabStreetGearTabs.SuspendLayout();
 			this.tabGear.SuspendLayout();
+			this.tableLayoutPanel1.SuspendLayout();
+			this.flowLayoutPanel2.SuspendLayout();
+			this.flowLayoutPanel3.SuspendLayout();
+			this.tableLayoutPanel2.SuspendLayout();
 			this.tabGearMatrixCM.SuspendLayout();
 			this.tabGearMatrixCMPage.SuspendLayout();
 			this.tabArmor.SuspendLayout();
@@ -1890,7 +1898,7 @@ namespace Chummer
 			this.cmdGearReduceQty.Enabled = false;
 			this.cmdGearReduceQty.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.cmdGearReduceQty.Image = global::Chummer.Properties.Resources.delete;
-			this.cmdGearReduceQty.Location = new System.Drawing.Point(452, 122);
+			this.cmdGearReduceQty.Location = new System.Drawing.Point(68, 3);
 			this.cmdGearReduceQty.Name = "cmdGearReduceQty";
 			this.cmdGearReduceQty.Size = new System.Drawing.Size(24, 24);
 			this.cmdGearReduceQty.TabIndex = 96;
@@ -1903,7 +1911,7 @@ namespace Chummer
 			this.cmdGearIncreaseQty.Enabled = false;
 			this.cmdGearIncreaseQty.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.cmdGearIncreaseQty.Image = global::Chummer.Properties.Resources.add;
-			this.cmdGearIncreaseQty.Location = new System.Drawing.Point(422, 122);
+			this.cmdGearIncreaseQty.Location = new System.Drawing.Point(38, 3);
 			this.cmdGearIncreaseQty.Name = "cmdGearIncreaseQty";
 			this.cmdGearIncreaseQty.Size = new System.Drawing.Size(24, 24);
 			this.cmdGearIncreaseQty.TabIndex = 105;
@@ -1916,7 +1924,7 @@ namespace Chummer
 			this.cmdGearSplitQty.Enabled = false;
 			this.cmdGearSplitQty.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.cmdGearSplitQty.Image = global::Chummer.Properties.Resources.arrow_divide;
-			this.cmdGearSplitQty.Location = new System.Drawing.Point(531, 122);
+			this.cmdGearSplitQty.Location = new System.Drawing.Point(3, 3);
 			this.cmdGearSplitQty.Name = "cmdGearSplitQty";
 			this.cmdGearSplitQty.Size = new System.Drawing.Size(24, 24);
 			this.cmdGearSplitQty.TabIndex = 112;
@@ -1929,7 +1937,7 @@ namespace Chummer
 			this.cmdGearMergeQty.Enabled = false;
 			this.cmdGearMergeQty.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.cmdGearMergeQty.Image = global::Chummer.Properties.Resources.arrow_join;
-			this.cmdGearMergeQty.Location = new System.Drawing.Point(561, 122);
+			this.cmdGearMergeQty.Location = new System.Drawing.Point(33, 3);
 			this.cmdGearMergeQty.Name = "cmdGearMergeQty";
 			this.cmdGearMergeQty.Size = new System.Drawing.Size(24, 24);
 			this.cmdGearMergeQty.TabIndex = 113;
@@ -1942,7 +1950,7 @@ namespace Chummer
 			this.cmdGearMoveToVehicle.Enabled = false;
 			this.cmdGearMoveToVehicle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.cmdGearMoveToVehicle.Image = global::Chummer.Properties.Resources.car_go;
-			this.cmdGearMoveToVehicle.Location = new System.Drawing.Point(617, 122);
+			this.cmdGearMoveToVehicle.Location = new System.Drawing.Point(63, 3);
 			this.cmdGearMoveToVehicle.Name = "cmdGearMoveToVehicle";
 			this.cmdGearMoveToVehicle.Size = new System.Drawing.Size(24, 24);
 			this.cmdGearMoveToVehicle.TabIndex = 115;
@@ -1953,7 +1961,7 @@ namespace Chummer
 			// lblFoci
 			// 
 			this.lblFoci.AutoSize = true;
-			this.lblFoci.Location = new System.Drawing.Point(307, 332);
+			this.lblFoci.Location = new System.Drawing.Point(307, 490);
 			this.lblFoci.Name = "lblFoci";
 			this.lblFoci.Size = new System.Drawing.Size(67, 13);
 			this.lblFoci.TabIndex = 92;
@@ -5076,8 +5084,8 @@ namespace Chummer
 			this.treLimit.ShowNodeToolTips = true;
 			this.treLimit.ShowPlusMinus = false;
 			this.treLimit.ShowRootLines = false;
-			this.treLimit.Size = new System.Drawing.Size(299, 638);
-			this.treLimit.TabIndex = 79;
+            this.treLimit.Size = new System.Drawing.Size(299, 638);
+            this.treLimit.TabIndex = 79;
 			this.treLimit.KeyDown += new System.Windows.Forms.KeyEventHandler(this.treLimit_KeyDown);
 			// 
 			// cmdDeleteLimitModifier
@@ -7738,53 +7746,13 @@ namespace Chummer
 			// tabGear
 			// 
 			this.tabGear.BackColor = System.Drawing.SystemColors.Control;
-			this.tabGear.Controls.Add(this.cboGearOverclocker);
-			this.tabGear.Controls.Add(this.lblGearOverclocker);
-			this.tabGear.Controls.Add(this.tabGearMatrixCM);
-			this.tabGear.Controls.Add(this.cboGearDataProcessing);
-			this.tabGear.Controls.Add(this.cboGearFirewall);
-			this.tabGear.Controls.Add(this.cboGearSleaze);
-			this.tabGear.Controls.Add(this.cboGearAttack);
-			this.tabGear.Controls.Add(this.lblGearFirewallLabel);
-			this.tabGear.Controls.Add(this.lblGearDataProcessingLabel);
-			this.tabGear.Controls.Add(this.lblGearSleazeLabel);
-			this.tabGear.Controls.Add(this.lblGearAttackLabel);
-			this.tabGear.Controls.Add(this.lblGearDeviceRating);
-			this.tabGear.Controls.Add(this.lblGearDeviceRatingLabel);
-			this.tabGear.Controls.Add(this.chkGearActiveCommlink);
+			this.tabGear.Controls.Add(this.tableLayoutPanel1);
 			this.tabGear.Controls.Add(this.chkCommlinks);
 			this.tabGear.Controls.Add(this.cmdCreateStackedFocus);
-			this.tabGear.Controls.Add(this.chkGearHomeNode);
-			this.tabGear.Controls.Add(this.lblGearAP);
-			this.tabGear.Controls.Add(this.lblGearAPLabel);
-			this.tabGear.Controls.Add(this.lblGearDamage);
-			this.tabGear.Controls.Add(this.lblGearDamageLabel);
 			this.tabGear.Controls.Add(this.cmdAddLocation);
-			this.tabGear.Controls.Add(this.chkGearEquipped);
-			this.tabGear.Controls.Add(this.lblGearRating);
-			this.tabGear.Controls.Add(this.lblGearQty);
 			this.tabGear.Controls.Add(this.lblFoci);
 			this.tabGear.Controls.Add(this.treFoci);
-			this.tabGear.Controls.Add(this.lblGearSource);
-			this.tabGear.Controls.Add(this.lblGearSourceLabel);
-			this.tabGear.Controls.Add(this.lblGearQtyLabel);
-			this.tabGear.Controls.Add(this.lblGearCost);
-			this.tabGear.Controls.Add(this.lblGearCostLabel);
-			this.tabGear.Controls.Add(this.lblGearAvail);
-			this.tabGear.Controls.Add(this.lblGearAvailLabel);
-			this.tabGear.Controls.Add(this.lblGearCapacity);
-			this.tabGear.Controls.Add(this.lblGearCapacityLabel);
-			this.tabGear.Controls.Add(this.lblGearCategory);
-			this.tabGear.Controls.Add(this.lblGearCategoryLabel);
-			this.tabGear.Controls.Add(this.lblGearName);
-			this.tabGear.Controls.Add(this.lblGearNameLabel);
-			this.tabGear.Controls.Add(this.lblGearRatingLabel);
 			this.tabGear.Controls.Add(this.treGear);
-			this.tabGear.Controls.Add(this.cmdGearMoveToVehicle);
-			this.tabGear.Controls.Add(this.cmdGearMergeQty);
-			this.tabGear.Controls.Add(this.cmdGearSplitQty);
-			this.tabGear.Controls.Add(this.cmdGearIncreaseQty);
-			this.tabGear.Controls.Add(this.cmdGearReduceQty);
 			this.tabGear.Controls.Add(this.cmdAddGear);
 			this.tabGear.Controls.Add(this.cmdDeleteGear);
 			this.tabGear.Location = new System.Drawing.Point(4, 22);
@@ -7794,30 +7762,532 @@ namespace Chummer
 			this.tabGear.Tag = "Tab_Gear";
 			this.tabGear.Text = "Gear";
 			// 
+			// tableLayoutPanel1
+			// 
+			this.tableLayoutPanel1.AutoSize = true;
+			this.tableLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+			this.tableLayoutPanel1.ColumnCount = 6;
+			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+			this.tableLayoutPanel1.Controls.Add(this.lblGearNameLabel, 0, 0);
+			this.tableLayoutPanel1.Controls.Add(this.tabGearMatrixCM, 0, 13);
+			this.tableLayoutPanel1.Controls.Add(this.lblGearName, 1, 0);
+			this.tableLayoutPanel1.Controls.Add(this.lblGearCategoryLabel, 0, 1);
+			this.tableLayoutPanel1.Controls.Add(this.lblGearCategory, 1, 1);
+			this.tableLayoutPanel1.Controls.Add(this.lblGearRatingLabel, 0, 2);
+			this.tableLayoutPanel1.Controls.Add(this.lblGearRating, 1, 2);
+			this.tableLayoutPanel1.Controls.Add(this.lblGearAP, 5, 8);
+			this.tableLayoutPanel1.Controls.Add(this.chkGearEquipped, 0, 11);
+			this.tableLayoutPanel1.Controls.Add(this.lblGearAvailLabel, 2, 2);
+			this.tableLayoutPanel1.Controls.Add(this.lblGearAPLabel, 4, 8);
+			this.tableLayoutPanel1.Controls.Add(this.lblGearAvail, 3, 2);
+			this.tableLayoutPanel1.Controls.Add(this.lblGearSource, 1, 9);
+			this.tableLayoutPanel1.Controls.Add(this.lblGearDamage, 3, 8);
+			this.tableLayoutPanel1.Controls.Add(this.lblGearSourceLabel, 0, 9);
+			this.tableLayoutPanel1.Controls.Add(this.lblGearCostLabel, 4, 2);
+			this.tableLayoutPanel1.Controls.Add(this.lblGearDamageLabel, 2, 8);
+			this.tableLayoutPanel1.Controls.Add(this.lblGearCost, 5, 2);
+			this.tableLayoutPanel1.Controls.Add(this.lblGearCapacityLabel, 0, 3);
+			this.tableLayoutPanel1.Controls.Add(this.lblGearCapacity, 1, 3);
+			this.tableLayoutPanel1.Controls.Add(this.lblGearDeviceRating, 1, 8);
+			this.tableLayoutPanel1.Controls.Add(this.lblGearQtyLabel, 0, 4);
+			this.tableLayoutPanel1.Controls.Add(this.lblGearDeviceRatingLabel, 0, 8);
+			this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel2, 1, 4);
+			this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel3, 2, 4);
+			this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 2, 9);
+			this.tableLayoutPanel1.Controls.Add(this.chkGearHomeNode, 2, 11);
+			this.tableLayoutPanel1.Controls.Add(this.chkGearActiveCommlink, 1, 11);
+			this.tableLayoutPanel1.Location = new System.Drawing.Point(307, 36);
+			this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+			this.tableLayoutPanel1.RowCount = 14;
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+			this.tableLayoutPanel1.Size = new System.Drawing.Size(531, 359);
+			this.tableLayoutPanel1.TabIndex = 206;
+			// 
+			// lblGearNameLabel
+			// 
+			this.lblGearNameLabel.AutoSize = true;
+			this.lblGearNameLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.lblGearNameLabel.Location = new System.Drawing.Point(3, 3);
+			this.lblGearNameLabel.Margin = new System.Windows.Forms.Padding(3);
+			this.lblGearNameLabel.Name = "lblGearNameLabel";
+			this.lblGearNameLabel.Size = new System.Drawing.Size(78, 13);
+			this.lblGearNameLabel.TabIndex = 53;
+			this.lblGearNameLabel.Tag = "Label_Name";
+			this.lblGearNameLabel.Text = "Name:";
+			// 
+			// lblGearName
+			// 
+			this.lblGearName.AutoSize = true;
+			this.tableLayoutPanel1.SetColumnSpan(this.lblGearName, 5);
+			this.lblGearName.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.lblGearName.Location = new System.Drawing.Point(87, 3);
+			this.lblGearName.Margin = new System.Windows.Forms.Padding(3);
+			this.lblGearName.Name = "lblGearName";
+			this.lblGearName.Size = new System.Drawing.Size(441, 13);
+			this.lblGearName.TabIndex = 54;
+			this.lblGearName.Text = "[Name]";
+			// 
+			// chkGearActiveCommlink
+			// 
+			this.chkGearActiveCommlink.AutoSize = true;
+			this.chkGearActiveCommlink.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.chkGearActiveCommlink.Enabled = false;
+			this.chkGearActiveCommlink.Location = new System.Drawing.Point(87, 220);
+			this.chkGearActiveCommlink.Name = "chkGearActiveCommlink";
+			this.chkGearActiveCommlink.Size = new System.Drawing.Size(104, 17);
+			this.chkGearActiveCommlink.TabIndex = 118;
+			this.chkGearActiveCommlink.Tag = "Checkbox_ActiveCommlink";
+			this.chkGearActiveCommlink.Text = "Active Commlink";
+			this.chkGearActiveCommlink.UseVisualStyleBackColor = true;
+			this.chkGearActiveCommlink.CheckedChanged += new System.EventHandler(this.chkGearActiveCommlink_CheckedChanged);
+			// 
+			// lblGearCategoryLabel
+			// 
+			this.lblGearCategoryLabel.AutoSize = true;
+			this.lblGearCategoryLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.lblGearCategoryLabel.Location = new System.Drawing.Point(3, 22);
+			this.lblGearCategoryLabel.Margin = new System.Windows.Forms.Padding(3);
+			this.lblGearCategoryLabel.Name = "lblGearCategoryLabel";
+			this.lblGearCategoryLabel.Size = new System.Drawing.Size(78, 13);
+			this.lblGearCategoryLabel.TabIndex = 55;
+			this.lblGearCategoryLabel.Tag = "Label_Category";
+			this.lblGearCategoryLabel.Text = "Category:";
+			// 
+			// lblGearCategory
+			// 
+			this.lblGearCategory.AutoSize = true;
+			this.tableLayoutPanel1.SetColumnSpan(this.lblGearCategory, 5);
+			this.lblGearCategory.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.lblGearCategory.Location = new System.Drawing.Point(87, 22);
+			this.lblGearCategory.Margin = new System.Windows.Forms.Padding(3);
+			this.lblGearCategory.Name = "lblGearCategory";
+			this.lblGearCategory.Size = new System.Drawing.Size(441, 13);
+			this.lblGearCategory.TabIndex = 56;
+			this.lblGearCategory.Text = "[Category]";
+			// 
+			// lblGearRatingLabel
+			// 
+			this.lblGearRatingLabel.AutoSize = true;
+			this.lblGearRatingLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.lblGearRatingLabel.Location = new System.Drawing.Point(3, 41);
+			this.lblGearRatingLabel.Margin = new System.Windows.Forms.Padding(3);
+			this.lblGearRatingLabel.Name = "lblGearRatingLabel";
+			this.lblGearRatingLabel.Size = new System.Drawing.Size(78, 13);
+			this.lblGearRatingLabel.TabIndex = 51;
+			this.lblGearRatingLabel.Tag = "Label_Rating";
+			this.lblGearRatingLabel.Text = "Rating:";
+			// 
+			// chkGearHomeNode
+			// 
+			this.chkGearHomeNode.AutoSize = true;
+			this.chkGearHomeNode.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.chkGearHomeNode.Location = new System.Drawing.Point(197, 220);
+			this.chkGearHomeNode.Name = "chkGearHomeNode";
+			this.chkGearHomeNode.Size = new System.Drawing.Size(83, 17);
+			this.chkGearHomeNode.TabIndex = 114;
+			this.chkGearHomeNode.Tag = "Checkbox_HomeNode";
+			this.chkGearHomeNode.Text = "Home Node";
+			this.chkGearHomeNode.UseVisualStyleBackColor = true;
+			this.chkGearHomeNode.Visible = false;
+			this.chkGearHomeNode.CheckedChanged += new System.EventHandler(this.chkGearHomeNode_CheckedChanged);
+			// 
+			// lblGearRating
+			// 
+			this.lblGearRating.AutoSize = true;
+			this.lblGearRating.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.lblGearRating.Location = new System.Drawing.Point(87, 41);
+			this.lblGearRating.Margin = new System.Windows.Forms.Padding(3);
+			this.lblGearRating.Name = "lblGearRating";
+			this.lblGearRating.Size = new System.Drawing.Size(104, 13);
+			this.lblGearRating.TabIndex = 95;
+			this.lblGearRating.Text = "[Rating]";
+			// 
+			// lblGearAP
+			// 
+			this.lblGearAP.AutoSize = true;
+			this.lblGearAP.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.lblGearAP.Location = new System.Drawing.Point(365, 112);
+			this.lblGearAP.Name = "lblGearAP";
+			this.lblGearAP.Size = new System.Drawing.Size(163, 19);
+			this.lblGearAP.TabIndex = 111;
+			this.lblGearAP.Text = "[0]";
+			// 
+			// chkGearEquipped
+			// 
+			this.chkGearEquipped.AutoSize = true;
+			this.chkGearEquipped.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.chkGearEquipped.Location = new System.Drawing.Point(3, 220);
+			this.chkGearEquipped.Name = "chkGearEquipped";
+			this.chkGearEquipped.Size = new System.Drawing.Size(78, 17);
+			this.chkGearEquipped.TabIndex = 97;
+			this.chkGearEquipped.Tag = "Checkbox_Equipped";
+			this.chkGearEquipped.Text = "Equipped";
+			this.chkGearEquipped.UseVisualStyleBackColor = true;
+			this.chkGearEquipped.CheckedChanged += new System.EventHandler(this.chkGearEquipped_CheckedChanged);
+			// 
+			// lblGearAvailLabel
+			// 
+			this.lblGearAvailLabel.AutoSize = true;
+			this.lblGearAvailLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.lblGearAvailLabel.Location = new System.Drawing.Point(197, 41);
+			this.lblGearAvailLabel.Margin = new System.Windows.Forms.Padding(3);
+			this.lblGearAvailLabel.Name = "lblGearAvailLabel";
+			this.lblGearAvailLabel.Size = new System.Drawing.Size(83, 13);
+			this.lblGearAvailLabel.TabIndex = 59;
+			this.lblGearAvailLabel.Tag = "Label_Avail";
+			this.lblGearAvailLabel.Text = "Avail:";
+			// 
+			// lblGearAPLabel
+			// 
+			this.lblGearAPLabel.AutoSize = true;
+			this.lblGearAPLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.lblGearAPLabel.Location = new System.Drawing.Point(328, 112);
+			this.lblGearAPLabel.Name = "lblGearAPLabel";
+			this.lblGearAPLabel.Size = new System.Drawing.Size(31, 19);
+			this.lblGearAPLabel.TabIndex = 110;
+			this.lblGearAPLabel.Tag = "Label_AP";
+			this.lblGearAPLabel.Text = "AP:";
+			// 
+			// lblGearAvail
+			// 
+			this.lblGearAvail.AutoSize = true;
+			this.lblGearAvail.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.lblGearAvail.Location = new System.Drawing.Point(286, 41);
+			this.lblGearAvail.Margin = new System.Windows.Forms.Padding(3);
+			this.lblGearAvail.Name = "lblGearAvail";
+			this.lblGearAvail.Size = new System.Drawing.Size(36, 13);
+			this.lblGearAvail.TabIndex = 60;
+			this.lblGearAvail.Text = "[Avail]";
+			// 
+			// lblGearSource
+			// 
+			this.lblGearSource.AutoSize = true;
+			this.lblGearSource.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.lblGearSource.Location = new System.Drawing.Point(87, 134);
+			this.lblGearSource.Margin = new System.Windows.Forms.Padding(3);
+			this.lblGearSource.Name = "lblGearSource";
+			this.lblGearSource.Size = new System.Drawing.Size(104, 80);
+			this.lblGearSource.TabIndex = 74;
+			this.lblGearSource.Text = "[Source]";
+			this.lblGearSource.Click += new System.EventHandler(this.OpenSourceFromLabel);
+			// 
+			// lblGearDamage
+			// 
+			this.lblGearDamage.AutoSize = true;
+			this.lblGearDamage.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.lblGearDamage.Location = new System.Drawing.Point(286, 112);
+			this.lblGearDamage.Name = "lblGearDamage";
+			this.lblGearDamage.Size = new System.Drawing.Size(36, 19);
+			this.lblGearDamage.TabIndex = 109;
+			this.lblGearDamage.Text = "[0]";
+			// 
+			// lblGearSourceLabel
+			// 
+			this.lblGearSourceLabel.AutoSize = true;
+			this.lblGearSourceLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.lblGearSourceLabel.Location = new System.Drawing.Point(3, 134);
+			this.lblGearSourceLabel.Margin = new System.Windows.Forms.Padding(3);
+			this.lblGearSourceLabel.Name = "lblGearSourceLabel";
+			this.lblGearSourceLabel.Size = new System.Drawing.Size(78, 80);
+			this.lblGearSourceLabel.TabIndex = 73;
+			this.lblGearSourceLabel.Tag = "Label_Source";
+			this.lblGearSourceLabel.Text = "Source:";
+			// 
+			// lblGearCostLabel
+			// 
+			this.lblGearCostLabel.AutoSize = true;
+			this.lblGearCostLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.lblGearCostLabel.Location = new System.Drawing.Point(328, 41);
+			this.lblGearCostLabel.Margin = new System.Windows.Forms.Padding(3);
+			this.lblGearCostLabel.Name = "lblGearCostLabel";
+			this.lblGearCostLabel.Size = new System.Drawing.Size(31, 13);
+			this.lblGearCostLabel.TabIndex = 61;
+			this.lblGearCostLabel.Tag = "Label_Cost";
+			this.lblGearCostLabel.Text = "Cost:";
+			// 
+			// lblGearDamageLabel
+			// 
+			this.lblGearDamageLabel.AutoSize = true;
+			this.lblGearDamageLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.lblGearDamageLabel.Location = new System.Drawing.Point(197, 112);
+			this.lblGearDamageLabel.Name = "lblGearDamageLabel";
+			this.lblGearDamageLabel.Size = new System.Drawing.Size(83, 19);
+			this.lblGearDamageLabel.TabIndex = 108;
+			this.lblGearDamageLabel.Tag = "Label_Damage";
+			this.lblGearDamageLabel.Text = "Damage:";
+			// 
+			// lblGearCost
+			// 
+			this.lblGearCost.AutoSize = true;
+			this.lblGearCost.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.lblGearCost.Location = new System.Drawing.Point(365, 41);
+			this.lblGearCost.Margin = new System.Windows.Forms.Padding(3);
+			this.lblGearCost.Name = "lblGearCost";
+			this.lblGearCost.Size = new System.Drawing.Size(163, 13);
+			this.lblGearCost.TabIndex = 62;
+			this.lblGearCost.Text = "[Cost]";
+			// 
+			// lblGearCapacityLabel
+			// 
+			this.lblGearCapacityLabel.AutoSize = true;
+			this.lblGearCapacityLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.lblGearCapacityLabel.Location = new System.Drawing.Point(3, 60);
+			this.lblGearCapacityLabel.Margin = new System.Windows.Forms.Padding(3);
+			this.lblGearCapacityLabel.Name = "lblGearCapacityLabel";
+			this.lblGearCapacityLabel.Size = new System.Drawing.Size(78, 13);
+			this.lblGearCapacityLabel.TabIndex = 57;
+			this.lblGearCapacityLabel.Tag = "Label_Capacity";
+			this.lblGearCapacityLabel.Text = "Capacity:";
+			// 
+			// lblGearCapacity
+			// 
+			this.lblGearCapacity.AutoSize = true;
+			this.lblGearCapacity.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.lblGearCapacity.Location = new System.Drawing.Point(87, 60);
+			this.lblGearCapacity.Margin = new System.Windows.Forms.Padding(3);
+			this.lblGearCapacity.Name = "lblGearCapacity";
+			this.lblGearCapacity.Size = new System.Drawing.Size(104, 13);
+			this.lblGearCapacity.TabIndex = 58;
+			this.lblGearCapacity.Text = "[Capacity]";
+			// 
+			// lblGearDeviceRating
+			// 
+			this.lblGearDeviceRating.AutoSize = true;
+			this.lblGearDeviceRating.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.lblGearDeviceRating.Location = new System.Drawing.Point(87, 115);
+			this.lblGearDeviceRating.Margin = new System.Windows.Forms.Padding(3);
+			this.lblGearDeviceRating.Name = "lblGearDeviceRating";
+			this.lblGearDeviceRating.Size = new System.Drawing.Size(104, 13);
+			this.lblGearDeviceRating.TabIndex = 157;
+			this.lblGearDeviceRating.Text = "[0]";
+			// 
+			// lblGearQtyLabel
+			// 
+			this.lblGearQtyLabel.AutoSize = true;
+			this.lblGearQtyLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.lblGearQtyLabel.Location = new System.Drawing.Point(3, 79);
+			this.lblGearQtyLabel.Margin = new System.Windows.Forms.Padding(3);
+			this.lblGearQtyLabel.Name = "lblGearQtyLabel";
+			this.lblGearQtyLabel.Size = new System.Drawing.Size(78, 30);
+			this.lblGearQtyLabel.TabIndex = 63;
+			this.lblGearQtyLabel.Tag = "Label_Qty";
+			this.lblGearQtyLabel.Text = "Qty:";
+			// 
+			// lblGearDeviceRatingLabel
+			// 
+			this.lblGearDeviceRatingLabel.AutoSize = true;
+			this.lblGearDeviceRatingLabel.Location = new System.Drawing.Point(3, 115);
+			this.lblGearDeviceRatingLabel.Margin = new System.Windows.Forms.Padding(3);
+			this.lblGearDeviceRatingLabel.Name = "lblGearDeviceRatingLabel";
+			this.lblGearDeviceRatingLabel.Size = new System.Drawing.Size(78, 13);
+			this.lblGearDeviceRatingLabel.TabIndex = 156;
+			this.lblGearDeviceRatingLabel.Tag = "Label_DeviceRating";
+			this.lblGearDeviceRatingLabel.Text = "Device Rating:";
+			// 
+			// flowLayoutPanel2
+			// 
+			this.flowLayoutPanel2.AutoSize = true;
+			this.flowLayoutPanel2.Controls.Add(this.lblGearQty);
+			this.flowLayoutPanel2.Controls.Add(this.cmdGearIncreaseQty);
+			this.flowLayoutPanel2.Controls.Add(this.cmdGearReduceQty);
+			this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.flowLayoutPanel2.Location = new System.Drawing.Point(87, 79);
+			this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+			this.flowLayoutPanel2.Size = new System.Drawing.Size(104, 30);
+			this.flowLayoutPanel2.TabIndex = 96;
+			// 
+			// lblGearQty
+			// 
+			this.lblGearQty.Anchor = System.Windows.Forms.AnchorStyles.Left;
+			this.lblGearQty.AutoSize = true;
+			this.lblGearQty.Location = new System.Drawing.Point(3, 8);
+			this.lblGearQty.Name = "lblGearQty";
+			this.lblGearQty.Size = new System.Drawing.Size(29, 13);
+			this.lblGearQty.TabIndex = 93;
+			this.lblGearQty.Text = "[Qty]";
+			this.lblGearQty.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			// 
+			// flowLayoutPanel3
+			// 
+			this.flowLayoutPanel3.AutoSize = true;
+			this.tableLayoutPanel1.SetColumnSpan(this.flowLayoutPanel3, 2);
+			this.flowLayoutPanel3.Controls.Add(this.cmdGearSplitQty);
+			this.flowLayoutPanel3.Controls.Add(this.cmdGearMergeQty);
+			this.flowLayoutPanel3.Controls.Add(this.cmdGearMoveToVehicle);
+			this.flowLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.flowLayoutPanel3.Location = new System.Drawing.Point(197, 79);
+			this.flowLayoutPanel3.Name = "flowLayoutPanel3";
+			this.flowLayoutPanel3.Size = new System.Drawing.Size(125, 30);
+			this.flowLayoutPanel3.TabIndex = 114;
+			// 
+			// tableLayoutPanel2
+			// 
+			this.tableLayoutPanel2.AutoSize = true;
+			this.tableLayoutPanel2.ColumnCount = 4;
+			this.tableLayoutPanel1.SetColumnSpan(this.tableLayoutPanel2, 4);
+			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+			this.tableLayoutPanel2.Controls.Add(this.lblGearAttackLabel, 0, 0);
+			this.tableLayoutPanel2.Controls.Add(this.cboGearOverclocker, 0, 3);
+			this.tableLayoutPanel2.Controls.Add(this.cboGearFirewall, 3, 1);
+			this.tableLayoutPanel2.Controls.Add(this.cboGearDataProcessing, 2, 1);
+			this.tableLayoutPanel2.Controls.Add(this.lblGearFirewallLabel, 3, 0);
+			this.tableLayoutPanel2.Controls.Add(this.cboGearAttack, 0, 1);
+			this.tableLayoutPanel2.Controls.Add(this.lblGearOverclocker, 0, 2);
+			this.tableLayoutPanel2.Controls.Add(this.lblGearSleazeLabel, 1, 0);
+			this.tableLayoutPanel2.Controls.Add(this.lblGearDataProcessingLabel, 2, 0);
+			this.tableLayoutPanel2.Controls.Add(this.cboGearSleaze, 1, 1);
+			this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.tableLayoutPanel2.Location = new System.Drawing.Point(197, 134);
+			this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+			this.tableLayoutPanel2.RowCount = 4;
+			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
+			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
+			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
+			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
+			this.tableLayoutPanel2.Size = new System.Drawing.Size(331, 80);
+			this.tableLayoutPanel2.TabIndex = 158;
+			// 
+			// lblGearAttackLabel
+			// 
+			this.lblGearAttackLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.lblGearAttackLabel.Location = new System.Drawing.Point(3, 0);
+			this.lblGearAttackLabel.Name = "lblGearAttackLabel";
+			this.lblGearAttackLabel.Size = new System.Drawing.Size(127, 13);
+			this.lblGearAttackLabel.TabIndex = 160;
+			this.lblGearAttackLabel.Tag = "Label_Attack";
+			this.lblGearAttackLabel.Text = "Attack:";
+			this.lblGearAttackLabel.Visible = false;
+			// 
 			// cboGearOverclocker
 			// 
+			this.cboGearOverclocker.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.cboGearOverclocker.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cboGearOverclocker.FormattingEnabled = true;
-			this.cboGearOverclocker.Location = new System.Drawing.Point(485, 202);
+			this.cboGearOverclocker.Location = new System.Drawing.Point(3, 56);
 			this.cboGearOverclocker.Name = "cboGearOverclocker";
 			this.cboGearOverclocker.Size = new System.Drawing.Size(127, 21);
 			this.cboGearOverclocker.TabIndex = 205;
 			this.cboGearOverclocker.SelectedIndexChanged += new System.EventHandler(this.cboGearOverclocker_SelectedIndexChanged);
 			// 
+			// cboGearFirewall
+			// 
+			this.cboGearFirewall.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.cboGearFirewall.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cboGearFirewall.FormattingEnabled = true;
+			this.cboGearFirewall.Location = new System.Drawing.Point(268, 16);
+			this.cboGearFirewall.Name = "cboGearFirewall";
+			this.cboGearFirewall.Size = new System.Drawing.Size(60, 21);
+			this.cboGearFirewall.TabIndex = 166;
+			this.cboGearFirewall.Visible = false;
+			this.cboGearFirewall.SelectedIndexChanged += new System.EventHandler(this.cboGearFirewall_SelectedIndexChanged);
+			// 
+			// cboGearDataProcessing
+			// 
+			this.cboGearDataProcessing.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.cboGearDataProcessing.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cboGearDataProcessing.FormattingEnabled = true;
+			this.cboGearDataProcessing.Location = new System.Drawing.Point(202, 16);
+			this.cboGearDataProcessing.Name = "cboGearDataProcessing";
+			this.cboGearDataProcessing.Size = new System.Drawing.Size(60, 21);
+			this.cboGearDataProcessing.TabIndex = 167;
+			this.cboGearDataProcessing.Visible = false;
+			this.cboGearDataProcessing.SelectedIndexChanged += new System.EventHandler(this.cboGearDataProcessing_SelectedIndexChanged);
+			// 
+			// lblGearFirewallLabel
+			// 
+			this.lblGearFirewallLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.lblGearFirewallLabel.Location = new System.Drawing.Point(268, 0);
+			this.lblGearFirewallLabel.Name = "lblGearFirewallLabel";
+			this.lblGearFirewallLabel.Size = new System.Drawing.Size(60, 13);
+			this.lblGearFirewallLabel.TabIndex = 163;
+			this.lblGearFirewallLabel.Tag = "Label_Firewall";
+			this.lblGearFirewallLabel.Text = "Firewall:";
+			this.lblGearFirewallLabel.Visible = false;
+			// 
+			// cboGearAttack
+			// 
+			this.cboGearAttack.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.cboGearAttack.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cboGearAttack.FormattingEnabled = true;
+			this.cboGearAttack.Location = new System.Drawing.Point(3, 16);
+			this.cboGearAttack.Name = "cboGearAttack";
+			this.cboGearAttack.Size = new System.Drawing.Size(127, 21);
+			this.cboGearAttack.TabIndex = 164;
+			this.cboGearAttack.Visible = false;
+			this.cboGearAttack.SelectedIndexChanged += new System.EventHandler(this.cboGearAttack_SelectedIndexChanged);
+			// 
 			// lblGearOverclocker
 			// 
-			this.lblGearOverclocker.Location = new System.Drawing.Point(485, 187);
+			this.lblGearOverclocker.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.lblGearOverclocker.Location = new System.Drawing.Point(3, 40);
 			this.lblGearOverclocker.Name = "lblGearOverclocker";
-			this.lblGearOverclocker.Size = new System.Drawing.Size(75, 13);
+			this.lblGearOverclocker.Size = new System.Drawing.Size(127, 13);
 			this.lblGearOverclocker.TabIndex = 204;
 			this.lblGearOverclocker.Tag = "Label_Overclocker";
 			this.lblGearOverclocker.Text = "Overclocker:";
 			// 
+			// lblGearSleazeLabel
+			// 
+			this.lblGearSleazeLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.lblGearSleazeLabel.Location = new System.Drawing.Point(136, 0);
+			this.lblGearSleazeLabel.Name = "lblGearSleazeLabel";
+			this.lblGearSleazeLabel.Size = new System.Drawing.Size(60, 13);
+			this.lblGearSleazeLabel.TabIndex = 161;
+			this.lblGearSleazeLabel.Tag = "Label_Sleaze";
+			this.lblGearSleazeLabel.Text = "Sleaze:";
+			this.lblGearSleazeLabel.Visible = false;
+			// 
+			// lblGearDataProcessingLabel
+			// 
+			this.lblGearDataProcessingLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.lblGearDataProcessingLabel.Location = new System.Drawing.Point(202, 0);
+			this.lblGearDataProcessingLabel.Name = "lblGearDataProcessingLabel";
+			this.lblGearDataProcessingLabel.Size = new System.Drawing.Size(60, 13);
+			this.lblGearDataProcessingLabel.TabIndex = 162;
+			this.lblGearDataProcessingLabel.Tag = "Label_DataProcessing";
+			this.lblGearDataProcessingLabel.Text = "Data Proc:";
+			this.lblGearDataProcessingLabel.Visible = false;
+			// 
+			// cboGearSleaze
+			// 
+			this.cboGearSleaze.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.cboGearSleaze.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cboGearSleaze.FormattingEnabled = true;
+			this.cboGearSleaze.Location = new System.Drawing.Point(136, 16);
+			this.cboGearSleaze.Name = "cboGearSleaze";
+			this.cboGearSleaze.Size = new System.Drawing.Size(60, 21);
+			this.cboGearSleaze.TabIndex = 165;
+			this.cboGearSleaze.Visible = false;
+			this.cboGearSleaze.SelectedIndexChanged += new System.EventHandler(this.cboGearSleaze_SelectedIndexChanged);
+			// 
 			// tabGearMatrixCM
 			// 
+			this.tableLayoutPanel1.SetColumnSpan(this.tabGearMatrixCM, 4);
 			this.tabGearMatrixCM.Controls.Add(this.tabGearMatrixCMPage);
+			this.tabGearMatrixCM.Dock = System.Windows.Forms.DockStyle.Left;
 			this.tabGearMatrixCM.ItemSize = new System.Drawing.Size(176, 18);
-			this.tabGearMatrixCM.Location = new System.Drawing.Point(498, 232);
+			this.tabGearMatrixCM.Location = new System.Drawing.Point(3, 243);
 			this.tabGearMatrixCM.Name = "tabGearMatrixCM";
 			this.tabGearMatrixCM.SelectedIndex = 0;
 			this.tabGearMatrixCM.Size = new System.Drawing.Size(213, 113);
@@ -8148,122 +8618,6 @@ namespace Chummer
 			this.chkGearMatrixCM24.UseVisualStyleBackColor = true;
 			this.chkGearMatrixCM24.CheckedChanged += new System.EventHandler(this.chkGearCM_CheckedChanged);
 			// 
-			// cboGearDataProcessing
-			// 
-			this.cboGearDataProcessing.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.cboGearDataProcessing.FormattingEnabled = true;
-			this.cboGearDataProcessing.Location = new System.Drawing.Point(621, 163);
-			this.cboGearDataProcessing.Name = "cboGearDataProcessing";
-			this.cboGearDataProcessing.Size = new System.Drawing.Size(60, 21);
-			this.cboGearDataProcessing.TabIndex = 167;
-			this.cboGearDataProcessing.Visible = false;
-			this.cboGearDataProcessing.SelectedIndexChanged += new System.EventHandler(this.cboGearDataProcessing_SelectedIndexChanged);
-			// 
-			// cboGearFirewall
-			// 
-			this.cboGearFirewall.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.cboGearFirewall.FormattingEnabled = true;
-			this.cboGearFirewall.Location = new System.Drawing.Point(687, 163);
-			this.cboGearFirewall.Name = "cboGearFirewall";
-			this.cboGearFirewall.Size = new System.Drawing.Size(60, 21);
-			this.cboGearFirewall.TabIndex = 166;
-			this.cboGearFirewall.Visible = false;
-			this.cboGearFirewall.SelectedIndexChanged += new System.EventHandler(this.cboGearFirewall_SelectedIndexChanged);
-			// 
-			// cboGearSleaze
-			// 
-			this.cboGearSleaze.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.cboGearSleaze.FormattingEnabled = true;
-			this.cboGearSleaze.Location = new System.Drawing.Point(552, 163);
-			this.cboGearSleaze.Name = "cboGearSleaze";
-			this.cboGearSleaze.Size = new System.Drawing.Size(60, 21);
-			this.cboGearSleaze.TabIndex = 165;
-			this.cboGearSleaze.Visible = false;
-			this.cboGearSleaze.SelectedIndexChanged += new System.EventHandler(this.cboGearSleaze_SelectedIndexChanged);
-			// 
-			// cboGearAttack
-			// 
-			this.cboGearAttack.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.cboGearAttack.FormattingEnabled = true;
-			this.cboGearAttack.Location = new System.Drawing.Point(485, 163);
-			this.cboGearAttack.Name = "cboGearAttack";
-			this.cboGearAttack.Size = new System.Drawing.Size(60, 21);
-			this.cboGearAttack.TabIndex = 164;
-			this.cboGearAttack.Visible = false;
-			this.cboGearAttack.SelectedIndexChanged += new System.EventHandler(this.cboGearAttack_SelectedIndexChanged);
-			// 
-			// lblGearFirewallLabel
-			// 
-			this.lblGearFirewallLabel.Location = new System.Drawing.Point(687, 149);
-			this.lblGearFirewallLabel.Name = "lblGearFirewallLabel";
-			this.lblGearFirewallLabel.Size = new System.Drawing.Size(60, 13);
-			this.lblGearFirewallLabel.TabIndex = 163;
-			this.lblGearFirewallLabel.Tag = "Label_Firewall";
-			this.lblGearFirewallLabel.Text = "Firewall:";
-			this.lblGearFirewallLabel.Visible = false;
-			// 
-			// lblGearDataProcessingLabel
-			// 
-			this.lblGearDataProcessingLabel.Location = new System.Drawing.Point(621, 149);
-			this.lblGearDataProcessingLabel.Name = "lblGearDataProcessingLabel";
-			this.lblGearDataProcessingLabel.Size = new System.Drawing.Size(60, 13);
-			this.lblGearDataProcessingLabel.TabIndex = 162;
-			this.lblGearDataProcessingLabel.Tag = "Label_DataProcessing";
-			this.lblGearDataProcessingLabel.Text = "Data Proc:";
-			this.lblGearDataProcessingLabel.Visible = false;
-			// 
-			// lblGearSleazeLabel
-			// 
-			this.lblGearSleazeLabel.Location = new System.Drawing.Point(552, 149);
-			this.lblGearSleazeLabel.Name = "lblGearSleazeLabel";
-			this.lblGearSleazeLabel.Size = new System.Drawing.Size(60, 13);
-			this.lblGearSleazeLabel.TabIndex = 161;
-			this.lblGearSleazeLabel.Tag = "Label_Sleaze";
-			this.lblGearSleazeLabel.Text = "Sleaze:";
-			this.lblGearSleazeLabel.Visible = false;
-			// 
-			// lblGearAttackLabel
-			// 
-			this.lblGearAttackLabel.Location = new System.Drawing.Point(485, 149);
-			this.lblGearAttackLabel.Name = "lblGearAttackLabel";
-			this.lblGearAttackLabel.Size = new System.Drawing.Size(60, 13);
-			this.lblGearAttackLabel.TabIndex = 160;
-			this.lblGearAttackLabel.Tag = "Label_Attack";
-			this.lblGearAttackLabel.Text = "Attack:";
-			this.lblGearAttackLabel.Visible = false;
-			// 
-			// lblGearDeviceRating
-			// 
-			this.lblGearDeviceRating.AutoSize = true;
-			this.lblGearDeviceRating.Location = new System.Drawing.Point(406, 164);
-			this.lblGearDeviceRating.Name = "lblGearDeviceRating";
-			this.lblGearDeviceRating.Size = new System.Drawing.Size(19, 13);
-			this.lblGearDeviceRating.TabIndex = 157;
-			this.lblGearDeviceRating.Text = "[0]";
-			// 
-			// lblGearDeviceRatingLabel
-			// 
-			this.lblGearDeviceRatingLabel.AutoSize = true;
-			this.lblGearDeviceRatingLabel.Location = new System.Drawing.Point(307, 164);
-			this.lblGearDeviceRatingLabel.Name = "lblGearDeviceRatingLabel";
-			this.lblGearDeviceRatingLabel.Size = new System.Drawing.Size(78, 13);
-			this.lblGearDeviceRatingLabel.TabIndex = 156;
-			this.lblGearDeviceRatingLabel.Tag = "Label_DeviceRating";
-			this.lblGearDeviceRatingLabel.Text = "Device Rating:";
-			// 
-			// chkGearActiveCommlink
-			// 
-			this.chkGearActiveCommlink.AutoSize = true;
-			this.chkGearActiveCommlink.Enabled = false;
-			this.chkGearActiveCommlink.Location = new System.Drawing.Point(310, 276);
-			this.chkGearActiveCommlink.Name = "chkGearActiveCommlink";
-			this.chkGearActiveCommlink.Size = new System.Drawing.Size(104, 17);
-			this.chkGearActiveCommlink.TabIndex = 118;
-			this.chkGearActiveCommlink.Tag = "Checkbox_ActiveCommlink";
-			this.chkGearActiveCommlink.Text = "Active Commlink";
-			this.chkGearActiveCommlink.UseVisualStyleBackColor = true;
-			this.chkGearActiveCommlink.CheckedChanged += new System.EventHandler(this.chkGearActiveCommlink_CheckedChanged);
-			// 
 			// chkCommlinks
 			// 
 			this.chkCommlinks.AutoSize = true;
@@ -8279,7 +8633,7 @@ namespace Chummer
 			// cmdCreateStackedFocus
 			// 
 			this.cmdCreateStackedFocus.AutoSize = true;
-			this.cmdCreateStackedFocus.Location = new System.Drawing.Point(624, 348);
+			this.cmdCreateStackedFocus.Location = new System.Drawing.Point(492, 477);
 			this.cmdCreateStackedFocus.Name = "cmdCreateStackedFocus";
 			this.cmdCreateStackedFocus.Size = new System.Drawing.Size(123, 23);
 			this.cmdCreateStackedFocus.TabIndex = 116;
@@ -8288,57 +8642,6 @@ namespace Chummer
 			this.cmdCreateStackedFocus.UseVisualStyleBackColor = true;
 			this.cmdCreateStackedFocus.Visible = false;
 			this.cmdCreateStackedFocus.Click += new System.EventHandler(this.cmdCreateStackedFocus_Click);
-			// 
-			// chkGearHomeNode
-			// 
-			this.chkGearHomeNode.AutoSize = true;
-			this.chkGearHomeNode.Location = new System.Drawing.Point(409, 253);
-			this.chkGearHomeNode.Name = "chkGearHomeNode";
-			this.chkGearHomeNode.Size = new System.Drawing.Size(83, 17);
-			this.chkGearHomeNode.TabIndex = 114;
-			this.chkGearHomeNode.Tag = "Checkbox_HomeNode";
-			this.chkGearHomeNode.Text = "Home Node";
-			this.chkGearHomeNode.UseVisualStyleBackColor = true;
-			this.chkGearHomeNode.Visible = false;
-			this.chkGearHomeNode.CheckedChanged += new System.EventHandler(this.chkGearHomeNode_CheckedChanged);
-			// 
-			// lblGearAP
-			// 
-			this.lblGearAP.AutoSize = true;
-			this.lblGearAP.Location = new System.Drawing.Point(451, 189);
-			this.lblGearAP.Name = "lblGearAP";
-			this.lblGearAP.Size = new System.Drawing.Size(19, 13);
-			this.lblGearAP.TabIndex = 111;
-			this.lblGearAP.Text = "[0]";
-			// 
-			// lblGearAPLabel
-			// 
-			this.lblGearAPLabel.AutoSize = true;
-			this.lblGearAPLabel.Location = new System.Drawing.Point(406, 189);
-			this.lblGearAPLabel.Name = "lblGearAPLabel";
-			this.lblGearAPLabel.Size = new System.Drawing.Size(24, 13);
-			this.lblGearAPLabel.TabIndex = 110;
-			this.lblGearAPLabel.Tag = "Label_AP";
-			this.lblGearAPLabel.Text = "AP:";
-			// 
-			// lblGearDamage
-			// 
-			this.lblGearDamage.AutoSize = true;
-			this.lblGearDamage.Location = new System.Drawing.Point(371, 189);
-			this.lblGearDamage.Name = "lblGearDamage";
-			this.lblGearDamage.Size = new System.Drawing.Size(19, 13);
-			this.lblGearDamage.TabIndex = 109;
-			this.lblGearDamage.Text = "[0]";
-			// 
-			// lblGearDamageLabel
-			// 
-			this.lblGearDamageLabel.AutoSize = true;
-			this.lblGearDamageLabel.Location = new System.Drawing.Point(307, 189);
-			this.lblGearDamageLabel.Name = "lblGearDamageLabel";
-			this.lblGearDamageLabel.Size = new System.Drawing.Size(50, 13);
-			this.lblGearDamageLabel.TabIndex = 108;
-			this.lblGearDamageLabel.Tag = "Label_Damage";
-			this.lblGearDamageLabel.Text = "Damage:";
 			// 
 			// cmdAddLocation
 			// 
@@ -8352,185 +8655,20 @@ namespace Chummer
 			this.cmdAddLocation.UseVisualStyleBackColor = true;
 			this.cmdAddLocation.Click += new System.EventHandler(this.cmdAddLocation_Click);
 			// 
-			// chkGearEquipped
-			// 
-			this.chkGearEquipped.AutoSize = true;
-			this.chkGearEquipped.Location = new System.Drawing.Point(310, 253);
-			this.chkGearEquipped.Name = "chkGearEquipped";
-			this.chkGearEquipped.Size = new System.Drawing.Size(71, 17);
-			this.chkGearEquipped.TabIndex = 97;
-			this.chkGearEquipped.Tag = "Checkbox_Equipped";
-			this.chkGearEquipped.Text = "Equipped";
-			this.chkGearEquipped.UseVisualStyleBackColor = true;
-			this.chkGearEquipped.CheckedChanged += new System.EventHandler(this.chkGearEquipped_CheckedChanged);
-			// 
-			// lblGearRating
-			// 
-			this.lblGearRating.AutoSize = true;
-			this.lblGearRating.Location = new System.Drawing.Point(365, 82);
-			this.lblGearRating.Name = "lblGearRating";
-			this.lblGearRating.Size = new System.Drawing.Size(44, 13);
-			this.lblGearRating.TabIndex = 95;
-			this.lblGearRating.Text = "[Rating]";
-			// 
-			// lblGearQty
-			// 
-			this.lblGearQty.AutoSize = true;
-			this.lblGearQty.Location = new System.Drawing.Point(365, 128);
-			this.lblGearQty.Name = "lblGearQty";
-			this.lblGearQty.Size = new System.Drawing.Size(29, 13);
-			this.lblGearQty.TabIndex = 93;
-			this.lblGearQty.Text = "[Qty]";
-			// 
 			// treFoci
 			// 
 			this.treFoci.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
 			this.treFoci.CheckBoxes = true;
-			this.treFoci.Location = new System.Drawing.Point(307, 351);
+			this.treFoci.Location = new System.Drawing.Point(307, 506);
 			this.treFoci.Name = "treFoci";
 			this.treFoci.ShowLines = false;
 			this.treFoci.ShowPlusMinus = false;
 			this.treFoci.ShowRootLines = false;
-			this.treFoci.Size = new System.Drawing.Size(308, 292);
+			this.treFoci.Size = new System.Drawing.Size(308, 598);
 			this.treFoci.TabIndex = 91;
 			this.treFoci.BeforeCheck += new System.Windows.Forms.TreeViewCancelEventHandler(this.treFoci_BeforeCheck);
 			this.treFoci.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.treFoci_AfterCheck);
-			// 
-			// lblGearSource
-			// 
-			this.lblGearSource.AutoSize = true;
-			this.lblGearSource.Location = new System.Drawing.Point(358, 227);
-			this.lblGearSource.Name = "lblGearSource";
-			this.lblGearSource.Size = new System.Drawing.Size(47, 13);
-			this.lblGearSource.TabIndex = 74;
-			this.lblGearSource.Text = "[Source]";
-			this.lblGearSource.Click += new System.EventHandler(this.OpenSourceFromLabel);
-			// 
-			// lblGearSourceLabel
-			// 
-			this.lblGearSourceLabel.AutoSize = true;
-			this.lblGearSourceLabel.Location = new System.Drawing.Point(307, 227);
-			this.lblGearSourceLabel.Name = "lblGearSourceLabel";
-			this.lblGearSourceLabel.Size = new System.Drawing.Size(44, 13);
-			this.lblGearSourceLabel.TabIndex = 73;
-			this.lblGearSourceLabel.Tag = "Label_Source";
-			this.lblGearSourceLabel.Text = "Source:";
-			// 
-			// lblGearQtyLabel
-			// 
-			this.lblGearQtyLabel.AutoSize = true;
-			this.lblGearQtyLabel.Location = new System.Drawing.Point(307, 128);
-			this.lblGearQtyLabel.Name = "lblGearQtyLabel";
-			this.lblGearQtyLabel.Size = new System.Drawing.Size(26, 13);
-			this.lblGearQtyLabel.TabIndex = 63;
-			this.lblGearQtyLabel.Tag = "Label_Qty";
-			this.lblGearQtyLabel.Text = "Qty:";
-			// 
-			// lblGearCost
-			// 
-			this.lblGearCost.AutoSize = true;
-			this.lblGearCost.Location = new System.Drawing.Point(684, 82);
-			this.lblGearCost.Name = "lblGearCost";
-			this.lblGearCost.Size = new System.Drawing.Size(34, 13);
-			this.lblGearCost.TabIndex = 62;
-			this.lblGearCost.Text = "[Cost]";
-			// 
-			// lblGearCostLabel
-			// 
-			this.lblGearCostLabel.AutoSize = true;
-			this.lblGearCostLabel.Location = new System.Drawing.Point(618, 82);
-			this.lblGearCostLabel.Name = "lblGearCostLabel";
-			this.lblGearCostLabel.Size = new System.Drawing.Size(31, 13);
-			this.lblGearCostLabel.TabIndex = 61;
-			this.lblGearCostLabel.Tag = "Label_Cost";
-			this.lblGearCostLabel.Text = "Cost:";
-			// 
-			// lblGearAvail
-			// 
-			this.lblGearAvail.AutoSize = true;
-			this.lblGearAvail.Location = new System.Drawing.Point(549, 82);
-			this.lblGearAvail.Name = "lblGearAvail";
-			this.lblGearAvail.Size = new System.Drawing.Size(36, 13);
-			this.lblGearAvail.TabIndex = 60;
-			this.lblGearAvail.Text = "[Avail]";
-			// 
-			// lblGearAvailLabel
-			// 
-			this.lblGearAvailLabel.AutoSize = true;
-			this.lblGearAvailLabel.Location = new System.Drawing.Point(482, 82);
-			this.lblGearAvailLabel.Name = "lblGearAvailLabel";
-			this.lblGearAvailLabel.Size = new System.Drawing.Size(33, 13);
-			this.lblGearAvailLabel.TabIndex = 59;
-			this.lblGearAvailLabel.Tag = "Label_Avail";
-			this.lblGearAvailLabel.Text = "Avail:";
-			// 
-			// lblGearCapacity
-			// 
-			this.lblGearCapacity.AutoSize = true;
-			this.lblGearCapacity.Location = new System.Drawing.Point(365, 105);
-			this.lblGearCapacity.Name = "lblGearCapacity";
-			this.lblGearCapacity.Size = new System.Drawing.Size(54, 13);
-			this.lblGearCapacity.TabIndex = 58;
-			this.lblGearCapacity.Text = "[Capacity]";
-			// 
-			// lblGearCapacityLabel
-			// 
-			this.lblGearCapacityLabel.AutoSize = true;
-			this.lblGearCapacityLabel.Location = new System.Drawing.Point(307, 105);
-			this.lblGearCapacityLabel.Name = "lblGearCapacityLabel";
-			this.lblGearCapacityLabel.Size = new System.Drawing.Size(51, 13);
-			this.lblGearCapacityLabel.TabIndex = 57;
-			this.lblGearCapacityLabel.Tag = "Label_Capacity";
-			this.lblGearCapacityLabel.Text = "Capacity:";
-			// 
-			// lblGearCategory
-			// 
-			this.lblGearCategory.AutoSize = true;
-			this.lblGearCategory.Location = new System.Drawing.Point(365, 59);
-			this.lblGearCategory.Name = "lblGearCategory";
-			this.lblGearCategory.Size = new System.Drawing.Size(55, 13);
-			this.lblGearCategory.TabIndex = 56;
-			this.lblGearCategory.Text = "[Category]";
-			// 
-			// lblGearCategoryLabel
-			// 
-			this.lblGearCategoryLabel.AutoSize = true;
-			this.lblGearCategoryLabel.Location = new System.Drawing.Point(307, 59);
-			this.lblGearCategoryLabel.Name = "lblGearCategoryLabel";
-			this.lblGearCategoryLabel.Size = new System.Drawing.Size(52, 13);
-			this.lblGearCategoryLabel.TabIndex = 55;
-			this.lblGearCategoryLabel.Tag = "Label_Category";
-			this.lblGearCategoryLabel.Text = "Category:";
-			// 
-			// lblGearName
-			// 
-			this.lblGearName.AutoSize = true;
-			this.lblGearName.Location = new System.Drawing.Point(365, 36);
-			this.lblGearName.Name = "lblGearName";
-			this.lblGearName.Size = new System.Drawing.Size(41, 13);
-			this.lblGearName.TabIndex = 54;
-			this.lblGearName.Text = "[Name]";
-			// 
-			// lblGearNameLabel
-			// 
-			this.lblGearNameLabel.AutoSize = true;
-			this.lblGearNameLabel.Location = new System.Drawing.Point(307, 36);
-			this.lblGearNameLabel.Name = "lblGearNameLabel";
-			this.lblGearNameLabel.Size = new System.Drawing.Size(38, 13);
-			this.lblGearNameLabel.TabIndex = 53;
-			this.lblGearNameLabel.Tag = "Label_Name";
-			this.lblGearNameLabel.Text = "Name:";
-			// 
-			// lblGearRatingLabel
-			// 
-			this.lblGearRatingLabel.AutoSize = true;
-			this.lblGearRatingLabel.Location = new System.Drawing.Point(307, 82);
-			this.lblGearRatingLabel.Name = "lblGearRatingLabel";
-			this.lblGearRatingLabel.Size = new System.Drawing.Size(41, 13);
-			this.lblGearRatingLabel.TabIndex = 51;
-			this.lblGearRatingLabel.Tag = "Label_Rating";
-			this.lblGearRatingLabel.Text = "Rating:";
 			// 
 			// treGear
 			// 
@@ -8621,7 +8759,7 @@ namespace Chummer
 			this.tabArmor.Location = new System.Drawing.Point(4, 22);
 			this.tabArmor.Name = "tabArmor";
 			this.tabArmor.Padding = new System.Windows.Forms.Padding(3);
-			this.tabArmor.Size = new System.Drawing.Size(1086, 646);
+			this.tabArmor.Size = new System.Drawing.Size(184, 48);
 			this.tabArmor.TabIndex = 1;
 			this.tabArmor.Tag = "Tab_Armor";
 			this.tabArmor.Text = "Armor";
@@ -13333,8 +13471,8 @@ namespace Chummer
 			this.lstCalendar.Location = new System.Drawing.Point(8, 35);
 			this.lstCalendar.MultiSelect = false;
 			this.lstCalendar.Name = "lstCalendar";
-            this.lstCalendar.Size = new System.Drawing.Size(1080, 631);
-            this.lstCalendar.TabIndex = 1;
+			this.lstCalendar.Size = new System.Drawing.Size(1080, 631);
+			this.lstCalendar.TabIndex = 1;
 			this.lstCalendar.UseCompatibleStateImageBehavior = false;
 			this.lstCalendar.View = System.Windows.Forms.View.Details;
 			this.lstCalendar.DoubleClick += new System.EventHandler(this.lstCalendar_DoubleClick);
@@ -14329,6 +14467,12 @@ namespace Chummer
 			this.tabStreetGearTabs.ResumeLayout(false);
 			this.tabGear.ResumeLayout(false);
 			this.tabGear.PerformLayout();
+			this.tableLayoutPanel1.ResumeLayout(false);
+			this.tableLayoutPanel1.PerformLayout();
+			this.flowLayoutPanel2.ResumeLayout(false);
+			this.flowLayoutPanel2.PerformLayout();
+			this.flowLayoutPanel3.ResumeLayout(false);
+			this.tableLayoutPanel2.ResumeLayout(false);
 			this.tabGearMatrixCM.ResumeLayout(false);
 			this.tabGearMatrixCMPage.ResumeLayout(false);
 			this.tabArmor.ResumeLayout(false);
@@ -15539,5 +15683,9 @@ namespace Chummer
         private TableLayoutPanel tlpSpellDefense;
         private TableLayoutPanel tblLifestyleDetails;
         private FlowLayoutPanel flowLayoutPanel1;
+        private TableLayoutPanel tableLayoutPanel1;
+        private FlowLayoutPanel flowLayoutPanel2;
+        private FlowLayoutPanel flowLayoutPanel3;
+        private TableLayoutPanel tableLayoutPanel2;
     }
 }
