@@ -415,6 +415,16 @@ namespace Chummer
             }
         }
 
+        public string DisplayName(CultureInfo ci, string strLanguage)
+        {
+            return DisplayNameShort(strLanguage);
+        }
+
+        public string DisplayNameShort(string strLanguage)
+        {
+            return Name;
+        }
+
         /// <summary>
         /// Name of the Spirit.
         /// </summary>

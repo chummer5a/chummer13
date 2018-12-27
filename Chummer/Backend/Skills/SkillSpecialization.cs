@@ -17,6 +17,7 @@
  *  https://github.com/chummer5a/chummer5a
  */
 using System;
+using System.Globalization;
 using System.Xml;
 
 namespace Chummer.Backend.Skills
@@ -77,7 +78,7 @@ namespace Chummer.Backend.Skills
         public void Print(XmlTextWriter objWriter, string strLanguageToPrint)
         {
             objWriter.WriteStartElement("skillspecialization");
-            objWriter.WriteElementString("name", DisplayName(strLanguageToPrint));
+            objWriter.WriteElementString("name", DisplayName(GlobalOptions.CultureInfo, strLanguageToPrint));
             objWriter.WriteEndElement();
         }
 
@@ -93,7 +94,12 @@ namespace Chummer.Backend.Skills
         /// <summary>
         /// Skill Specialization's name.
         /// </summary>
-        public string DisplayName(string strLanguage)
+        public string DisplayName(CultureInfo ci, string strLanguage)
+        {
+            return DisplayNameShort(strLanguage);
+        }
+
+        public string DisplayNameShort(string strLanguage)
         {
             if (strLanguage == GlobalOptions.DefaultLanguage)
                 return Name;

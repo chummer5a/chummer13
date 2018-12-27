@@ -135,7 +135,7 @@ namespace Chummer.Backend.Uniques
                 _strNotes = CommonFunctions.GetTextFromPDF($"{_strSource} {_strPage}", _strName);
                 if (string.IsNullOrEmpty(_strNotes))
                 {
-                    _strNotes = CommonFunctions.GetTextFromPDF($"{Source} {Page(GlobalOptions.Language)}", DisplayName(GlobalOptions.Language));
+                    _strNotes = CommonFunctions.GetTextFromPDF($"{Source} {Page(GlobalOptions.Language)}", (GlobalOptions.CultureInfo, GlobalOptions.Language));
                 }
             }*/
             RebuildSpiritList();
@@ -326,7 +326,7 @@ namespace Chummer.Backend.Uniques
             objWriter.WriteStartElement("tradition");
             objWriter.WriteElementString("istechnomancertradition", (Type == TraditionType.RES).ToString());
             objWriter.WriteElementString("name", DisplayNameShort(strLanguageToPrint));
-            objWriter.WriteElementString("fullname", DisplayName(strLanguageToPrint));
+            objWriter.WriteElementString("fullname", DisplayName(objCulture, strLanguageToPrint));
             objWriter.WriteElementString("name_english", Name);
             objWriter.WriteElementString("extra", LanguageManager.TranslateExtra(Extra, strLanguageToPrint));
             if (Type == TraditionType.MAG)
@@ -451,7 +451,7 @@ namespace Chummer.Backend.Uniques
         /// <summary>
         /// The name of the object as it should be displayed in lists. Name (Extra).
         /// </summary>
-        public string DisplayName(string strLanguage)
+        public string DisplayName(CultureInfo ci, string strLanguage)
         {
             string strReturn = DisplayNameShort(strLanguage);
 

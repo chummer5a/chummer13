@@ -1167,7 +1167,7 @@ namespace Chummer.Backend.Equipment
             objWriter.WriteElementString("bonded", Bonded.ToString());
             objWriter.WriteElementString("equipped", Equipped.ToString());
             objWriter.WriteElementString("wirelesson", WirelessOn.ToString());
-            objWriter.WriteElementString("location", Location?.DisplayName(GlobalOptions.Language));
+            objWriter.WriteElementString("location", Location?.DisplayName(GlobalOptions.CultureInfo, GlobalOptions.Language));
             objWriter.WriteElementString("gearname", GearName);
             objWriter.WriteElementString("source", CommonFunctions.LanguageBookShort(Source, strLanguageToPrint));
             objWriter.WriteElementString("page", DisplayPage(strLanguageToPrint));
@@ -2700,8 +2700,10 @@ namespace Chummer.Backend.Equipment
                 {
                     Weapon objWeapon = objLoopTuple.Item1;
                     decReturn += objWeapon.TotalCost + objWeapon.DeleteWeapon();
-                    if (objWeapon.Parent != null)
-                        objWeapon.Parent.Children.Remove(objWeapon);
+                    if (objWeapon.Parent is IHasChildren<Weapon> parent)
+                        parent.Children.Remove(objWeapon);
+                    else if (objWeapon.Parent is WeaponMount mountParent)
+                        mountParent.Weapons.Remove(objWeapon);
                     else if (objLoopTuple.Item4 != null)
                         objLoopTuple.Item4.Weapons.Remove(objWeapon);
                     else if (objLoopTuple.Item3 != null)
@@ -3283,15 +3285,18 @@ namespace Chummer.Backend.Equipment
                     return false;
             }
 
-            if (Parent is IHasGear objHasChildren)
+            DeleteGear();
+            switch (Parent)
             {
-                DeleteGear();
-                objHasChildren.Gear.Remove(this);
-            }
-            else
-            {
-                DeleteGear();
-                characterObject.Gear.Remove(this);
+                case IHasGear objHasGear:
+                    objHasGear.Gear.Remove(this);
+                    break;
+                case IHasChildren<Gear> objHasChildren:
+                    objHasChildren.Children.Remove(this);
+                    break;
+                default:
+                    characterObject.Gear.Remove(this);
+                    break;
             }
 
             return true;

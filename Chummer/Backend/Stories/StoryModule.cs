@@ -19,6 +19,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Xml;
@@ -102,8 +103,12 @@ namespace Chummer
             set => _strName = value;
         }
 
-        public string DisplayName => DisplayNameMethod(GlobalOptions.Language);
+        public string DisplayName(CultureInfo ci, string strLanguage) => DisplayNameShort(strLanguage);
 
+        public string DisplayNameShort(string strLanguage)
+        {
+            return DisplayNameMethod(strLanguage);
+        }
         public string DisplayNameMethod(string strLanguage)
         {
             if (strLanguage == GlobalOptions.DefaultLanguage)

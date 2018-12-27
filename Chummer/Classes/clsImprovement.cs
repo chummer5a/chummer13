@@ -3881,19 +3881,8 @@ namespace Chummer
                                            objCharacter.Vehicles.FindVehicleWeapon(objImprovement.ImprovedName, out objVehicle, out objWeaponMount, out objVehicleMod);
                         if (objWeapon != null)
                         {
-                            decReturn += objWeapon.DeleteWeapon();
                             decReturn += objWeapon.TotalCost;
-                            Weapon objParent = objWeapon.Parent;
-                            if (objParent != null)
-                                objParent.Children.Remove(objWeapon);
-                            else if (objVehicleMod != null)
-                                objVehicleMod.Weapons.Remove(objWeapon);
-                            else if (objWeaponMount != null)
-                                objWeaponMount.Weapons.Remove(objWeapon);
-                            else if (objVehicle != null)
-                                objVehicle.Weapons.Remove(objWeapon);
-                            else
-                                objCharacter.Weapons.Remove(objWeapon);
+                            decReturn += objWeapon.DeleteWeapon();
                         }
                     }
                         break;

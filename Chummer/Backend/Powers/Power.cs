@@ -327,7 +327,7 @@ namespace Chummer
         {
             objWriter.WriteStartElement("power");
             objWriter.WriteElementString("name", DisplayNameShort(strLanguageToPrint));
-            objWriter.WriteElementString("fullname", DisplayName);
+            objWriter.WriteElementString("fullname", DisplayName(objCulture, strLanguageToPrint));
             objWriter.WriteElementString("extra", LanguageManager.TranslateExtra(Extra, strLanguageToPrint));
             objWriter.WriteElementString("pointsperlevel", PointsPerLevel.ToString(objCulture));
             objWriter.WriteElementString("adeptway", AdeptWayDiscount.ToString(objCulture));
@@ -462,12 +462,7 @@ namespace Chummer
         /// <summary>
         /// The translated name of the Power (Name + any Extra text).
         /// </summary>
-        public string DisplayName => DisplayNameMethod(GlobalOptions.Language);
-
-        /// <summary>
-        /// The translated name of the Power (Name + any Extra text).
-        /// </summary>
-        public string DisplayNameMethod(string strLanguage)
+        public string DisplayName(CultureInfo ci, string strLanguage)
         {
             string strReturn = DisplayNameShort(strLanguage);
 
@@ -479,6 +474,7 @@ namespace Chummer
 
             return strReturn;
         }
+
 
         /// <summary>
         /// Power Point cost per level of the Power.

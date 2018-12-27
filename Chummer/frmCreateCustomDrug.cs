@@ -108,7 +108,7 @@ namespace Chummer
 			_lstGrade.Clear();
 			foreach (Grade objGrade in objGradeList)
 			{
-			    _lstGrade.Add(new ListItem(objGrade.Name, objGrade.DisplayName(GlobalOptions.Language)));
+			    _lstGrade.Add(new ListItem(objGrade.Name, objGrade.DisplayName(GlobalOptions.CultureInfo, GlobalOptions.Language)));
 			}
             cboGrade.BeginUpdate();
 			cboGrade.DataSource = null;

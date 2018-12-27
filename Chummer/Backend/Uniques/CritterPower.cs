@@ -19,6 +19,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
 using System.Xml;
@@ -106,7 +107,7 @@ namespace Chummer
                 _strNotes = CommonFunctions.GetTextFromPDF($"{_strSource} {_strPage}", _strName);
                 if (string.IsNullOrEmpty(_strNotes))
                 {
-                    _strNotes = CommonFunctions.GetTextFromPDF($"{Source} {Page(GlobalOptions.Language)}", DisplayName(GlobalOptions.Language));
+                    _strNotes = CommonFunctions.GetTextFromPDF($"{Source} {Page(GlobalOptions.Language)}", (GlobalOptions.CultureInfo, GlobalOptions.Language));
                 }
             }*/
         }
@@ -202,7 +203,7 @@ namespace Chummer
         {
             objWriter.WriteStartElement("critterpower");
             objWriter.WriteElementString("name", DisplayNameShort(strLanguageToPrint));
-            objWriter.WriteElementString("fullname", DisplayName(strLanguageToPrint));
+            objWriter.WriteElementString("fullname", DisplayName(GlobalOptions.CultureInfo, strLanguageToPrint));
             objWriter.WriteElementString("name_english", Name);
             objWriter.WriteElementString("extra", LanguageManager.TranslateExtra(_strExtra, strLanguageToPrint));
             objWriter.WriteElementString("category", DisplayCategory(strLanguageToPrint));
@@ -271,26 +272,28 @@ namespace Chummer
         /// </summary>
         public string DisplayNameShort(string strLanguage)
         {
-            if (strLanguage == GlobalOptions.DefaultLanguage)
-                return Name;
+            string strReturn = Name;
+            // Get the translated name if applicable.
+            if (strLanguage != GlobalOptions.DefaultLanguage)
+                strReturn = GetNode(strLanguage)?["translate"]?.InnerText ?? Name;
 
-            return GetNode(strLanguage)?["translate"]?.InnerText ?? Name;
+            return strReturn;
         }
 
         /// <summary>
         /// The name of the object as it should be displayed in lists. Name (Extra).
         /// </summary>
-        public string DisplayName(string strLanguage)
+        public string DisplayName(CultureInfo ci, string strLanguage)
         {
             string strReturn = DisplayNameShort(strLanguage);
 
-            if (!string.IsNullOrEmpty(Extra))
-            {
-                // Attempt to retrieve the CharacterAttribute name.
-                strReturn += LanguageManager.GetString("String_Space", strLanguage) + '(' + LanguageManager.TranslateExtra(Extra, strLanguage) + ')';
-            }
-
+            if (string.IsNullOrEmpty(Extra)) return strReturn;
+            string strExtra = Extra;
+            if (strLanguage != GlobalOptions.DefaultLanguage)
+                strExtra = LanguageManager.TranslateExtra(Extra, strLanguage);
+            strReturn += LanguageManager.GetString("String_Space", strLanguage) + '(' + strExtra + ')';
             return strReturn;
+
         }
 
         /// <summary>
@@ -571,7 +574,7 @@ namespace Chummer
             {
                 Name = InternalId,
                 ContextMenuStrip = cmsCritterPower,
-                Text = DisplayName(GlobalOptions.Language),
+                Text = DisplayName(GlobalOptions.CultureInfo, GlobalOptions.Language),
                 Tag = this,
                 ForeColor = PreferredColor,
                 ToolTipText = Notes.WordWrap(100)

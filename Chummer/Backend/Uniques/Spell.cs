@@ -759,7 +759,7 @@ namespace Chummer
         /// <summary>
         /// The name of the object as it should be displayed in lists.
         /// </summary>
-        public string DisplayName(string strLanguage)
+        public string DisplayName(CultureInfo ci, string strLanguage)
         {
             string strReturn = DisplayNameShort(strLanguage);
 
@@ -903,7 +903,7 @@ namespace Chummer
             if (Grade != 0 && !string.IsNullOrEmpty(Source) && !_objCharacter.Options.BookEnabled(Source))
                 return null;
 
-            string strText = DisplayName(GlobalOptions.Language);
+            string strText = DisplayName(GlobalOptions.CultureInfo, GlobalOptions.Language);
             if (blnAddCategory)
             {
                 if (Category == "Rituals")

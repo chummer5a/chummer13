@@ -18,6 +18,7 @@
  */
 using System;
 using System.Diagnostics;
+using System.Globalization;
 using System.Xml;
 
 namespace Chummer.Backend.Equipment
@@ -121,13 +122,15 @@ namespace Chummer.Backend.Equipment
         /// <summary>
         /// The name of the Grade as it should be displayed in lists.
         /// </summary>
-        public string DisplayName(string strLanguage)
+        public string DisplayName(CultureInfo ci, string strLanguage)
         {
             if (strLanguage == GlobalOptions.DefaultLanguage)
                 return Name;
 
             return GetNode(strLanguage)?["translate"]?.InnerText ?? Name;
         }
+
+        public string DisplayNameShort(string strLanguage) => DisplayName(GlobalOptions.CultureInfo, strLanguage);
 
         /// <summary>
         /// The Grade's Essence cost multiplier.

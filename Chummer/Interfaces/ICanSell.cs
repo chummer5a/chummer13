@@ -18,7 +18,7 @@
  */
 namespace Chummer
 {
-    interface ICanSell : ICanRemove
+    interface ICanSell
     {
         void Sell(Character characterObject, decimal percentage);
     }

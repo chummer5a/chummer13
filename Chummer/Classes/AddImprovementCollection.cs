@@ -3789,7 +3789,7 @@ namespace Chummer.Classes
                                 if (!objNewPower.Create(objXmlPower))
                                     throw new AbortedException();
 
-                                SelectedValue = objNewPower.DisplayName;
+                                SelectedValue = objNewPower.DisplayName(GlobalOptions.CultureInfo, GlobalOptions.Language);
                                 if (_blnConcatSelectedValue)
                                     SourceName += LanguageManager.GetString("String_Space", GlobalOptions.Language) + '(' + SelectedValue + ')';
 
@@ -3921,7 +3921,7 @@ namespace Chummer.Classes
             if (objAddArt.InternalId.IsEmptyGuid())
                 throw new AbortedException();
 
-            SelectedValue = objAddArt.DisplayName(GlobalOptions.Language);
+            SelectedValue = objAddArt.DisplayName(GlobalOptions.CultureInfo, GlobalOptions.Language);
 
             _objCharacter.Arts.Add(objAddArt);
             CreateImprovement(objAddArt.InternalId, _objImprovementSource, SourceName, Improvement.ImprovementType.Art, _strUnique);
@@ -4013,7 +4013,7 @@ namespace Chummer.Classes
             if (objAddMetamagic.InternalId.IsEmptyGuid())
                 throw new AbortedException();
 
-            SelectedValue = objAddMetamagic.DisplayName(GlobalOptions.Language);
+            SelectedValue = objAddMetamagic.DisplayName(GlobalOptions.CultureInfo, GlobalOptions.Language);
 
             _objCharacter.Metamagics.Add(objAddMetamagic);
             CreateImprovement(objAddMetamagic.InternalId, _objImprovementSource, SourceName, Improvement.ImprovementType.Metamagic, _strUnique);
@@ -4105,7 +4105,7 @@ namespace Chummer.Classes
             if (objAddEcho.InternalId.IsEmptyGuid())
                 throw new AbortedException();
 
-            SelectedValue = objAddEcho.DisplayName(GlobalOptions.Language);
+            SelectedValue = objAddEcho.DisplayName(GlobalOptions.CultureInfo, GlobalOptions.Language);
 
             _objCharacter.Metamagics.Add(objAddEcho);
             CreateImprovement(objAddEcho.InternalId, _objImprovementSource, SourceName, Improvement.ImprovementType.Echo, _strUnique);
@@ -5051,7 +5051,7 @@ namespace Chummer.Classes
                 {
                     if ((string.IsNullOrEmpty(strExclude) || objWeapon.WeaponType != strExclude) && (blnIncludeUnarmed || objWeapon.Name != "Unarmed Attack"))
                     {
-                        lstWeapons.Add(new ListItem(objWeapon.InternalId, objWeapon.DisplayName(GlobalOptions.Language)));
+                        lstWeapons.Add(new ListItem(objWeapon.InternalId, objWeapon.DisplayName(GlobalOptions.CultureInfo, GlobalOptions.Language)));
                     }
                 }
 

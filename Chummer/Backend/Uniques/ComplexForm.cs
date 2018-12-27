@@ -20,6 +20,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -76,7 +77,7 @@ namespace Chummer
                 _strNotes = CommonFunctions.GetTextFromPDF($"{_strSource} {_strPage}", _strName);
                 if (string.IsNullOrEmpty(_strNotes))
                 {
-                    _strNotes = CommonFunctions.GetTextFromPDF($"{Source} {Page(GlobalOptions.Language)}", DisplayName(GlobalOptions.Language));
+                    _strNotes = CommonFunctions.GetTextFromPDF($"{Source} {Page(GlobalOptions.Language)}", (GlobalOptions.CultureInfo, GlobalOptions.Language));
                 }
             }*/
         }
@@ -155,7 +156,7 @@ namespace Chummer
         {
             objWriter.WriteStartElement("complexform");
             objWriter.WriteElementString("name", DisplayNameShort(strLanguageToPrint));
-            objWriter.WriteElementString("fullname", DisplayName);
+            objWriter.WriteElementString("fullname", DisplayName(GlobalOptions.CultureInfo, GlobalOptions.Language));
             objWriter.WriteElementString("name_english", Name);
             objWriter.WriteElementString("duration", DisplayDuration(strLanguageToPrint));
             objWriter.WriteElementString("fv", DisplayFV(strLanguageToPrint));
@@ -211,25 +212,29 @@ namespace Chummer
         /// </summary>
         public string DisplayNameShort(string strLanguage)
         {
-            string strReturn = _strName;
+            string strReturn = Name;
             // Get the translated name if applicable.
             if (strLanguage != GlobalOptions.DefaultLanguage)
-                strReturn = GetNode(strLanguage)?["translate"]?.InnerText ?? _strName;
+                strReturn = GetNode(strLanguage)?["translate"]?.InnerText ?? Name;
 
-            if (!string.IsNullOrEmpty(Extra))
-            {
-                string strExtra = Extra;
-                if (strLanguage != GlobalOptions.DefaultLanguage)
-                    strExtra = LanguageManager.TranslateExtra(Extra, strLanguage);
-                strReturn += LanguageManager.GetString("String_Space", strLanguage) + '(' + strExtra + ')';
-            }
             return strReturn;
         }
 
         /// <summary>
         /// The name of the object as it should be displayed in lists. Name (Extra).
         /// </summary>
-        public string DisplayName => DisplayNameShort(GlobalOptions.Language);
+        public string DisplayName(CultureInfo ci, string strLanguage)
+        {
+            string strReturn = DisplayNameShort(strLanguage);
+
+            if (string.IsNullOrEmpty(Extra)) return strReturn;
+            string strExtra = Extra;
+            if (strLanguage != GlobalOptions.DefaultLanguage)
+                strExtra = LanguageManager.TranslateExtra(Extra, strLanguage);
+            strReturn += LanguageManager.GetString("String_Space", strLanguage) + '(' + strExtra + ')';
+            return strReturn;
+
+        }
 
         /// <summary>
         /// Translated Duration.
@@ -459,7 +464,7 @@ namespace Chummer
                 {
                     intReturn = objSkill.Pool;
                     // Add any Specialization bonus if applicable.
-                    if (objSkill.HasSpecialization(DisplayName))
+                    if (objSkill.HasSpecialization(DisplayName(GlobalOptions.CultureInfo, GlobalOptions.Language)))
                         intReturn += 2;
                 }
                 
@@ -482,7 +487,7 @@ namespace Chummer
                     int intPool = objSkill.Pool;
                     strReturn = objSkill.DisplayNameMethod(GlobalOptions.Language) + strSpaceCharacter + '(' + intPool.ToString(GlobalOptions.CultureInfo) + ')';
                     // Add any Specialization bonus if applicable.
-                    if (objSkill.HasSpecialization(DisplayName))
+                    if (objSkill.HasSpecialization(DisplayName(GlobalOptions.CultureInfo, GlobalOptions.Language)))
                         strReturn += strSpaceCharacter + '+' + strSpaceCharacter + LanguageManager.GetString("String_ExpenseSpecialization", GlobalOptions.Language) + strSpaceCharacter + '(' + 2.ToString(GlobalOptions.CultureInfo) + ')';
                 }
                 
@@ -518,7 +523,7 @@ namespace Chummer
             TreeNode objNode = new TreeNode
             {
                 Name = InternalId,
-                Text = DisplayName,
+                Text = DisplayName(GlobalOptions.CultureInfo, GlobalOptions.Language),
                 Tag = this,
                 ContextMenuStrip = cmsComplexForm,
                 ForeColor = PreferredColor,

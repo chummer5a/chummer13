@@ -33,7 +33,7 @@ namespace Chummer.Backend.Equipment
     /// Vehicle Modification.
     /// </summary>
     [DebuggerDisplay("{DisplayName(GlobalOptions.DefaultLanguage)}")]
-    public class VehicleMod : IHasInternalId, IHasName, IHasXmlNode, IHasNotes, ICanEquip, IHasSource, IHasRating, ICanSort
+    public class VehicleMod : IHasInternalId, IHasName, IHasXmlNode, IHasNotes, ICanEquip, IHasSource, IHasRating, ICanSort, IHasCost
     {
         private Guid _guiID;
         private string _strName = string.Empty;
@@ -41,6 +41,7 @@ namespace Chummer.Backend.Equipment
         private string _strLimit = string.Empty;
         private string _strSlots = "0";
         private int _intRating;
+        private int _intChildCostMultiplier = 1;
         private string _strMaxRating = "0";
         private string _strCost = string.Empty;
         private decimal _decMarkup;
@@ -88,17 +89,17 @@ namespace Chummer.Backend.Equipment
             {
                 case NotifyCollectionChangedAction.Add:
                     foreach (Cyberware objNewItem in e.NewItems)
-                        objNewItem.ParentVehicle = Parent;
+                        objNewItem.Parent = Parent;
                     break;
                 case NotifyCollectionChangedAction.Remove:
                     foreach (Cyberware objOldItem in e.OldItems)
-                        objOldItem.ParentVehicle = null;
+                        objOldItem.Parent = null;
                     break;
                 case NotifyCollectionChangedAction.Replace:
                     foreach (Cyberware objOldItem in e.OldItems)
-                        objOldItem.ParentVehicle = null;
+                        objOldItem.Parent = null;
                     foreach (Cyberware objNewItem in e.NewItems)
-                        objNewItem.ParentVehicle = Parent;
+                        objNewItem.Parent = Parent;
                     break;
             }
         }
@@ -377,7 +378,7 @@ namespace Chummer.Backend.Equipment
                     {
                         Cyberware objCyberware = new Cyberware(_objCharacter)
                         {
-                            ParentVehicle = Parent
+                            Parent = Parent
                         };
                         objCyberware.Load(nodChild, blnCopy);
                         _lstCyberware.Add(objCyberware);
@@ -403,7 +404,7 @@ namespace Chummer.Backend.Equipment
         {
             objWriter.WriteStartElement("mod");
             objWriter.WriteElementString("name", DisplayNameShort(strLanguageToPrint));
-            objWriter.WriteElementString("fullname", DisplayName(strLanguageToPrint));
+            objWriter.WriteElementString("fullname", DisplayName(objCulture, strLanguageToPrint));
             objWriter.WriteElementString("category", DisplayCategory(strLanguageToPrint));
             objWriter.WriteElementString("limit", Limit);
             objWriter.WriteElementString("slots", Slots);
@@ -724,6 +725,12 @@ namespace Chummer.Backend.Equipment
         {
             get => _intSortOrder;
             set => _intSortOrder = value;
+        }
+
+        public int ChildCostMultiplier
+        {
+            get => _intChildCostMultiplier;
+            set => _intChildCostMultiplier = value;
         }
         #endregion
 
@@ -1137,14 +1144,14 @@ namespace Chummer.Backend.Equipment
         /// <summary>
         /// The name of the object as it should be displayed in lists. Qty Name (Rating) (Extra).
         /// </summary>
-        public string DisplayName(string strLanguage)
+        public string DisplayName(CultureInfo ci, string strLanguage)
         {
             string strReturn = DisplayNameShort(strLanguage);
             string strSpaceCharacter = LanguageManager.GetString("String_Space", strLanguage);
             if (!string.IsNullOrEmpty(Extra))
                 strReturn += strSpaceCharacter + '(' + LanguageManager.TranslateExtra(Extra, strLanguage) + ')';
             if (Rating > 0)
-                strReturn += strSpaceCharacter + '(' + LanguageManager.GetString("String_Rating", strLanguage) + strSpaceCharacter + Rating.ToString() + ')';
+                strReturn += strSpaceCharacter + '(' + LanguageManager.GetString("String_Rating", strLanguage) + strSpaceCharacter + Rating.ToString(ci) + ')';
             return strReturn;
         }
 
@@ -1271,7 +1278,7 @@ namespace Chummer.Backend.Equipment
             TreeNode objNode = new TreeNode
             {
                 Name = InternalId,
-                Text = DisplayName(GlobalOptions.Language),
+                Text = DisplayName(GlobalOptions.CultureInfo, GlobalOptions.Language),
                 Tag = this,
                 ContextMenuStrip = cmsVehicleMod,
                 ForeColor = PreferredColor,

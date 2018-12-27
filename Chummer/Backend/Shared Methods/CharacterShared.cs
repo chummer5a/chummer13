@@ -1895,7 +1895,7 @@ namespace Chummer
                                 if (notifyCollectionChangedEventArgs.NewItems[intNewItemsIndex] is Location objNewLocation)
                                 {
                                     objNode.Tag = objNewLocation;
-                                    objNode.Text = objNewLocation.DisplayName(GlobalOptions.Language);
+                                    objNode.Text = objNewLocation.DisplayName(GlobalOptions.CultureInfo, GlobalOptions.Language);
                                 }
                                 intNewItemsIndex += 1;
                             }
@@ -2117,7 +2117,7 @@ namespace Chummer
                             TreeNode objNode = new TreeNode
                             {
                                 Tag = objLocation,
-                                Text = objLocation.DisplayName(GlobalOptions.Language),
+                                Text = objLocation.DisplayName(GlobalOptions.CultureInfo, GlobalOptions.Language),
                                 ContextMenuStrip = cmsArmorLocation
                             };
                             treArmor.Nodes.Insert(intNewIndex, objNode);
@@ -2167,7 +2167,7 @@ namespace Chummer
                                 if (notifyCollectionChangedEventArgs.NewItems[intNewItemsIndex] is Location objNewLocation)
                                 {
                                     objNode.Tag = objNewLocation;
-                                    objNode.Text = objNewLocation.DisplayName(GlobalOptions.Language);
+                                    objNode.Text = objNewLocation.DisplayName(GlobalOptions.CultureInfo, GlobalOptions.Language);
                                 }
                                 intNewItemsIndex += 1;
                             }
@@ -2529,7 +2529,7 @@ namespace Chummer
                             TreeNode objNode = new TreeNode
                             {
                                 Tag = objLocation,
-                                Text = objLocation.DisplayName(GlobalOptions.Language),
+                                Text = objLocation.DisplayName(GlobalOptions.CultureInfo, GlobalOptions.Language),
                                 ContextMenuStrip = cmsGearLocation
                             };
                             treGear.Nodes.Insert(intNewIndex, objNode);
@@ -2579,7 +2579,7 @@ namespace Chummer
                                 if (notifyCollectionChangedEventArgs.NewItems[intNewItemsIndex] is Location objNewLocation)
                                 {
                                     objNode.Tag = objNewLocation;
-                                    objNode.Text = objNewLocation.DisplayName(GlobalOptions.Language);
+                                    objNode.Text = objNewLocation.DisplayName(GlobalOptions.CultureInfo, GlobalOptions.Language);
                                 }
                                 intNewItemsIndex += 1;
                             }
@@ -3094,7 +3094,7 @@ namespace Chummer
                             TreeNode objNode = new TreeNode
                             {
                                 Tag = objLocation,
-                                Text = objLocation.DisplayName(GlobalOptions.Language),
+                                Text = objLocation.DisplayName(GlobalOptions.CultureInfo, GlobalOptions.Language),
                                 ContextMenuStrip = cmsVehicleLocation
                             };
                             treVehicles.Nodes.Insert(intNewIndex, objNode);
@@ -3144,7 +3144,7 @@ namespace Chummer
                                 if (notifyCollectionChangedEventArgs.NewItems[intNewItemsIndex] is Location objNewLocation)
                                 {
                                     objNode.Tag = objNewLocation;
-                                    objNode.Text = objNewLocation.DisplayName(GlobalOptions.Language);
+                                    objNode.Text = objNewLocation.DisplayName(GlobalOptions.CultureInfo, GlobalOptions.Language);
                                 }
                                 intNewItemsIndex += 1;
                             }
@@ -3232,7 +3232,7 @@ namespace Chummer
                             TreeNode objNode = new TreeNode
                             {
                                 Tag = objLocation,
-                                Text = objLocation.DisplayName(GlobalOptions.Language),
+                                Text = objLocation.DisplayName(GlobalOptions.CultureInfo, GlobalOptions.Language),
                                 ContextMenuStrip = cmsVehicleLocation
                             };
                             treVehicles.Nodes.Insert(intNewIndex, objNode);
@@ -3269,7 +3269,7 @@ namespace Chummer
                                 if (notifyCollectionChangedEventArgs.NewItems[intNewItemsIndex] is Location objNewLocation)
                                 {
                                     objNode.Tag = objNewLocation;
-                                    objNode.Text = objNewLocation.DisplayName(GlobalOptions.Language);
+                                    objNode.Text = objNewLocation.DisplayName(GlobalOptions.CultureInfo, GlobalOptions.Language);
                                 }
                                 intNewItemsIndex += 1;
                             }

@@ -405,14 +405,14 @@ namespace Chummer
                             objArmor.Create(objXmlArmor, 0, lstWeapons, true, true, true);
 
                             string strArmorGuid = objArmor.SourceID.ToString("D");
-                            string strArmorName = objArmor.DisplayName(GlobalOptions.Language);
+                            string strArmorName = objArmor.DisplayName(GlobalOptions.CultureInfo, GlobalOptions.Language);
                             int intArmor = objArmor.TotalArmor;
                             decimal decCapacity = Convert.ToDecimal(objArmor.CalculatedCapacity, GlobalOptions.CultureInfo);
                             AvailabilityValue objAvail = objArmor.TotalAvailTuple();
                             StringBuilder strAccessories = new StringBuilder();
                             foreach (ArmorMod objMod in objArmor.ArmorMods)
                             {
-                                strAccessories.AppendLine(objMod.DisplayName(GlobalOptions.Language));
+                                strAccessories.AppendLine(objMod.DisplayName(GlobalOptions.CultureInfo, GlobalOptions.Language));
                             }
                             foreach (Gear objGear in objArmor.Gear)
                             {

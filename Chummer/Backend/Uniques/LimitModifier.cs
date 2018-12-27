@@ -19,6 +19,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
 using System.Xml;
@@ -115,7 +116,7 @@ namespace Chummer
         public void Print(XmlTextWriter objWriter, string strLanguageToPrint)
         {
             objWriter.WriteStartElement("limitmodifier");
-            objWriter.WriteElementString("name", DisplayName);
+            objWriter.WriteElementString("name", DisplayName(GlobalOptions.CultureInfo, strLanguageToPrint));
             objWriter.WriteElementString("name_english", Name);
             objWriter.WriteElementString("condition", Condition);
             if (_objCharacter.Options.PrintNotes)
@@ -183,33 +184,28 @@ namespace Chummer
         /// <summary>
         /// The name of the object as it should be displayed on printouts (translated name only).
         /// </summary>
-        public string DisplayNameShort
+        public string DisplayNameShort(string strLanguage)
         {
-            get
-            {
-                string strReturn = _strName;
-                return strReturn;
-            }
+            string strReturn = _strName;
+            return strReturn;
         }
 
         /// <summary>
         /// The name of the object as it should be displayed in lists. Name (Extra).
         /// </summary>
-        public string DisplayName
+        public string DisplayName(CultureInfo ci, string strLanguage)
         {
-            get
-            {
-                string strBonus;
-                if (_intBonus > 0)
-                    strBonus = '+' + _intBonus.ToString();
-                else
-                    strBonus = _intBonus.ToString();
+            string strBonus;
+            if (_intBonus > 0)
+                strBonus = '+' + _intBonus.ToString();
+            else
+                strBonus = _intBonus.ToString();
 
-                string strReturn = DisplayNameShort + LanguageManager.GetString("String_Space", GlobalOptions.Language) + '[' + strBonus + ']';
-                if (!string.IsNullOrEmpty(_strCondition))
-                    strReturn += LanguageManager.GetString("String_Space", GlobalOptions.Language) + '(' + _strCondition + ')';
-                return strReturn;
-            }
+            string strReturn = $"{DisplayNameShort(strLanguage)}{LanguageManager.GetString("String_Space",strLanguage)}[{strBonus}]";
+
+            if (!string.IsNullOrEmpty(_strCondition))
+                strReturn += LanguageManager.GetString("String_Space", strLanguage) + '(' + _strCondition + ')';
+            return strReturn;
         }
         #endregion
 
@@ -220,7 +216,7 @@ namespace Chummer
             {
                 Name = InternalId,
                 ContextMenuStrip = cmsLimitModifier,
-                Text = DisplayName,
+                Text = DisplayName(GlobalOptions.CultureInfo, GlobalOptions.Language),
                 Tag = this,
                 ForeColor = PreferredColor,
                 ToolTipText = Notes.WordWrap(100)

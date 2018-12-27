@@ -1120,11 +1120,6 @@ namespace Chummer
                 foreach (Weapon objWeapon in lstOldWeapons)
                 {
                     objWeapon.DeleteWeapon();
-                    // We can remove here because lstWeapons is separate from the Weapons that were yielded through DeepWhere
-                    if (objWeapon.Parent != null)
-                        objWeapon.Parent.Children.Remove(objWeapon);
-                    else
-                        objCharacter.Weapons.Remove(objWeapon);
                 }
             }
 

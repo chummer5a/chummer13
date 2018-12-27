@@ -18,6 +18,7 @@
  */
 using System;
 using System.Diagnostics;
+using System.Globalization;
 using System.Windows.Forms;
 using System.Xml;
 
@@ -158,7 +159,7 @@ namespace Chummer
                 _strNotes = CommonFunctions.GetTextFromPDF($"{_strSource} {_strPage}", _strName);
                 if (string.IsNullOrEmpty(_strNotes))
                 {
-                    _strNotes = CommonFunctions.GetTextFromPDF($"{Source} {Page(GlobalOptions.Language)}", DisplayName(GlobalOptions.Language));
+                    _strNotes = CommonFunctions.GetTextFromPDF($"{Source} {Page(GlobalOptions.Language)}", (GlobalOptions.CultureInfo, GlobalOptions.Language));
                 }
             }*/
         }
@@ -374,6 +375,16 @@ namespace Chummer
                         _objCharacter.OnPropertyChanged(nameof(Character.FirstMentorSpiritDisplayInformation));
                 }
             }
+        }
+
+        /// <summary>
+        /// The name of the object as it should be displayed in lists. Name (Extra).
+        /// </summary>
+        public string DisplayName(CultureInfo ci, string strLanguage)
+        {
+            string strReturn = DisplayNameShort(strLanguage);
+            strReturn += $"{LanguageManager.GetString("String_Space")} ({Extra}";
+            return strReturn;
         }
 
         /// <summary>

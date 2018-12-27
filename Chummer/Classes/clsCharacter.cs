@@ -1056,7 +1056,6 @@ namespace Chummer
                         setEssenceImprovementsToRefresh.Add(objNewItem.EssencePropertyName);
                         if (!blnDoCyberlimbAttributesRefresh && !Options.DontUseCyberlimbCalculation &&
                             objNewItem.Category == "Cyberlimb" && objNewItem.Parent == null &&
-                            objNewItem.ParentVehicle == null &&
                             !string.IsNullOrWhiteSpace(objNewItem.LimbSlot) &&
                             !Options.ExcludeLimbSlot.Contains(objNewItem.LimbSlot))
                         {
@@ -1071,8 +1070,7 @@ namespace Chummer
                     {
                         setEssenceImprovementsToRefresh.Add(objOldItem.EssencePropertyName);
                         if (!blnDoCyberlimbAttributesRefresh && !Options.DontUseCyberlimbCalculation &&
-                            objOldItem.Category == "Cyberlimb" && objOldItem.Parent == null &&
-                            objOldItem.ParentVehicle == null &&
+                            objOldItem.Category == "Cyberlimb" && objOldItem.Parent == null && 
                             !string.IsNullOrWhiteSpace(objOldItem.LimbSlot) &&
                             !Options.ExcludeLimbSlot.Contains(objOldItem.LimbSlot))
                         {
@@ -1090,7 +1088,6 @@ namespace Chummer
                             setEssenceImprovementsToRefresh.Add(objOldItem.EssencePropertyName);
                             if (!blnDoCyberlimbAttributesRefresh && !Options.DontUseCyberlimbCalculation &&
                                 objOldItem.Category == "Cyberlimb" && objOldItem.Parent == null &&
-                                objOldItem.ParentVehicle == null &&
                                 !string.IsNullOrWhiteSpace(objOldItem.LimbSlot) &&
                                 !Options.ExcludeLimbSlot.Contains(objOldItem.LimbSlot))
                             {
@@ -1103,7 +1100,6 @@ namespace Chummer
                             setEssenceImprovementsToRefresh.Add(objNewItem.EssencePropertyName);
                             if (!blnDoCyberlimbAttributesRefresh && !Options.DontUseCyberlimbCalculation &&
                                 objNewItem.Category == "Cyberlimb" && objNewItem.Parent == null &&
-                                objNewItem.ParentVehicle == null &&
                                 !string.IsNullOrWhiteSpace(objNewItem.LimbSlot) &&
                                 !Options.ExcludeLimbSlot.Contains(objNewItem.LimbSlot))
                             {
@@ -4362,7 +4358,7 @@ namespace Chummer
                         string strWareReturn = objReturnCyberware.DisplayNameShort(strLanguage);
                         if (objReturnCyberware.Parent != null)
                             strWareReturn += strSpaceCharacter + '(' +
-                                             objReturnCyberware.Parent.DisplayNameShort(strLanguage) + ')';
+                                             (objReturnCyberware.Parent as IHasName)?.DisplayNameShort(strLanguage) + ')';
                         return strWareReturn;
                     }
 
@@ -4380,7 +4376,7 @@ namespace Chummer
                                                      objVehicle.DisplayNameShort(strLanguage) + ',' +
                                                      strSpaceCharacter + objVehicleMod.DisplayNameShort(strLanguage) +
                                                      ',' + strSpaceCharacter +
-                                                     objReturnCyberware.Parent.DisplayNameShort(strLanguage) + ')';
+                                                     (objReturnCyberware.Parent as IHasName)?.DisplayNameShort(strLanguage) + ')';
                                 else
                                     strWareReturn += strSpaceCharacter + '(' +
                                                      objVehicle.DisplayNameShort(strLanguage) + ',' +
@@ -4707,7 +4703,7 @@ namespace Chummer
                         {
                             if (objAdvantage.InternalId == objImprovement.SourceName)
                             {
-                                return objAdvantage.DisplayName(strLanguage);
+                                return objAdvantage.DisplayName(GlobalOptions.CultureInfo, strLanguage);
                             }
                         }
                     }
@@ -4910,8 +4906,8 @@ namespace Chummer
                     // Make sure it's not the place where the mount is already occupied (either by us or something else)
                     if (objLoopCyberware.Children.All(x => x.PlugsIntoModularMount != objLoopCyberware.HasModularMount))
                     {
-                        string strName = objLoopCyberware.Parent?.DisplayName(GlobalOptions.Language) ??
-                                         objLoopCyberware.DisplayName(GlobalOptions.Language);
+                        string strName = (objLoopCyberware.Parent as IHasName)?.DisplayName(GlobalOptions.CultureInfo) ??
+                                         objLoopCyberware.DisplayName(GlobalOptions.CultureInfo, GlobalOptions.Language);
                         lstReturn.Add(new ListItem(objLoopCyberware.InternalId, strName));
                     }
                 }
@@ -4934,10 +4930,10 @@ namespace Chummer
                             if (objLoopCyberware.Children.All(x =>
                                 x.PlugsIntoModularMount != objLoopCyberware.HasModularMount))
                             {
-                                string strName = objLoopVehicle.DisplayName(GlobalOptions.Language) +
+                                string strName = objLoopVehicle.DisplayName(GlobalOptions.CultureInfo, GlobalOptions.Language) +
                                                  strSpaceCharacter +
-                                                 (objLoopCyberware.Parent?.DisplayName(GlobalOptions.Language) ??
-                                                  objLoopVehicleMod.DisplayName(GlobalOptions.Language));
+                                                 ((objLoopCyberware.Parent as IHasName)?.DisplayName(GlobalOptions.CultureInfo) ??
+                                                  objLoopVehicleMod.DisplayName(GlobalOptions.CultureInfo, GlobalOptions.Language));
                                 lstReturn.Add(new ListItem(objLoopCyberware.InternalId, strName));
                             }
                         }
@@ -4961,10 +4957,10 @@ namespace Chummer
                                 if (objLoopCyberware.Children.All(x =>
                                     x.PlugsIntoModularMount != objLoopCyberware.HasModularMount))
                                 {
-                                    string strName = objLoopVehicle.DisplayName(GlobalOptions.Language) +
+                                    string strName = objLoopVehicle.DisplayName(GlobalOptions.CultureInfo, GlobalOptions.Language) +
                                                      strSpaceCharacter +
-                                                     (objLoopCyberware.Parent?.DisplayName(GlobalOptions.Language) ??
-                                                      objLoopVehicleMod.DisplayName(GlobalOptions.Language));
+                                                     (objLoopCyberware.Parent as IHasName)?.DisplayName(GlobalOptions.CultureInfo) ??
+                                                      objLoopVehicleMod.DisplayName(GlobalOptions.CultureInfo, GlobalOptions.Language);
                                     lstReturn.Add(new ListItem(objLoopCyberware.InternalId, strName));
                                 }
                             }
@@ -5957,6 +5953,9 @@ namespace Chummer
                 }
             }
         }
+
+        public string DisplayName(CultureInfo ci, string s) => Name;
+        public string DisplayNameShort(string s) => Name;
 
         /// <summary>
         /// Character's portraits encoded using Base64.

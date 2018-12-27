@@ -671,7 +671,7 @@ namespace Chummer
                             if (objMartialArtTechnique != null)
                             {
                                 if (blnShowMessage)
-                                    strName = objMartialArtTechnique.DisplayName(GlobalOptions.Language);
+                                    strName = objMartialArtTechnique.DisplayName(GlobalOptions.CultureInfo, GlobalOptions.Language);
                                 return true;
                             }
                         }
@@ -925,7 +925,7 @@ namespace Chummer
                                     if (objGroup.Name == strGroups[i])
                                     {
                                         if (blnShowMessage)
-                                            objOutputString.Append(objGroup.DisplayName + ", ");
+                                            objOutputString.Append(objGroup.DisplayName(GlobalOptions.CultureInfo, GlobalOptions.Language) + ", ");
                                         intTotal += objGroup.Rating;
                                         break;
                                     }
@@ -1778,7 +1778,7 @@ namespace Chummer
                             if (objMartialArtTechnique != null)
                             {
                                 if (blnShowMessage)
-                                    strName = objMartialArtTechnique.DisplayName(GlobalOptions.Language);
+                                    strName = objMartialArtTechnique.DisplayName(GlobalOptions.CultureInfo, GlobalOptions.Language);
                                 return true;
                             }
                         }
@@ -2074,7 +2074,7 @@ namespace Chummer
                                     if (objGroup.Name == strGroups[i])
                                     {
                                         if (blnShowMessage)
-                                            objOutputString.Append(objGroup.DisplayName + ", ");
+                                            objOutputString.Append(objGroup.DisplayName(GlobalOptions.CultureInfo, GlobalOptions.Language) + ", ");
                                         intTotal += objGroup.Rating;
                                         break;
                                     }

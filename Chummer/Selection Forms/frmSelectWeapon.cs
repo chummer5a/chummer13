@@ -199,7 +199,7 @@ namespace Chummer
                 StringBuilder strAccessories = new StringBuilder();
                 foreach (WeaponAccessory objAccessory in _objSelectedWeapon.WeaponAccessories)
                 {
-                    strAccessories.AppendLine(objAccessory.DisplayName(GlobalOptions.Language));
+                    strAccessories.AppendLine(objAccessory.DisplayName(GlobalOptions.CultureInfo, GlobalOptions.Language));
                 }
                 if (strAccessories.Length > 0)
                     strAccessories.Length -= Environment.NewLine.Length;
@@ -288,7 +288,7 @@ namespace Chummer
                     objWeapon.Create(objXmlWeapon, null, true, false, true);
 
                     string strID = objWeapon.SourceID.ToString("D");
-                    string strWeaponName = objWeapon.DisplayName(GlobalOptions.Language);
+                    string strWeaponName = objWeapon.DisplayName(GlobalOptions.CultureInfo, GlobalOptions.Language);
                     string strDice = objWeapon.GetDicePool(GlobalOptions.CultureInfo, GlobalOptions.Language);
                     string strAccuracy = objWeapon.DisplayAccuracy(GlobalOptions.CultureInfo, GlobalOptions.Language);
                     string strDamage = objWeapon.CalculatedDamage(GlobalOptions.CultureInfo, GlobalOptions.Language);
@@ -302,7 +302,7 @@ namespace Chummer
                     StringBuilder strbldAccessories = new StringBuilder();
                     foreach (WeaponAccessory objAccessory in objWeapon.WeaponAccessories)
                     {
-                        strbldAccessories.AppendLine(objAccessory.DisplayName(GlobalOptions.Language));
+                        strbldAccessories.AppendLine(objAccessory.DisplayName(GlobalOptions.CultureInfo, GlobalOptions.Language));
                     }
                     if (strbldAccessories.Length > 0)
                         strbldAccessories.Length -= Environment.NewLine.Length;

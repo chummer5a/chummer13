@@ -35,7 +35,7 @@ namespace Chummer.Backend.Equipment
     /// A specific piece of Armor.
     /// </summary>
     [DebuggerDisplay("{DisplayName(GlobalOptions.DefaultLanguage)}")]
-    public class Armor : IHasInternalId, IHasName, IHasXmlNode, IHasNotes, ICanSell, IHasChildrenAndCost<Gear>, IHasCustomName, IHasLocation, ICanEquip, IHasSource, IHasRating, ICanSort
+    public class Armor : IHasInternalId, IHasName, IHasXmlNode, IHasNotes, ICanSell, IHasChildrenAndCost<Gear>, IHasCustomName, IHasLocation, ICanEquip, IHasSource, IHasRating, ICanSort,IHasGear
     {
         private Guid _sourceID = Guid.Empty;
         private Guid _guiID;
@@ -49,6 +49,7 @@ namespace Chummer.Backend.Equipment
         private string _strCost = string.Empty;
         private int _intRating;
         private int _intMaxRating;
+        private int _intChildCostMultiplier = 1;
         private string _strSource = string.Empty;
         private string _strPage = string.Empty;
         private string _strArmorName = string.Empty;
@@ -578,7 +579,7 @@ namespace Chummer.Backend.Equipment
         {
             objWriter.WriteStartElement("armor");
             objWriter.WriteElementString("name", DisplayNameShort(strLanguageToPrint));
-            objWriter.WriteElementString("fullname", DisplayName(strLanguageToPrint));
+            objWriter.WriteElementString("fullname", DisplayName(objCulture, strLanguageToPrint));
             objWriter.WriteElementString("name_english", Name);
             objWriter.WriteElementString("category", DisplayCategory(strLanguageToPrint));
             objWriter.WriteElementString("category_english", Category);
@@ -1420,7 +1421,7 @@ namespace Chummer.Backend.Equipment
         /// <summary>
         /// The name of the object as it should be displayed in lists. Qty Name (Rating) (Extra).
         /// </summary>
-        public string DisplayName(string strLanguage)
+        public string DisplayName(CultureInfo ci, string strLanguage)
         {
             string strReturn = DisplayNameShort(strLanguage);
             string strSpaceCharacter = LanguageManager.GetString("String_Space", strLanguage);
@@ -1512,6 +1513,8 @@ namespace Chummer.Backend.Equipment
                 {
                     Weapon objDeleteWeapon = objLoopTuple.Item1;
                     decReturn += objDeleteWeapon.TotalCost + objDeleteWeapon.DeleteWeapon();
+
+                    /*TODO: This should be handled by DeleteWeapon?
                     if (objDeleteWeapon.Parent != null)
                         objDeleteWeapon.Parent.Children.Remove(objDeleteWeapon);
                     else if (objLoopTuple.Item4 != null)
@@ -1521,7 +1524,7 @@ namespace Chummer.Backend.Equipment
                     else if (objLoopTuple.Item2 != null)
                         objLoopTuple.Item2.Weapons.Remove(objDeleteWeapon);
                     else
-                        _objCharacter.Weapons.Remove(objDeleteWeapon);
+                        _objCharacter.Weapons.Remove(objDeleteWeapon);*/
                 }
             }
 
@@ -1543,7 +1546,7 @@ namespace Chummer.Backend.Equipment
             TreeNode objNode = new TreeNode
             {
                 Name = InternalId,
-                Text = DisplayName(GlobalOptions.Language),
+                Text = DisplayName(GlobalOptions.CultureInfo, GlobalOptions.Language),
                 Tag = this,
                 ContextMenuStrip = cmsArmor,
                 ForeColor = PreferredColor,

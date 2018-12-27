@@ -403,6 +403,16 @@ namespace Chummer
             }
         }
 
+        /// <summary>
+        /// The name of the object as it should be displayed on printouts (translated name only).
+        /// </summary>
+        public string DisplayNameShort(string strLanguage) => Name;
+
+        /// <summary>
+        /// The name of the object as it should be displayed in lists. Name (Extra).
+        /// </summary>
+        public string DisplayName(CultureInfo ci, string s) => DisplayNameShort(s);
+
         public string DisplayRoleMethod(string strLanguage)
         {
             if (strLanguage == GlobalOptions.DefaultLanguage)

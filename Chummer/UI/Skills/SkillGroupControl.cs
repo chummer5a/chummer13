@@ -79,7 +79,7 @@ namespace Chummer.UI.Skills
         private void btnCareerIncrease_Click(object sender, EventArgs e)
         {
             string confirmstring = string.Format(LanguageManager.GetString("Message_ConfirmKarmaExpense", GlobalOptions.Language),
-                    _skillGroup.DisplayName, _skillGroup.Rating + 1, _skillGroup.UpgradeKarmaCost);
+                    _skillGroup.DisplayName(GlobalOptions.CultureInfo, GlobalOptions.Language), _skillGroup.Rating + 1, _skillGroup.UpgradeKarmaCost);
 
             if (!_skillGroup.CharacterObject.ConfirmKarmaExpense(confirmstring))
                 return;

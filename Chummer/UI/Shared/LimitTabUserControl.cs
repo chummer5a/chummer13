@@ -190,7 +190,7 @@ namespace Chummer.UI.Shared
                 {
                     int intTargetLimit = (int)Enum.Parse(typeof(LimitType), objLimitModifier.Limit);
                     TreeNode objParentNode = GetLimitModifierParentNode(intTargetLimit);
-                    if (!objParentNode.Nodes.ContainsKey(objLimitModifier.DisplayName))
+                    if (!objParentNode.Nodes.ContainsKey(objLimitModifier.DisplayName(GlobalOptions.CultureInfo, GlobalOptions.Language)))
                     {
                         objParentNode.Nodes.Add(objLimitModifier.CreateTreeNode(objLimitModifier.CanDelete ? cmsLimitModifier : cmsLimitModifierNotesOnly));
                     }
@@ -268,7 +268,7 @@ namespace Chummer.UI.Shared
                                 int intTargetLimit = (int)Enum.Parse(typeof(LimitType), objLimitModifier.Limit);
                                 TreeNode objParentNode = GetLimitModifierParentNode(intTargetLimit);
                                 TreeNodeCollection lstParentNodeChildren = objParentNode.Nodes;
-                                if (!lstParentNodeChildren.ContainsKey(objLimitModifier.DisplayName))
+                                if (!lstParentNodeChildren.ContainsKey(objLimitModifier.DisplayName(GlobalOptions.CultureInfo, GlobalOptions.Language)))
                                 {
                                     TreeNode objNode = objLimitModifier.CreateTreeNode(objLimitModifier.CanDelete ? cmsLimitModifier : cmsLimitModifierNotesOnly);
                                     int intNodesCount = lstParentNodeChildren.Count;
@@ -319,7 +319,7 @@ namespace Chummer.UI.Shared
                                 int intTargetLimit = (int)Enum.Parse(typeof(LimitType), objLimitModifier.Limit);
                                 TreeNode objParentNode = GetLimitModifierParentNode(intTargetLimit);
                                 TreeNodeCollection lstParentNodeChildren = objParentNode.Nodes;
-                                if (!lstParentNodeChildren.ContainsKey(objLimitModifier.DisplayName))
+                                if (!lstParentNodeChildren.ContainsKey(objLimitModifier.DisplayName(GlobalOptions.CultureInfo, GlobalOptions.Language)))
                                 {
                                     TreeNode objNode = objLimitModifier.CreateTreeNode(objLimitModifier.CanDelete ? cmsLimitModifier : cmsLimitModifierNotesOnly);
                                     int intNodesCount = lstParentNodeChildren.Count;

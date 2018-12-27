@@ -295,7 +295,7 @@ namespace Chummer.Backend.Skills
 
                 //If data file contains {4} this crashes but...
                 string strUpgradetext =
-                    $"{LanguageManager.GetString("String_ExpenseSkillGroup", GlobalOptions.Language)} {DisplayName} {Rating} -> {(Rating + 1)}";
+                    $"{LanguageManager.GetString("String_ExpenseSkillGroup", GlobalOptions.Language)} {DisplayName(GlobalOptions.CultureInfo, GlobalOptions.Language)} {Rating} -> {(Rating + 1)}";
 
                 ExpenseLogEntry objEntry = new ExpenseLogEntry(_objCharacter);
                 objEntry.Create(intPrice * -1, strUpgradetext, ExpenseType.Karma, DateTime.Now);
@@ -332,7 +332,7 @@ namespace Chummer.Backend.Skills
 
             SkillGroup objNewGroup = new SkillGroup(objSkill.CharacterObject, objSkill.SkillGroup);
             objNewGroup.Add(objSkill);
-            objSkill.CharacterObject.SkillsSection.SkillGroups.MergeInto(objNewGroup, (l, r) => string.Compare(l.DisplayName, r.DisplayName, StringComparison.Ordinal),
+            objSkill.CharacterObject.SkillsSection.SkillGroups.MergeInto(objNewGroup, (l, r) => string.Compare(l.DisplayName(GlobalOptions.CultureInfo, GlobalOptions.Language), r.DisplayName(GlobalOptions.CultureInfo, GlobalOptions.Language), StringComparison.Ordinal),
                 (l, r) => { foreach (Skill x in r.SkillList.Where(y => !l.SkillList.Contains(y))) l.SkillList.Add(x); });
 
             return objNewGroup;
@@ -389,7 +389,7 @@ namespace Chummer.Backend.Skills
             if (!string.IsNullOrEmpty(strTemp) && int.TryParse(strTemp, out int intTemp))
                 _intSkillFromKarma = intTemp;
         }
-
+        #region Dependency Graph
         private static readonly DependancyGraph<string> SkillGroupDependencyGraph =
             new DependancyGraph<string>(
                 new DependancyGraphNode<string>(nameof(DisplayRating),
@@ -456,7 +456,7 @@ namespace Chummer.Backend.Skills
                     new DependancyGraphNode<string>(nameof(SkillList))
                 )
             );
-
+        #endregion
         private void SkillOnPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             if (e.PropertyName == nameof(Skill.BasePoints) ||
@@ -514,8 +514,8 @@ namespace Chummer.Backend.Skills
             }
         }
         
-        public string DisplayName => DisplayNameMethod(GlobalOptions.Language);
-
+        public string DisplayName(CultureInfo ci, string strLanguage) => DisplayNameMethod(strLanguage);
+        public string DisplayNameShort(string strLanguage) => DisplayNameMethod(strLanguage);
         public string DisplayNameMethod(string strLanguage)
         {
             if (strLanguage == GlobalOptions.DefaultLanguage)

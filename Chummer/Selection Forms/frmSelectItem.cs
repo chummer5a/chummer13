@@ -79,7 +79,7 @@ namespace Chummer
                 // Add each of the items to a new List.
                 foreach (Vehicle objVehicle in _lstVehicles)
                 {
-                    lstItems.Add(new ListItem(objVehicle.InternalId, objVehicle.DisplayName(GlobalOptions.Language)));
+                    lstItems.Add(new ListItem(objVehicle.InternalId, objVehicle.DisplayName(GlobalOptions.CultureInfo, GlobalOptions.Language)));
                 }
             }
             else if (_strMode == "General")
@@ -113,7 +113,7 @@ namespace Chummer
                     {
                         if (objCyberware.TotalAvailTuple(false).Suffix == 'R')
                         {
-                            lstItems.Add(new ListItem(objCyberware.InternalId, objCyberware.DisplayName(GlobalOptions.Language)));
+                            lstItems.Add(new ListItem(objCyberware.InternalId, objCyberware.DisplayName(GlobalOptions.CultureInfo, GlobalOptions.Language)));
                         }
                         foreach (Gear objGear in objCyberware.Gear.DeepWhere(x => x.Children, x => x.TotalAvailTuple(false).Suffix == 'R'))
                         {
@@ -126,13 +126,13 @@ namespace Chummer
                     {
                         if (objArmor.TotalAvailTuple(false).Suffix == 'R')
                         {
-                            lstItems.Add(new ListItem(objArmor.InternalId, objArmor.DisplayName(GlobalOptions.Language)));
+                            lstItems.Add(new ListItem(objArmor.InternalId, objArmor.DisplayName(GlobalOptions.CultureInfo, GlobalOptions.Language)));
                         }
                         foreach (ArmorMod objMod in objArmor.ArmorMods)
                         {
                             if (objMod.TotalAvailTuple(false).Suffix == 'R')
                             {
-                                lstItems.Add(new ListItem(objMod.InternalId, objMod.DisplayName(GlobalOptions.Language)));
+                                lstItems.Add(new ListItem(objMod.InternalId, objMod.DisplayName(GlobalOptions.CultureInfo, GlobalOptions.Language)));
                             }
                             foreach (Gear objGear in objMod.Gear.DeepWhere(x => x.Children, x => x.TotalAvailTuple(false).Suffix == 'R'))
                             {
@@ -150,13 +150,13 @@ namespace Chummer
                     {
                         if (objWeapon.TotalAvailTuple(false).Suffix == 'R')
                         {
-                            lstItems.Add(new ListItem(objWeapon.InternalId, objWeapon.DisplayName(GlobalOptions.Language)));
+                            lstItems.Add(new ListItem(objWeapon.InternalId, objWeapon.DisplayName(GlobalOptions.CultureInfo, GlobalOptions.Language)));
                         }
                         foreach (WeaponAccessory objAccessory in objWeapon.WeaponAccessories)
                         {
                             if (!objAccessory.IncludedInWeapon && objAccessory.TotalAvailTuple(false).Suffix == 'R')
                             {
-                                lstItems.Add(new ListItem(objAccessory.InternalId, objAccessory.DisplayName(GlobalOptions.Language)));
+                                lstItems.Add(new ListItem(objAccessory.InternalId, objAccessory.DisplayName(GlobalOptions.CultureInfo, GlobalOptions.Language)));
                             }
                             foreach (Gear objGear in objAccessory.Gear.DeepWhere(x => x.Children, x => x.TotalAvailTuple(false).Suffix == 'R'))
                             {
@@ -176,25 +176,25 @@ namespace Chummer
                     {
                         if (objVehicle.TotalAvailTuple(false).Suffix == 'R')
                         {
-                            lstItems.Add(new ListItem(objVehicle.InternalId, objVehicle.DisplayName(GlobalOptions.Language)));
+                            lstItems.Add(new ListItem(objVehicle.InternalId, objVehicle.DisplayName(GlobalOptions.CultureInfo, GlobalOptions.Language)));
                         }
                         foreach (VehicleMod objMod in objVehicle.Mods)
                         {
                             if (!objMod.IncludedInVehicle && objMod.TotalAvailTuple(false).Suffix == 'R')
                             {
-                                lstItems.Add(new ListItem(objMod.InternalId, objMod.DisplayName(GlobalOptions.Language)));
+                                lstItems.Add(new ListItem(objMod.InternalId, objMod.DisplayName(GlobalOptions.CultureInfo, GlobalOptions.Language)));
                             }
                             foreach (Weapon objWeapon in objMod.Weapons.GetAllDescendants(x => x.Children))
                             {
                                 if (objWeapon.TotalAvailTuple(false).Suffix == 'R')
                                 {
-                                    lstItems.Add(new ListItem(objWeapon.InternalId, objWeapon.DisplayName(GlobalOptions.Language)));
+                                    lstItems.Add(new ListItem(objWeapon.InternalId, objWeapon.DisplayName(GlobalOptions.CultureInfo, GlobalOptions.Language)));
                                 }
                                 foreach (WeaponAccessory objAccessory in objWeapon.WeaponAccessories)
                                 {
                                     if (!objAccessory.IncludedInWeapon && objAccessory.TotalAvailTuple(false).Suffix == 'R')
                                     {
-                                        lstItems.Add(new ListItem(objAccessory.InternalId, objAccessory.DisplayName(GlobalOptions.Language)));
+                                        lstItems.Add(new ListItem(objAccessory.InternalId, objAccessory.DisplayName(GlobalOptions.CultureInfo, GlobalOptions.Language)));
                                     }
                                     foreach (Gear objGear in objAccessory.Gear.DeepWhere(x => x.Children, x => x.TotalAvailTuple(false).Suffix == 'R'))
                                     {
@@ -207,19 +207,19 @@ namespace Chummer
                         {
                             if (!objWeaponMount.IncludedInVehicle && objWeaponMount.TotalAvailTuple(false).Suffix == 'R')
                             {
-                                lstItems.Add(new ListItem(objWeaponMount.InternalId, objWeaponMount.DisplayName(GlobalOptions.Language)));
+                                lstItems.Add(new ListItem(objWeaponMount.InternalId, objWeaponMount.DisplayName(GlobalOptions.CultureInfo, GlobalOptions.Language)));
                             }
                             foreach (Weapon objWeapon in objWeaponMount.Weapons.GetAllDescendants(x => x.Children))
                             {
                                 if (objWeapon.TotalAvailTuple(false).Suffix == 'R')
                                 {
-                                    lstItems.Add(new ListItem(objWeapon.InternalId, objWeapon.DisplayName(GlobalOptions.Language)));
+                                    lstItems.Add(new ListItem(objWeapon.InternalId, objWeapon.DisplayName(GlobalOptions.CultureInfo, GlobalOptions.Language)));
                                 }
                                 foreach (WeaponAccessory objAccessory in objWeapon.WeaponAccessories)
                                 {
                                     if (!objAccessory.IncludedInWeapon && objAccessory.TotalAvailTuple(false).Suffix == 'R')
                                     {
-                                        lstItems.Add(new ListItem(objAccessory.InternalId, objAccessory.DisplayName(GlobalOptions.Language)));
+                                        lstItems.Add(new ListItem(objAccessory.InternalId, objAccessory.DisplayName(GlobalOptions.CultureInfo, GlobalOptions.Language)));
                                     }
                                     foreach (Gear objGear in objAccessory.Gear.DeepWhere(x => x.Children, x => x.TotalAvailTuple(false).Suffix == 'R'))
                                     {

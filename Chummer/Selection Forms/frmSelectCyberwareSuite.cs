@@ -144,7 +144,7 @@ namespace Chummer
             lblCyberware.Text = objCyberwareLabelString.ToString();
             lblEssence.Text = decTotalESS.ToString(_objCharacter.Options.EssenceFormat, GlobalOptions.CultureInfo);
             lblCost.Text = decTotalCost.ToString(_objCharacter.Options.NuyenFormat, GlobalOptions.CultureInfo) + '¥';
-            lblGrade.Text = objGrade.DisplayName(GlobalOptions.Language);
+            lblGrade.Text = objGrade.DisplayName(GlobalOptions.CultureInfo, GlobalOptions.Language);
             _decCost = decTotalCost;
         }
         #endregion
@@ -259,7 +259,7 @@ namespace Chummer
             for (int i = 0; i <= intDepth; ++i)
                 objCyberwareLabelString.Append("   ");
 
-            objCyberwareLabelString.AppendLine(objCyberware.DisplayName(GlobalOptions.Language));
+            objCyberwareLabelString.AppendLine(objCyberware.DisplayName(GlobalOptions.CultureInfo, GlobalOptions.Language));
 
             foreach (Cyberware objPlugin in objCyberware.Children)
                 WriteList(objCyberwareLabelString, objPlugin, intDepth + 1);

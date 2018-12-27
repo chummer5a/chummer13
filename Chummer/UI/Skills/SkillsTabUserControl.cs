@@ -200,7 +200,7 @@ namespace Chummer.UI.Skills
                 intNameLabelWidth = 0;
                 foreach (KnowledgeSkill objLoopSkill in _objCharacter.SkillsSection.KnowledgeSkills)
                 {
-                    intNameLabelWidth = Math.Max(intNameLabelWidth, objLoopSkill.DisplayName.Length);
+                    intNameLabelWidth = Math.Max(intNameLabelWidth, objLoopSkill.DisplayName(GlobalOptions.CultureInfo,GlobalOptions.Language).Length);
                 }
                 foreach (KnowledgeSkillControl objKnowledgeSkillControl in _lstKnowledgeSkills.Controls[0].Controls)
                 {
@@ -525,7 +525,7 @@ namespace Chummer.UI.Skills
                     int intNameLabelWidth = 0;
                     foreach (KnowledgeSkill objLoopSkill in _objCharacter.SkillsSection.KnowledgeSkills)
                     {
-                        intNameLabelWidth = Math.Max(intNameLabelWidth, objLoopSkill.DisplayName.Length);
+                        intNameLabelWidth = Math.Max(intNameLabelWidth, objLoopSkill.DisplayName(GlobalOptions.CultureInfo, GlobalOptions.Language).Length);
                     }
 
                     foreach (KnowledgeSkillControl objKnowledgeSkillControl in _lstKnowledgeSkills.Controls[0].Controls)

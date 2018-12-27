@@ -16,11 +16,16 @@
  *  You can obtain the full source code for Chummer5a at
  *  https://github.com/chummer5a/chummer5a
  */
+
+using System.Globalization;
+
 namespace Chummer
 {
     interface IHasCustomName
     {
-        string DisplayName(string s);
+        string DisplayName(CultureInfo objCulture, string strLanguage = "");
+
+        string DisplayNameShort(string cultureInfo = "");
 
         string CustomName { get; set; }
     }

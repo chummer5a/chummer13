@@ -178,7 +178,7 @@ namespace Chummer.UI.Powers
         {
             if (_blnSearchMode)
             {
-                _table.Filter = (power => GlobalOptions.InvariantCultureInfo.CompareInfo.IndexOf(power.DisplayName, cboDisplayFilter.Text, CompareOptions.IgnoreCase) >= 0);
+                _table.Filter = (power => GlobalOptions.InvariantCultureInfo.CompareInfo.IndexOf(power.DisplayName(GlobalOptions.CultureInfo, GlobalOptions.Language), cboDisplayFilter.Text, CompareOptions.IgnoreCase) >= 0);
             }
         }
 
@@ -264,7 +264,7 @@ namespace Chummer.UI.Powers
             TableColumn<Power> nameColumn = new TableColumn<Power>(() => new TextTableCell())
             {
                 Text = "Power",
-                Extractor = (power => power.DisplayName),
+                Extractor = power => power.DisplayName(GlobalOptions.CultureInfo, GlobalOptions.Language),
                 Tag = "String_Power",
                 Sorter = (name1, name2) => string.Compare((string)name1, (string)name2, GlobalOptions.CultureInfo, CompareOptions.Ordinal)
             };

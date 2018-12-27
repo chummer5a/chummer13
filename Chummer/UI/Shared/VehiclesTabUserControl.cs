@@ -238,7 +238,7 @@ namespace Chummer.UI.Shared
 
                     // Create an Expense Log Entry for removing the Obsolete Mod.
                     ExpenseLogEntry objEntry = new ExpenseLogEntry(_objCharacter);
-                    objEntry.Create(decCost * -1, LanguageManager.GetString("String_ExpenseVehicleRetrofit", GlobalOptions.Language).Replace("{0}", objMod.Parent.DisplayName(GlobalOptions.Language)), ExpenseType.Nuyen, DateTime.Now);
+                    objEntry.Create(decCost * -1, LanguageManager.GetString("String_ExpenseVehicleRetrofit", GlobalOptions.Language).Replace("{0}", objMod.Parent.DisplayName(GlobalOptions.CultureInfo, GlobalOptions.Language)), ExpenseType.Nuyen, DateTime.Now);
                     _objCharacter.ExpenseEntries.AddWithSort(objEntry);
 
                     // Adjust the character's Nuyen total.
@@ -481,7 +481,7 @@ namespace Chummer.UI.Shared
             if (treVehicles.SelectedNode?.Tag is VehicleMod objMod)
             {
                 objMod.Rating = decimal.ToInt32(nudVehicleRating.Value);
-                treVehicles.SelectedNode.Text = objMod.DisplayName(GlobalOptions.Language);
+                treVehicles.SelectedNode.Text = objMod.DisplayName(GlobalOptions.CultureInfo, GlobalOptions.Language);
             }
             else if (treVehicles.SelectedNode?.Tag is Gear objGear)
             {
@@ -517,7 +517,7 @@ namespace Chummer.UI.Shared
             else if (treVehicles.SelectedNode?.Tag is Cyberware objCyberware)
             {
                 objCyberware.Rating = decimal.ToInt32(nudVehicleRating.Value);
-                treVehicles.SelectedNode.Text = objCyberware.DisplayName(GlobalOptions.Language);
+                treVehicles.SelectedNode.Text = objCyberware.DisplayName(GlobalOptions.CultureInfo, GlobalOptions.Language);
             }
             else
             {
@@ -1844,7 +1844,7 @@ namespace Chummer.UI.Shared
                 return;
 
             objRename.CustomName = frmPickText.SelectedValue;
-            treVehicles.SelectedNode.Text = objRename.DisplayName(GlobalOptions.Language);
+            treVehicles.SelectedNode.Text = objRename.DisplayName(GlobalOptions.CultureInfo, GlobalOptions.Language);
 
             MakeDirty?.Invoke(null, null);
         }
@@ -3156,7 +3156,7 @@ namespace Chummer.UI.Shared
                             TreeNode objNode = new TreeNode
                             {
                                 Tag = objLocation,
-                                Text = objLocation.DisplayName(GlobalOptions.Language),
+                                Text = objLocation.DisplayName(GlobalOptions.CultureInfo, GlobalOptions.Language),
                                 ContextMenuStrip = cmsVehicleLocation
                             };
                             treVehicles.Nodes.Insert(intNewIndex, objNode);
@@ -3206,7 +3206,7 @@ namespace Chummer.UI.Shared
                                 if (notifyCollectionChangedEventArgs.NewItems[intNewItemsIndex] is Location objNewLocation)
                                 {
                                     objNode.Tag = objNewLocation;
-                                    objNode.Text = objNewLocation.DisplayName(GlobalOptions.Language);
+                                    objNode.Text = objNewLocation.DisplayName(GlobalOptions.CultureInfo, GlobalOptions.Language);
                                 }
                                 intNewItemsIndex += 1;
                             }
@@ -3294,7 +3294,7 @@ namespace Chummer.UI.Shared
                             TreeNode objNode = new TreeNode
                             {
                                 Tag = objLocation,
-                                Text = objLocation.DisplayName(GlobalOptions.Language),
+                                Text = objLocation.DisplayName(GlobalOptions.CultureInfo, GlobalOptions.Language),
                                 ContextMenuStrip = cmsVehicleLocation
                             };
                             treVehicles.Nodes.Insert(intNewIndex, objNode);
@@ -3331,7 +3331,7 @@ namespace Chummer.UI.Shared
                                 if (notifyCollectionChangedEventArgs.NewItems[intNewItemsIndex] is Location objNewLocation)
                                 {
                                     objNode.Tag = objNewLocation;
-                                    objNode.Text = objNewLocation.DisplayName(GlobalOptions.Language);
+                                    objNode.Text = objNewLocation.DisplayName(GlobalOptions.CultureInfo, GlobalOptions.Language);
                                 }
                                 intNewItemsIndex += 1;
                             }

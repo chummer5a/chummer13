@@ -895,7 +895,7 @@ namespace Chummer.Backend.Skills
         {
             if (!_cachedStringSpec.TryGetValue(strLanguage, out string strReturn))
             {
-                strReturn = string.Join(", ", Specializations.Select(x => x.DisplayName(strLanguage)));
+                strReturn = string.Join(", ", Specializations.Select(x => x.DisplayName(GlobalOptions.CultureInfo, strLanguage)));
 
                 _cachedStringSpec.Add(strLanguage, strReturn);
             }
@@ -920,7 +920,7 @@ namespace Chummer.Backend.Skills
 
                 if (Specializations.Count > 0)
                 {
-                    return Specializations[0].DisplayName(GlobalOptions.Language);
+                    return Specializations[0].DisplayName(GlobalOptions.CultureInfo, GlobalOptions.Language);
                 }
 
                 return string.Empty;
@@ -961,7 +961,7 @@ namespace Chummer.Backend.Skills
 
         public bool HasSpecialization(string strSpecialization)
         {
-            return Specializations.Any(x => (x.Name == strSpecialization || x.DisplayName(GlobalOptions.Language) == strSpecialization)) && !CharacterObject.Improvements.Any(x => x.ImproveType == Improvement.ImprovementType.DisableSpecializationEffects && x.UniqueName == Name && string.IsNullOrEmpty(x.Condition) && x.Enabled);
+            return Specializations.Any(x => (x.Name == strSpecialization || x.DisplayName(GlobalOptions.CultureInfo, GlobalOptions.Language) == strSpecialization)) && !CharacterObject.Improvements.Any(x => x.ImproveType == Improvement.ImprovementType.DisableSpecializationEffects && x.UniqueName == Name && string.IsNullOrEmpty(x.Condition) && x.Enabled);
         }
 
         public string PoolToolTip
@@ -1042,7 +1042,7 @@ namespace Chummer.Backend.Skills
                         s.AppendFormat("{0}{1}{2} ", cyberware.Location, strSpaceCharacter, cyberware.DisplayNameShort(GlobalOptions.Language));
                         if (cyberware.Grade.Name != "Standard")
                         {
-                            s.AppendFormat("({0}){1}", cyberware.Grade.DisplayName(GlobalOptions.Language), strSpaceCharacter);
+                            s.AppendFormat("({0}){1}", cyberware.Grade.DisplayName(GlobalOptions.CultureInfo, GlobalOptions.Language), strSpaceCharacter);
                         }
 
                         int pool = PoolOtherAttribute(Attribute == "STR" ? cyberware.TotalStrength : cyberware.TotalAgility, Attribute);
@@ -1088,7 +1088,7 @@ namespace Chummer.Backend.Skills
                             s.AppendFormat("{0}{1}{2} ", cyberware.Location, strSpaceCharacter, cyberware.DisplayNameShort(GlobalOptions.Language));
                             if (cyberware.Grade.Name != "Standard")
                             {
-                                s.AppendFormat("({0}){1}", cyberware.Grade.DisplayName(GlobalOptions.Language), strSpaceCharacter);
+                                s.AppendFormat("({0}){1}", cyberware.Grade.DisplayName(GlobalOptions.CultureInfo, GlobalOptions.Language), strSpaceCharacter);
                             }
 
                             int intLoopPool = PoolOtherAttribute(objSwapSkillAttribute.ImprovedName == "STR" ? cyberware.TotalStrength : cyberware.TotalAgility, objSwapSkillAttribute.ImprovedName);
@@ -1228,7 +1228,9 @@ namespace Chummer.Backend.Skills
             return GetNode(strLanguage)?["translate"]?.InnerText ?? Name;
         }
 
-        public string DisplayName => DisplayNameMethod(GlobalOptions.Language);
+        public string DisplayName(CultureInfo ci, string s) => DisplayNameMethod(s);
+
+        public string DisplayNameShort(string s) => DisplayNameMethod(s);
 
         public string DisplayCategory(string strLanguage)
         {

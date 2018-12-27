@@ -85,7 +85,7 @@ namespace Chummer.Backend.Skills
 
         public string WriteableName
         {
-            get => DisplayName;
+            get => DisplayName(GlobalOptions.CultureInfo, GlobalOptions.Language);
             set
             {
                 if (ForcedName)
@@ -93,7 +93,7 @@ namespace Chummer.Backend.Skills
                     return;
                 }
 
-                if (string.Equals(DisplayName, value))
+                if (string.Equals(DisplayName(GlobalOptions.CultureInfo, GlobalOptions.Language), value))
                 {
                     return;
                 }

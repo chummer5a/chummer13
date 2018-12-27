@@ -17,10 +17,16 @@
  *  https://github.com/chummer5a/chummer5a
  */
 
+using System.Globalization;
+
 namespace Chummer
 {
     public interface IHasName
     {
         string Name { get; set; }
+
+        string DisplayName(CultureInfo objCulture, string strLanguage = "");
+
+        string DisplayNameShort(string cultureInfo = "");
     }
 }

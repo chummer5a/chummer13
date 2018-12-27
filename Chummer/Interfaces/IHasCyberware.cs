@@ -16,9 +16,13 @@
  *  You can obtain the full source code for Chummer5a at
  *  https://github.com/chummer5a/chummer5a
  */
+
+using Chummer.Backend.Equipment;
+
 namespace Chummer
 {
-    public interface IHasChildrenAndCost<T> : IHasChildren<T>, IHasCost
+    public interface IHasCyberware
     {
+        TaggedObservableCollection<Cyberware> Cyberware { get; }
     }
 }

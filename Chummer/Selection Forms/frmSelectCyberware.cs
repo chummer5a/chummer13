@@ -1070,8 +1070,13 @@ namespace Chummer
                     bool blnAnyParentIsModular = !string.IsNullOrEmpty(objParent?.PlugsIntoModularMount);
                     while (objParent != null && !blnAnyParentIsModular)
                     {
-                        objParent = objParent.Parent;
-                        blnAnyParentIsModular = !string.IsNullOrEmpty(objParent?.PlugsIntoModularMount);
+                        //TODO: Might break horribly. Test that we can't add R or F gear to the new parent.
+                        if (objParent is Cyberware)
+                        {
+                            blnAnyParentIsModular = !string.IsNullOrEmpty(objParent?.PlugsIntoModularMount);
+                            objParent = (Cyberware) objParent.Parent;
+                        }
+
                     }
 
                     if (!blnAnyParentIsModular)
@@ -1180,7 +1185,7 @@ namespace Chummer
                             decCapacity = Convert.ToDecimal(objProcess, GlobalOptions.InvariantCultureInfo);
                     }
 
-                    decimal decMaximumCapacityUsed = blnAddToParentCapacity ? (_objParentObject as Cyberware)?.Parent?.CapacityRemaining ?? decimal.MaxValue : MaximumCapacity;
+                    decimal decMaximumCapacityUsed = blnAddToParentCapacity ? ((_objParentObject as Cyberware)?.Parent as Cyberware)?.CapacityRemaining ?? decimal.MaxValue : MaximumCapacity;
 
                     if (decMaximumCapacityUsed - decCapacity < 0)
                     {
@@ -1270,11 +1275,11 @@ namespace Chummer
                         continue;
                     if (!blnHideBannedGrades && !_objCharacter.Created && !_objCharacter.IgnoreRules && _objCharacter.BannedWareGrades.Any(s => objWareGrade.Name.Contains(s)))
                     {
-                        lstGrade.Add(new ListItem(objWareGrade.SourceId.ToString("D"), $"*{objWareGrade.DisplayName(GlobalOptions.Language)}"));
+                        lstGrade.Add(new ListItem(objWareGrade.SourceId.ToString("D"), $"*{objWareGrade.DisplayName(GlobalOptions.CultureInfo, GlobalOptions.Language)}"));
                     }
                     else
                     {
-                        lstGrade.Add(new ListItem(objWareGrade.SourceId.ToString("D"), objWareGrade.DisplayName(GlobalOptions.Language)));
+                        lstGrade.Add(new ListItem(objWareGrade.SourceId.ToString("D"), objWareGrade.DisplayName(GlobalOptions.CultureInfo, GlobalOptions.Language)));
                     }
                 }
 

@@ -339,7 +339,7 @@ namespace Chummer.Backend.Equipment
                 return;
             objWriter.WriteStartElement("quality");
             objWriter.WriteElementString("name", DisplayNameShort(strLanguageToPrint));
-            objWriter.WriteElementString("fullname", DisplayName(strLanguageToPrint));
+            objWriter.WriteElementString("fullname", DisplayName(objCulture, strLanguageToPrint));
             objWriter.WriteElementString("formattedname", FormattedDisplayName(objCulture, strLanguageToPrint));
             objWriter.WriteElementString("extra", LanguageManager.TranslateExtra(Extra, strLanguageToPrint));
             objWriter.WriteElementString("lp", LP.ToString(objCulture));
@@ -470,7 +470,7 @@ namespace Chummer.Backend.Equipment
         /// <summary>
         /// The name of the object as it should be displayed in lists. Name (Extra).
         /// </summary>
-        public string DisplayName(string strLanguage)
+        public string DisplayName(CultureInfo objCulture, string strLanguage)
         {
             string strReturn = DisplayNameShort(strLanguage);
 
@@ -484,7 +484,7 @@ namespace Chummer.Backend.Equipment
 
         public string FormattedDisplayName(CultureInfo objCulture, string strLanguage)
         {
-            string strReturn = DisplayName(strLanguage);
+            string strReturn = DisplayName(objCulture, strLanguage);
 
             if (Multiplier > 0)
             {
