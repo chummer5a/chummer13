@@ -84,6 +84,7 @@ namespace Chummer
         private string _strNotes = string.Empty;
         private bool _blnImplemented = true;
         private bool _blnContributeToLimit = true;
+        private bool _blnAllowKarmaDebt;
         private bool _blnPrint = true;
         private bool _blnDoubleCostCareer = true;
         private bool _blnCanBuyWithSpellPoints;
@@ -179,6 +180,7 @@ namespace Chummer
             _eQualitySource = objQualitySource;
             objXmlQuality.TryGetBoolFieldQuickly("doublecareer", ref _blnDoubleCostCareer);
             objXmlQuality.TryGetBoolFieldQuickly("canbuywithspellpoints", ref _blnCanBuyWithSpellPoints);
+            objXmlQuality.TryGetBoolFieldQuickly("allowkarmadebt", ref _blnAllowKarmaDebt);
             objXmlQuality.TryGetBoolFieldQuickly("print", ref _blnPrint);
             objXmlQuality.TryGetBoolFieldQuickly("implemented", ref _blnImplemented);
             objXmlQuality.TryGetBoolFieldQuickly("contributetolimit", ref _blnContributeToLimit);
@@ -351,6 +353,7 @@ namespace Chummer
             objWriter.WriteElementString("contributetolimit", _blnContributeToLimit.ToString());
             objWriter.WriteElementString("doublecareer", _blnDoubleCostCareer.ToString());
             objWriter.WriteElementString("canbuywithspellpoints", _blnCanBuyWithSpellPoints.ToString());
+            objWriter.WriteElementString("allowkarmadebt", _blnAllowKarmaDebt.ToString());
             objWriter.WriteElementString("metagenetic", _blnMetagenetic.ToString());
             objWriter.WriteElementString("print", _blnPrint.ToString());
             objWriter.WriteElementString("qualitytype", _eQualityType.ToString());
@@ -415,6 +418,7 @@ namespace Chummer
             objNode.TryGetBoolFieldQuickly("print", ref _blnPrint);
             objNode.TryGetBoolFieldQuickly("doublecareer", ref _blnDoubleCostCareer);
             objNode.TryGetBoolFieldQuickly("canbuywithspellpoints", ref _blnCanBuyWithSpellPoints);
+            objNode.TryGetBoolFieldQuickly("allowkarmadebt", ref _blnAllowKarmaDebt);
             _eQualityType = ConvertToQualityType(objNode["qualitytype"]?.InnerText);
             _eQualitySource = ConvertToQualitySource(objNode["qualitysource"]?.InnerText);
             string strTemp = string.Empty;
@@ -710,6 +714,12 @@ namespace Chummer
         {
             get => _blnCanBuyWithSpellPoints;
             set => _blnCanBuyWithSpellPoints = value;
+        }
+
+        public bool AllowKarmaDebt
+        {
+            get => _blnAllowKarmaDebt;
+            set => _blnAllowKarmaDebt = value;
         }
 
         /// <summary>

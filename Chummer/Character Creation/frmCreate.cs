@@ -11262,6 +11262,13 @@ namespace Chummer
                 }
             }
 
+            if (CharacterObject.Qualities.Any(q => q.AllowKarmaDebt) && CharacterObject.Karma < 0)
+            {
+                int i = CharacterObject.Qualities.Where(q => q.AllowKarmaDebt).Sum(q => q.BP);
+                //TODO: Something something validate, something something create expense entry. Rough idea is to check if i + CharacterObject.Karma is > 0.
+                //This SHOULD indicate that we have more qualities than is allowed, which then permits us to do something clever. Also need to check validity. 
+            }
+
             // Create an Expense Entry for Starting Nuyen.
             ExpenseLogEntry objNuyen = new ExpenseLogEntry(CharacterObject);
             objNuyen.Create(CharacterObject.Nuyen, LanguageManager.GetString("Title_LifestyleNuyen", GlobalOptions.Language), ExpenseType.Nuyen, DateTime.Now);
