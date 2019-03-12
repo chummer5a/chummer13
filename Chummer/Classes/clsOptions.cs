@@ -84,6 +84,8 @@ namespace Chummer
             }
         }
 
+        public bool Hidden { get; set; } = false;
+
         #region IDisposable Support
         private bool disposedValue; // To detect redundant calls
 
@@ -217,6 +219,7 @@ namespace Chummer
         private static string _strPDFAppPath = string.Empty;
         private static string _strPDFParameters = string.Empty;
         private static HashSet<SourcebookInfo> _lstSourcebookInfo;
+        private static HashSet<SourcebookInfo> _lstSourcebookInfoAll;
         private static bool _blnUseLogging;
         private static string _strCharacterRosterPath;
 
@@ -756,7 +759,7 @@ namespace Chummer
             set => _strPDFParameters = value;
         }
         /// <summary>
-        /// List of SourcebookInfo.
+        /// List of SourcebookInfo objects available to the user.
         /// </summary>
         public static ICollection<SourcebookInfo> SourcebookInfo
         {
@@ -765,47 +768,61 @@ namespace Chummer
                 // We need to generate _lstSourcebookInfo outside of the constructor to avoid initialization cycles
                 if(_lstSourcebookInfo == null)
                 {
-                    _lstSourcebookInfo = new HashSet<SourcebookInfo>();
-                    // Retrieve the SourcebookInfo objects.
-                    using(XmlNodeList xmlBookList = XmlManager.Load("books.xml").SelectNodes("/chummer/books/book[not(hide)]"))
-                        if(xmlBookList != null)
-                            foreach(XmlNode xmlBook in xmlBookList)
-                            {
-                                string strCode = xmlBook["code"]?.InnerText;
-                                if(!string.IsNullOrEmpty(strCode))
-                                {
-                                    SourcebookInfo objSource = new SourcebookInfo
-                                    {
-                                        Code = strCode
-                                    };
-
-                                    try
-                                    {
-                                        string strTemp = string.Empty;
-                                        if(LoadStringFromRegistry(ref strTemp, strCode, "Sourcebook") && !string.IsNullOrEmpty(strTemp))
-                                        {
-                                            string[] strParts = strTemp.Split('|');
-                                            objSource.Path = strParts[0];
-                                            if(strParts.Length > 1 && int.TryParse(strParts[1], out int intTmp))
-                                            {
-                                                objSource.Offset = intTmp;
-                                            }
-                                        }
-                                    }
-                                    catch(System.Security.SecurityException)
-                                    {
-
-                                    }
-                                    catch(UnauthorizedAccessException)
-                                    {
-
-                                    }
-                                    _lstSourcebookInfo.Add(objSource);
-                                }
-                            }
+                    _lstSourcebookInfo = GetSourcebooks(false);
                 }
                 return _lstSourcebookInfo;
             }
+        }
+
+        public static ICollection<SourcebookInfo> AllSourcebooks
+        {
+            get
+            {
+                // We need to generate _lstSourcebookInfo outside of the constructor to avoid initialization cycles
+                if (_lstSourcebookInfoAll == null)
+                {
+                    _lstSourcebookInfoAll = GetSourcebooks(false);
+                }
+                return _lstSourcebookInfoAll;
+            }
+        }
+
+        private static HashSet<SourcebookInfo> GetSourcebooks(bool showHidden = false)
+        {
+            HashSet<SourcebookInfo> books = new HashSet<SourcebookInfo>();
+            // Retrieve the SourcebookInfo objects.
+            using (XmlNodeList xmlBookList = XmlManager.Load("books.xml").SelectNodes(showHidden ? "/chummer/books/book" : "/chummer/books/book[not(hide)]"))
+                if (xmlBookList != null)
+                    foreach (XmlNode xmlBook in xmlBookList)
+                    {
+                        string strCode = xmlBook["code"]?.InnerText;
+                        if (string.IsNullOrEmpty(strCode)) continue;
+                        SourcebookInfo objSource = new SourcebookInfo
+                        {
+                            Code = strCode
+                        };
+
+                        try
+                        {
+                            string strTemp = string.Empty;
+                            if (LoadStringFromRegistry(ref strTemp, strCode, "Sourcebook") && !string.IsNullOrEmpty(strTemp))
+                            {
+                                string[] strParts = strTemp.Split('|');
+                                objSource.Path = strParts[0];
+                                if (strParts.Length > 1 && int.TryParse(strParts[1], out int intTmp))
+                                {
+                                    objSource.Offset = intTmp;
+                                }
+                            }
+                        }
+                        // Couldn't parse the book details for some reason, don't try and grab it. 
+                        catch (Exception e) when (e is System.Security.SecurityException ||
+                                                  e is UnauthorizedAccessException)
+                        { Utils.BreakIfDebug();
+                          continue; }
+                        books.Add(objSource);
+                    }
+            return books;
         }
 
         public static void RebuildCustomDataDirectoryInfoList()

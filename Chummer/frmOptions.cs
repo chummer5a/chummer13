@@ -450,7 +450,8 @@ namespace Chummer
             string strSelectedCode = lstGlobalSourcebookInfos.SelectedValue?.ToString();
 
             // Find the selected item in the Sourcebook List.
-            SourcebookInfo objSource = !string.IsNullOrEmpty(strSelectedCode) ? GlobalOptions.SourcebookInfo.FirstOrDefault(x => x.Code == strSelectedCode) : null;
+            SourcebookInfo objSource = !string.IsNullOrEmpty(strSelectedCode)
+                ? GlobalOptions.AllSourcebooks.FirstOrDefault(x => x.Code == strSelectedCode) : null;
 
             if(objSource != null)
             {
@@ -471,7 +472,7 @@ namespace Chummer
 
             int intOffset = decimal.ToInt32(nudPDFOffset.Value);
             string strTag = lstGlobalSourcebookInfos.SelectedValue?.ToString();
-            SourcebookInfo objFoundSource = GlobalOptions.SourcebookInfo.FirstOrDefault(x => x.Code == strTag);
+            SourcebookInfo objFoundSource = GlobalOptions.AllSourcebooks.FirstOrDefault(x => x.Code == strTag);
 
             if(objFoundSource != null)
             {
