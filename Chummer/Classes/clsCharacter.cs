@@ -1770,9 +1770,9 @@ namespace Chummer
 
             // <sources>
             objWriter.WriteStartElement("customdatadirectorynames");
-            foreach(string strItem in _objOptions.CustomDataDirectoryNames)
+            foreach(KeyValuePair<string,bool> dicDirectoryName in _objOptions.CustomDataDirectoryNames)
             {
-                objWriter.WriteElementString("directoryname", strItem);
+                objWriter.WriteElementString("directoryname", dicDirectoryName.Key);
             }
 
             objWriter.WriteEndElement();
