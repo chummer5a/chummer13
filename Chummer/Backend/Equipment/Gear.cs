@@ -777,17 +777,16 @@ namespace Chummer.Backend.Equipment
             {
                 _guiID = Guid.NewGuid();
             }
-            if (objNode["sourceid"] == null || !objNode.TryGetField("sourceid", Guid.TryParse, out _guiSourceID))
+            objNode.TryGetStringFieldQuickly("name", ref _strName);
+            objNode.TryGetStringFieldQuickly("category", ref _strCategory);
+            if(!objNode.TryGetGuidFieldQuickly("sourceid", ref _guiSourceID))
             {
-                if (!objNode.TryGetField("id", Guid.TryParse, out _guiSourceID))
+                if (!objNode.TryGetGuidFieldQuickly("id", ref _guiSourceID))
                 {
                     XmlNode node = GetNode(GlobalOptions.Language,objNode["name"].InnerText,objNode["category"].InnerText);
-                    node?.TryGetField("id", Guid.TryParse, out _guiSourceID);
+                    node?.TryGetGuidFieldQuickly("id", ref _guiSourceID);
                 }
             }
-            if (objNode.TryGetStringFieldQuickly("name", ref _strName))
-                _objCachedMyXmlNode = null;
-            if (objNode.TryGetStringFieldQuickly("category", ref _strCategory))
                 _objCachedMyXmlNode = null;
             objNode.TryGetInt32FieldQuickly("matrixcmfilled", ref _intMatrixCMFilled);
             objNode.TryGetInt32FieldQuickly("matrixcmbonus", ref _intMatrixCMBonus);
@@ -1975,7 +1974,7 @@ namespace Chummer.Backend.Equipment
                 {
                     _objCachedMyXmlNode = objDoc.SelectSingleNode($"/chummer/gears/gear[name = {strNameWithQuotes}]") ??
                                           objDoc.SelectSingleNode($"/chummer/gears/gear[contains(name, {strNameWithQuotes})]");
-                    _objCachedMyXmlNode?.TryGetField("id", Guid.TryParse, out _guiSourceID);
+                    _objCachedMyXmlNode?.TryGetGuidFieldQuickly("id", ref _guiSourceID);
                 }
                 _strCachedXmlNodeLanguage = strLanguage;
             }

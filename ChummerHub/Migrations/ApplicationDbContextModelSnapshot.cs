@@ -15,7 +15,7 @@ namespace ChummerHub.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.2.3-servicing-35854")
+                .HasAnnotation("ProductVersion", "2.2.4-servicing-10062")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -145,6 +145,8 @@ namespace ChummerHub.Migrations
                     b.Property<Guid?>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<string>("GroupCreatorUserName");
+
                     b.Property<string>("Groupname")
                         .HasMaxLength(64);
 
@@ -245,6 +247,8 @@ namespace ChummerHub.Migrations
                     b.Property<string>("TagValue")
                         .HasMaxLength(64);
 
+                    b.Property<double?>("TagValueDouble");
+
                     b.HasKey("Id");
 
                     b.HasIndex("SINnerId");
@@ -252,6 +256,8 @@ namespace ChummerHub.Migrations
                     b.HasIndex("SINnerMetaDataId");
 
                     b.HasIndex("TagId");
+
+                    b.HasIndex("TagValueDouble");
 
                     b.HasIndex("TagName", "TagValue");
 

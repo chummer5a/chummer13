@@ -38,13 +38,27 @@ namespace ChummerHub.Client.UI
 
         
 
-        public CharacterExtended SetCharacterFrom(CharacterShared mySINner)
+        public async Task<CharacterExtended> SetCharacterFrom(CharacterShared mySINner)
         {
             InitializeComponent();
             _mySINner = mySINner;
-            MyCE = new CharacterExtended(mySINner.CharacterObject, null, PluginHandler.MySINnerLoading);
+            if (PluginHandler.MyCharExtendedDic.ContainsKey(mySINner.CharacterObject.FileName))
+            {
+                CharacterExtended outce;
+                if (!PluginHandler.MyCharExtendedDic.TryGetValue(mySINner.CharacterObject.FileName, out outce))
+                {
+                    throw new ArgumentException("Could not get character from MyCharExtendedDic", nameof(mySINner));
+                }
+
+                MyCE = outce;
+            }
+            else
+            {
+                MyCE = new CharacterExtended(mySINner.CharacterObject, null, PluginHandler.MySINnerLoading);
+                MyCE.ZipFilePath = await MyCE.PrepareModel();
+            }
             MyCE.MySINnerFile.SiNnerMetaData.Tags = MyCE.PopulateTags();
-            MyCE.ZipFilePath = MyCE.PrepareModel();
+
             TabSINnersBasic = new SINnersBasic(this)
             {
                 Visible = true

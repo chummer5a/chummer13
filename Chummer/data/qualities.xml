@@ -17674,14 +17674,6 @@
           </replaceattribute>
         </replaceattributes>
       </bonus>
-      <forbidden>
-        <oneof>
-          <attributetotal>
-            <attributes>RES,MAG</attributes>
-            <val>1</val>
-          </attributetotal>
-        </oneof>
-      </forbidden>
       <source>BTB</source>
       <page>139</page>
     </quality>
@@ -17767,12 +17759,13 @@
       <name>Prototype Materials</name>
       <karma>5</karma>
       <category>Positive</category>
+      <bonus>
+        <specialmodificationlimit>1</specialmodificationlimit>
+      </bonus>
       <forbidden>
         <oneof>
-          <attributetotal>
-            <attributes>RES,MAG</attributes>
-            <val>1</val>
-          </attributetotal>
+          <magenabled />
+          <resenabled />
         </oneof>
       </forbidden>
       <required>
@@ -17797,12 +17790,13 @@
       <karma>5</karma>
       <category>Positive</category>
       <limit>2</limit>
+      <bonus>
+        <specialmodificationlimit>1</specialmodificationlimit>
+      </bonus>
       <forbidden>
         <oneof>
-          <attributetotal>
-            <attributes>RES,MAG</attributes>
-            <val>1</val>
-          </attributetotal>
+          <magenabled />
+          <resenabled />
         </oneof>
       </forbidden>
       <source>BTB</source>

@@ -4,6 +4,7 @@ New Features:
 
 - Added a 'helpful' digital assistant, Chummy! Chummy is designed to offer tips via tooltip based on your character's content. It's designed for expansion through tips.xml, using the same forbidden/required structure as qualities. Yes, it's an April Fool's gag. I'm sorry, I thought it was cute and/or amusing. It can be toggled off by deselecting the Allow Easter Eggs option in the Global Options menu. 
 - Created a new Improvement Type that improves the dicepool of a specific spell; the spelldicepool improvement is available in the Custom Improvement creator. 
+- Implemented the Special Modifications and Prototype Materials qualities from Better Than Bad. The assorted bonuses are added through the Select Weapon Accessories form, allowing for custom content to be created. Note for content creators, the specialmodificationlimit property is used to indicate how many 'points' of the quality are consumed; this isn't super close to rules as written, but it's viable for our purposes. 
 
 Application Fixes:
 
@@ -12,6 +13,9 @@ Application Fixes:
 - Fixed incorrect consumption of capacity by modular limbs connecting to modular connectors. 
 - Fixed the behaviour of the Death Mentor Spirit's Magician benefit to allow dicepool benefits for specific skills. Uses the spelldicepool improvement.
 - Fixed an issue with traditions not probably updating.
+- Fixed issues with use of Essence Antiholes in create mode that prevented them from working reliably.
+- Fixed an issue with the selectatributes improvement that caused it to improperly allow Exceptional Attribute to select Edge.
+- Fixed issues with Dedicated Spellslinger not working properly in career mode.
 
 Application Changes:
 
@@ -34,6 +38,10 @@ Data Changes:
 - Added a new customdata entry for German Data Changes to add Machine Pistols and Submachine Guns to Standard and Heavy Weapon Mounts.
 - Added missing side prompts to the synthetic modular full arm and leg.
 - Fixed a typo in the Cavalier Arms Adder Slivergun's name.
+- Added a new customdata entry for the Ram Plate Vehicle Modification that sets it to use the stats as provided in Hero Lab. 
+- Fixed incorrect restrictions on the Special Modications and Prototype Materials qualities. 
+- Removed incorrrect mundane restriction on the Quadriplegic quality.
+- Fixed behaviour of partial cyberlimbs giving incorrect condition monitor boxes.
 
 String Changes:
 

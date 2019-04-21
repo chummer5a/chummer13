@@ -462,10 +462,10 @@ namespace Chummer.Backend.Equipment
                 {
                     _guiID = Guid.NewGuid();
                 }
-                if (objNode["sourceid"] == null || !objNode.TryGetField("sourceid", Guid.TryParse, out _guiSourceID))
+                if (!objNode.TryGetGuidFieldQuickly("sourceid", ref _guiSourceID))
                 {
                     XmlNode node = GetNode(GlobalOptions.Language);
-                    node?.TryGetField("id", Guid.TryParse, out _guiSourceID);
+                    node?.TryGetGuidFieldQuickly("id", ref _guiSourceID);
                 }
                 if (objNode["location"] != null)
                 {
@@ -1479,9 +1479,9 @@ namespace Chummer.Backend.Equipment
             if (_objCachedMyXmlNode != null && strLanguage == _strCachedXmlNodeLanguage && !GlobalOptions.LiveCustomData) return _objCachedMyXmlNode;
             _objCachedMyXmlNode = SourceID == Guid.Empty
                 ? XmlManager.Load("armor.xml", strLanguage)
-                    .SelectSingleNode("/chummer/armors/armor[name = \"" + Name + "\"]")
+                    .SelectSingleNode($"/chummer/armors/armor[name = \"{Name}\"]")
                 : XmlManager.Load("armor.xml", strLanguage)
-                    .SelectSingleNode("/chummer/armors/armor[id = \"" + SourceIDString + " or id = \"" + SourceIDString.ToUpperInvariant() + "\"]");
+                    .SelectSingleNode($"/chummer/armors/armor[id = \"{SourceIDString}\" or id = \"{SourceIDString.ToUpperInvariant()}\"]");
 
             _strCachedXmlNodeLanguage = strLanguage;
             return _objCachedMyXmlNode;

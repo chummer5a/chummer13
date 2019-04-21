@@ -248,10 +248,11 @@ namespace Chummer.Backend.Equipment
             {
                 _guiID = Guid.NewGuid();
             }
-            if (objNode["sourceid"] == null || !objNode.TryGetField("sourceid", Guid.TryParse, out _guiSourceID))
+            objNode.TryGetStringFieldQuickly("name", ref _strName);
+            if(!objNode.TryGetGuidFieldQuickly("sourceid", ref _guiSourceID))
             {
                 XmlNode node = GetNode(GlobalOptions.Language);
-                node?.TryGetField("id", Guid.TryParse, out _guiSourceID);
+                node?.TryGetGuidFieldQuickly("id", ref _guiSourceID);
             }
             if (blnCopy)
             {
@@ -263,7 +264,6 @@ namespace Chummer.Backend.Equipment
                 objNode.TryGetField("guid", Guid.TryParse, out _guiID);
             }
 
-            objNode.TryGetStringFieldQuickly("name", ref _strName);
             objNode.TryGetDecFieldQuickly("cost", ref _decCost);
             objNode.TryGetInt32FieldQuickly("dice", ref _intDice);
             objNode.TryGetDecFieldQuickly("multiplier", ref _decMultiplier);

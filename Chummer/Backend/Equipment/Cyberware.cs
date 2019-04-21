@@ -898,10 +898,11 @@ namespace Chummer.Backend.Equipment
         /// <param name="blnCopy">Whether this is a copy of an existing cyberware being loaded.</param>
         public void Load(XmlNode objNode, bool blnCopy = false)
         {
-            if (objNode["sourceid"] == null || !objNode.TryGetField("sourceid", Guid.TryParse, out _guiSourceID))
+            objNode.TryGetStringFieldQuickly("name", ref _strName);
+            if (!objNode.TryGetGuidFieldQuickly("sourceid", ref _guiSourceID))
             {
                 XmlNode node = GetNode(GlobalOptions.Language);
-                node?.TryGetField("id", Guid.TryParse, out _guiSourceID);
+                node?.TryGetGuidFieldQuickly("id", ref _guiSourceID);
             }
             if (blnCopy)
             {
@@ -910,7 +911,6 @@ namespace Chummer.Backend.Equipment
             else
                 objNode.TryGetField("guid", Guid.TryParse, out _guiID);
 
-            objNode.TryGetStringFieldQuickly("name", ref _strName);
             objNode.TryGetStringFieldQuickly("category", ref _strCategory);
             if (objNode["improvementsource"] != null)
             {
@@ -2477,7 +2477,7 @@ namespace Chummer.Backend.Equipment
                 if (_objCachedMyXmlNode == null)
                 {
                     _objCachedMyXmlNode = objDoc.SelectSingleNode("/chummer/biowares/bioware[name = \"" + Name + "\"]");
-                    _objCachedMyXmlNode?.TryGetField("id", Guid.TryParse, out _guiSourceID);
+                    _objCachedMyXmlNode?.TryGetGuidFieldQuickly("id", ref _guiSourceID);
                 }
             }
             else
@@ -2487,7 +2487,7 @@ namespace Chummer.Backend.Equipment
                 if (_objCachedMyXmlNode == null)
                 {
                     _objCachedMyXmlNode = objDoc.SelectSingleNode("/chummer/cyberwares/cyberware[name = \"" + Name + "\"]");
-                    _objCachedMyXmlNode?.TryGetField("id", Guid.TryParse, out _guiSourceID);
+                    _objCachedMyXmlNode?.TryGetGuidFieldQuickly("id", ref _guiSourceID);
                 }
             }
             _strCachedXmlNodeLanguage = strLanguage;
@@ -2745,9 +2745,13 @@ namespace Chummer.Backend.Equipment
                 return 0;
             if (Parent != null && !AddToParentESS)
                 return 0;
-            if (SourceID == EssenceHoleGUID || SourceID == EssenceAntiHoleGUID) // Essence hole or antihole
+            if (SourceID == EssenceHoleGUID) // Essence hole
             {
                 return Convert.ToDecimal(Rating, GlobalOptions.InvariantCultureInfo) / 100m;
+            }
+            if (SourceID == EssenceAntiHoleGUID) // Essence antihole
+            {
+                return Convert.ToDecimal(Rating, GlobalOptions.InvariantCultureInfo) / 100m * -1;
             }
 
             decimal decReturn;
@@ -4306,11 +4310,11 @@ namespace Chummer.Backend.Equipment
 
             if (SourceID == EssenceAntiHoleGUID)
             {
-                _objCharacter.DecreaseEssenceHole((int)(CalculatedESS() * 100));
+                _objCharacter.DecreaseEssenceHole(Rating * 100);
             }
             else if (SourceID == EssenceHoleGUID)
             {
-                _objCharacter.IncreaseEssenceHole((int)(CalculatedESS() * 100));
+                _objCharacter.IncreaseEssenceHole(Rating * 100);
             }
             else
             {

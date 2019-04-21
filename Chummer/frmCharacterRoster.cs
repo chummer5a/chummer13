@@ -76,10 +76,10 @@ namespace Chummer
             if(!deleteThem)
             {
                 GlobalOptions.MRUChanged += PopulateCharacterList;
-                treCharacterList.ItemDrag += treCharacterList_ItemDrag;
-                treCharacterList.DragEnter += treCharacterList_DragEnter;
-                treCharacterList.DragDrop += treCharacterList_DragDrop;
-                treCharacterList.DragOver += treCharacterList_DragOver;
+                treCharacterList.ItemDrag += treCharacterList_OnDefaultItemDrag;
+                treCharacterList.DragEnter += treCharacterList_OnDefaultDragEnter;
+                treCharacterList.DragDrop += treCharacterList_OnDefaultDragDrop;
+                treCharacterList.DragOver += treCharacterList_OnDefaultDragOver;
                 OnMyMouseDown += OnDefaultMouseDown;
 
                 if(watcherCharacterRosterFolder != null)
@@ -93,10 +93,10 @@ namespace Chummer
             else
             {
                 GlobalOptions.MRUChanged -= PopulateCharacterList;
-                treCharacterList.ItemDrag -= treCharacterList_ItemDrag;
-                treCharacterList.DragEnter -= treCharacterList_DragEnter;
-                treCharacterList.DragDrop -= treCharacterList_DragDrop;
-                treCharacterList.DragOver -= treCharacterList_DragOver;
+                treCharacterList.ItemDrag -= treCharacterList_OnDefaultItemDrag;
+                treCharacterList.DragEnter -= treCharacterList_OnDefaultDragEnter;
+                treCharacterList.DragDrop -= treCharacterList_OnDefaultDragDrop;
+                treCharacterList.DragOver -= treCharacterList_OnDefaultDragOver;
                 OnMyMouseDown -= OnDefaultMouseDown;
 
                 if(watcherCharacterRosterFolder != null)
@@ -157,6 +157,8 @@ namespace Chummer
             {
                 foreach(TreeNode objCharacterNode in objTypeNode.Nodes)
                 {
+                    if (objCharacterNode.Tag == null)
+                        continue;
                     string strFile = objCharacterNode.Tag.ToString();
                     if(_lstCharacterCache.TryGetValue(strFile, out CharacterCache objCache) && objCache != null)
                     {
@@ -371,9 +373,10 @@ namespace Chummer
                                         {
                                             treCharacterList.Nodes.Remove(found.FirstOrDefault());
                                         }
-                                        if(node.Nodes.Count > 0 || !String.IsNullOrEmpty(node.ToolTipText))
+                                        if ((node.Nodes.Count > 0 || !String.IsNullOrEmpty(node.ToolTipText))
+                                            || (node.Tag != null))
                                             treCharacterList.Nodes.Insert(1, node);
-                                        node.ExpandAll();
+                                        node.Expand();
                                     });
                                 }
                             }
@@ -512,23 +515,34 @@ namespace Chummer
 
                 // Populate character information fields.
                 XmlDocument objMetatypeDoc = XmlManager.Load("metatypes.xml");
-                XmlNode objMetatypeNode = objMetatypeDoc.SelectSingleNode("/chummer/metatypes/metatype[name = " + objCache.Metatype?.CleanXPath() + "]");
-                if(objMetatypeNode == null)
+                if (objCache.Metatype != null)
                 {
-                    objMetatypeDoc = XmlManager.Load("critters.xml");
-                    objMetatypeNode = objMetatypeDoc.SelectSingleNode("/chummer/metatypes/metatype[name = " + objCache.Metatype?.CleanXPath() + "]");
+                    XmlNode objMetatypeNode = objMetatypeDoc.SelectSingleNode("/chummer/metatypes/metatype[name = " + objCache.Metatype?.CleanXPath() + "]");
+                    if (objMetatypeNode == null)
+                    {
+                        objMetatypeDoc = XmlManager.Load("critters.xml");
+                        objMetatypeNode = objMetatypeDoc.SelectSingleNode("/chummer/metatypes/metatype[name = " + objCache.Metatype?.CleanXPath() + "]");
+                    }
+
+                    string strMetatype = objMetatypeNode?["translate"]?.InnerText ?? objCache.Metatype;
+
+                    if (!string.IsNullOrEmpty(objCache.Metavariant) && objCache.Metavariant != "None")
+                    {
+                        objMetatypeNode = objMetatypeNode?.SelectSingleNode("metavariants/metavariant[name = " + objCache.Metavariant.CleanXPath() + "]");
+
+                        strMetatype += LanguageManager.GetString("String_Space", GlobalOptions.Language) + '(' + (objMetatypeNode?["translate"]?.InnerText ?? objCache.Metavariant) + ')';
+                    }
+                    lblMetatype.Text = strMetatype;
                 }
-
-                string strMetatype = objMetatypeNode?["translate"]?.InnerText ?? objCache.Metatype;
-
-                if(!string.IsNullOrEmpty(objCache.Metavariant) && objCache.Metavariant != "None")
-                {
-                    objMetatypeNode = objMetatypeNode?.SelectSingleNode("metavariants/metavariant[name = " + objCache.Metavariant.CleanXPath() + "]");
-
-                    strMetatype += LanguageManager.GetString("String_Space", GlobalOptions.Language) + '(' + (objMetatypeNode?["translate"]?.InnerText ?? objCache.Metavariant) + ')';
-                }
-                lblMetatype.Text = strMetatype;
+                else
+                    lblMetatype.Text = "Error loading metatype!";
                 tabCharacterText.Visible = true;
+                if (!String.IsNullOrEmpty(objCache.ErrorText))
+                {
+                    txtCharacterBio.Text = objCache.ErrorText;
+                    txtCharacterBio.ForeColor = Color.Red;
+                    txtCharacterBio.BringToFront();                    
+                }
             }
             else
             {
@@ -567,9 +581,14 @@ namespace Chummer
         {
             CharacterCache objCache = null;
             TreeNode objSelectedNode = treCharacterList.SelectedNode;
-            if(objSelectedNode != null && objSelectedNode.Level > 0)
+            if((objSelectedNode != null && objSelectedNode.Level > 0)
+                && (objSelectedNode?.Tag != null))
             {
                 _lstCharacterCache.TryGetValue(objSelectedNode.Tag.ToString(), out objCache);
+            }
+            else if (objSelectedNode?.Tag is CharacterCache)
+            {
+                objCache = objSelectedNode.Tag as CharacterCache;
             }
             if(objCache != null)
                 objCache.OnMyAfterSelect(sender, e);
@@ -582,6 +601,7 @@ namespace Chummer
             TreeNode objSelectedNode = treCharacterList.SelectedNode;
             if(objSelectedNode != null && objSelectedNode.Level > 0)
             {
+                if (objSelectedNode.Tag == null) return;
                 string strFile = objSelectedNode.Tag.ToString();
                 if(!string.IsNullOrEmpty(strFile) && _lstCharacterCache.TryGetValue(strFile, out CharacterCache objCache) && string.IsNullOrEmpty(objCache.ErrorText))
                 {
@@ -599,24 +619,24 @@ namespace Chummer
                 }
             }
         }
-        private void treCharacterList_KeyDown(object sender, KeyEventArgs e)
+        private void treCharacterList_OnDefaultKeyDown(object sender, KeyEventArgs e)
         {
 
             TreeNode t = treCharacterList.SelectedNode;
 
-            if(t != null && _lstCharacterCache.TryGetValue(t.Tag.ToString(), out CharacterCache objCache) && objCache != null)
+            if(t?.Tag != null && _lstCharacterCache.TryGetValue(t.Tag.ToString(), out CharacterCache objCache) && objCache != null)
             {
                 objCache.OnMyKeyDown(sender, new Tuple<KeyEventArgs, TreeNode>(e, t));
             }
 
         }
 
-        private void treCharacterList_DragEnter(object sender, DragEventArgs e)
+        private void treCharacterList_OnDefaultDragEnter(object sender, DragEventArgs e)
         {
             e.Effect = DragDropEffects.Move;
         }
 
-        private void treCharacterList_DragOver(object sender, DragEventArgs e)
+        private void treCharacterList_OnDefaultDragOver(object sender, DragEventArgs e)
         {
             if(!(sender is TreeView treSenderView))
                 return;
@@ -626,7 +646,7 @@ namespace Chummer
             {
                 if(objNode.Parent != null)
                     objNode = objNode.Parent;
-                if(objNode.Tag.ToString() != "Watch")
+                if(objNode.Tag?.ToString() != "Watch")
                 {
                     objNode.BackColor = SystemColors.ControlDark;
                 }
@@ -635,7 +655,8 @@ namespace Chummer
             // Clear the background colour for all other Nodes.
             treCharacterList.ClearNodeBackground(objNode);
         }
-        private void treCharacterList_DragDrop(object sender, DragEventArgs e)
+
+        private void treCharacterList_OnDefaultDragDrop(object sender, DragEventArgs e)
         {
             // Do not allow the root element to be moved.
             if(treCharacterList.SelectedNode == null || treCharacterList.SelectedNode.Level == 0 || treCharacterList.SelectedNode.Parent.Tag.ToString() == "Watch")
@@ -647,7 +668,7 @@ namespace Chummer
                     return;
                 Point pt = treSenderView.PointToClient(new Point(e.X, e.Y));
                 TreeNode nodDestinationNode = treSenderView.GetNodeAt(pt);
-                if(nodDestinationNode.Level > 0)
+                if (nodDestinationNode.Level > 0)
                     nodDestinationNode = nodDestinationNode.Parent;
                 string strDestinationNode = nodDestinationNode.Tag.ToString();
                 if(strDestinationNode != "Watch")
@@ -674,7 +695,7 @@ namespace Chummer
             }
         }
 
-        private void treCharacterList_ItemDrag(object sender, ItemDragEventArgs e)
+        private void treCharacterList_OnDefaultItemDrag(object sender, ItemDragEventArgs e)
         {
             DoDragDrop(e.Item, DragDropEffects.Move);
         }
@@ -886,7 +907,12 @@ namespace Chummer
                 }
 
                 FilePath = strFile;
-                FileName = strFile.Substring(strFile.LastIndexOf(Path.DirectorySeparatorChar) + 1);
+                if (!String.IsNullOrEmpty(strFile))
+                {
+                    int last = strFile.LastIndexOf(Path.DirectorySeparatorChar) + 1;
+                    if (strFile.Length > last)
+                        FileName = strFile.Substring(last);
+                }
 
                 HandlePlugins();
             }
