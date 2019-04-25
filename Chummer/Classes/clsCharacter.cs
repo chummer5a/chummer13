@@ -1972,7 +1972,7 @@ if (!Utils.IsUnitTest){
                 "customdatadirectorynames/directoryname"))
             {
                 string strLoopString = xmlDirectoryName.Value;
-                if(strLoopString.Length > 0 && !_objOptions.CustomDataDirectoryNames.Contains(strLoopString))
+                if(strLoopString.Length > 0 && GlobalOptions.CustomDataDirectoryPaths.All(dir => dir.Name != strLoopString))
                 {
                     strMissingSourceNames += strLoopString + ';' + Environment.NewLine;
                 }
