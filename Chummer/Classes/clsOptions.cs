@@ -880,7 +880,7 @@ namespace Chummer
                 objCustomDataDirectoryKey.Close();
             }
 
-            XmlManager.RebuildDataDirectoryInfo();
+            XmlManager.RebuildDataDirectoryInfo(_lstCustomDataDirectoryInfo);
         }
 
         /// <summary>

@@ -1345,7 +1345,7 @@ namespace Chummer
         /// <summary>
         /// Names of custom data directories
         /// </summary>
-        public Dictionary<string,bool> CustomDataDirectoryNames => _dicCustomDataDirectoryNames;
+        public List<CustomDataDirectoryInfo> CustomDataDirectories { get; set; }
 
         /// <summary>
         /// Setting name.
