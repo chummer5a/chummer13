@@ -53,6 +53,8 @@ namespace Chummer
         #region Properties
         public string Code { get; set; } = string.Empty;
 
+        public int Edition { get; set; } = 5;
+
         public string Path
         {
             get => _strPath;
@@ -869,6 +871,8 @@ namespace Chummer
                                                 objSource.Offset = intTmp;
                                             }
                                         }
+
+                                        objSource.Edition = Convert.ToInt32(xmlBook["code"]?.InnerText);
                                     }
                                     catch(System.Security.SecurityException)
                                     {

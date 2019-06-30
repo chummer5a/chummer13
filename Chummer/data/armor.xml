@@ -48,6 +48,7 @@
     <category blackmarket="Armor">Specialty Armor</category>
   </categories>
   <armors>
+    <!-- Region 5th Edition -->
     <!-- Region Shadowrun 5 -->
     <armor>
       <id>31c68476-6328-476a-ae8a-94f65d505a04</id>
@@ -3375,8 +3376,169 @@
       <page>173</page>
     </armor>
     <!-- End Region -->
+    <!-- End Region -->
+    <!-- Region 6th Edition -->
+    <armor>
+      <id>09392568-55d9-459b-b453-404aef0c139e</id>
+      <name>Clothing</name>
+      <category>Clothing</category>
+      <armor>0</armor>
+      <armorcapacity>0</armorcapacity>
+      <avail>1</avail>
+      <cost>Variable(10-100000)</cost>
+      <source>SR6</source>
+      <page>265</page>
+    </armor>
+    <armor>
+      <id>5a650844-8f24-48e7-829f-0443d9ff5cf7</id>
+      <name>Actioneer Business Clothes</name>
+      <category>Armor</category>
+      <armor>2</armor>
+      <armorcapacity>6</armorcapacity>
+      <avail>2</avail>
+      <cost>1500</cost>
+      <gears>
+        <usegear>Holster</usegear>
+      </gears>
+      <source>SR6</source>
+      <page>265</page>
+    </armor>
+    <armor>
+      <id>40826eaa-c22a-43da-8730-bc1867ea65a1</id>
+      <name>Armor Clothing</name>
+      <category>Armor</category>
+      <armor>2</armor>
+      <armorcapacity>4</armorcapacity>
+      <avail>2</avail>
+      <cost>500</cost>
+      <source>SR6</source>
+      <page>437</page>
+    </armor>
+    <armor>
+      <id>36a4cd30-c32c-44d0-847a-0c15fb51072a</id>
+      <name>Armor Jacket</name>
+      <category>Armor</category>
+      <armor>4</armor>
+      <armorcapacity>8</armorcapacity>
+      <avail>2</avail>
+      <cost>1000</cost>
+      <source>SR6</source>
+      <page>265</page>
+    </armor>
+    <armor>
+      <id>4ad1eeab-daf3-4495-a73d-fbb0ce89be5b</id>
+      <name>Armor Vest</name>
+      <category>Armor</category>
+      <armor>3</armor>
+      <armorcapacity>6</armorcapacity>
+      <avail>2</avail>
+      <cost>750</cost>
+      <source>SR6</source>
+      <page>265</page>
+    </armor>
+    <armor>
+      <id>29347a6a-6505-4d1a-bb87-94d17125f1cf</id>
+      <name>Chameleon Suit</name>
+      <category>Armor</category>
+      <armor>2</armor>
+      <armorcapacity>4</armorcapacity>
+      <avail>4I</avail>
+      <cost>2000</cost>
+      <source>SR6</source>
+      <page>265</page>
+    </armor>
+    <armor>
+      <id>e90bdef7-343a-4497-98fd-0a9726f5e114</id>
+      <name>Full Body Armor</name>
+      <category>Armor</category>
+      <armor>5</armor>
+      <armorcapacity>10</armorcapacity>
+      <avail>4L</avail>
+      <cost>2000</cost>
+      <addmodcategory>Full Body Armor Mods</addmodcategory>
+      <source>SR6</source>
+      <page>265</page>
+    </armor>
+    <armor>
+      <id>39ceffb3-3fb9-4ca5-9343-4c0db7b8646a</id>
+      <name>Lined Coat</name>
+      <category>Armor</category>
+      <armor>3</armor>
+      <armorcapacity>7</armorcapacity>
+      <avail>2</avail>
+      <cost>900</cost>
+      <source>SR6</source>
+      <page>265</page>
+    </armor>
+    <armor>
+      <id>ce7c4768-1e32-47e4-ac78-30d74836e9fc</id>
+      <name>Synthleather Jacket</name>
+      <category>Armor</category>
+      <armor>1</armor>
+      <armorcapacity>3</armorcapacity>
+      <avail>1</avail>
+      <cost>300</cost>
+      <source>SR6</source>
+      <page>266</page>
+    </armor>
+    <armor>
+      <id>5e451d97-0f5b-4f7e-9e22-ed8ecbb05c4e</id>
+      <name>Urban Explorer Jumpsuit</name>
+      <category>Armor</category>
+      <armor>9</armor>
+      <armorcapacity>9</armorcapacity>
+      <avail>8</avail>
+      <cost>650</cost>
+      <gears>
+        <usegear>Biomonitor</usegear>
+        <usegear>Music Player</usegear>
+      </gears>
+      <source>SR6</source>
+      <page>265</page>
+    </armor>
+    <armor>
+      <id>361a7ff2-4292-4adb-8778-56886500bd2d</id>
+      <name>Helmet</name>
+      <category>Armor</category>
+      <armor>+1</armor>
+      <armorcapacity>4</armorcapacity>
+      <avail>1</avail>
+      <cost>200</cost>
+      <source>SR6</source>
+      <page>266</page>
+    </armor>
+    <armor>
+      <id>fc8e8c8e-c805-4f30-b283-4cba4a314e62</id>
+      <name>Ballistic Shield</name>
+      <category>Armor</category>
+      <armor>+2</armor>
+      <armorcapacity>2</armorcapacity>
+      <addweapon>
+        <!-- TODO: GUID-based naming for this, add the SR6 version-->
+      </addweapon>
+      <avail>4</avail>
+      <cost>900</cost>
+      <source>SR6</source>
+      <page>266</page>
+    </armor>
+    <armor>
+      <id>efef70da-46c4-417c-8147-73078b08ae08</id>
+      <name>Riot Shield</name>
+      <category>Armor</category>
+      <armor>+6</armor>
+      <armorcapacity>6</armorcapacity>
+      <addweapon>
+        <!-- TODO: GUID-based naming for this, add the SR6 version-->
+      </addweapon>
+      <avail>10R</avail>
+      <cost>1500</cost>
+      <source>SR6</source>
+      <page>267</page>
+    </armor>
+    <!-- End Region -->
   </armors>
   <mods>
+    <!-- Region 5th Edition -->
     <!-- Region Shadowrun 5 -->
     <mod>
       <id>9ee8e6ad-2472-485d-ae42-d1978749b456</id>
@@ -4316,6 +4478,169 @@
       <source>BTB</source>
       <page>156</page>
     </mod>
+    <!-- End Region -->
+    <!-- End Region -->
+    <!-- Region 6th Edition -->
+
+    <!-- Region Shadowrun 5 -->
+    <mod>
+      <id>1f89a75b-8a2e-4ce5-9201-1588dc4a2030</id>
+      <name>Electrochromic Clothing</name>
+      <category>General</category>
+      <armor>0</armor>
+      <maxrating>1</maxrating>
+      <armorcapacity>[0]</armorcapacity>
+      <avail>1</avail>
+      <cost>75</cost>
+      <source>SR6</source>
+      <page>265</page>
+    </mod>
+    <mod>
+      <id>b7d95c0e-627c-4e86-b3ba-7a0d2f41cdfd</id>
+      <name>Feedback Clothing</name>
+      <category>General</category>
+      <armor>0</armor>
+      <maxrating>1</maxrating>
+      <armorcapacity>[3]</armorcapacity>
+      <avail>2</avail>
+      <cost>150</cost>
+      <source>SR6</source>
+      <page>265</page>
+    </mod>
+    <mod>
+      <id>af95cd4f-27f5-4c3a-b229-bdf0d9221fee</id>
+      <name>Chemical Protection</name>
+      <category>General</category>
+      <armor>0</armor>
+      <maxrating>6</maxrating>
+      <armorcapacity>[Rating]</armorcapacity>
+      <avail>3</avail>
+      <cost>Rating * 250</cost>
+      <bonus unique="chemicalprotection">
+        <pathogencontactresist>Rating</pathogencontactresist>
+        <toxincontactresist>Rating</toxincontactresist>
+      </bonus>
+      <source>SR6</source>
+      <page>437</page>
+    </mod>
+    <mod>
+      <id>0fa2dc5b-87f4-4565-9db6-352ceb74ab77</id>
+      <name>Chemical Seal</name>
+      <category>General</category>
+      <armor>0</armor>
+      <maxrating>1</maxrating>
+      <armorcapacity>[6]</armorcapacity>
+      <avail>5</avail>
+      <cost>3000</cost>
+      <bonus>
+        <pathogencontactimmune />
+        <pathogeninhalationimmune />
+        <toxincontactimmune />
+        <toxininhalationimmune />
+      </bonus>
+      <source>SR6</source>
+      <page>437</page>
+    </mod>
+    <mod>
+      <id>357c4a6b-34d2-4bf4-b8c1-8e1728373964</id>
+      <name>Cold Resistance</name>
+      <category>General</category>
+      <armor>0</armor>
+      <maxrating>6</maxrating>
+      <armorcapacity>[Rating]</armorcapacity>
+      <avail>3</avail>
+      <cost>Rating * 250</cost>
+      <bonus unique="insulation">
+        <coldarmor>Rating</coldarmor>
+      </bonus>
+      <source>SR6</source>
+      <page>437</page>
+    </mod>
+    <mod>
+      <id>7018cca3-dd01-43a9-8aff-1e92db831778</id>
+      <name>Electricity Resistance</name>
+      <category>General</category>
+      <armor>0</armor>
+      <maxrating>6</maxrating>
+      <armorcapacity>[Rating]</armorcapacity>
+      <avail>3</avail>
+      <cost>Rating * 250</cost>
+      <bonus unique="nonconductivity">
+        <electricityarmor>Rating</electricityarmor>
+      </bonus>
+      <source>SR6</source>
+      <page>266</page>
+    </mod>
+    <mod>
+      <id>27e4b1a2-fa2c-4d0a-b504-b3c2c3be967f</id>
+      <name>Fire Resistance</name>
+      <category>General</category>
+      <armor>0</armor>
+      <maxrating>6</maxrating>
+      <armorcapacity>[Rating]</armorcapacity>
+      <avail>3</avail>
+      <cost>Rating * 250</cost>
+      <bonus unique="fireresistance">
+        <firearmor>Rating</firearmor>
+      </bonus>
+      <source>SR6</source>
+      <page>437</page>
+    </mod>
+    <mod>
+      <id>3ab06ea7-0429-4180-95b2-7a8741aab890</id>
+      <name>Full Body Armor: Helmet</name>
+      <category>General</category>
+      <armor>+3</armor>
+      <maxrating>1</maxrating>
+      <armorcapacity>[0]</armorcapacity>
+      <gearcapacity>6</gearcapacity>
+      <required>
+        <parentdetails>
+          <name>Full Body Armor</name>
+        </parentdetails>
+      </required>
+      <avail>0</avail>
+      <cost>500</cost>
+      <source>SR6</source>
+      <page>266</page>
+    </mod>
+    <mod>
+      <id>47053b7e-7484-457b-bca9-7fcbde6b30bd</id>
+      <name>Full Body Armor: Chemical Seal</name>
+      <category>Full Body Armor Mods</category>
+      <armor>0</armor>
+      <maxrating>1</maxrating>
+      <armorcapacity>[0]</armorcapacity>
+      <avail>5</avail>
+      <cost>3000</cost>
+      <bonus>
+        <pathogencontactimmune />
+        <pathogeninhalationimmune />
+        <toxincontactimmune />
+        <toxininhalationimmune />
+      </bonus>
+      <required>
+        <parentdetails>
+          <name>Full Body Armor</name>
+        </parentdetails>
+      </required>
+      <source>SR6</source>
+      <page>266</page>
+    </mod>
+    <mod>
+      <id>09d43d5a-c2ce-4be5-a9f4-d91effe5e7e0</id>
+      <name>Urban Explorer Jumpsuit: Helmet</name>
+      <category>Urban Explorer Jumpsuit Accessories</category>
+      <armor>+1</armor>
+      <maxrating>1</maxrating>
+      <armorcapacity>[0]</armorcapacity>
+      <gearcapacity>4</gearcapacity>
+      <avail>0</avail>
+      <cost>200</cost>
+      <source>SR6</source>
+      <page>266</page>
+    </mod>
+    <!-- End Region -->
     <!-- End Region -->
   </mods>
 </chummer>
