@@ -29,6 +29,7 @@
     <category>Resources</category>
   </categories>
   <priorities>
+    <!-- Region SR5 -->
     <!-- Region Metatypes-->
     <priority>
       <id>55bc32fb-e097-4234-bdd5-a70e4f043b3d</id>
@@ -5213,5 +5214,512 @@
     </priority>
     <!-- End Region    -->
     <!-- End Region    -->
+    <!-- End Region -->
+      <!-- Region SR6 -->
+      <!-- Region Metatypes-->
+      <priority>
+          <id>75c05522-537c-408c-8076-f8298f38b430</id>
+          <name>A - Dwarf, Ork, Troll</name>
+          <value>A,4</value>
+          <category>Heritage</category>
+          <edition>6</edition>
+          <metatypes>
+              <metatype>
+                  <name>Dwarf</name>
+                  <value>13</value>
+                  <karma>0</karma>
+              </metatype>
+              <metatype>
+                  <name>Ork</name>
+                  <value>13</value>
+                  <karma>0</karma>
+              </metatype>
+              <metatype>
+                  <name>Troll</name>
+                  <value>13</value>
+                  <karma>0</karma>
+              </metatype>
+          </metatypes>
+      </priority>
+      <priority>
+          <id>c6f2b5f0-eec5-4052-ab1a-4b7166e5c7a0</id>
+          <name>B - Dwarf, Ork, Troll</name>
+          <value>B,3</value>
+          <category>Heritage</category>
+          <edition>6</edition>
+          <metatypes>
+              <metatype>
+                  <name>Dwarf</name>
+                  <value>11</value>
+                  <karma>0</karma>
+              </metatype>
+              <metatype>
+                  <name>Elf</name>
+                  <value>11</value>
+                  <karma>0</karma>
+              </metatype>
+              <metatype>
+                  <name>Ork</name>
+                  <value>11</value>
+                  <karma>0</karma>
+              </metatype>
+              <metatype>
+                  <name>Troll</name>
+                  <value>11</value>
+                  <karma>0</karma>
+              </metatype>
+          </metatypes>
+      </priority>
+      <priority>
+          <id>3788674c-d821-4dbc-a2a7-62b60b86d4ae</id>
+          <name>C - All</name>
+          <value>C,2</value>
+          <category>Heritage</category>
+          <edition>6</edition>
+          <metatypes>
+              <metatype>
+                  <name>Dwarf</name>
+                  <value>9</value>
+                  <karma>0</karma>
+              </metatype>
+              <metatype>
+                  <name>Elf</name>
+                  <value>9</value>
+                  <karma>0</karma>
+              </metatype>
+              <metatype>
+                  <name>Human</name>
+                  <value>9</value>
+                  <karma>0</karma>
+              </metatype>
+              <metatype>
+                  <name>Ork</name>
+                  <value>9</value>
+                  <karma>0</karma>
+              </metatype>
+              <metatype>
+                  <name>Troll</name>
+                  <value>9</value>
+                  <karma>0</karma>
+              </metatype>
+          </metatypes>
+      </priority>
+      <priority>
+          <id>6f5961d1-0ff2-4d76-a658-5ab240aa4945</id>
+          <name>D - All</name>
+          <value>D,1</value>
+          <category>Heritage</category>
+          <edition>6</edition>
+          <metatypes>
+              <metatype>
+                  <name>Dwarf</name>
+                  <value>4</value>
+                  <karma>0</karma>
+              </metatype>
+              <metatype>
+                  <name>Elf</name>
+                  <value>4</value>
+                  <karma>0</karma>
+              </metatype>
+              <metatype>
+                  <name>Human</name>
+                  <value>4</value>
+                  <karma>0</karma>
+              </metatype>
+              <metatype>
+                  <name>Ork</name>
+                  <value>4</value>
+                  <karma>0</karma>
+              </metatype>
+              <metatype>
+                  <name>Troll</name>
+                  <value>4</value>
+                  <karma>0</karma>
+              </metatype>
+          </metatypes>
+      </priority>
+      <priority>
+          <id>b016c143-6750-4184-91ad-c81cca9f2c8c</id>
+          <name>E - All</name>
+          <value>E,0</value>
+          <category>Heritage</category>
+          <edition>6</edition>
+          <metatypes>
+              <metatype>
+                  <name>Dwarf</name>
+                  <value>1</value>
+                  <karma>0</karma>
+              </metatype>
+              <metatype>
+                  <name>Elf</name>
+                  <value>1</value>
+                  <karma>0</karma>
+              </metatype>
+              <metatype>
+                  <name>Human</name>
+                  <value>1</value>
+                  <karma>0</karma>
+              </metatype>
+              <metatype>
+                  <name>Ork</name>
+                  <value>1</value>
+                  <karma>0</karma>
+              </metatype>
+              <metatype>
+                  <name>Troll</name>
+                  <value>1</value>
+                  <karma>0</karma>
+              </metatype>
+          </metatypes>
+      </priority>
+      <!-- End Region -->
+      <!-- Region Talents -->
+      <priority>
+          <id>9d58a295-7c59-4d3f-8001-a5565da6b836</id>
+          <name>A - 4 MAG/RES</name>
+          <value>A,4</value>
+          <category>Talent</category>
+          <edition>6</edition>
+          <talents>
+              <talent>
+                  <name>Aspected Magician - 5 Magic</name>
+                  <value>Magician</value>
+                  <qualities>
+                      <quality>Aspected Magician</quality>
+                  </qualities>
+                  <magic>5</magic>
+              </talent>
+              <talent>
+                  <name>Magician - 4 Magic</name>
+                  <value>Magician</value>
+                  <qualities>
+                      <quality>Magician</quality>
+                  </qualities>
+                  <magic>4</magic>
+              </talent>
+              <talent>
+                  <name>Adept - 4 Magic</name>
+                  <value>Adept</value>
+                  <qualities>
+                      <quality>Adept</quality>
+                  </qualities>
+                  <magic>4</magic>
+              </talent>
+              <talent>
+                  <name>Mystic Adept - 4 Magic</name>
+                  <value>Mystic Adept</value>
+                  <qualities>
+                      <quality>Mystic Adept</quality>
+                  </qualities>
+                  <magic>4</magic>
+              </talent>
+              <talent>
+                  <name>Technomancer - 4 Resonance</name>
+                  <value>Technomancer</value>
+                  <qualities>
+                      <quality>Technomancer</quality>
+                  </qualities>
+                  <resonance>4</resonance>
+              </talent>
+          </talents>
+      </priority>
+      <priority>
+          <id>774fd89a-ecea-4f5f-ad2b-c4476ca46f70</id>
+          <name>B - 3 MAG/RES</name>
+          <value>B,3</value>
+          <category>Talent</category>
+          <edition>6</edition>
+          <talents>
+              <talent>
+                  <name>Aspected Magician - 4 Magic</name>
+                  <value>Magician</value>
+                  <qualities>
+                      <quality>Aspected Magician</quality>
+                  </qualities>
+                  <magic>4</magic>
+              </talent>
+              <talent>
+                  <name>Magician - 3 Magic</name>
+                  <value>Magician</value>
+                  <qualities>
+                      <quality>Magician</quality>
+                  </qualities>
+                  <magic>3</magic>
+              </talent>
+              <talent>
+                  <name>Mystic Adept - 3 Magic</name>
+                  <value>Mystic Adept</value>
+                  <qualities>
+                      <quality>Mystic Adept</quality>
+                  </qualities>
+                  <magic>3</magic>
+              </talent>
+              <talent>
+                  <name>Adept - 3 Magic</name>
+                  <value>Adept</value>
+                  <qualities>
+                      <quality>Adept</quality>
+                  </qualities>
+                  <magic>3</magic>
+              </talent>
+              <talent>
+                  <name>Technomancer - 3 Resonance</name>
+                  <value>Technomancer</value>
+                  <qualities>
+                      <quality>Technomancer</quality>
+                  </qualities>
+                  <resonance>3</resonance>
+              </talent>
+          </talents>
+      </priority>
+      <priority>
+          <id>aae3a140-d306-4811-a9d2-874140600150</id>
+          <name>C - 2 MAG/RES</name>
+          <value>C,2</value>
+          <category>Talent</category>
+          <edition>6</edition>
+          <talents>
+              <talent>
+                  <name>Aspected Magician - 3 Magic</name>
+                  <value>Magician</value>
+                  <qualities>
+                      <quality>Aspected Magician</quality>
+                  </qualities>
+                  <magic>3</magic>
+              </talent>
+              <talent>
+                  <name>Magician - 2 Magic</name>
+                  <value>Magician</value>
+                  <qualities>
+                      <quality>Magician</quality>
+                  </qualities>
+                  <magic>2</magic>
+              </talent>
+              <talent>
+                  <name>Mystic Adept - 2 Magic</name>
+                  <value>Mystic Adept</value>
+                  <qualities>
+                      <quality>Mystic Adept</quality>
+                  </qualities>
+                  <magic>2</magic>
+              </talent>
+              <talent>
+                  <name>Adept - 2 Magic</name>
+                  <value>Adept</value>
+                  <qualities>
+                      <quality>Adept</quality>
+                  </qualities>
+                  <magic>2</magic>
+              </talent>
+              <talent>
+                  <name>Technomancer - 2 Resonance</name>
+                  <value>Technomancer</value>
+                  <qualities>
+                      <quality>Technomancer</quality>
+                  </qualities>
+                  <resonance>2</resonance>
+              </talent>
+          </talents>
+      </priority>
+      <priority>
+          <id>b97be625-a732-4c3c-80e4-06c4d88bac91</id>
+          <name>D - 1 MAG/RES</name>
+          <value>D,1</value>
+          <category>Talent</category>
+          <edition>6</edition>
+          <talents>
+              <talent>
+                  <name>Aspected Magician - 2 Magic</name>
+                  <value>Magician</value>
+                  <qualities>
+                      <quality>Aspected Magician</quality>
+                  </qualities>
+                  <magic>2</magic>
+              </talent>
+              <talent>
+                  <name>Magician - 1 Magic</name>
+                  <value>Magician</value>
+                  <qualities>
+                      <quality>Magician</quality>
+                  </qualities>
+                  <magic>1</magic>
+              </talent>
+              <talent>
+                  <name>Mystic Adept - 1 Magic</name>
+                  <value>Mystic Adept</value>
+                  <qualities>
+                      <quality>Mystic Adept</quality>
+                  </qualities>
+                  <magic>1</magic>
+              </talent>
+              <talent>
+                  <name>Adept - 1 Magic</name>
+                  <value>Adept</value>
+                  <qualities>
+                      <quality>Adept</quality>
+                  </qualities>
+                  <magic>1</magic>
+              </talent>
+              <talent>
+                  <name>Technomancer - 1 Resonance</name>
+                  <value>Technomancer</value>
+                  <qualities>
+                      <quality>Technomancer</quality>
+                  </qualities>
+                  <resonance>1</resonance>
+              </talent>
+          </talents>
+      </priority>
+      <priority>
+          <id>9753a254-94b0-46e8-83f4-e7627bdb8571</id>
+          <name>E - Mundane</name>
+          <value>E,0</value>
+          <category>Talent</category>
+          <edition>6</edition>
+          <talents>
+              <talent>
+                  <name>Mundane</name>
+                  <value>Mundane</value>
+              </talent>
+          </talents>
+      </priority>
+      <!-- End Region -->
+      <!-- Region Attributes -->
+      <priority>
+          <id>1c4a7955-1ae1-4a5b-9ed4-5ab8525d13b0</id>
+          <name>A - 24 Attributes</name>
+          <value>A,4</value>
+          <category>Attributes</category>
+          <edition>6</edition>
+          <attributes>24</attributes>
+      </priority>
+      <priority>
+          <id>521c1f60-f382-479e-af3b-a3eda5201f22</id>
+          <name>B - 16 Attributes</name>
+          <value>B,3</value>
+          <category>Attributes</category>
+          <edition>6</edition>
+          <attributes>16</attributes>
+      </priority>
+      <priority>
+          <id>0a224d86-d355-4cd6-8e4e-b94e31f97c4b</id>
+          <name>C - 12 Attributes</name>
+          <value>C,2</value>
+          <category>Attributes</category>
+          <edition>6</edition>
+          <attributes>12</attributes>
+      </priority>
+      <priority>
+          <id>984600d8-5b2f-437c-86eb-693a5bbff030</id>
+          <name>D - 8 Attributes</name>
+          <value>D,1</value>
+          <category>Attributes</category>
+          <edition>6</edition>
+          <attributes>8</attributes>
+      </priority>
+      <priority>
+          <id>f6a36071-41ab-4f8e-884d-3cee92d8f181</id>
+          <name>E - 2 Attributes</name>
+          <value>E,0</value>
+          <category>Attributes</category>
+          <edition>6</edition>
+          <attributes>2</attributes>
+      </priority>
+      <!-- End Region -->
+      <!-- Region Skills -->
+      <!-- Region Default -->
+      <priority>
+          <id>45a5f7b4-c152-4e05-839f-1b3d14e56058</id>
+          <name>A - 32 Skills</name>
+          <value>A,4</value>
+          <category>Skills</category>
+          <edition>6</edition>
+          <skills>32</skills>
+      </priority>
+      <priority>
+          <id>bde37645-6789-4401-bcec-4c0e61c7fe17</id>
+          <name>B - 24 Skills</name>
+          <value>B,3</value>
+          <category>Skills</category>
+          <edition>6</edition>
+          <skills>24</skills>
+      </priority>
+      <priority>
+          <id>57c52154-489e-4e8a-b885-13b341700deb</id>
+          <name>C - 20 Skills</name>
+          <value>C,2</value>
+          <category>Skills</category>
+          <edition>6</edition>
+          <skills>20</skills>
+      </priority>
+      <priority>
+          <id>61e1758f-e4ca-4e53-ad45-bb88a0e5ac04</id>
+          <name>D - 16 Skills</name>
+          <value>D,1</value>
+          <category>Skills</category>
+          <edition>6</edition>
+          <skills>16</skills>
+      </priority>
+      <priority>
+          <id>b1ca5551-46a4-4ef0-9d07-c33ae0abbcd1</id>
+          <name>E -10 Skills</name>
+          <value>E,0</value>
+          <category>Skills</category>
+          <edition>6</edition>
+          <skills>10</skills>
+          <skillgroups>0</skillgroups>
+      </priority>
+      <!-- End Region -->
+      <!-- End Region -->
+      <!-- Region Resources    -->
+      <!-- Region Standard -->
+      <priority>
+          <id>e14e7747-467f-422c-b413-303052338e60</id>
+          <name>A - 450,000¥</name>
+          <value>A,4</value>
+          <gameplayoption>Standard</gameplayoption>
+          <category>Resources</category>
+          <edition>6</edition>
+          <resources>450000</resources>
+      </priority>
+      <priority>
+          <id>d329a013-ee98-4330-8c14-37b01eebaecf</id>
+          <name>B - 275,000¥</name>
+          <value>B,3</value>
+          <gameplayoption>Standard</gameplayoption>
+          <category>Resources</category>
+          <edition>6</edition>
+          <resources>275000</resources>
+      </priority>
+      <priority>
+          <id>17ceb9fc-4b43-4661-bc7d-c7efe18ea010</id>
+          <name>C - 150,000¥</name>
+          <value>C,2</value>
+          <gameplayoption>Standard</gameplayoption>
+          <category>Resources</category>
+          <edition>6</edition>
+          <resources>150000</resources>
+      </priority>
+      <priority>
+          <id>09a2768d-8406-46ea-b50d-e2f0cc7a41db</id>
+          <name>D - 50,000¥</name>
+          <value>D,1</value>
+          <gameplayoption>Standard</gameplayoption>
+          <category>Resources</category>
+          <edition>6</edition>
+          <resources>50000</resources>
+      </priority>
+      <priority>
+          <id>2bedd498-022c-47b6-a664-0f94af845623</id>
+          <name>E - 8,000¥</name>
+          <value>E,0</value>
+          <gameplayoption>Standard</gameplayoption>
+          <category>Resources</category>
+          <edition>6</edition>
+          <resources>8000</resources>
+      </priority>
+      <!-- End Region -->
+      <!-- End Region -->
+      <!-- End Region -->
   </priorities>
 </chummer>
